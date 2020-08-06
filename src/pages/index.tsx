@@ -7,5 +7,5 @@ export default function Home() {
 }
 
 const Button = styled.button`
-  ${tw`text-xl bg-red-500`}
+  ${tw`text-xl text-secondary bg-primary`}
 `;

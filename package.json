@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^9.5.1",
     "next": "9.5.1",
+    "next-images": "^1.4.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.1.1",
@@ -18,8 +20,19 @@
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
     "@types/node": "^14.0.27",
     "@types/styled-components": "^5.1.2",
+    "@typescript-eslint/eslint-plugin": "2.x",
+    "@typescript-eslint/parser": "2.x",
+    "babel-eslint": "10.x",
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-tailwind-components": "^0.5.10",
+    "eslint": "6.x",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-flowtype": "4.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "2.x",
     "tailwind.macro": "^1.0.0-alpha.10",
     "typescript": "^3.9.7"
   }

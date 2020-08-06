@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 :root {
-    --primary-color: ${(p) => p.theme.primary};
-    --secondary-color: ${(p) => p.theme.secondary};
+    --primary-color: #fa22e1;
+    --secondary-color: #5251e1;
 
     font-size: 62.5%;
     font-family: 'Roboto', sans-serif;
@@ -33,6 +33,11 @@ export const GlobalStyle = createGlobalStyle`
     @media screen and (min-width: ${(p) => p.theme.breakpoints.xxl}) {
       font-size: 106.25%; /* 16px => 17px */
     }
+  }
+
+  .dark-mode {
+    --primary-color:   #faea52;
+    --secondary-color: #fc32a1;
   }
 
   h1,

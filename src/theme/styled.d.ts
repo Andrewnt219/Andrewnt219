@@ -4,8 +4,6 @@ import "styled-components";
 // and extend them!
 declare module "styled-components" {
   export interface DefaultTheme {
-    primary: string;
-    secondary: string;
     breakpoints: {
       xxs: string;
       xs: string;

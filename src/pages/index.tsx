@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import tw from "tailwind.macro";
+import { MainLayout } from "../components/layout/MainLayout";
 // import tw from "twin.macro";
 
 export default function Home() {
-  return <Button>Hi</Button>;
+  return (
+    <MainLayout>
+      <Button>Hi</Button>
+    </MainLayout>
+  );
 }
 
 const Button = styled.button`

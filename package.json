@@ -10,6 +10,17 @@
   "dependencies": {
     "next": "9.5.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "styled-components": "^5.1.1",
+    "tailwindcss": "^1.6.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "@types/node": "^14.0.27",
+    "@types/styled-components": "^5.1.2",
+    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-tailwind-components": "^0.5.10",
+    "tailwind.macro": "^1.0.0-alpha.10",
+    "typescript": "^3.9.7"
   }
 }

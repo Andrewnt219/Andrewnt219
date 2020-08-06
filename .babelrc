@@ -1,0 +1,15 @@
+// In .babelrc
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    "macros",
+    "@babel/plugin-syntax-object-rest-spread",
+
+    [
+      "styled-components",
+      {
+        "ssr": true
+      }
+    ]
+  ]
+}

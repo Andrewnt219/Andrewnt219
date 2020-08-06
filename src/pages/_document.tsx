@@ -36,7 +36,22 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head></Head>
+        <Head>
+          <link
+            rel="preload"
+            href="fonts/raleway-v17-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
+          <link
+            rel="preload"
+            href="fonts/roboto-v20-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

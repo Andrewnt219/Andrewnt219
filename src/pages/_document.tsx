@@ -46,7 +46,7 @@ export default class MyDocument extends Document {
           />
           <link
             rel="preload"
-            href="fonts/roboto-v20-latin-regular.woff2"
+            href="fonts/montserrat-v14-latin-300.woff2"
             as="font"
             type="font/woff2"
             crossOrigin=""

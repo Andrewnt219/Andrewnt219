@@ -3,10 +3,12 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-    --primary-color: #fa22e1;
-    --secondary-color: #5251e1;
+  --primary-color:   #fff;
+  --primary-color-light:   #fff;
+  --secondary-color: #f4f4f4;
+  --text-color: #000;
 
-    font-size: 62.5%;    
+    font-size: 62.5%;
     box-sizing: border-box;
     overflow-x: hidden;
     font-family: 'Raleway', sans-serif;
@@ -128,11 +130,16 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  .dark-mode {
-    --primary-color:   #faea52;
-    --secondary-color: #fc32a1;
+  body {
+    color: var(--text-color);
+    
+    &.dark-mode {
+      --primary-color:   #000;
+      --primary-color-light: #1c1c1c;
+      --secondary-color: #1c1c1c;
+      --text-color: #fff;
+    }
   }
-
 
   h1,
   h2,
@@ -142,20 +149,21 @@ export const GlobalStyle = createGlobalStyle`
   h6 {
     font-family: 'Montserrat', sans-serif;
   }
-  
-  p {
-    
+
+  p {    
     line-height: 1.6;
   }
 
   *, *::before, *::after {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
     text-decoration: none;
     list-style: none;
 
+    box-sizing: inherit;
     font-family: inherit;
+    font-size: inherit;
+    color: var(--text-color);
   }
 
   input,

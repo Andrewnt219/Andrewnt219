@@ -2,6 +2,7 @@ import React, { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
 import { AppBar } from "./AppBar";
 import { Footer } from "./Footer";
+import tw from "tailwind.macro";
 
 type Props = {
   children: ReactNode;
@@ -35,8 +36,10 @@ function onThemeSwitch() {
 
 type MainProps = {};
 const Main = styled.main<MainProps>`
-  margin-top: calc(${APPBAR_HEIGHT} + 1rem);
+  padding-top: calc(${APPBAR_HEIGHT} + 1rem);
   padding-bottom: calc(${FOOTER_HEIGHT} + 5rem);
+
+  ${tw`bg-primary`};
 `;
 
 export { MainLayout };

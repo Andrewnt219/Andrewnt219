@@ -10,8 +10,8 @@ function AppBar({ height }: Props): ReactElement {
   return (
     <Container>
       <Nav height={height}>
-        <Hamburger />
         <DesktopNavigationItems />
+        <Hamburger />
       </Nav>
     </Container>
   );
@@ -26,7 +26,7 @@ type NavProps = {
 const Nav = styled.nav<NavProps>`
   height: ${(p) => p.height};
 
-  ${tw`fixed top-0 left-0 w-full bg-lprimary transition-all duration-300 ease-in-out`}
+  ${tw`fixed top-0 left-0 w-full bg-lprimary transition-all duration-300 ease-in-out flex justify-between items-center p-5`}
 `;
 
 export { AppBar };

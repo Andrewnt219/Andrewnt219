@@ -23,7 +23,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "public/scripts/theme.script.js"
+    "public/scripts/theme.script.js",
+    "@types/twin.d.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -2,7 +2,7 @@ import React, { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
 import { AppBar } from "./AppBar";
 import { Footer } from "./Footer";
-import tw from "tailwind.macro";
+import tw from "twin.macro";
 
 type Props = {
   children: ReactNode;

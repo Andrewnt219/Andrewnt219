@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { Hamburger } from "../navigations/mobile/Hamburger";
 import { DesktopNavigationItems } from "../navigations/desktop/DesktopNavigationItems";
-import tw from "tailwind.macro";
+import tw from "twin.macro";
 
 type Props = NavProps & {};
 

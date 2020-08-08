@@ -2,9 +2,7 @@
 {
   "presets": ["next/babel"],
   "plugins": [
-    "macros",
-    "@babel/plugin-syntax-object-rest-spread",
-
+    "babel-plugin-macros",
     [
       "styled-components",
       {

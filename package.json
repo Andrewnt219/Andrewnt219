@@ -15,7 +15,6 @@
     "react-dom": "16.13.1",
     "react-icons": "^3.10.0",
     "styled-components": "^5.1.1",
-    "tailwindcss": "^1.6.2",
     "twin.macro": "^1.7.0"
   },
   "devDependencies": {
@@ -35,7 +34,15 @@
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "2.x",
-    "tailwind.macro": "^1.0.0-alpha.10",
     "typescript": "^3.9.7"
+  },
+  "babelMacros": {
+    "twin": {
+      "config": "tailwind.config.js",
+      "preset": "styled-components",
+      "debugProp": true,
+      "debugPlugins": false,
+      "debug": false
+    }
   }
 }

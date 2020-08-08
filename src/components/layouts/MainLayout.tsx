@@ -9,7 +9,7 @@ type Props = {
 };
 
 const APPBAR_HEIGHT = "5rem";
-const FOOTER_HEIGHT = "20rem";
+const FOOTER_HEIGHT = "10rem";
 
 function MainLayout({ children }: Props): ReactElement {
   return (
@@ -36,10 +36,9 @@ function onThemeSwitch() {
 
 type MainProps = {};
 const Main = styled.main<MainProps>`
-  padding-top: calc(${APPBAR_HEIGHT} + 1rem);
-  padding-bottom: calc(${FOOTER_HEIGHT} + 5rem);
+  padding: calc(${APPBAR_HEIGHT} + 1rem) 5% calc(${FOOTER_HEIGHT} + 5rem) 5%;
 
-  ${tw`bg-primary`};
+  ${tw`bg-primary transition-all duration-300 ease-in-out min-h-screen`};
 `;
 
 export { MainLayout };

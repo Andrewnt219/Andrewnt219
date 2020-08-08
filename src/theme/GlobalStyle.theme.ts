@@ -175,7 +175,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #__next {
-    min-height: 100vh;
+    
     position: relative;
   }
 

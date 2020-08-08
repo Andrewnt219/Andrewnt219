@@ -25,7 +25,8 @@ type NavProps = {
 };
 const Nav = styled.nav<NavProps>`
   height: ${(p) => p.height};
-  ${tw`fixed top-0 left-0 w-full bg-lprimary`}
+
+  ${tw`fixed top-0 left-0 w-full bg-lprimary transition-all duration-300 ease-in-out`}
 `;
 
 export { AppBar };

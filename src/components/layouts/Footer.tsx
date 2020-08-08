@@ -13,7 +13,7 @@ type ContainerProps = {
 };
 const Container = styled.footer<ContainerProps>`
   height: ${(p) => p.height};
-  ${tw`bg-lprimary absolute bottom-0 w-full`};
+  ${tw`bg-lprimary absolute bottom-0 w-full transition-all duration-300 ease-in-out`};
 `;
 
 export { Footer };

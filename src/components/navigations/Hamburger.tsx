@@ -51,14 +51,15 @@ const Backdrop = styled.div<BackdropProps>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1),
-    background 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1),
+    background 1s cubic-bezier(0.86, 0, 0.07, 1);
   ${tw`w-8 h-8 block pointer-events-none absolute bg-transparent rounded-full`};
 
   ${(p) =>
     p.isFullScreen &&
     css`
       transform: translate(-50%, -50%) scale(130);
+      opacity: 0.9;
       ${tw`bg-secondary z-20 pointer-events-auto`}
     `}
 `;

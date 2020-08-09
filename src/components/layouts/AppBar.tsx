@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Hamburger } from "../navigations/Hamburger";
 import tw from "twin.macro";
 import { NavigationItems } from "../navigations/NavigationItems";
+import { LightSwitch } from "../navigations/LightSwitch";
 
 type Props = NavProps & {};
 
@@ -16,6 +17,7 @@ function AppBar({ height }: Props): ReactElement {
           <NavigationItems onNavItemClicked={() => setMenuIsOpened(false)} />
         )}
         <Hamburger isOpened={menuIsOpened} setIsOpened={setMenuIsOpened} />
+        <LightSwitch />
       </Nav>
     </Container>
   );

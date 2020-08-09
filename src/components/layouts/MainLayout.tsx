@@ -16,22 +16,11 @@ function MainLayout({ children }: Props): ReactElement {
     <>
       <AppBar height={APPBAR_HEIGHT} />
 
-      <Main>
-        <button onClick={onThemeSwitch}>Switch</button>
-        {children}
-      </Main>
+      <Main>{children}</Main>
 
       <Footer height={FOOTER_HEIGHT} />
     </>
   );
-}
-
-function onThemeSwitch() {
-  const nextTheme =
-    document.body.className === "dark-mode" ? "light-mode" : "dark-mode";
-
-  document.body.className = nextTheme;
-  localStorage.setItem("theme", nextTheme);
 }
 
 type MainProps = {};

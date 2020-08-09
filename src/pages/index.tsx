@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import tw from "twin.macro";
-import { MainLayout } from "@src/components/layouts/MainLayout";
 
 export default function Home() {
   return (

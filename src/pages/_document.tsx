@@ -53,8 +53,6 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          <Main />
-          <NextScript />
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -66,6 +64,7 @@ export default class MyDocument extends Document {
                     
                   }
                 } catch(error) {
+                  console.log(error);
                   console.log('Failed to access localStorage');
                 }
               })();
@@ -73,6 +72,8 @@ export default class MyDocument extends Document {
             `,
             }}
           />
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );

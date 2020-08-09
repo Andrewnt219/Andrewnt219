@@ -4,9 +4,9 @@ import { MainLayout } from "@src/components/layouts/MainLayout";
 
 export default function Home() {
   return (
-    <MainLayout>
+    <div>
       <Heading>Welcome</Heading>
-    </MainLayout>
+    </div>
   );
 }
 

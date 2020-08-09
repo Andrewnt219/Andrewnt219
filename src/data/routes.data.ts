@@ -1,26 +1,27 @@
-type Route = {
-  // url in pages
-  href: string;
-  // url in browsers
-  asPath: string;
+import { LinkProps } from "next/link";
+
+export type Route = LinkProps & {
   // textContent
   text: string;
+  // use === for matching
+  exact?: boolean;
 };
 
 export const allRoutes: Route[] = [
   {
     href: "/",
-    asPath: "/",
+    as: "/",
     text: "Home",
+    exact: true,
   },
   {
     href: "/about",
-    asPath: "/about",
+    as: "/about",
     text: "About",
   },
   {
     href: "/projects",
-    asPath: "/projects",
+    as: "/projects",
     text: "Projects",
   },
 ];

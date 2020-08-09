@@ -1,8 +1,8 @@
 import React, { ReactElement, useState } from "react";
-import styled, { css } from "styled-components";
-import { Hamburger } from "../navigations/mobile/Hamburger";
-import { DesktopNavigationItems } from "../navigations/desktop/DesktopNavigationItems";
+import styled from "styled-components";
+import { Hamburger } from "../navigations/Hamburger";
 import tw from "twin.macro";
+import { NavigationItems } from "../navigations/NavigationItems";
 
 type Props = NavProps & {};
 
@@ -12,7 +12,9 @@ function AppBar({ height }: Props): ReactElement {
   return (
     <Container>
       <Nav height={height}>
-        <DesktopNavigationItems />
+        {menuIsOpened && (
+          <NavigationItems onNavItemClicked={() => setMenuIsOpened(false)} />
+        )}
         <Hamburger isOpened={menuIsOpened} setIsOpened={setMenuIsOpened} />
       </Nav>
     </Container>
@@ -30,7 +32,7 @@ type NavProps = {
 const Nav = styled.nav<NavProps>`
   height: ${(p) => p.height};
 
-  ${tw`fixed top-0 left-0 w-full bg-lprimary transition-all duration-300 ease-in-out flex justify-between items-center p-5`}
+  ${tw`fixed top-0 left-0 w-full bg-lprimary transition-all duration-300 ease-in-out flex justify-end items-center p-5`}
 `;
 
 export { AppBar };

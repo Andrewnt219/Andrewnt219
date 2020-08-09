@@ -15,6 +15,7 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
 
+      accent: "var(--accent-color)",
       primary: "var(--primary-color)",
       lprimary: "var(--primary-color-light)",
       secondary: "var(--secondary-color)",

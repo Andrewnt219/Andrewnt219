@@ -44,7 +44,7 @@ const Anchor = styled.li<AnchorProps>`
   ${(p) =>
     p.isActive &&
     css`
-      ${tw`text-purple-500`}
+      ${tw`text-accent`}
     `}
 `;
 

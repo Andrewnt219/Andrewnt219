@@ -59,8 +59,8 @@ export default class MyDocument extends Document {
               (function() {
                 try {
                   const currentTheme = localStorage.getItem("theme");
-                  if(currentTheme == 'dark-mode') {
-                    document.body.className='dark-mode';
+                  if(currentTheme == 'light-mode') {
+                    document.body.className='light-mode';
                     
                   }
                 } catch(error) {

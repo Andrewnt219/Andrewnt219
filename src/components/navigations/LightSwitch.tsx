@@ -42,6 +42,7 @@ function LightSwitch({ className }: Props): ReactElement {
         break;
 
       default:
+        onModeSwitch("dark-mode");
         break;
     }
   };

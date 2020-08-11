@@ -7,13 +7,15 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 const svgVariants: Variants = {
   enter: {
     opacity: 0,
-    y: -10,
+    y: 25,
   },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.3,
+      type: "spring",
+      stiffness: 1000,
+      damping: 20,
     },
   },
   exit: {
@@ -104,7 +106,6 @@ const Container = styled.button<ContainerProps>`
   ${tw`hocus:outline-none inline-flex justify-center items-center w-16 h-16`}
 
   svg {
-    opacity: 1;
     font-size: 2rem;
   }
 `;

@@ -59,7 +59,6 @@ const Backdrop = styled.div<BackdropProps>`
     p.isFullScreen &&
     css`
       transform: translate(-50%, -50%) scale(130);
-      opacity: 0.9;
       ${tw`bg-secondary z-20 pointer-events-auto`}
     `}
 `;

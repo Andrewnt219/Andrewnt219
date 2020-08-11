@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         setMode(newMode);
         document.body.className = newMode ?? "";
       } catch (error) {
-        console.log("Failed to set theme to localStorage");
+        console.warn("Failed to set theme to localStorage");
         console.log(error);
       }
     } else {

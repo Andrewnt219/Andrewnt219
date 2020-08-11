@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Hamburger } from "../navigations/Hamburger";
 import tw from "twin.macro";
 import { NavigationItems } from "../navigations/NavigationItems";
+import { AnimatePresence } from "framer-motion";
 
 type Props = NavProps & {};
 
@@ -12,9 +13,11 @@ function AppBar({ height }: Props): ReactElement {
   return (
     <Container>
       <Nav height={height}>
-        {menuIsOpened && (
-          <NavigationItems onNavItemClicked={() => setMenuIsOpened(false)} />
-        )}
+        <AnimatePresence>
+          {menuIsOpened && (
+            <NavigationItems onNavItemClicked={() => setMenuIsOpened(false)} />
+          )}
+        </AnimatePresence>
         <Hamburger isOpened={menuIsOpened} setIsOpened={setMenuIsOpened} />
       </Nav>
     </Container>

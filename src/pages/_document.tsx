@@ -65,7 +65,7 @@ export default class MyDocument extends Document {
                   }
                 } catch(error) {
                   console.log(error);
-                  console.log('Failed to access localStorage');
+                  console.warn('Failed to access localStorage');
                 }
               })();
               

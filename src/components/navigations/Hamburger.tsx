@@ -5,7 +5,7 @@ import tw from "twin.macro";
 
 const textVariants: Variants = {
   visible: {
-    scale: [1, 5, 1],
+    scale: [1, 1.2, 1],
     transition: {
       duration: 0.3,
     },
@@ -116,7 +116,8 @@ const MenuContainer = styled.a<MenuContainerProps>`
 
 type IconTextProps = {};
 const IconText = styled(motion.span)<IconTextProps>`
-  ${tw`uppercase inline-block border-b border-transparent transition-all duration-300 ease-in-out`}
+  ${tw`uppercase inline-block border-b border-transparent`}
+  transition: border 300ms ease;
 `;
 
 type IconContainer = {

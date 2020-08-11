@@ -36,8 +36,9 @@ const Main = styled.main<MainProps>`
 type PositionedLightSwitchProps = {};
 const PositionedLightSwitch = styled(LightSwitch)<PositionedLightSwitchProps>`
   position: absolute;
+
   bottom: 2rem;
-  right: 2rem;
+  right: 1rem;
 `;
 
 export { MainLayout };

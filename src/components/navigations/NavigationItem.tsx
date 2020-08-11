@@ -3,7 +3,8 @@ import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import React, { ReactElement } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 import tw, { css } from "twin.macro";
 
 const navItemVariants: Variants = {
@@ -44,26 +45,52 @@ function NavigationItem({
   }
 
   return (
-    <motion.li variants={navItemVariants}>
+    <ListItem variants={navItemVariants}>
       <Link {...linkProps} passHref>
         <Anchor onClick={onClick} isActive={isActive}>
           {text}
         </Anchor>
       </Link>
-    </motion.li>
+      <MdKeyboardArrowLeft />
+    </ListItem>
   );
 }
+
+const spin = keyframes`
+  100% {
+    transform: rotateX(360deg);
+  }
+`;
+
+type ListItemProps = {};
+const ListItem = styled(motion.li)<ListItemProps>`
+  ${tw`flex items-center`}
+
+  svg {
+    ${tw`opacity-0 duration-100`}
+  }
+
+  a:hover + svg,
+  a:focus + svg {
+    opacity: 1;
+    animation: ${spin} 1.5s linear infinite;
+  }
+`;
 
 type AnchorProps = {
   isActive: boolean;
 };
 const Anchor = styled.a<AnchorProps>`
-  ${tw`cursor-pointer`}
+  ${tw`cursor-pointer font-bold`}
 
   ${(p) =>
     p.isActive &&
     css`
       ${tw`text-accent`}
+
+      & + svg {
+        fill: var(--accent-color);
+      }
     `}
 `;
 

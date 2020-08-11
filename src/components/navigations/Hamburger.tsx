@@ -98,11 +98,8 @@ type MenuContainerProps = {
 };
 const MenuContainer = styled.a<MenuContainerProps>`
   ${tw`h-4 flex justify-center items-center space-x-3 relative z-40 transition-all duration-300 ease-in-out hocus:outline-none`}
-  filter: brightness(0.8);
 
-  :hover,
-  :focus {
-    filter: brightness(1.2);
+  :hover, :focus {
     ${tw`h-6`};
 
     ${(p) =>

@@ -1,0 +1,1 @@
+export const MENU_TRANSITION_DURATION = "300ms";

@@ -1,6 +1,17 @@
+import { MENU_TRANSITION_DURATION } from "@src/constants/transition.constants";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
+
+const textVariants: Variants = {
+  visible: {
+    scale: [5, 1],
+    transition: {
+      duration: 0.3,
+    },
+  },
+};
 
 type Props = {
   isOpened: boolean;
@@ -25,9 +36,29 @@ function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
         role="button"
         tabIndex={0}
       >
-        {/*// TODO add transition slide in */}
-        {!isOpened && <IconText>Menu</IconText>}
-        {isOpened && <IconText>Close</IconText>}
+        <AnimatePresence exitBeforeEnter>
+          {isOpened ? (
+            <IconText
+              key="menu-close"
+              variants={textVariants}
+              initial="enter"
+              animate="visible"
+              exit="exit"
+            >
+              Close
+            </IconText>
+          ) : (
+            <IconText
+              key="menu-open"
+              variants={textVariants}
+              initial="enter"
+              animate="visible"
+              exit="exit"
+            >
+              Menu
+            </IconText>
+          )}
+        </AnimatePresence>
 
         <IconContainer isOpened={isOpened}>
           <Line aria-hidden="true" />
@@ -88,7 +119,7 @@ const MenuContainer = styled.a<MenuContainerProps>`
 `;
 
 type IconTextProps = {};
-const IconText = styled.span<IconTextProps>`
+const IconText = styled(motion.span)<IconTextProps>`
   ${tw`uppercase inline-block border-b border-transparent transition-all duration-300 ease-in-out`}
 `;
 

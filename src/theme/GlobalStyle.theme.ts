@@ -143,8 +143,9 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     &.no-scroll {
-      position: fixed;
-      overflow-y: scroll;
+      /* position: fixed;
+      overflow-y: scroll; */
+      overflow: hidden;
     }
   }
 

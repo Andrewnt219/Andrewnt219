@@ -29,9 +29,7 @@ function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
 
   return (
     <Container>
-      <div style={{ position: "fixed" }}>
-        <Backdrop isFullScreen={isOpened} />
-      </div>
+      <Backdrop isFullScreen={isOpened} />
 
       <MenuContainer
         href="#menu"
@@ -89,16 +87,19 @@ type BackdropProps = {
   isFullScreen: boolean;
 };
 const Backdrop = styled.div<BackdropProps>`
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1),
     background 1s cubic-bezier(0.86, 0, 0.07, 1);
-  ${tw`w-8 h-8 block pointer-events-none absolute bg-transparent rounded-full`};
+  ${tw`w-8 h-8 block pointer-events-none bg-transparent rounded-full`};
 
   ${(p) =>
     p.isFullScreen &&
     css`
+      overflow-y: scroll;
+
       transform: translate(-50%, -50%) scale(130);
       ${tw`bg-secondary z-20 pointer-events-auto`}
     `}

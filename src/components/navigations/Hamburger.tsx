@@ -1,4 +1,3 @@
-import { MENU_TRANSITION_DURATION } from "@src/constants/transition.constants";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
 import styled, { css } from "styled-components";
@@ -6,7 +5,7 @@ import tw from "twin.macro";
 
 const textVariants: Variants = {
   visible: {
-    scale: [5, 1],
+    scale: [1, 5, 1],
     transition: {
       duration: 0.3,
     },

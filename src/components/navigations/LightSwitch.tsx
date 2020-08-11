@@ -6,22 +6,19 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 
 const svgVariants: Variants = {
   enter: {
-    x: -50,
     opacity: 0,
-    transition: {
-      duration: 0.3,
-    },
+    y: -10,
   },
   visible: {
-    x: 0,
+    y: 0,
     opacity: 1,
-  },
-  exit: {
-    x: 90,
-    opacity: 0,
     transition: {
       duration: 0.3,
     },
+  },
+  exit: {
+    y: 25,
+    opacity: 0,
   },
 };
 
@@ -57,7 +54,7 @@ function LightSwitch({ className }: Props): ReactElement {
       title={ariaLabel}
       onClick={switchMode}
     >
-      <AnimatePresence exitBeforeEnter initial={false}>
+      <AnimatePresence exitBeforeEnter>
         {isDarkMode ? (
           /* Moon SVG */
           <motion.svg
@@ -104,7 +101,7 @@ function LightSwitch({ className }: Props): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.button<ContainerProps>`
-  ${tw`hocus:outline-none`}
+  ${tw`hocus:outline-none inline-flex justify-center items-center w-16 h-16`}
 
   svg {
     opacity: 1;

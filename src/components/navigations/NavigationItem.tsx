@@ -51,7 +51,7 @@ function NavigationItem({
           {text}
         </Anchor>
       </Link>
-      <MdKeyboardArrowLeft />
+      <MdKeyboardArrowLeft aria-label="arrow-left-icon" />
     </ListItem>
   );
 }

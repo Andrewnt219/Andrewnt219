@@ -28,14 +28,14 @@ function MainLayout({ children }: Props): ReactElement {
 
 type MainProps = {};
 const Main = styled.main<MainProps>`
-  padding: calc(${APPBAR_HEIGHT} + 1rem) 5% calc(${FOOTER_HEIGHT} + 5rem) 5%;
-
-  ${tw`bg-primary transition-all duration-300 ease-in-out min-h-screen`};
+  /* padding: calc(${APPBAR_HEIGHT} + 1rem) 5% calc(${FOOTER_HEIGHT} + 5rem) 5%; */
+  padding: 0 5% calc(${FOOTER_HEIGHT} + 5rem) 5%;
+  ${tw`min-h-screen`};
 `;
 
 type PositionedLightSwitchProps = {};
 const PositionedLightSwitch = styled(LightSwitch)<PositionedLightSwitchProps>`
-  position: absolute;
+  position: fixed;
 
   bottom: 2rem;
   right: 1rem;

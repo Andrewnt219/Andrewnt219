@@ -164,7 +164,6 @@ export const GlobalStyle = createGlobalStyle`
 
     box-sizing: inherit;
     font-family: inherit;
-    font-size: inherit;
     color: var(--text-color);
   }
 
@@ -177,7 +176,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #__next {
-    
+    background: var(--primary-color);
+    transition: background 300ms ease;
     position: relative;
   }
 

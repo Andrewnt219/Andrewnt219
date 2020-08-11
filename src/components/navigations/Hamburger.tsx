@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
@@ -18,9 +18,20 @@ type Props = {
 };
 
 function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
+  useEffect(() => {
+    const body = document.body;
+    if (isOpened) {
+      body.classList.add("no-scroll");
+    } else {
+      body.classList.remove("no-scroll");
+    }
+  }, [isOpened]);
+
   return (
     <Container>
-      <Backdrop isFullScreen={isOpened} />
+      <div style={{ position: "fixed" }}>
+        <Backdrop isFullScreen={isOpened} />
+      </div>
 
       <MenuContainer
         href="#menu"

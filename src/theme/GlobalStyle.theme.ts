@@ -141,6 +141,11 @@ export const GlobalStyle = createGlobalStyle`
       --secondary-color: #1c1c1c;
       --text-color: #fff;
     }
+
+    &.no-scroll {
+      position: fixed;
+      overflow-y: scroll;
+    }
   }
 
   h1,
@@ -180,5 +185,6 @@ export const GlobalStyle = createGlobalStyle`
     transition: background 300ms ease;
     position: relative;
   }
+  
 
 `;

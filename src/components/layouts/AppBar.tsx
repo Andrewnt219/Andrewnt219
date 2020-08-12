@@ -36,17 +36,9 @@ function AppBar({ height }: Props): ReactElement {
 
   /* control rendering mobile or desktop navigation */
   const { breakpoints } = useTheme();
-  const [isDesktopScreen, setIsDesktopScreen] = useState(false);
-
-  const onMediaChange = useCallback((e: MediaQueryListEvent) => {
-    if (e.matches) {
-      setIsDesktopScreen(true);
-    } else {
-      setIsDesktopScreen(false);
-    }
-  }, []);
-
-  useMediaQuery(`screen and (min-width: ${breakpoints.md})`, onMediaChange);
+  const isDesktopScreen = useMediaQuery(
+    `screen and (min-width: ${breakpoints.md})`
+  );
 
   /* static and fixed nav contents */
   const sharedNavContent = isDesktopScreen ? (

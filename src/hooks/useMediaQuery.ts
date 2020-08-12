@@ -1,20 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 /**
- * @description subscribe listener to media query
+ * @returns query is matched
  * @param mediaQuery mediaQuery string
- * @param handler handler involed on query matched
  */
-export const useMediaQuery = (
-  mediaQuery: string,
-  handler: (e: MediaQueryListEvent) => void
-): void => {
+export const useMediaQuery = (mediaQuery: string): boolean => {
+  // matches state
+  const [matches, setMatches] = useState(false);
+
   useEffect(() => {
     const mqList = window.matchMedia(mediaQuery);
-    mqList.addEventListener("change", handler);
 
+    // if query matches initially
+    if (mqList.matches) {
+      setMatches(true);
+    }
+    // Subscribe for later changes
+    const handler = (e: MediaQueryListEvent): void => {
+      if (e.matches) {
+        setMatches(true);
+      } else {
+        setMatches(false);
+      }
+    };
+    mqList.addEventListener("change", handler);
     return () => {
       mqList.removeEventListener("change", handler);
     };
-  }, [mediaQuery, handler]);
+  }, [mediaQuery]);
+
+  return matches;
 };

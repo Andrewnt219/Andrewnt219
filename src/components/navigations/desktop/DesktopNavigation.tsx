@@ -2,6 +2,7 @@ import { allRoutes } from "@src/data/routes.data";
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { DesktopNavigationItem } from "./DesktopNavigationItem";
+import tw from "twin.macro";
 
 function DesktopNavigation(): ReactElement {
   return (
@@ -14,6 +15,8 @@ function DesktopNavigation(): ReactElement {
 }
 
 type ContainerProps = {};
-const Container = styled.div<ContainerProps>``;
+const Container = styled.ul<ContainerProps>`
+  ${tw`flex space-x-5 text-2xl`}
+`;
 
 export { DesktopNavigation };

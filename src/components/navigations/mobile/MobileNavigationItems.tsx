@@ -51,10 +51,6 @@ type ContainerProps = {};
 const Container = styled(motion.ul)<ContainerProps>`
   padding-left: 10%;
   ${tw`absolute top-0 left-0 w-screen h-screen z-30 text-6xl flex flex-col justify-center items-start`}
-
-  @media screen and (min-width: ${(p) => p.theme.breakpoints.md}) {
-    ${tw`items-center`}
-  }
 `;
 
 export { MobileNavigationItems };

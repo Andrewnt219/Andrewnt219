@@ -59,9 +59,18 @@ export default class MyDocument extends Document {
               (function() {
                 try {
                   const currentTheme = localStorage.getItem("theme");
-                  if(currentTheme == 'light-mode') {
-                    document.body.className='light-mode';
-                    
+                  switch (currentTheme) {
+                    case "light-mode":
+                      document.body.className = "light-mode";
+                      break;
+                
+                    case "dark-mode":
+                      document.body.className = "dark-mode";
+                      break;
+                      
+                    default:
+                      document.body.className = "light-mode";
+                      break;
                   }
                 } catch(error) {
                   console.log(error);

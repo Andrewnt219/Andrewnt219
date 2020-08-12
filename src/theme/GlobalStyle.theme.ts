@@ -3,11 +3,21 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-  --accent-color:   #3a86ff;
-  --primary-color:   #fff;
-  --primary-color-light:   #fff;
+  --accent-color: #3a86ff;
+  --accent-color-rgb:   58, 134, 255;
+
+  --primary-color: #fff;
+  --primary-color-rgb:   255, 255, 255;
+
+
+  --primary-color-light: #fff;
+  --primary-color-light-rgb:   255, 255, 255;
+
   --secondary-color: #f4f4f4;
+  --secondary-color-rgb: 244, 244, 244;
+
   --text-color: #000;
+  --text-color-rgb: 0, 0, 0;
 
     font-size: 62.5%;
     box-sizing: border-box;
@@ -136,10 +146,20 @@ export const GlobalStyle = createGlobalStyle`
     
     &.dark-mode {
       --accent-color: #fca311;
+      --acent-color-rgb: 252, 163, 17;
+
       --primary-color:   #000;
+      --primary-color-rgb: 0, 0, 0;
+
       --primary-color-light: #1c1c1c;
+      --primary-color-light-rgb: 28, 28, 28;
+
       --secondary-color: #1c1c1c;
+      --secondary-color-rgb: 28, 28, 28;
+
       --text-color: #fff;
+      --text-color-rgb: 255, 255, 255;
+
     }
   }
 

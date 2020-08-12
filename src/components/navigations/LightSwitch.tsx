@@ -1,6 +1,6 @@
 import React, { ReactElement, useContext } from "react";
 import styled from "styled-components";
-import tw from "twin.macro";
+import tw, { theme } from "twin.macro";
 import { ThemeContext } from "@src/contexts/theme.context";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 
@@ -103,7 +103,9 @@ function LightSwitch({ className }: Props): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.button<ContainerProps>`
-  ${tw`hocus:outline-none inline-flex justify-center items-center w-16 h-16`}
+  background: rgba(var(--secondary-color-rgb), 0.8);
+  transition: background 300ms ease;
+  ${tw`hocus:outline-none inline-flex justify-center items-center w-20 h-20 rounded-full`}
 
   svg {
     font-size: 2rem;

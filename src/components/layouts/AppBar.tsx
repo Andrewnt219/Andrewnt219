@@ -5,6 +5,7 @@ import tw from "twin.macro";
 import { NavigationItems } from "../navigations/NavigationItems";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Logo } from "../ui/Logo";
 
 const navBarVarirants: Variants = {
   hidden: {
@@ -37,6 +38,7 @@ function AppBar({ height }: Props): ReactElement {
   // static and fixed nav contents
   const sharedNavContent = (
     <>
+      <Logo />
       <AnimatePresence>
         {menuIsOpened && (
           <NavigationItems onNavItemClicked={() => setMenuIsOpened(false)} />

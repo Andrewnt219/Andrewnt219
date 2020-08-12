@@ -1,10 +1,12 @@
-import React, { ReactElement } from "react";
-import styled, { css } from "styled-components";
+import React, { ReactElement, useCallback, useEffect, useState } from "react";
+import styled, { css, useTheme } from "styled-components";
 import tw from "twin.macro";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Logo } from "../ui/Logo";
 import { MobileNavigation } from "../navigations/mobile/MobileNavigation";
+import { DesktopNavigation } from "../navigations/desktop/DesktopNavigation";
+import { useMediaQuery } from "@src/hooks";
 
 const navBarVarirants: Variants = {
   hidden: {
@@ -29,11 +31,29 @@ type Props = NavProps & {};
  * @description renders a static nav bar and fixed nav bar
  */
 function AppBar({ height }: Props): ReactElement {
-  // control static bar observer
+  /* control static bar observer */
   const [ref, inView] = useInView();
 
-  // static and fixed nav contents
-  const sharedNavContent = <MobileNavigation />;
+  /* control rendering mobile or desktop navigation */
+  const { breakpoints } = useTheme();
+  const [isDesktopScreen, setIsDesktopScreen] = useState(false);
+
+  const onMediaChange = useCallback((e: MediaQueryListEvent) => {
+    if (e.matches) {
+      setIsDesktopScreen(true);
+    } else {
+      setIsDesktopScreen(false);
+    }
+  }, []);
+
+  useMediaQuery(`screen and (min-width: ${breakpoints.md})`, onMediaChange);
+
+  /* static and fixed nav contents */
+  const sharedNavContent = isDesktopScreen ? (
+    <DesktopNavigation />
+  ) : (
+    <MobileNavigation />
+  );
 
   return (
     <Container>

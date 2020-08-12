@@ -31,15 +31,15 @@ const Main = styled.main<MainProps>`
   /* padding: calc(${APPBAR_HEIGHT} + 1rem) 5% calc(${FOOTER_HEIGHT} + 5rem) 5%; */
   padding: 0 5% calc(${FOOTER_HEIGHT} + 5rem) 5%;
 
-  ${tw`min-h-screen`};
+  ${tw`min-h-screen z-10 bg-primary relative top-0`};
 `;
 
 type PositionedLightSwitchProps = {};
 const PositionedLightSwitch = styled(LightSwitch)<PositionedLightSwitchProps>`
   position: fixed;
-
   bottom: 2rem;
   right: 1rem;
+  ${tw`z-20`}
 `;
 
 export { MainLayout };

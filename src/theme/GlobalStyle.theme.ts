@@ -143,8 +143,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     &.no-scroll {
-      /* position: fixed;
-      overflow-y: scroll; */
       overflow: hidden;
     }
   }
@@ -187,5 +185,14 @@ export const GlobalStyle = createGlobalStyle`
     position: relative;
   }
   
+  /* * { background-color: rgba(255,0,0,.2); }
+* * { background-color: rgba(0,255,0,.2); }
+* * * { background-color: rgba(0,0,255,.2); }
+* * * * { background-color: rgba(255,0,255,.2); }
+* * * * * { background-color: rgba(0,255,255,.2); }
+* * * * * * { background-color: rgba(255,255,0,.2); }
+* * * * * * * { background-color: rgba(255,0,0,.2); }
+* * * * * * * * { background-color: rgba(0,255,0,.2); }
+* * * * * * * * * { background-color: rgba(0,0,255,.2); } */
 
 `;

@@ -72,7 +72,7 @@ function AppBar({ height }: Props): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.header<ContainerProps>`
-  ${tw`relative z-10`}
+  ${tw`relative z-20`}
 `;
 type NavProps = {
   height: string;

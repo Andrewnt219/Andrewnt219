@@ -31,7 +31,7 @@ const Main = styled.main<MainProps>`
   /* padding: calc(${APPBAR_HEIGHT} + 1rem) 5% calc(${FOOTER_HEIGHT} + 5rem) 5%; */
   padding: 0 5% calc(${FOOTER_HEIGHT} + 5rem) 5%;
 
-  ${tw`min-h-screen z-10 bg-primary relative top-0`};
+  ${tw`min-h-screen z-10 bg-primary relative top-0 transition-colors duration-300 ease-in-out`};
 `;
 
 type PositionedLightSwitchProps = {};

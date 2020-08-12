@@ -90,18 +90,17 @@ type BackdropProps = {
   isFullScreen: boolean;
 };
 const Backdrop = styled.div<BackdropProps>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  position: fixed;
+
+  transform: scale(0);
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1),
     background 1s cubic-bezier(0.86, 0, 0.07, 1);
-  ${tw`w-8 h-8 block pointer-events-none bg-transparent rounded-full`};
+  ${tw`w-8 h-8 block pointer-events-none bg-accent rounded-full`};
 
   ${(p) =>
     p.isFullScreen &&
     css`
-      transform: translate(-50%, -50%) scale(130);
+      transform: scale(130);
       ${tw`bg-secondary z-20 pointer-events-auto`}
     `}
 `;

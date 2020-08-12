@@ -38,7 +38,6 @@ function AppBar({ height }: Props): ReactElement {
   // static and fixed nav contents
   const sharedNavContent = (
     <>
-      <Logo />
       <AnimatePresence>
         {menuIsOpened && (
           <NavigationItems onNavItemClicked={() => setMenuIsOpened(false)} />
@@ -51,6 +50,8 @@ function AppBar({ height }: Props): ReactElement {
   return (
     <Container>
       <StaticNav height={height} ref={ref}>
+        {/* //! do not put Logo in shared */}
+        <Logo />
         {inView && sharedNavContent}
       </StaticNav>
 
@@ -65,6 +66,8 @@ function AppBar({ height }: Props): ReactElement {
             //
             height={height}
           >
+            {/* //! do not put Logo in shared */}
+            <Logo />
             {sharedNavContent}
           </FixedNav>
         )}
@@ -83,7 +86,7 @@ type NavProps = {
 const navCss = css<NavProps>`
   height: ${(p) => p.height};
 
-  ${tw`relative w-full bg-primary transition-all duration-300 ease-in-out flex justify-end items-center p-5`};
+  ${tw`relative w-full bg-primary transition-all duration-300 ease-in-out flex justify-between items-center p-5`};
 `;
 
 const StaticNav = styled.nav`

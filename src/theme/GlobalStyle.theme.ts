@@ -141,10 +141,6 @@ export const GlobalStyle = createGlobalStyle`
       --secondary-color: #1c1c1c;
       --text-color: #fff;
     }
-
-    &.no-scroll {
-      overflow: hidden;
-    }
   }
 
   h1,
@@ -169,6 +165,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
     font-family: inherit;
     color: var(--text-color);
+    transition: color 300ms ease;
   }
 
   input,
@@ -184,6 +181,10 @@ export const GlobalStyle = createGlobalStyle`
     transition: background 300ms ease;
     position: relative;
   }
+
+  .no-scroll {
+      overflow: hidden;
+    }
   
   /* * { background-color: rgba(255,0,0,.2); }
 * * { background-color: rgba(0,255,0,.2); }

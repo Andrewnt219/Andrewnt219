@@ -20,10 +20,13 @@ type Props = {
 function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
   useEffect(() => {
     const body = document.body;
+    const html = document.querySelector("html");
     if (isOpened) {
       body.classList.add("no-scroll");
+      html?.classList.add("no-scroll");
     } else {
       body.classList.remove("no-scroll");
+      html?.classList.remove("no-scroll");
     }
   }, [isOpened]);
 
@@ -87,7 +90,7 @@ type BackdropProps = {
   isFullScreen: boolean;
 };
 const Backdrop = styled.div<BackdropProps>`
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
@@ -98,8 +101,6 @@ const Backdrop = styled.div<BackdropProps>`
   ${(p) =>
     p.isFullScreen &&
     css`
-      overflow-y: scroll;
-
       transform: translate(-50%, -50%) scale(130);
       ${tw`bg-secondary z-20 pointer-events-auto`}
     `}

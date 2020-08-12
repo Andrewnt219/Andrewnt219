@@ -18,7 +18,6 @@ type Props = {
 };
 
 function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
-  console.log(isOpened);
   useEffect(() => {
     const body = document.body;
     const html = document.querySelector("html");

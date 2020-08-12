@@ -8,8 +8,10 @@ import { Mode, ThemeContext } from "@src/contexts/theme.context";
 import { useEffect, useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  // the theme of the app
   const [mode, setMode] = useState<Mode | null>(null);
 
+  // sync themeContext with body
   useEffect(() => {
     const currentTheme = document.body.className;
 
@@ -18,12 +20,25 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
+  /**
+   * @param newMode a string to set theme for localStorage, themeContext, and body's classes
+   */
   const onModeSwitch = (newMode: Mode) => {
+    // Check valid mode
     if (newMode) {
       try {
+        const bodyClasses = document.body.classList;
+
+        // Remove old theme in body
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme) {
+          bodyClasses.remove(currentTheme);
+        }
+
+        // set up new theme
         localStorage.setItem("theme", newMode);
+        bodyClasses.add(newMode);
         setMode(newMode);
-        document.body.className = newMode ?? "";
       } catch (error) {
         console.warn("Failed to set theme to localStorage");
         console.log(error);

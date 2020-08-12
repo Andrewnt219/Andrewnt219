@@ -1,12 +1,12 @@
 import { Route } from "@src/data/routes.data";
 import { motion, Variants } from "framer-motion";
-import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import tw, { css } from "twin.macro";
 import { spin } from "@src/styles/keyframes";
+import { useRouteMatch } from "@src/hooks";
 
 const navItemVariants: Variants = {
   hidden: {
@@ -40,13 +40,7 @@ function NavigationItem({
 }: Props): ReactElement {
   /* Matching */
   const { href } = linkProps;
-  const { pathname } = useRouter();
-  let isActive = false;
-  if (exact) {
-    isActive = pathname === href;
-  } else {
-    isActive = pathname.startsWith(href.toString());
-  }
+  const isActive = useRouteMatch(href.toString(), exact);
 
   return (
     <ListItem variants={navItemVariants}>

@@ -3,9 +3,10 @@ import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import React, { ReactElement } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import tw, { css } from "twin.macro";
+import { spin } from "@src/styles/keyframes";
 
 const navItemVariants: Variants = {
   hidden: {
@@ -58,12 +59,6 @@ function NavigationItem({
     </ListItem>
   );
 }
-
-const spin = keyframes`
-  100% {
-    transform: rotateX(360deg);
-  }
-`;
 
 type ListItemProps = {};
 const ListItem = styled(motion.li)<ListItemProps>`

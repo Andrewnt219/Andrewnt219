@@ -114,6 +114,15 @@ const Container = styled.button<ContainerProps>`
 
   svg {
     font-size: 2rem;
+    transition: fill 300ms ease;
+  }
+
+  :hover,
+  :focus {
+    ${tw`bg-textColor`}
+    svg {
+      fill: var(--primary-color);
+    }
   }
 `;
 

@@ -29,21 +29,26 @@ function AppBar({ height }: Props): ReactElement {
   const [menuIsOpened, setMenuIsOpened] = useState(false);
   const [ref, inView] = useInView();
 
-  const navContent = (
+  const sharedNavContent = (
     <>
       <AnimatePresence>
         {menuIsOpened && (
           <NavigationItems onNavItemClicked={() => setMenuIsOpened(false)} />
         )}
       </AnimatePresence>
+      <Hamburger isOpened={menuIsOpened} setIsOpened={setMenuIsOpened} />
     </>
   );
 
   return (
     <Container>
+      <StaticNav height={height} ref={ref}>
+        {inView && sharedNavContent}
+      </StaticNav>
+
       <AnimatePresence>
         {!inView && (
-          <ScrolledNav
+          <FixedNav
             variants={navBarVarirants}
             initial="hidden"
             animate="visible"
@@ -51,19 +56,10 @@ function AppBar({ height }: Props): ReactElement {
             //
             height={height}
           >
-            {navContent}
-            <Hamburger isOpened={menuIsOpened} setIsOpened={setMenuIsOpened} />
-          </ScrolledNav>
+            {sharedNavContent}
+          </FixedNav>
         )}
       </AnimatePresence>
-
-      <Nav height={height} ref={ref}>
-        {navContent}
-        <Hamburger
-          isOpened={menuIsOpened && inView}
-          setIsOpened={setMenuIsOpened}
-        />
-      </Nav>
     </Container>
   );
 }
@@ -81,12 +77,12 @@ const navCss = css<NavProps>`
   ${tw`relative w-full bg-primary transition-all duration-300 ease-in-out flex justify-end items-center p-5`};
 `;
 
-const Nav = styled.nav`
+const StaticNav = styled.nav`
   ${navCss}
   ${tw`z-20`}
 `;
 
-const ScrolledNav = styled(motion.nav)`
+const FixedNav = styled(motion.nav)`
   ${navCss}
   ${tw`bg-lprimary fixed top-0 left-0 z-10`};
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),

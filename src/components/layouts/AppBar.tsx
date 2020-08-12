@@ -1,11 +1,10 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import styled, { css } from "styled-components";
-import { Hamburger } from "../navigations/Hamburger";
 import tw from "twin.macro";
-import { NavigationItems } from "../navigations/NavigationItems";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Logo } from "../ui/Logo";
+import { MobileNavigation } from "../navigations/mobile/MobileNavigation";
 
 const navBarVarirants: Variants = {
   hidden: {
@@ -30,22 +29,11 @@ type Props = NavProps & {};
  * @description renders a static nav bar and fixed nav bar
  */
 function AppBar({ height }: Props): ReactElement {
-  // control menu open state
-  const [menuIsOpened, setMenuIsOpened] = useState(false);
   // control static bar observer
   const [ref, inView] = useInView();
 
   // static and fixed nav contents
-  const sharedNavContent = (
-    <>
-      <AnimatePresence>
-        {menuIsOpened && (
-          <NavigationItems onNavItemClicked={() => setMenuIsOpened(false)} />
-        )}
-      </AnimatePresence>
-      <Hamburger isOpened={menuIsOpened} setIsOpened={setMenuIsOpened} />
-    </>
-  );
+  const sharedNavContent = <MobileNavigation />;
 
   return (
     <Container>

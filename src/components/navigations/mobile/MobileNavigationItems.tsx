@@ -3,7 +3,7 @@ import { motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-import { NavigationItem } from "./NavigationItem";
+import { MobileNavigationItem } from "./MobileNavigationItem";
 
 const navItemsVariants: Variants = {
   hidden: {},
@@ -26,7 +26,7 @@ type Props = {
 /**
  * @description renders a list of NavItems
  */
-function NavigationItems({ onNavItemClicked }: Props): ReactElement {
+function MobileNavigationItems({ onNavItemClicked }: Props): ReactElement {
   return (
     <Container
       // framer-motion
@@ -36,7 +36,7 @@ function NavigationItems({ onNavItemClicked }: Props): ReactElement {
       exit="exit"
     >
       {allRoutes.map(({ text, ...linkProps }) => (
-        <NavigationItem
+        <MobileNavigationItem
           key={text}
           text={text}
           {...linkProps}
@@ -57,4 +57,4 @@ const Container = styled(motion.ul)<ContainerProps>`
   }
 `;
 
-export { NavigationItems };
+export { MobileNavigationItems };

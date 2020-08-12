@@ -32,7 +32,7 @@ type Props = Route & {
 /**
  * @description render a Nav Link with active state awareness
  */
-function NavigationItem({
+function MobileNavigationItem({
   text,
   onClick,
   exact,
@@ -86,4 +86,4 @@ const Anchor = styled.a<AnchorProps>`
     `}
 `;
 
-export { NavigationItem };
+export { MobileNavigationItem };

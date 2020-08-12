@@ -145,8 +145,8 @@ export const GlobalStyle = createGlobalStyle`
     color: var(--text-color);
     
     &.dark-mode {
-      --accent-color: #fca311;
-      --acent-color-rgb: 252, 163, 17;
+      --accent-color: #5496FF;
+      --acent-color-rgb: 84, 150, 255;
 
       --primary-color:   #000;
       --primary-color-rgb: 0, 0, 0;

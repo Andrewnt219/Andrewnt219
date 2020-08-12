@@ -17,7 +17,11 @@ type Props = {
   setIsOpened: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+/**
+ * @description A hamburger menu that toggles opening/closing menu and locked screen scroll
+ */
 function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
+  /* Locking screen */
   useEffect(() => {
     const body = document.body;
     const html = document.querySelector("html");
@@ -30,6 +34,13 @@ function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
     }
   }, [isOpened]);
 
+  const onBurgerClicked = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ): void => {
+    event.preventDefault();
+    setIsOpened((prev) => !prev);
+  };
+
   return (
     <Container>
       <Backdrop isFullScreen={isOpened} />
@@ -37,10 +48,7 @@ function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
       <MenuContainer
         href="#menu"
         isOpened={isOpened}
-        onClick={(e) => {
-          e.preventDefault();
-          setIsOpened((prev) => !prev);
-        }}
+        onClick={onBurgerClicked}
         // accessibility
         aria-label="Open the menu"
         aria-expanded={isOpened}
@@ -50,6 +58,7 @@ function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
         <AnimatePresence exitBeforeEnter>
           {isOpened ? (
             <IconText
+              // framer-motion
               key="menu-close"
               variants={textVariants}
               initial="enter"
@@ -60,6 +69,7 @@ function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
             </IconText>
           ) : (
             <IconText
+              // framer-motion
               key="menu-open"
               variants={textVariants}
               initial="enter"

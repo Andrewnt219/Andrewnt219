@@ -4,6 +4,9 @@ import tw from "twin.macro";
 
 type Props = ContainerProps & {};
 
+/**
+ * @description renders page's footer
+ */
 function Footer({ height }: Props): ReactElement {
   return <Container height={height}></Container>;
 }

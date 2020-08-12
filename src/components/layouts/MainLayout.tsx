@@ -12,6 +12,9 @@ type Props = {
 const APPBAR_HEIGHT = "5rem";
 const FOOTER_HEIGHT = "10rem";
 
+/**
+ * @description renders shared layout between pages
+ */
 function MainLayout({ children }: Props): ReactElement {
   return (
     <>

@@ -23,9 +23,13 @@ type Props = {
   onNavItemClicked: () => void;
 };
 
+/**
+ * @description renders a list of NavItems
+ */
 function NavigationItems({ onNavItemClicked }: Props): ReactElement {
   return (
     <Container
+      // framer-motion
       variants={navItemsVariants}
       initial="hidden"
       animate="visible"

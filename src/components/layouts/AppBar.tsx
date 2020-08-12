@@ -25,10 +25,16 @@ const navBarVarirants: Variants = {
 
 type Props = NavProps & {};
 
+/**
+ * @description renders a static nav bar and fixed nav bar
+ */
 function AppBar({ height }: Props): ReactElement {
+  // control menu open state
   const [menuIsOpened, setMenuIsOpened] = useState(false);
+  // control static bar observer
   const [ref, inView] = useInView();
 
+  // static and fixed nav contents
   const sharedNavContent = (
     <>
       <AnimatePresence>
@@ -49,6 +55,7 @@ function AppBar({ height }: Props): ReactElement {
       <AnimatePresence>
         {!inView && (
           <FixedNav
+            // framer motion
             variants={navBarVarirants}
             initial="hidden"
             animate="visible"

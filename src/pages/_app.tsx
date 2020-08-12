@@ -20,9 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  /**
-   * @param newMode a string to set theme for localStorage, themeContext, and body's classes
-   */
+  /* set theme for localStorage, themeContext, and body's classes */
   const onModeSwitch = (newMode: Mode) => {
     // Check valid mode
     if (newMode) {

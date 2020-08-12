@@ -1,6 +1,6 @@
 import React, { ReactElement, useContext } from "react";
 import styled from "styled-components";
-import tw, { theme } from "twin.macro";
+import tw from "twin.macro";
 import { ThemeContext } from "@src/contexts/theme.context";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 
@@ -28,9 +28,13 @@ type Props = {
   className?: string;
 };
 
+/**
+ * @description A button wired to ThemeContext
+ */
 function LightSwitch({ className }: Props): ReactElement {
   const { onModeSwitch, mode } = useContext(ThemeContext);
 
+  /* Handle theme switch */
   const switchMode = () => {
     switch (mode) {
       case "light-mode":
@@ -46,6 +50,7 @@ function LightSwitch({ className }: Props): ReactElement {
     }
   };
 
+  /* Shorthands */
   const isDarkMode = mode === "dark-mode";
   const ariaLabel = isDarkMode ? "Switch to light mode" : "Switch to dark mode";
 

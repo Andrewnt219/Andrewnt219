@@ -28,6 +28,9 @@ type Props = Route & {
   onClick: () => void;
 };
 
+/**
+ * @description render a Nav Link with active state awareness
+ */
 function NavigationItem({
   text,
   onClick,

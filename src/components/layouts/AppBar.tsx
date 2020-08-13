@@ -10,18 +10,17 @@ import { useMediaQuery } from "@src/hooks";
 
 const navBarVarirants: Variants = {
   hidden: {
-    y: -150,
-    opacity: 0,
+    y: "-100%",
   },
   visible: {
     y: 0,
-    opacity: 1,
+
     transition: {
       duration: 0.2,
     },
   },
   exit: {
-    y: -150,
+    y: -25,
   },
 };
 
@@ -51,7 +50,7 @@ function AppBar({ height }: Props): ReactElement {
     <Container>
       <StaticNav height={height} ref={ref}>
         {/* //! do not put Logo in shared */}
-        <Logo />
+        <Logo glowing />
         {inView && sharedNavContent}
       </StaticNav>
 

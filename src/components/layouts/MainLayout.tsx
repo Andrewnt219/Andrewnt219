@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { AppBar } from "./AppBar";
 import { Footer } from "./Footer";
 import tw from "twin.macro";
-import { LightSwitch } from "../navigations/LightSwitch";
 
 type Props = {
   children: ReactNode;
@@ -23,8 +22,6 @@ function MainLayout({ children }: Props): ReactElement {
       <Main>{children}</Main>
 
       <Footer height={FOOTER_HEIGHT} />
-
-      <PositionedLightSwitch />
     </>
   );
 }
@@ -34,15 +31,7 @@ const Main = styled.main<MainProps>`
   /* padding: calc(${APPBAR_HEIGHT} + 1rem) 5% calc(${FOOTER_HEIGHT} + 5rem) 5%; */
   padding: 0 5% calc(${FOOTER_HEIGHT} + 5rem) 5%;
 
-  ${tw`min-h-screen z-10 bg-primary relative top-0 transition-colors duration-300 ease-in-out`};
-`;
-
-type PositionedLightSwitchProps = {};
-const PositionedLightSwitch = styled(LightSwitch)<PositionedLightSwitchProps>`
-  position: fixed;
-  bottom: 2rem;
-  right: 1rem;
-  ${tw`z-20`}
+  ${tw`min-h-screen z-10 bg-primary relative top-0 transition-colors duration-theme ease-in-out`};
 `;
 
 export { MainLayout };

@@ -2,7 +2,6 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { FaGithubAlt, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
-import { IconType } from "react-icons";
 import { MediaIcon, MediaIconProps } from "../footer/MediaIcon";
 
 type Props = ContainerProps & {};
@@ -52,7 +51,7 @@ type ContainerProps = {
 };
 const Container = styled.footer<ContainerProps>`
   height: ${(p) => p.height};
-  ${tw`bg-lprimary sticky bottom-0 left-0 w-full transition-all duration-300 ease-in-out `};
+  ${tw`bg-lprimary sticky bottom-0 left-0 w-full transition-all duration-theme ease-in-out `};
 `;
 
 type MediaIconsProps = {};

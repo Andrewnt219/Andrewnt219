@@ -197,8 +197,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #__next {
-    background: var(--primary-color);
-    transition: background 300ms ease;
+
     position: relative;
   }
 

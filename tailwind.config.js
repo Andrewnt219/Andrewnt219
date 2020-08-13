@@ -608,6 +608,7 @@ module.exports = {
       "500": "500ms",
       "700": "700ms",
       "1000": "1000ms",
+      theme: "1000ms",
     },
     transitionDelay: {
       "75": "75ms",

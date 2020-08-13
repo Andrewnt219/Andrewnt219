@@ -2,6 +2,7 @@ import { allRoutes } from "@src/data/routes.data";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement, useState } from "react";
 import tw, { styled } from "twin.macro";
+import { LightSwitch } from "../LightSwitch";
 import { Hamburger } from "./Hamburger";
 import { MobileNavigationItem } from "./MobileNavigationItem";
 
@@ -41,6 +42,8 @@ function MobileNavigation(): ReactElement {
                 onClick={() => setMenuIsOpened(false)}
               />
             ))}
+
+            <CustomLightSwitch />
           </NavigationItems>
         )}
       </AnimatePresence>
@@ -53,6 +56,31 @@ type ContainerProps = {};
 const NavigationItems = styled(motion.ul)<ContainerProps>`
   padding-left: 10%;
   ${tw`absolute top-0 left-0 w-screen h-screen z-30 text-6xl flex flex-col justify-center items-start`}
+`;
+
+type CustomLightSwitchProps = {};
+const CustomLightSwitch = styled(LightSwitch)<CustomLightSwitchProps>`
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+
+  background: rgba(var(--secondary-color-rgb), 0.8);
+  transition: background 300ms ease;
+
+  ${tw`hocus:outline-none inline-flex justify-center items-center w-20 h-20 rounded-full z-20`}
+
+  svg {
+    font-size: 2rem;
+    transition: fill 300ms ease;
+  }
+
+  :hover,
+  :focus {
+    ${tw`bg-textColor`}
+    svg {
+      fill: var(--primary-color);
+    }
+  }
 `;
 
 export { MobileNavigation };

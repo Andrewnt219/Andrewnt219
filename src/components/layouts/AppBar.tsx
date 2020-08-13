@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useEffect, useState } from "react";
+import React, { ReactElement } from "react";
 import styled, { css, useTheme } from "styled-components";
 import tw from "twin.macro";
 import { AnimatePresence, motion, Variants } from "framer-motion";

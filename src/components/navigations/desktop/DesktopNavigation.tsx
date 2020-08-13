@@ -16,7 +16,7 @@ function DesktopNavigation(): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.ul<ContainerProps>`
-  ${tw`flex space-x-5 text-2xl`}
+  ${tw`flex space-x-5 `}
 `;
 
 export { DesktopNavigation };

@@ -32,6 +32,11 @@ function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
       body.classList.remove("no-scroll");
       html?.classList.remove("no-scroll");
     }
+
+    return () => {
+      body.classList.remove("no-scroll");
+      html?.classList.remove("no-scroll");
+    };
   }, [isOpened]);
 
   const onBurgerClicked = (

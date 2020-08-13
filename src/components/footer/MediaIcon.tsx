@@ -64,6 +64,8 @@ const IconWrapper = styled.a<IconWrapperProps>`
 
   :hover,
   :focus {
+    outline: none;
+
     svg {
       fill: #fff;
     }

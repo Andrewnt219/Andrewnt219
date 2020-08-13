@@ -1,10 +1,11 @@
 import React from "react";
 
 export type Mode = "light-mode" | "dark-mode" | null;
+export type ModeSwitchHandler = (newMode: Mode) => void;
 
 type Themer = {
   mode: Mode;
-  onModeSwitch: (newMode: Mode) => void;
+  onModeSwitch: ModeSwitchHandler;
 };
 
 /**

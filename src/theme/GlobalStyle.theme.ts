@@ -144,6 +144,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     color: var(--text-color);
     
+    /* //! theme must end with 'mode' for ease of removing */
     &.dark-mode {
       --accent-color: #5496FF;
       --acent-color-rgb: 84, 150, 255;

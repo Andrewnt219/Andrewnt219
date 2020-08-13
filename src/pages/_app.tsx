@@ -25,17 +25,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     // Check valid mode
     if (newMode) {
       try {
-        const bodyClasses = document.body.classList;
-
-        // Remove old theme in body
-        const currentTheme = localStorage.getItem("theme");
-        if (currentTheme) {
-          bodyClasses.remove(currentTheme);
-        }
-
         // set up new theme
         localStorage.setItem("theme", newMode);
-        bodyClasses.add(newMode);
+        document.body.className = document.body.className.replace(
+          /.*mode/,
+          newMode
+        );
         setMode(newMode);
       } catch (error) {
         console.warn("Failed to set theme to localStorage");

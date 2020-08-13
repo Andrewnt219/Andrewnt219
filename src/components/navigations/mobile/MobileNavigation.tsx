@@ -42,7 +42,6 @@ function MobileNavigation(): ReactElement {
                 onClick={() => setMenuIsOpened(false)}
               />
             ))}
-
             <CustomLightSwitch />
           </NavigationItems>
         )}

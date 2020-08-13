@@ -78,7 +78,7 @@ function Logo({ glowing }: Props): ReactElement {
         </Anchor>
       </Link>
 
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {mode === "dark-mode" && (
           <NeonText
             aria-hidden="true"
@@ -95,7 +95,7 @@ function Logo({ glowing }: Props): ReactElement {
             <span>k</span>
           </NeonText>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </Container>
   );
 }
@@ -117,14 +117,14 @@ const Anchor = styled.a<AnchorProps>`
 `;
 
 const glow = keyframes`
-  0% {
+  /* 0% {
     color: var(--accent-color);
   }
 
    20%{
     color: #fff;
     filter: blur(0);
-  }
+  } */
 
 `;
 type NeonTextProps = {
@@ -135,15 +135,17 @@ const NeonText = styled(motion.div)<NeonTextProps>`
   position: absolute;
   right: 0;
   bottom: -5px;
+
   span {
+    text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color),
+      0 0 40px var(--accent-color), 0 0 50px var(--accent-color),
+      0 0 60px var(--accent-color);
+
     animation: ${(p) =>
       p.glowing &&
       css`
         ${glow} 5s linear infinite
       `};
-    text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color),
-      0 0 40px var(--accent-color), 0 0 50px var(--accent-color),
-      0 0 60px var(--accent-color);
 
     &:nth-child(1) {
       animation-delay: 1s;

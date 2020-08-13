@@ -29,7 +29,7 @@ type Props = {};
 function Logo({}: Props): ReactElement {
   return (
     <Link passHref href="/">
-      <Anchor>
+      <Anchor aria-label="Link to homepage" title="Link to homepage">
         <motion.svg
           width="1em"
           viewBox="0 0 69 23"

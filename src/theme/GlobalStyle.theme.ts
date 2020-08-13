@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-  --accent-color: #3a86ff;
+  --accent-color: #116dff;
   --accent-color-rgb:   58, 134, 255;
 
   --primary-color: #fff;

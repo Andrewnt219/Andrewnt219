@@ -198,7 +198,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #__next {
-
+    background: var(--primary-color);
+    transition: all 1000ms ease;
     position: relative;
   }
 

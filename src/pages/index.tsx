@@ -1,14 +1,11 @@
 import { HeadTitle } from "@src/components/head/HeadTitle";
-import Head from "next/head";
 import styled from "styled-components";
 import tw from "twin.macro";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <HeadTitle title="Portfolio" />
-      </Head>
+      <HeadTitle title="Portfolio" />
       <Heading>Welcome</Heading>
     </>
   );

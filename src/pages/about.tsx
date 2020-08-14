@@ -11,9 +11,7 @@ type Props = {};
 function About({}: Props): ReactElement {
   return (
     <>
-      <Head>
-        <HeadTitle title="About" />
-      </Head>
+      <HeadTitle title="About" />
       About
     </>
   );

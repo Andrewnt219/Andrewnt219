@@ -1,10 +1,11 @@
+import Head from "next/head";
 import React, { ReactElement } from "react";
 
 type Props = {};
 
 function HeadMeta({}: Props): ReactElement {
   return (
-    <>
+    <Head>
       <meta name="author" content="Andrew Nguyen" key="author" />
 
       <meta
@@ -41,7 +42,7 @@ function HeadMeta({}: Props): ReactElement {
         name="og:description"
         content="I am a web developer undergraduate. I am actively looking for learning opportunities, internships, and mentorships. I bring user-oriented designs. My specialities are React, TypeScript, UI/Ux"
       />
-    </>
+    </Head>
   );
 }
 

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { ReactElement } from "react";
 
 type Props = {
@@ -7,9 +8,11 @@ type Props = {
 
 function HeadTitle({ title, noExtension }: Props): ReactElement {
   return (
-    <title key="title">
-      {title + noExtension ? "" : " | Andrew Nguyen - React Web Developer"}
-    </title>
+    <Head>
+      <title key="title">
+        {title + (!noExtension && " | Andrew Nguyen - React Web Developer")}
+      </title>
+    </Head>
   );
 }
 

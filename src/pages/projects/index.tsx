@@ -9,9 +9,7 @@ type Props = {};
 function Projects({}: Props): ReactElement {
   return (
     <>
-      <Head>
-        <HeadTitle title="Projects" />
-      </Head>
+      <HeadTitle title="Projects" />
       Projects
     </>
   );

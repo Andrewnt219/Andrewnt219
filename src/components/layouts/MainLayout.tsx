@@ -4,7 +4,7 @@ import { AppBar } from "./AppBar";
 import { Footer } from "./Footer";
 import tw from "twin.macro";
 import { LightSwitch } from "../navigations/LightSwitch";
-import Head from "next/head";
+
 import { HeadMeta } from "../head/HeadMeta";
 
 type Props = {
@@ -20,9 +20,7 @@ const FOOTER_HEIGHT = "10rem";
 function MainLayout({ children }: Props): ReactElement {
   return (
     <>
-      <Head>
-        <HeadMeta />
-      </Head>
+      <HeadMeta />
 
       <AppBar height={APPBAR_HEIGHT} />
 

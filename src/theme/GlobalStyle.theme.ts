@@ -155,25 +155,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     color: var(--text-color);
-    
-    /* //! theme must end with 'mode' for ease of removing */
-    &.dark-mode {
-      --accent-color: #5496FF;
-      --acent-color-rgb: 84, 150, 255;
-
-      --primary-color:   #000;
-      --primary-color-rgb: 0, 0, 0;
-
-      --primary-color-light: #1c1c1c;
-      --primary-color-light-rgb: 28, 28, 28;
-
-      --secondary-color: #1c1c1c;
-      --secondary-color-rgb: 28, 28, 28;
-
-      --text-color: #fff;
-      --text-color-rgb: 255, 255, 255;
-
-    }
   }
 
   h1,
@@ -188,6 +169,24 @@ export const GlobalStyle = createGlobalStyle`
   p {    
     line-height: 1.6;
   }
+
+    /* //! theme must end with 'mode' for ease of removing */
+    .dark-mode {
+      --accent-color: #5496FF;
+      --acent-color-rgb: 84, 150, 255;
+
+      --primary-color:   #000;
+      --primary-color-rgb: 0, 0, 0;
+
+      --primary-color-light: #1c1c1c;
+      --primary-color-light-rgb: 28, 28, 28;
+
+      --secondary-color: #1c1c1c;
+      --secondary-color-rgb: 28, 28, 28;
+
+      --text-color: #fff;
+      --text-color-rgb: 255, 255, 255;
+    }
 
   *, *::before, *::after {
     margin: 0;

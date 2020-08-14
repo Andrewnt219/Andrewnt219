@@ -2,7 +2,6 @@ import { HeadTitle } from "@src/components/head/HeadTitle";
 import Head from "next/head";
 import styled from "styled-components";
 import tw from "twin.macro";
-import { NightSky } from "@src/components/particles/NightSky";
 
 export default function Home() {
   return (
@@ -11,7 +10,6 @@ export default function Home() {
         <HeadTitle title="Portfolio" />
       </Head>
       <Heading>Welcome</Heading>
-      <NightSky width="100%" height="20rem" />
     </>
   );
 }

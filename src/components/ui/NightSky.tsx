@@ -1,16 +1,42 @@
+import { motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-type Props = {};
+const containerVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
 
-function NightSky({}: Props): ReactElement {
+type Props = {
+  className?: string;
+};
+
+function NightSky({ className }: Props): ReactElement {
   return (
-    <Container>
+    <Container
+      key="night-sky"
+      className={className}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <Stars />
       <Twinkling />
     </Container>
   );
 }
+
+type ContainerProps = {};
+const Container = styled(motion.div)<ContainerProps>`
+  position: relative;
+`;
 
 const moveTwinkBack = keyframes`
     from {background-position:0 0;}
@@ -47,8 +73,5 @@ const Twinkling = styled.div<TwinklingProps>`
   z-index: 1;
   animation: ${moveTwinkBack} 200s linear infinite;
 `;
-
-type ContainerProps = {};
-const Container = styled.div<ContainerProps>``;
 
 export { NightSky };

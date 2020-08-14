@@ -33,7 +33,7 @@ type StarsProps = {};
 const Stars = styled.div<StarsProps>`
   ${sharedCss}
   background: #000
-    url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top
+    url(/imgs/stars.webp) repeat top
     center;
   z-index: 0;
 `;
@@ -42,7 +42,7 @@ type TwinklingProps = {};
 const Twinkling = styled.div<TwinklingProps>`
   ${sharedCss}
   background: transparent
-    url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat
+    url(/imgs/twinkling.webp) repeat
     top center;
   z-index: 1;
   animation: ${moveTwinkBack} 200s linear infinite;

@@ -212,11 +212,12 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--primary-color);
     transition: all 1000ms ease;
     position: relative;
+
   }
 
   .no-scroll {
-      overflow: hidden;
-    }
+    overflow-y: hidden;
+  }
   
   /* * { background-color: rgba(255,0,0,.2); }
 * * { background-color: rgba(0,255,0,.2); }

@@ -21,34 +21,42 @@ type Props = {
  * @description A hamburger menu that toggles opening/closing menu and locked screen scroll
  */
 function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
-  /* Locking screen */
-  useEffect(() => {
-    const body = document.body;
-    const html = document.querySelector("html");
-    if (isOpened) {
-      body.classList.add("no-scroll");
-      html?.classList.add("no-scroll");
-    } else {
-      body.classList.remove("no-scroll");
-      html?.classList.remove("no-scroll");
-    }
+  // /* Locking screen */
+  // useEffect(() => {
+  //   const body = document.body;
+  //   const html = document.querySelector("html");
+  //   if (isOpened) {
+  //     body.classList.add("no-scroll");
+  //     html?.classList.add("no-scroll");
+  //   } else {
+  //     body.classList.remove("no-scroll");
+  //     html?.classList.remove("no-scroll");
+  //   }
 
-    return () => {
-      body.classList.remove("no-scroll");
-      html?.classList.remove("no-scroll");
-    };
-  }, [isOpened]);
+  //   return () => {
+  //     body.classList.remove("no-scroll");
+  //     html?.classList.remove("no-scroll");
+  //   };
+  // }, [isOpened]);
 
   const onBurgerClicked = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ): void => {
     event.preventDefault();
+
+    const body = document.querySelector("body");
+    const html = document.querySelector("html");
+    if (body && html) {
+      body.classList.toggle("no-scroll");
+      html.classList.toggle("no-scroll");
+    }
+
     setIsOpened((prev) => !prev);
   };
 
   return (
     <Container>
-      <Backdrop isFullScreen={isOpened} />
+      <Backdrop id="backdrop" isFullScreen={isOpened} />
 
       <MenuContainer
         href="#menu"

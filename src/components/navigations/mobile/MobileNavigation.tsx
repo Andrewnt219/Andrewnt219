@@ -27,23 +27,25 @@ function MobileNavigation(): ReactElement {
     <>
       <AnimatePresence>
         {menuIsOpened && (
-          <NavigationItems
-            // framer-motion
-            variants={navItemsVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            {allRoutes.map(({ text, ...linkProps }) => (
-              <MobileNavigationItem
-                key={text}
-                text={text}
-                {...linkProps}
-                onClick={() => setMenuIsOpened(false)}
-              />
-            ))}
+          <>
+            <NavigationItems
+              // framer-motion
+              variants={navItemsVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              {allRoutes.map(({ text, ...linkProps }) => (
+                <MobileNavigationItem
+                  key={text}
+                  text={text}
+                  {...linkProps}
+                  onClick={() => setMenuIsOpened(false)}
+                />
+              ))}
+            </NavigationItems>
             <CustomLightSwitch />
-          </NavigationItems>
+          </>
         )}
       </AnimatePresence>
       <Hamburger isOpened={menuIsOpened} setIsOpened={setMenuIsOpened} />
@@ -66,7 +68,7 @@ const CustomLightSwitch = styled(LightSwitch)<CustomLightSwitchProps>`
   background: rgba(var(--secondary-color-rgb), 0.8);
   transition: background 300ms ease;
 
-  ${tw`hocus:outline-none inline-flex justify-center items-center w-20 h-20 rounded-full z-20`}
+  ${tw`hocus:outline-none inline-flex justify-center items-center w-20 h-20 rounded-full z-30`}
 
   svg {
     font-size: 2rem;

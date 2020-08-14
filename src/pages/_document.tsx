@@ -44,9 +44,18 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin=""
           />
+
           <link
             rel="preload"
             href="fonts/montserrat-v14-latin-300.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
+
+          <link
+            rel="preload"
+            href="fonts/montserrat-v14-latin-700.woff2"
             as="font"
             type="font/woff2"
             crossOrigin=""

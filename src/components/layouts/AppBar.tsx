@@ -50,7 +50,7 @@ function AppBar({ height }: Props): ReactElement {
     <Container>
       <StaticNav height={height} ref={ref}>
         {/* //! do not put Logo in shared */}
-        <Logo glowing />
+        <Logo animated={isDesktopScreen} />
         {inView && sharedNavContent}
       </StaticNav>
 

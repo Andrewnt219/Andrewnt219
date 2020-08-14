@@ -32,6 +32,7 @@ const neonVariants: Variants = {
       type: "spring",
       stiffness: 200,
       damping: 15,
+      staggerChildren: 0.2,
     },
   },
   exit: {
@@ -40,10 +41,10 @@ const neonVariants: Variants = {
 };
 
 type Props = {
-  glowing?: NeonTextProps["glowing"];
+  animated?: NeonTextProps["animated"];
 };
 
-function Logo({ glowing }: Props): ReactElement {
+function Logo({ animated }: Props): ReactElement {
   const { mode } = useContext(ThemeContext);
 
   const logoSvg = (
@@ -78,11 +79,11 @@ function Logo({ glowing }: Props): ReactElement {
         </Anchor>
       </Link>
 
-      {/* <AnimatePresence>
+      <AnimatePresence>
         {mode === "dark-mode" && (
           <NeonText
             aria-hidden="true"
-            glowing={glowing}
+            animated={animated}
             // framer-motion
             variants={neonVariants}
             initial="hidden"
@@ -95,7 +96,7 @@ function Logo({ glowing }: Props): ReactElement {
             <span>k</span>
           </NeonText>
         )}
-      </AnimatePresence> */}
+      </AnimatePresence>
     </Container>
   );
 }
@@ -117,18 +118,21 @@ const Anchor = styled.a<AnchorProps>`
 `;
 
 const glow = keyframes`
-  /* 0% {
+  0% {
     color: var(--accent-color);
+    filter: blur(2px);
   }
 
-   20%{
+   10%{
     color: #fff;
     filter: blur(0);
-  } */
+
+  }
 
 `;
+
 type NeonTextProps = {
-  glowing?: boolean;
+  animated?: boolean;
 };
 const NeonText = styled(motion.div)<NeonTextProps>`
   ${tw`text-xl space-x-1 font-bold font-heading`}
@@ -142,23 +146,20 @@ const NeonText = styled(motion.div)<NeonTextProps>`
       0 0 60px var(--accent-color);
 
     animation: ${(p) =>
-      p.glowing &&
+      p.animated &&
       css`
-        ${glow} 5s linear infinite
+        ${glow} 3s linear infinite
       `};
 
     &:nth-child(1) {
       animation-delay: 1s;
     }
-
     &:nth-child(2) {
       animation-delay: 1.5s;
     }
-
     &:nth-child(3) {
       animation-delay: 1.7s;
     }
-
     &:nth-child(4) {
       animation-delay: 1.9s;
     }

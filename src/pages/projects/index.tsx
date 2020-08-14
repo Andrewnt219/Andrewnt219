@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import Head from "next/head";
+import { HeadTitle } from "@src/components/head/HeadTitle";
 
 type Props = {};
 
@@ -9,7 +10,7 @@ function Projects({}: Props): ReactElement {
   return (
     <>
       <Head>
-        <title key="title">About | Andrew Nguyen - React Web Developer</title>
+        <HeadTitle title="Projects" />
       </Head>
       Projects
     </>

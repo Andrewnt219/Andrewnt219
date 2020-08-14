@@ -1,3 +1,5 @@
+import { HeadMeta } from "@src/components/head/HeadMeta";
+import { HeadTitle } from "@src/components/head/HeadTitle";
 import { MainLayout } from "@src/components/layouts/MainLayout";
 import Head from "next/head";
 import React, { ReactElement } from "react";
@@ -10,7 +12,7 @@ function About({}: Props): ReactElement {
   return (
     <>
       <Head>
-        <title key="title">About | Andrew Nguyen - React Web Developer</title>
+        <HeadTitle title="About" />
       </Head>
       About
     </>

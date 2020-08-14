@@ -11,6 +11,7 @@ function DesktopNavigation(): ReactElement {
       {allRoutes.map(({ text, ...linkProps }) => (
         <DesktopNavigationItem key={text} text={text} {...linkProps} />
       ))}
+      {/* //TODO move this out of <ul> */}
       <CustomLightSwitch />
     </Container>
   );

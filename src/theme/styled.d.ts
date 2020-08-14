@@ -4,23 +4,17 @@ import "styled-components";
 // and extend them!
 declare module "styled-components" {
   export interface DefaultTheme {
-    /**
-     * @param xxs 320px
-     * @param xs 480px
-     * @param sm 640px
-     * @param md 768px
-     * @param lg 1024px
-     * @param xl 1200px
-     * @param xxl 1600px
-     */
     breakpoints: {
-      xxs: string;
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
-      xl: string;
-      xxl: string;
+      xxs: "320px";
+      xs: "480px";
+      sm: "640px";
+      md: "768px";
+      lg: "1024px";
+      xl: "1200px";
+      xxl: "1600px";
+      xl3: "1920px";
+      wqhd: "2560px";
+      uhd: "3840px";
     };
   }
 }

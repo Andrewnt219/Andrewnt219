@@ -137,7 +137,19 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     @media screen and (min-width: ${(p) => p.theme.breakpoints.xxl}) {
-      font-size: 106.25%; /* 16px => 17px */
+      font-size: 135%;
+    }
+
+    @media screen and (min-width: ${(p) => p.theme.breakpoints.xl3}) {
+      font-size: 160%;
+    }
+
+    @media screen and (min-width: ${(p) => p.theme.breakpoints.wqhd}) {
+      font-size: 215%;
+    }
+
+    @media screen and (min-width: ${(p) => p.theme.breakpoints.uhd}) {
+      font-size: 320%;
     }
   }
 

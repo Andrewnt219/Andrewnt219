@@ -1,12 +1,14 @@
 import { HeadTitle } from "@src/components/head/HeadTitle";
 import { NightSky } from "@src/components/ui/NightSky";
 import { ThemeContext } from "@src/contexts/theme.context";
+import { useMediaQuery } from "@src/hooks";
 import { useContext } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 
 export default function Home() {
   const { mode } = useContext(ThemeContext);
+  const isDesktop = useMediaQuery();
 
   return (
     <>
@@ -14,7 +16,7 @@ export default function Home() {
       <Container>
         <Heading>Welcome</Heading>
       </Container>
-      {mode === "dark-mode" && <CustomNightSky />}
+      {mode === "dark-mode" && isDesktop && <CustomNightSky />}
     </>
   );
 }

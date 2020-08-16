@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import styled, { css, useTheme } from "styled-components";
+import styled, { css } from "styled-components";
 import tw from "twin.macro";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -34,10 +34,8 @@ function AppBar({ height }: Props): ReactElement {
   const [ref, inView] = useInView();
 
   /* control rendering mobile or desktop navigation */
-  const { breakpoints } = useTheme();
-  const isDesktopScreen = useMediaQuery(
-    `screen and (min-width: ${breakpoints.md})`
-  );
+
+  const isDesktopScreen = useMediaQuery();
 
   /* static and fixed nav contents */
   const sharedNavContent = isDesktopScreen ? (

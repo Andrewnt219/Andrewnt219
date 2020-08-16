@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
+import { useTheme } from "styled-components";
 
 /**
  * @returns query is matched
- * @param mediaQuery mediaQuery string
+ * @param mediaQuery mediaQuery string, default is mobile divide
  */
-export const useMediaQuery = (mediaQuery: string): boolean => {
+export const useMediaQuery = (mediaQuery?: string): boolean => {
   // matches state
   const [matches, setMatches] = useState(false);
+  // get mobile breakpoint
+  const {
+    breakpoints: { md },
+  } = useTheme();
 
   useEffect(() => {
-    const mqList = window.matchMedia(mediaQuery);
+    const mqList = window.matchMedia(
+      mediaQuery ?? `screen and (min-width: ${md})`
+    );
 
     // if query matches initially
     if (mqList.matches) {
@@ -27,7 +34,7 @@ export const useMediaQuery = (mediaQuery: string): boolean => {
     return () => {
       mqList.removeEventListener("change", handler);
     };
-  }, [mediaQuery]);
+  }, [mediaQuery, md]);
 
   return matches;
 };

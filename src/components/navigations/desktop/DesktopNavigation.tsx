@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { DesktopNavigationItem } from "./DesktopNavigationItem";
 import tw from "twin.macro";
-import { LightSwitch } from "../LightSwitch";
+import { LightSwitch } from "../../ui/LightSwitch";
 
 function DesktopNavigation(): ReactElement {
   return (

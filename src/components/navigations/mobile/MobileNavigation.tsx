@@ -2,7 +2,7 @@ import { allRoutes } from "@src/data/routes.data";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement, useState } from "react";
 import tw, { styled } from "twin.macro";
-import { LightSwitch } from "../LightSwitch";
+import { LightSwitch } from "../../ui/LightSwitch";
 import { Hamburger } from "./Hamburger";
 import { MobileNavigationItem } from "./MobileNavigationItem";
 

@@ -82,8 +82,8 @@ type NavProps = {
 };
 const navCss = css<NavProps>`
   height: ${(p) => p.height};
-
-  ${tw`relative w-full bg-primary transition-all duration-theme ease-in-out flex justify-between items-center p-5`};
+  transition-property: background-color;
+  ${tw`relative w-full bg-primary duration-theme ease-in-out flex justify-between items-center p-5`};
 `;
 
 const StaticNav = styled.nav`

@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@src/hooks";
 import { motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
 import styled, { css, keyframes } from "styled-components";
@@ -10,6 +11,7 @@ const containerVariants: Variants = {
     opacity: 1,
     transition: {
       duration: 1,
+      delay: 0.5,
     },
   },
 };
@@ -19,6 +21,8 @@ type Props = {
 };
 
 function NightSky({ className }: Props): ReactElement {
+  const isDesktop = useMediaQuery();
+
   return (
     <Container
       key="night-sky"
@@ -28,7 +32,7 @@ function NightSky({ className }: Props): ReactElement {
       animate="visible"
     >
       <Stars />
-      <Twinkling />
+      <Twinkling animated={isDesktop} />
     </Container>
   );
 }
@@ -64,14 +68,20 @@ const Stars = styled.div<StarsProps>`
   z-index: 0;
 `;
 
-type TwinklingProps = {};
+type TwinklingProps = {
+  animated?: boolean;
+};
 const Twinkling = styled.div<TwinklingProps>`
   ${sharedCss}
   background: transparent
     url(/imgs/twinkling.webp) repeat
     top center;
   z-index: 1;
-  animation: ${moveTwinkBack} 200s linear infinite;
+  ${(p) =>
+    p.animated &&
+    css`
+      animation: ${moveTwinkBack} 200s linear infinite;
+    `}
 `;
 
 export { NightSky };

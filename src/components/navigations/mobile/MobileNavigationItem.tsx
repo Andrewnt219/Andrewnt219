@@ -5,7 +5,7 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import tw, { css } from "twin.macro";
-import { spin } from "@src/styles/keyframes";
+import { spin } from "@src/styles/animation/spin.animation";
 import { useRouteMatch } from "@src/hooks";
 
 const navItemVariants: Variants = {

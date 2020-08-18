@@ -1,6 +1,6 @@
 import { ThemeProvider } from "styled-components";
-import { defaultTheme } from "../theme";
-import { GlobalStyle } from "../theme/GlobalStyle.theme";
+import { defaultTheme } from "../styles/theme";
+import { GlobalStyle } from "../styles/theme/GlobalStyle.theme";
 import { AppProps } from "next/app";
 import "tailwindcss/dist/base.min.css";
 import { MainLayout } from "@src/components/layouts/MainLayout";

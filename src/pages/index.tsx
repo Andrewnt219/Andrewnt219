@@ -1,21 +1,17 @@
 import { HeadTitle } from "@src/components/head/HeadTitle";
 import { Button } from "@src/components/ui/Button";
 import { TextCarousel } from "@src/components/ui/TextCarousel";
-import { NightSky } from "@src/components/ui/NightSky";
-import { ThemeContext } from "@src/contexts/theme.context";
-import { useContext } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import { Link } from "@src/components/navigations/Link";
 
 export default function Home() {
-  const { mode } = useContext(ThemeContext);
   const scrollingTexts = ["React", "Next.js", "UI/UX"];
 
   return (
     <>
       <HeadTitle title="Portfolio" />
 
-      {mode === "dark-mode" && <CustomNightSky />}
       <HeroContainer>
         <AuthorName>Andrew Nguyen</AuthorName>
         <Heading>Welcome</Heading>
@@ -24,8 +20,12 @@ export default function Home() {
           aliquid sequi perferendis vel cum quasi, repudiandae iste nemo?
           Possimus atque laborum harum quae aliquam!
         </Summary>
-        <Button>See my projects</Button>
-        <Button>Have you met Andrew?</Button>
+        <Button>
+          <Link href="/projects">See my projects</Link>
+        </Button>
+        <Button>
+          <Link href="/projects">Have you met Andrew?</Link>
+        </Button>
         <TextCarousel texts={scrollingTexts} intervalInMs={2000} />
       </HeroContainer>
       <Button>Next</Button>
@@ -50,8 +50,3 @@ const AuthorName = styled.span<AuthorNameProps>`
 
 type SummaryProps = {};
 const Summary = styled.p<SummaryProps>``;
-
-type CustomNightSkyProps = {};
-const CustomNightSky = styled(NightSky)<CustomNightSkyProps>`
-  ${tw`absolute top-0 left-0 w-screen h-full`}
-`;

@@ -1,8 +1,10 @@
 import { ThemeContext } from "@src/contexts/theme.context";
+import { flickering } from "@src/styles/animation/flickering.animation";
+import { glow } from "@src/styles/animation/glow.animation";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import Link from "next/link";
 import React, { ReactElement, useContext } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import tw, { css } from "twin.macro";
 
 const pathVariants: Variants = {
@@ -10,7 +12,6 @@ const pathVariants: Variants = {
     pathLength: 0.2,
   },
   visible: {
-    // fill: ["#5A6072", "#fff"],
     pathLength: 0,
 
     transition: {
@@ -117,20 +118,6 @@ const Anchor = styled.a<AnchorProps>`
   }
 `;
 
-const glow = keyframes`
-  0% {
-    color: var(--accent-color);
-    filter: blur(2px);
-  }
-
-   10%{
-    color: #fff;
-    filter: blur(0);
-
-  }
-
-`;
-
 type NeonTextProps = {
   animated?: boolean;
 };
@@ -148,20 +135,20 @@ const NeonText = styled(motion.div)<NeonTextProps>`
     animation: ${(p) =>
       p.animated &&
       css`
-        ${glow} 3s linear infinite
+        ${glow} 3s linear infinite , ${flickering}  2s linear both
       `};
 
     &:nth-child(1) {
       animation-delay: 1s;
     }
     &:nth-child(2) {
-      animation-delay: 1.5s;
+      animation-delay: 1.2s;
     }
     &:nth-child(3) {
-      animation-delay: 1.7s;
+      animation-delay: 1.8s;
     }
     &:nth-child(4) {
-      animation-delay: 1.9s;
+      animation-delay: 2s;
     }
   }
 `;

@@ -122,7 +122,7 @@ type NeonTextProps = {
   animated?: boolean;
 };
 const NeonText = styled(motion.div)<NeonTextProps>`
-  ${tw`text-xl space-x-1 font-bold font-heading`}
+  ${tw`text-xl space-x-1 font-bBold font-heading`}
   position: absolute;
   right: 0;
   bottom: -5px;

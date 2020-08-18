@@ -26,7 +26,7 @@ export default function Home() {
           not confuse users
         </Summary>
 
-        <CustomRow gap="2rem">
+        <CustomRow gap="2rem" mt="4rem">
           <Button>
             <Link href="/projects">See my projects</Link>
           </Button>
@@ -44,7 +44,7 @@ export default function Home() {
 
 type HeroContainerProps = {};
 const HeroContainer = styled.section<HeroContainerProps>`
-  ${tw`relative z-10 text-xl`}
+  ${tw`relative z-10 text-xl font-heading`}
   padding-top: 10vh;
 
   @media screen and (min-width: ${(p) =>
@@ -77,12 +77,11 @@ const AuthorName = styled.span<AuthorNameProps>`
 `;
 
 type SummaryProps = {};
-const Summary = styled.p<SummaryProps>`
+const Summary = styled.h2<SummaryProps>`
   font-size: inherit;
 `;
 
 type CustomRowProps = {};
 const CustomRow = styled(Row)<CustomRowProps>`
-  margin-top: 2rem;
   font-size: 1rem;
 `;

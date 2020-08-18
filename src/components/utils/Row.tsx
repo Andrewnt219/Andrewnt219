@@ -10,6 +10,7 @@ type RowProps = {
     | "flex-end"
     | "strech";
   gap?: string;
+  mt?: string;
 };
 export const Row = styled.div<RowProps>`
   display: flex;
@@ -21,8 +22,9 @@ export const Row = styled.div<RowProps>`
   }
 
   /* only has margin when flex is wrapped */
-  margin-top: -1rem;
+  --flex-margin: 1rem;
+  margin-top: calc(${(p) => p.mt ?? "0"} - var(--flex-margin));
   & > * {
-    margin-top: 1rem;
+    margin-top: var(--flex-margin);
   }
 `;

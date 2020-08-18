@@ -107,21 +107,37 @@ type StyledButtonProps = {
   styledVariants?: "outlined" | "contained" | "text";
 };
 const buttonStyle = css`
-  ${tw`hocus:outline-none m-0 uppercase font-bBold border border-transparent`}
-  margin: 0;
-  padding: 1rem 2rem;
+  ${tw`hocus:outline-none uppercase font-bBold border border-transparent`}
+  border-radius: 7px;
+  padding: 0 2rem;
+  line-height: 2.8rem;
 `;
 
 type LightButtonProps = StyledButtonProps & {};
 export const LightButton = styled.button<LightButtonProps>`
+  --shadow-color: rgba(var(--accent-color-rgb), 0.4);
+
   ${buttonStyle}
   ${tw`bg-accent text-primary`}
-  box-shadow: 0 4px 14px 0 rgba(var(--accent-color-rgb), 0.4);
+
+  transition: transform 200ms ease, box-shadow 500ms ease;
+  box-shadow: 0 4px 14px 0 var(--shadow-color);
+
+  :active {
+    box-shadow: 0 4px 14px 0 var(--shadow-color);
+    transform: translateY(0);
+  }
+
+  :hover,
+  :focus {
+    box-shadow: 0 6px 20px var(--shadow-color);
+    transform: translateY(-2px);
+  }
 
   ${(p) =>
     p.secondary &&
     css`
-      box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+      --shadow-color: rgba(0, 0, 0, 0.1);
       ${tw`bg-primary text-textColor`};
     `}
 `;
@@ -131,8 +147,7 @@ const DarkButton = styled(motion.button)<DarkButtonProps>`
   ${buttonStyle}
   ${tw`text-accent border-accent border bg-transparent`}
 
-  :hover,
-  :focus {
+  :hover, :focus {
     animation: ${buttonFlickering} 0.8s ease-out infinite alternate;
   }
 `;

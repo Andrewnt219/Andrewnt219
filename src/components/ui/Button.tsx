@@ -80,15 +80,18 @@ const darkButtonVariants: Variants = {
 
 type Props = StyledButtonProps & {
   children: ReactNode;
+  className?: string;
 };
 
-function Button({ children, ...styleProps }: Props): ReactElement {
+function Button({ className, children, ...styleProps }: Props): ReactElement {
   const { mode } = useContext(ThemeContext);
 
   if (mode === "dark-mode") {
     return (
       <DarkButton
         {...styleProps}
+        className={className}
+        //
         variants={darkButtonVariants}
         animate="visible"
       >
@@ -97,7 +100,11 @@ function Button({ children, ...styleProps }: Props): ReactElement {
     );
   }
 
-  return <LightButton {...styleProps}>{children}</LightButton>;
+  return (
+    <LightButton {...styleProps} className={className}>
+      {children}
+    </LightButton>
+  );
 }
 
 export { Button };
@@ -107,7 +114,7 @@ type StyledButtonProps = {
   styledVariants?: "outlined" | "contained" | "text";
 };
 const buttonStyle = css`
-  ${tw`hocus:outline-none uppercase font-bBold border border-transparent`}
+  ${tw`hocus:outline-none uppercase border border-transparent`}
   border-radius: 7px;
   padding: 0 2rem;
   line-height: 2.8rem;

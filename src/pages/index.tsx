@@ -4,9 +4,9 @@ import { TextCarousel } from "@src/components/ui/TextCarousel";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { Link } from "@src/components/navigations/Link";
-import { DESKTOP_SCREEN_BREAKPOINT } from "@src/constants/mediaQuery.constants";
-import { Row } from "@src/components/utils/Row";
+import { APPBAR_HEIGHT } from "@src/constants/styles.constants";
 
+const BREAKPOINT = "lg";
 export default function Home() {
   const carouselTexts = ["React", "Next.js", "UI/UX"];
 
@@ -26,15 +26,9 @@ export default function Home() {
           not confuse users
         </Summary>
 
-        <CustomRow gap="2rem" mt="4rem">
-          <Button>
-            <Link href="/projects">See my projects</Link>
-          </Button>
-
-          <Button secondary>
-            <Link href="/projects">Have you met Andrew?</Link>
-          </Button>
-        </CustomRow>
+        <CustomButton>
+          <Link href="/projects">See my projects</Link>
+        </CustomButton>
         <TextCarousel texts={carouselTexts} intervalInMs={2000} />
       </HeroContainer>
       <Button>Next</Button>
@@ -44,11 +38,11 @@ export default function Home() {
 
 type HeroContainerProps = {};
 const HeroContainer = styled.section<HeroContainerProps>`
-  ${tw`relative z-10 text-xl font-heading`}
-  padding-top: 10vh;
+  height: calc(100vh - ${APPBAR_HEIGHT});
+  ${tw`relative z-10 text-2xl font-heading`}
+  padding-top: 5rem;
 
-  @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[DESKTOP_SCREEN_BREAKPOINT]}) {
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
     ${tw`text-3xl`}
   }
 `;
@@ -64,8 +58,7 @@ const Heading = styled.h1<HeadingProps>`
     font-size: inherit;
   }
 
-  @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[DESKTOP_SCREEN_BREAKPOINT]}) {
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
     ${tw`text-6xl`}
   }
 `;
@@ -81,7 +74,9 @@ const Summary = styled.h2<SummaryProps>`
   font-size: inherit;
 `;
 
-type CustomRowProps = {};
-const CustomRow = styled(Row)<CustomRowProps>`
-  font-size: 1rem;
+type CustomButtonProps = {};
+const CustomButton = styled(Button)<CustomButtonProps>`
+  padding: 0.5rem 2rem;
+  margin-top: 4rem;
+  font-size: smaller;
 `;

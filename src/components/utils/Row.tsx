@@ -22,9 +22,8 @@ export const Row = styled.div<RowProps>`
   }
 
   /* only has margin when flex is wrapped */
-  --flex-margin: 1rem;
-  margin-top: calc(${(p) => p.mt ?? "0"} - var(--flex-margin));
+  margin-top: calc(${(p) => p.mt ?? "0"} - ${(p) => p.gap});
   & > * {
-    margin-top: var(--flex-margin);
+    margin-top: ${(p) => p.gap};
   }
 `;

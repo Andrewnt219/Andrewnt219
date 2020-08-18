@@ -1,3 +1,4 @@
+import { DESKTOP_SCREEN_BREAKPOINT } from "./../constants/mediaQuery.constants";
 import { useEffect, useState } from "react";
 import { useTheme } from "styled-components";
 
@@ -9,13 +10,12 @@ export const useMediaQuery = (mediaQuery?: string): boolean => {
   // matches state
   const [matches, setMatches] = useState(false);
   // get mobile breakpoint
-  const {
-    breakpoints: { md },
-  } = useTheme();
+  const { breakpoints } = useTheme();
+  const defaultBreakpoint = breakpoints[DESKTOP_SCREEN_BREAKPOINT];
 
   useEffect(() => {
     const mqList = window.matchMedia(
-      mediaQuery ?? `screen and (min-width: ${md})`
+      mediaQuery ?? `screen and (min-width: ${defaultBreakpoint})`
     );
 
     // if query matches initially
@@ -34,7 +34,7 @@ export const useMediaQuery = (mediaQuery?: string): boolean => {
     return () => {
       mqList.removeEventListener("change", handler);
     };
-  }, [mediaQuery, md]);
+  }, [mediaQuery, defaultBreakpoint]);
 
   return matches;
 };

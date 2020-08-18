@@ -20,6 +20,7 @@ module.exports = {
       lprimary: "var(--primary-color-light)",
       secondary: "var(--secondary-color)",
       textColor: "var(--text-color)",
+      ltextColor: "var(--text-color-light)",
 
       black: "#000",
       white: "#fff",
@@ -257,15 +258,12 @@ module.exports = {
       "6xl": "4rem",
     },
     fontWeight: {
-      hairline: "100",
-      thin: "200",
-      light: "300",
-      normal: "400",
-      medium: "500",
-      semibold: "600",
-      bold: "700",
-      extrabold: "800",
-      black: "900",
+      bNomral: "400",
+      bBold: "700",
+      hLight: "300",
+      hNormal: "400",
+      hBold: "700",
+      hBlack: "900",
     },
     height: (theme) => ({
       auto: "auto",
@@ -285,6 +283,7 @@ module.exports = {
       wide: "0.025em",
       wider: "0.05em",
       widest: "0.1em",
+      aloof: "0.4em",
     },
     lineHeight: {
       none: "1",

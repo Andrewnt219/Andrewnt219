@@ -73,7 +73,7 @@ type AnchorProps = {
   isActive: boolean;
 };
 const Anchor = styled.a<AnchorProps>`
-  ${tw`cursor-pointer font-bold`}
+  ${tw`cursor-pointer font-bBold`}
 
   ${(p) =>
     p.isActive &&

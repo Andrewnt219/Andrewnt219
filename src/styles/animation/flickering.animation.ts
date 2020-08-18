@@ -95,3 +95,41 @@ export const flickering = keyframes`
         opacity: 1;
     }
 `;
+
+export const buttonFlickering = keyframes`
+0% {
+    border-color: var(--accent-color);
+    -webkit-box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
+    box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
+}
+15% {
+    border-color: #56beff;
+    -webkit-box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
+    box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
+}
+16% {
+    border-color: transparent;
+    -webkit-box-shadow: 0 0 20px transparent, inset 0 0 10px transparent, 0 2px 0 transparent;
+    box-shadow: 0 0 20px transparent, inset 0 0 10px transparent, 0 2px 0 transparent;
+}
+17% {
+    border-color: var(--accent-color);
+    -webkit-box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
+    box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
+}
+20% {
+    border-color: #56beff;
+    -webkit-box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
+    box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
+}
+30% {
+    border-color: var(--accent-color);
+    -webkit-box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
+    box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
+}
+100% {
+    border-color: #56beff;
+    -webkit-box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
+    box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
+}
+`;

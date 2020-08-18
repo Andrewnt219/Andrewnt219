@@ -6,7 +6,7 @@ import tw from "twin.macro";
 import { Link } from "@src/components/navigations/Link";
 import { APPBAR_HEIGHT } from "@src/constants/styles.constants";
 
-const BREAKPOINT = "lg";
+const BREAKPOINT = "md";
 export default function Home() {
   const carouselTexts = ["React", "Next.js", "UI/UX"];
 
@@ -76,7 +76,10 @@ const Summary = styled.h2<SummaryProps>`
 
 type CustomButtonProps = {};
 const CustomButton = styled(Button)<CustomButtonProps>`
-  padding: 0.5rem 2rem;
-  margin-top: 4rem;
-  font-size: smaller;
+  //! a weird bug make the custom props has lower specitivity than DarkButton props
+  && {
+    padding: 0.5rem 2rem;
+    margin-top: 4rem;
+    font-size: smaller;
+  }
 `;

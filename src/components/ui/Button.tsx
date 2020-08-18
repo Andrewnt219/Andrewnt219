@@ -86,21 +86,17 @@ type Props = StyledButtonProps & {
 function Button({ className, children, ...styleProps }: Props): ReactElement {
   const { mode } = useContext(ThemeContext);
 
-  if (mode === "dark-mode") {
-    return (
-      <DarkButton
-        {...styleProps}
-        className={className}
-        //
-        variants={darkButtonVariants}
-        animate="visible"
-      >
-        {children}
-      </DarkButton>
-    );
-  }
-
-  return (
+  return mode === "dark-mode" ? (
+    <DarkButton
+      {...styleProps}
+      className={className}
+      //
+      variants={darkButtonVariants}
+      animate="visible"
+    >
+      {children}
+    </DarkButton>
+  ) : (
     <LightButton {...styleProps} className={className}>
       {children}
     </LightButton>
@@ -154,7 +150,7 @@ const DarkButton = styled(motion.button)<DarkButtonProps>`
   ${buttonStyle}
   ${tw`text-accent border-accent border bg-transparent`}
 
-  :hover, :focus {
+  &:hover, &:focus {
     animation: ${buttonFlickering} 0.8s ease-out infinite alternate;
   }
 `;

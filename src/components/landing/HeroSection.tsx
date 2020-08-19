@@ -5,6 +5,7 @@ import tw from "twin.macro";
 import { Link } from "@src/components/navigations/Link";
 import { APPBAR_HEIGHT } from "@src/constants/styles.constants";
 import { TextCarousel } from "@src/components/ui/TextCarousel";
+import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 
 type Props = {};
 
@@ -30,7 +31,7 @@ function HeroSection({}: Props): ReactElement {
           <Link href="/projects">See my projects</Link>
         </CustomButton>
 
-        <TextCarousel texts={["Hi", "Hello", "Bonjour"]} intervalInMs={2000} />
+        <ImageCarousel />
       </InfoContainer>
     </Container>
   );

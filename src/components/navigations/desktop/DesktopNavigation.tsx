@@ -12,7 +12,15 @@ function DesktopNavigation(): ReactElement {
         <DesktopNavigationItem key={text} text={text} {...linkProps} />
       ))}
       {/* //TODO move this out of <ul> */}
-      <CustomLightSwitch />
+      <li
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CustomLightSwitch />
+      </li>
     </Container>
   );
 }

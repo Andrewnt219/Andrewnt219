@@ -4,25 +4,28 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 const withImages = require("next-images");
 const withOptimizedImages = require("next-optimized-images");
+const withSourceMaps = require("@zeit/next-source-maps");
 
-module.exports = withBundleAnalyzer(
-  withOptimizedImages(
-    withImages({
-      webpack(config, { dev }) {
-        // For absolute import
-        config.resolve.modules.push(__dirname);
+module.exports = withSourceMaps(
+  withBundleAnalyzer(
+    withOptimizedImages(
+      withImages({
+        webpack(config, { dev }) {
+          // For absolute import
+          config.resolve.modules.push(__dirname);
 
-        // for dev liniting in terminal
-        if (dev) {
-          config.module.rules.push({
-            test: /\.(j|t)s?$/,
-            exclude: /node_modules/,
-            loader: "eslint-loader",
-          });
-        }
+          // for dev liniting in terminal
+          if (dev) {
+            config.module.rules.push({
+              test: /\.(j|t)s?$/,
+              exclude: /node_modules/,
+              loader: "eslint-loader",
+            });
+          }
 
-        return config;
-      },
-    })
+          return config;
+        },
+      })
+    )
   )
 );

@@ -1,3 +1,4 @@
+import { useCarousel } from "@src/hooks";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
@@ -24,27 +25,13 @@ type Props = {
 };
 
 function TextCarousel({ texts, intervalInMs }: Props): ReactElement {
-  const [displayedTextIndex, setDisplayedTextIndex] = useState(0);
   const { length } = texts;
-
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      if (displayedTextIndex < length - 1) {
-        setDisplayedTextIndex((prev) => prev + 1);
-      } else {
-        setDisplayedTextIndex(0);
-      }
-    }, intervalInMs);
-
-    return () => {
-      clearTimeout(timerId);
-    };
-  }, [length, displayedTextIndex, intervalInMs]);
+  const { currentIndex } = useCarousel(intervalInMs, length);
 
   return (
     <Container>
       <AnimatePresence exitBeforeEnter>
-        {renderTexts(texts, displayedTextIndex)}
+        {renderTexts(texts, currentIndex)}
       </AnimatePresence>
     </Container>
   );

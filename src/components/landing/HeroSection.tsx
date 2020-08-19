@@ -6,12 +6,18 @@ import { Link } from "@src/components/navigations/Link";
 import { APPBAR_HEIGHT } from "@src/constants/styles.constants";
 import { TextCarousel } from "@src/components/ui/TextCarousel";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
+import { Row } from "../utils/Row";
 
 type Props = {};
 
 const BREAKPOINT = "xl";
 
 function HeroSection({}: Props): ReactElement {
+  const srcs: string[] = [];
+  for (let i = 1; i <= 7; i++) {
+    srcs.push(`/imgs/carousel/carousel-${i}.jpg`);
+  }
+
   return (
     <Container>
       <InfoContainer>
@@ -31,7 +37,12 @@ function HeroSection({}: Props): ReactElement {
           <Link href="/projects">See my projects</Link>
         </CustomButton>
 
-        <ImageCarousel />
+        <Row>
+          {srcs.map((src) => (
+            <img key={src} src={src} width={50} height={50} alt={src} />
+          ))}
+        </Row>
+        <ImageCarousel imageSrcs={srcs} intervalInMs={7000} displayRange={2} />
       </InfoContainer>
     </Container>
   );

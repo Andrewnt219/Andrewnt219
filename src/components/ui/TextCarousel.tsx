@@ -1,6 +1,6 @@
 import { useCarousel } from "@src/hooks";
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 const textVariants: Variants = {

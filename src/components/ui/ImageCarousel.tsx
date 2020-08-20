@@ -19,7 +19,7 @@ function ImageCarousel({
   const displayedIndexes = getIndexesInRange(
     displayRange,
     currentIndex,
-    imageSrcs.length - 1
+    imageSrcs.length
   );
   return (
     <Container>

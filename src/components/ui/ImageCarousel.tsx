@@ -1,12 +1,19 @@
 import { getIndexesInRange } from "@src/helpers/utils.helpers";
 import { useCarousel } from "@src/hooks";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import tw, { css } from "twin.macro";
 
 type Props = {
   intervalInMs: number;
   imageSrcs: string[];
   displayRange?: number;
+};
+
+const imageVariants: Variants = {
+  hidden: {},
+  visible: {},
 };
 
 function ImageCarousel({
@@ -21,14 +28,19 @@ function ImageCarousel({
     currentIndex,
     imageSrcs.length
   );
+
   return (
     <Container>
-      {displayedIndexes.map((displayedIndex, idx) => (
+      {displayedIndexes.map((index) => (
         <Image
-          key={idx}
-          isFocused={displayedIndex === currentIndex}
-          src={imageSrcs[displayedIndex]}
-          alt={imageSrcs[displayedIndex]}
+          key={imageSrcs[index]}
+          variants={imageVariants}
+          initial="hidden"
+          animate="visible"
+          //
+          alt={imageSrcs[index]}
+          src={imageSrcs[index]}
+          isFocused={index === currentIndex}
         />
       ))}
     </Container>
@@ -36,15 +48,51 @@ function ImageCarousel({
 }
 
 type ContainerProps = {};
-const Container = styled.div<ContainerProps>``;
+const Container = styled(motion.div)<ContainerProps>`
+  ${tw`flex`}
+`;
+
+const slideIn = keyframes`
+  from {
+    transform: translateX(50%);
+  }
+
+  to {
+    transform: translateX(0) ;
+  }
+`;
+
+const focus = keyframes`
+  from {
+    transform: translateX(50%) scale(1);
+    opacity: .5;
+
+  }
+
+  to {
+    transform: translateX(0) scale(1.5);
+    opacity: 1;
+  }
+`;
 
 type TextProps = {
   isFocused: boolean;
 };
-const Image = styled.img<TextProps>`
-  height: 5rem;
-  width: 10rem;
-  transform: scale(${(p) => (p.isFocused ? 2 : 1)});
+const Image = styled(motion.img)<TextProps>`
+  width: 5rem;
+  height: 7rem;
+  object-fit: cover;
+  opacity: 0.7;
+  animation: ${slideIn} 400ms ease forwards;
+
+  ${(p) =>
+    p.isFocused &&
+    css`
+      animation-name: ${focus};
+      box-shadow: 0 10px 20px #000;
+
+      z-index: 10;
+    `};
 `;
 
 export { ImageCarousel };

@@ -37,12 +37,7 @@ function HeroSection({}: Props): ReactElement {
           <Link href="/projects">See my projects</Link>
         </CustomButton>
 
-        <Row>
-          {srcs.map((src) => (
-            <img key={src} src={src} width={50} height={50} alt={src} />
-          ))}
-        </Row>
-        <ImageCarousel imageSrcs={srcs} intervalInMs={7000} displayRange={2} />
+        <ImageCarousel imageSrcs={srcs} intervalInMs={2000} displayRange={1} />
       </InfoContainer>
     </Container>
   );

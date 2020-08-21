@@ -12,7 +12,7 @@ type Props = {};
 const BREAKPOINT = "xl";
 const IMAGE_SOURCES: string[] = [];
 for (let i = 1; i <= 7; i++) {
-  IMAGE_SOURCES.push(`/imgs/carousel/carousel-${i}.jpg`);
+  IMAGE_SOURCES.push(`/imgs/carousel/carousel-${i}.webp`);
 }
 
 function HeroSection({}: Props): ReactElement {

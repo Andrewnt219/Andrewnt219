@@ -128,8 +128,8 @@ const CarouselContainer = styled.div<CarouselContainerProps>`
   }
 
   @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
-    --img-height: 15rem;
-    --width-scale: 2/3;
+    --img-height: 14vw;
+    --width-scale: 3/4;
 
     margin-top: 0;
   }

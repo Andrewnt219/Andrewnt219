@@ -24,5 +24,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-function-return-type": 0,
     "no-debugger": "off",
+    "@typescript-eslint/ban-ts-ignore": 0,
+    "@typescript-eslint/no-var-requires": 0,
   },
 };

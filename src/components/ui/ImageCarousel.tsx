@@ -3,6 +3,7 @@ import { useCarousel } from "@src/hooks";
 import React, { ReactElement, useMemo } from "react";
 import styled, { keyframes } from "styled-components";
 import tw, { css } from "twin.macro";
+import { ResponsiveImage } from "./ResponsiveImage";
 
 type Option = {
   intervalInMs: number;
@@ -37,12 +38,10 @@ function ImageCarousel({
         <Image
           key={imageSrcs[index]}
           isFocused={index === currentIndex}
-          scale={focusedImgScale}
+          focusedScale={focusedImgScale}
           //
           alt={imageSrcs[index]}
-          src={imageSrcs[index]}
-          width={imgWidth}
-          height={imgHeight}
+          path={imageSrcs[index]}
         />
       ))}
     </Container>
@@ -79,15 +78,11 @@ const focus = (scale: number) => keyframes`
   }
 `;
 
-type TextProps = {
+type ImageProps = {
   isFocused: boolean;
-  width: string;
-  height: string;
-  scale: number;
+  focusedScale: number;
 };
-const Image = styled.img<TextProps>`
-  width: ${(p) => p.width};
-  height: ${(p) => p.height};
+const Image = styled(ResponsiveImage)<ImageProps>`
   object-fit: cover;
   opacity: 0.7;
   animation: ${slideIn} 450ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -96,7 +91,7 @@ const Image = styled.img<TextProps>`
   ${(p) =>
     p.isFocused &&
     css`
-      animation-name: ${focus(1.5)};
+      animation-name: ${focus(p.focusedScale)};
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
         0 15px 12px rgba(0, 0, 0, 0.22);
       z-index: 10;

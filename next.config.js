@@ -5,6 +5,7 @@ const bundleAnalyzer = require("@next/bundle-analyzer")({
 const optimizedImages = require("next-optimized-images");
 const sourceMaps = require("@zeit/next-source-maps");
 const pwa = require("next-pwa");
+const runtimeCaching = require("next-pwa/cache");
 const withPlugins = require("next-compose-plugins");
 module.exports = withPlugins(
   [
@@ -27,6 +28,7 @@ module.exports = withPlugins(
       {
         pwa: {
           dest: "public",
+          disable: process.env.NODE_ENV === "development",
         },
       },
     ],

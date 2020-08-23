@@ -13,16 +13,14 @@ type Option = {
 type Props = {
   className?: string;
   imageSrcs: string[];
-  imgWidth?: string;
-  imgHeight?: string;
   options: Option;
+  sizes: string;
 };
 
 function ImageCarousel({
   options: { intervalInMs = 2000, displayRange = 1, focusedImgScale = 1.5 },
-  imgWidth = "250",
-  imgHeight = "250",
   imageSrcs,
+  sizes,
   className,
 }: Props): ReactElement {
   const { currentIndex } = useCarousel(intervalInMs, imageSrcs.length);
@@ -33,7 +31,7 @@ function ImageCarousel({
   );
 
   return (
-    <Container imageHeight={imgHeight} className={className}>
+    <Container className={className}>
       {displayedIndexes.map((index) => (
         <Image
           key={imageSrcs[index]}
@@ -42,15 +40,14 @@ function ImageCarousel({
           //
           alt={imageSrcs[index]}
           path={imageSrcs[index]}
+          sizes={sizes}
         />
       ))}
     </Container>
   );
 }
 
-type ContainerProps = {
-  imageHeight: string;
-};
+type ContainerProps = {};
 const Container = styled.div<ContainerProps>`
   ${tw`flex items-center justify-center`}
 `;

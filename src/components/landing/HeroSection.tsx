@@ -39,8 +39,7 @@ function HeroSection({}: Props): ReactElement {
         <ImageCarousel
           imageSrcs={IMAGE_SOURCES}
           options={{ intervalInMs: 2000, displayRange: 1 }}
-          imgHeight="15rem"
-          imgWidth="10rem"
+          sizes="(min-width: 1200px) 40vw, 40vmin"
         />
       </CarouselContainer>
     </Container>

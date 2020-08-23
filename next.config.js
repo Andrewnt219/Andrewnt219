@@ -14,6 +14,7 @@ module.exports = withPlugins(
         responsive: {
           adapter: require("responsive-loader/sharp"),
           format: "webp",
+          quality: 40,
           sizes: [320, 480, 640, 768, 1024, 1200, 1600, 1920, 2560, 3840],
         },
       },

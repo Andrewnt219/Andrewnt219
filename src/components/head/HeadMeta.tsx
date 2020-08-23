@@ -25,13 +25,11 @@ function HeadMeta({}: Props): ReactElement {
       <meta key="ogType" name="og:type" content="website" />
       <meta key="ogSiteName" name="og:site-name" content="Andrew Nguyen" />
       {/* //TODO change image */}
-      <meta
-        key="ogImage"
-        name="og:image"
-        content="/android-chrome-192x192.png"
-      />
-      <meta key="ogImageWidth" name="og:image:width" content="192" />
-      <meta key="ogImageHeight" name="og:image:height" content="192" />
+      <meta key="ogUrl" property="og:url" content="https://andrewnt.dev/" />
+      <meta key="fbAppId" property="fb:app_id" content="349386242864659" />
+      <meta key="ogImage" property="og:image" content="/og-image.jpg" />
+      <meta key="ogImageWidth" name="og:image:width" content="1285" />
+      <meta key="ogImageHeight" name="og:image:height" content="1845" />
       <meta
         key="ogTitle"
         name="og:title"

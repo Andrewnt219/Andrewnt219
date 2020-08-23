@@ -45,6 +45,7 @@ function ResponsiveImage({
       width={responsiveImage.width}
       height={responsiveImage.height}
       alt={alt}
+      sizes="(min-width: 1200px) 10.5vw, 12.61vw"
     />
   );
 }

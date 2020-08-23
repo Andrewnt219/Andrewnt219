@@ -5,6 +5,7 @@ const bundleAnalyzer = require("@next/bundle-analyzer")({
 const optimizedImages = require("next-optimized-images");
 const pwa = require("next-pwa");
 const withPlugins = require("next-compose-plugins");
+
 module.exports = withPlugins(
   [
     [
@@ -13,9 +14,7 @@ module.exports = withPlugins(
         responsive: {
           adapter: require("responsive-loader/sharp"),
           format: "webp",
-          quality: 50,
-          sizes: [320, 640, 960, 1200, 1800, 2400],
-          placeholder: true,
+          sizes: [320, 480, 640, 768, 1024, 1200, 1600, 1920, 2560, 3840],
         },
       },
     ],

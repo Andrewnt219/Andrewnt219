@@ -3,9 +3,7 @@ const bundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 const optimizedImages = require("next-optimized-images");
-const sourceMaps = require("@zeit/next-source-maps");
 const pwa = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
 const withPlugins = require("next-compose-plugins");
 module.exports = withPlugins(
   [
@@ -22,7 +20,6 @@ module.exports = withPlugins(
       },
     ],
     [bundleAnalyzer],
-    [sourceMaps],
     [
       pwa,
       {

@@ -120,7 +120,6 @@ const Summary = styled.h2<SummaryProps>`
 
 type CustomButtonProps = {};
 const CustomButton = styled(Button)<CustomButtonProps>`
-  padding: 0.5rem 3.5rem;
   margin-top: 2vh;
   font-size: smaller;
   max-width: 20rem;

@@ -112,7 +112,7 @@ type StyledButtonProps = {
 const buttonStyle = css`
   ${tw`hocus:outline-none uppercase border border-transparent`}
   border-radius: 7px;
-  line-height: 2.8rem;
+  padding: 1rem 3.5rem;
 `;
 
 type LightButtonProps = StyledButtonProps & {};

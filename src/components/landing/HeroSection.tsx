@@ -4,21 +4,26 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { Link } from "@src/components/navigations/Link";
 import { APPBAR_HEIGHT } from "@src/constants/styles.constants";
-
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 
-const BREAKPOINT = "xl";
+enum Styling {
+  Breakpoint = "xl",
+  CarouselSizes = "(min-width: 1200px) 40vw, 40vmin",
+}
+
 enum Carousel {
   NumberOfImages = 8,
   FocusedImageScale = 1.5,
+  IntervalInMs = 2000,
+  DisplayRange = 1,
 }
+
 const IMAGE_SOURCES: string[] = [];
 for (let i = 1; i <= Carousel.NumberOfImages; i++) {
   IMAGE_SOURCES.push(`carousel/carousel-${i}.jpg`);
 }
 
 type Props = {};
-
 function HeroSection({}: Props): ReactElement {
   return (
     <Container>
@@ -39,15 +44,16 @@ function HeroSection({}: Props): ReactElement {
           <Link href="/projects">See my projects</Link>
         </CustomButton>
       </InfoContainer>
+
       <CarouselContainer>
         <ImageCarousel
           imageSrcs={IMAGE_SOURCES}
           options={{
-            intervalInMs: 2000,
-            displayRange: 1,
+            intervalInMs: Carousel.IntervalInMs,
+            displayRange: Carousel.DisplayRange,
             focusedImgScale: Carousel.FocusedImageScale,
           }}
-          sizes="(min-width: 1200px) 40vw, 40vmin"
+          sizes={Styling.CarouselSizes}
         />
       </CarouselContainer>
     </Container>
@@ -59,7 +65,8 @@ const Container = styled.section<ContainerProps>`
   height: calc(100vh - ${APPBAR_HEIGHT});
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
 
-  @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
+  @media screen and (min-width: ${(p) =>
+    p.theme.breakpoints[Styling.Breakpoint]}) {
     ${tw`text-2xl flex-row items-center`}
   }
 `;
@@ -73,7 +80,8 @@ const InfoContainer = styled.article<InfoContainerProps>`
     margin-bottom: 1vh;
   }
 
-  @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[Styling.Breakpoint]}) {
     width: 60%;
     ${tw`items-start`}
   }
@@ -88,7 +96,8 @@ const Heading = styled.h1<HeadingProps>`
     font-size: inherit;
   }
 
-  @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[Styling.Breakpoint]}) {
     ${tw`text-5xl justify-start`}
   }
 `;
@@ -104,7 +113,8 @@ const Summary = styled.h2<SummaryProps>`
   font-size: inherit;
   text-align: center;
 
-  @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[Styling.Breakpoint]}) {
     text-align: left;
   }
 `;
@@ -136,7 +146,8 @@ const CarouselContainer = styled.div<CarouselContainerProps>`
     border-radius: 4px;
   }
 
-  @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[Styling.Breakpoint]}) {
     --img-height: 14vw;
     --width-scale: 3/4;
 

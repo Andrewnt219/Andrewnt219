@@ -80,10 +80,13 @@ type ImageProps = {
   focusedScale: number;
 };
 const Image = styled(ResponsiveImage)<ImageProps>`
-  object-fit: cover;
   opacity: 0.7;
   animation: ${slideIn} 450ms cubic-bezier(0, 0, 0.2, 1) forwards;
   background: var(--textColor);
+
+  img {
+    object-fit: cover;
+  }
 
   ${(p) =>
     p.isFocused &&

@@ -11,8 +11,8 @@ type Props = {};
 
 const BREAKPOINT = "xl";
 const IMAGE_SOURCES: string[] = [];
-for (let i = 1; i <= 7; i++) {
-  IMAGE_SOURCES.push(`carousel/carousel-${i}.webp`);
+for (let i = 1; i <= 8; i++) {
+  IMAGE_SOURCES.push(`carousel/carousel-${i}.jpg`);
 }
 
 function HeroSection({}: Props): ReactElement {
@@ -120,6 +120,7 @@ const CarouselContainer = styled.div<CarouselContainerProps>`
   margin-top: 10%;
   height: calc(var(--img-height) * 1.5);
 
+  picture,
   img {
     width: calc(var(--img-height) * var(--width-scale));
     height: var(--img-height);

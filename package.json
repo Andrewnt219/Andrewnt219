@@ -12,6 +12,8 @@
     "@zeit/next-source-maps": "^0.0.3",
     "blurhash": "^1.1.3",
     "framer-motion": "^2.3.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
     "jimp": "^0.16.0",
     "lodash": "^4.17.19",

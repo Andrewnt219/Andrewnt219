@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
 import { IconType } from "react-icons";
-import styled from "styled-components";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 
 export type MediaIconProps = {
   Icon: IconType;

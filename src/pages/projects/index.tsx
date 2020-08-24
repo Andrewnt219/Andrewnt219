@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
-import tw from "twin.macro";
+import { styled } from "twin.macro";
 import Head from "next/head";
 import { HeadTitle } from "@src/components/head/HeadTitle";
 

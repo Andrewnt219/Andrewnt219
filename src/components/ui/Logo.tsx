@@ -4,8 +4,7 @@ import { glow } from "@src/styles/animation/glow.animation";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import Link from "next/link";
 import React, { ReactElement, useContext } from "react";
-import styled from "styled-components";
-import tw, { css } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 
 const pathVariants: Variants = {
   hidden: {

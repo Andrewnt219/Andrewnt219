@@ -1,7 +1,6 @@
 import NextLink, { LinkProps } from "next/link";
 import React, { ReactElement, ReactNode } from "react";
-import styled from "styled-components";
-import tw from "twin.macro";
+import { styled } from "twin.macro";
 
 type Props = LinkProps & {
   children: ReactNode;

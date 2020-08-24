@@ -2,9 +2,8 @@ import { Route } from "@src/data/routes.data";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import React, { ReactElement } from "react";
-import styled from "styled-components";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import tw, { css } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 import { spin } from "@src/styles/animation/spin.animation";
 import { useRouteMatch } from "@src/hooks";
 

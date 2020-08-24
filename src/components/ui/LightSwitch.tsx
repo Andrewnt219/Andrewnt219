@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
+import { styled } from "twin.macro";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useToggleDarkMode } from "@src/hooks";
 

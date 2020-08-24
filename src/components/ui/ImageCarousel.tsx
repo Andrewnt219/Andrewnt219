@@ -1,8 +1,8 @@
 import { getIndexesInRange } from "@src/helpers/utils.helpers";
 import { useCarousel } from "@src/hooks";
 import React, { ReactElement, useMemo } from "react";
-import styled, { keyframes } from "styled-components";
-import tw, { css } from "twin.macro";
+import { keyframes } from "styled-components";
+import tw, { styled, css } from "twin.macro";
 import { ResponsiveImage } from "./ResponsiveImage";
 
 type Option = {

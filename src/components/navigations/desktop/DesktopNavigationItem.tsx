@@ -2,8 +2,7 @@ import { Route } from "@src/data/routes.data";
 import { useRouteMatch } from "@src/hooks";
 import Link from "next/link";
 import React, { ReactElement } from "react";
-import styled from "styled-components";
-import tw, { css } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 
 type Props = Route & {};
 

@@ -1,8 +1,7 @@
 import React, { ReactElement, ReactNode } from "react";
-import styled from "styled-components";
 import { AppBar } from "./AppBar";
 import { Footer } from "./Footer";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 
 import { HeadMeta } from "../head/HeadMeta";
 import { APPBAR_HEIGHT, FOOTER_HEIGHT } from "@src/constants/styles.constants";

@@ -3,8 +3,7 @@ import { HeadTitle } from "@src/components/head/HeadTitle";
 import { MainLayout } from "@src/components/layouts/MainLayout";
 import Head from "next/head";
 import React, { ReactElement } from "react";
-import styled from "styled-components";
-import tw from "twin.macro";
+import { styled } from "twin.macro";
 
 type Props = {};
 

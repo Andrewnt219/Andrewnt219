@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 import { FaGithubAlt, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { MediaIcon, MediaIconProps } from "../footer/MediaIcon";
 

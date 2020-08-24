@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
 import { Button } from "@src/components/ui/Button";
-import styled from "styled-components";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 import { Link } from "@src/components/navigations/Link";
 import { APPBAR_HEIGHT } from "@src/constants/styles.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
@@ -121,13 +120,10 @@ const Summary = styled.h2<SummaryProps>`
 
 type CustomButtonProps = {};
 const CustomButton = styled(Button)<CustomButtonProps>`
-  //! a weird bug make the custom props has lower specitivity than DarkButton props
-  && {
-    padding: 0.5rem 3.5rem;
-    margin-top: 2vh;
-    font-size: smaller;
-    max-width: 20rem;
-  }
+  padding: 0.5rem 3.5rem;
+  margin-top: 2vh;
+  font-size: smaller;
+  max-width: 20rem;
 `;
 
 type CarouselContainerProps = {};

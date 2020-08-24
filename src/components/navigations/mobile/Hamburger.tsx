@@ -1,7 +1,6 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
-import styled, { css } from "styled-components";
-import tw from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 
 const textVariants: Variants = {
   visible: {

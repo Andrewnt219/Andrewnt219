@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "twin.macro";
 
 type RowProps = {
   justify?:

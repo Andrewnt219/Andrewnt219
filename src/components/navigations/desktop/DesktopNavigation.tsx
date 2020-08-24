@@ -1,8 +1,7 @@
 import { allRoutes } from "@src/data/routes.data";
 import React, { ReactElement } from "react";
-import styled from "styled-components";
 import { DesktopNavigationItem } from "./DesktopNavigationItem";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 import { LightSwitch } from "../../ui/LightSwitch";
 
 function DesktopNavigation(): ReactElement {

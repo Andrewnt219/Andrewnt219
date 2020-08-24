@@ -1,4 +1,4 @@
-import tw, { css, styled } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 import React, { ReactElement, ReactNode, useContext } from "react";
 import { ThemeContext } from "@src/contexts/theme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
@@ -112,7 +112,6 @@ type StyledButtonProps = {
 const buttonStyle = css`
   ${tw`hocus:outline-none uppercase border border-transparent`}
   border-radius: 7px;
-  padding: 0 2rem;
   line-height: 2.8rem;
 `;
 

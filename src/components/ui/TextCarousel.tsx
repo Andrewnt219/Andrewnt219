@@ -1,7 +1,7 @@
 import { useCarousel } from "@src/hooks";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
-import styled from "styled-components";
+import { styled } from "twin.macro";
 
 const textVariants: Variants = {
   hidden: {

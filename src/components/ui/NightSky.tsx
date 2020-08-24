@@ -1,7 +1,8 @@
 import { useMediaQuery } from "@src/hooks";
 import { motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
-import styled, { css, keyframes } from "styled-components";
+import { keyframes } from "styled-components";
+import { styled, css } from "twin.macro";
 
 const containerVariants: Variants = {
   hidden: {

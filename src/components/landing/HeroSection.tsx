@@ -7,13 +7,17 @@ import { APPBAR_HEIGHT } from "@src/constants/styles.constants";
 
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 
-type Props = {};
-
 const BREAKPOINT = "xl";
+enum Carousel {
+  NumberOfImages = 8,
+  FocusedImageScale = 1.5,
+}
 const IMAGE_SOURCES: string[] = [];
-for (let i = 1; i <= 8; i++) {
+for (let i = 1; i <= Carousel.NumberOfImages; i++) {
   IMAGE_SOURCES.push(`carousel/carousel-${i}.jpg`);
 }
+
+type Props = {};
 
 function HeroSection({}: Props): ReactElement {
   return (
@@ -38,7 +42,11 @@ function HeroSection({}: Props): ReactElement {
       <CarouselContainer>
         <ImageCarousel
           imageSrcs={IMAGE_SOURCES}
-          options={{ intervalInMs: 2000, displayRange: 1 }}
+          options={{
+            intervalInMs: 2000,
+            displayRange: 1,
+            focusedImgScale: Carousel.FocusedImageScale,
+          }}
           sizes="(min-width: 1200px) 40vw, 40vmin"
         />
       </CarouselContainer>
@@ -50,23 +58,24 @@ type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
   height: calc(100vh - ${APPBAR_HEIGHT});
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
-  padding: 5vh 0;
 
   @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
-    ${tw`text-2xl flex-row`}
+    ${tw`text-2xl flex-row items-center`}
   }
 `;
 
 type InfoContainerProps = {};
 const InfoContainer = styled.article<InfoContainerProps>`
   width: 100%;
-  ${tw`flex flex-col space-y-4 items-center`}
+  ${tw`flex flex-col items-center`}
 
+  > *:not(:last-child) {
+    margin-bottom: 1vh;
+  }
 
   @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
     width: 60%;
-    height: 100%;
-    ${tw`space-y-6 items-start`}
+    ${tw`items-start`}
   }
 `;
 
@@ -105,7 +114,7 @@ const CustomButton = styled(Button)<CustomButtonProps>`
   //! a weird bug make the custom props has lower specitivity than DarkButton props
   && {
     padding: 0.5rem 3.5rem;
-    margin-top: 4rem;
+    margin-top: 2vh;
     font-size: smaller;
     max-width: 20rem;
   }
@@ -117,8 +126,8 @@ const CarouselContainer = styled.div<CarouselContainerProps>`
   --width-scale: 3/2;
 
   ${tw` flex items-center mx-auto`}
-  margin-top: 10%;
-  height: calc(var(--img-height) * 1.5);
+  margin-top: 4vh;
+  height: calc(var(--img-height) * ${Carousel.FocusedImageScale});
 
   picture,
   img {

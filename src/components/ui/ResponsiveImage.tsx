@@ -1,10 +1,11 @@
 import React, { ImgHTMLAttributes, ReactElement, useMemo } from "react";
-import { styled } from "twin.macro";
+import tw, { styled } from "twin.macro";
 
 type Props = ImgHTMLAttributes<HTMLImageElement> & {
   path: string;
   className?: string;
   key?: string;
+  src?: never;
 };
 
 type ResponsiveImage = {
@@ -36,31 +37,53 @@ function ResponsiveImage({
     () => require(`images/${path}?resize`),
     [path]
   );
+
   const responsiveImageWebp: ResponsiveImage = useMemo(
     () => require(`images/${path}?resize&format=webp`),
     [path]
   );
+
+  const placeholderImage = useMemo(() => require(`images/${path}?lqip`), [
+    path,
+  ]);
+
+  const sharedImageProps = {
+    ...imgProps,
+    width: responsiveImage.width,
+    height: responsiveImage.height,
+    alt: alt,
+  };
 
   return (
     <Picture key={key} className={className}>
       <source srcSet={responsiveImageWebp.srcSet} type="image/webp" />
       <source srcSet={responsiveImage.srcSet} type="image/jpeg" />
       <StyledImage
-        {...imgProps}
+        {...sharedImageProps}
         //
         src={responsiveImage.src}
-        width={responsiveImage.width}
-        height={responsiveImage.height}
-        alt={alt}
+      />
+
+      <PlaceholderImage
+        {...sharedImageProps}
+        //
+        src={placeholderImage}
       />
     </Picture>
   );
 }
 
 type PictureProps = {};
-const Picture = styled.picture<PictureProps>``;
+const Picture = styled.picture<PictureProps>`
+  position: relative;
+`;
 
 type StyledImageProps = {};
-const StyledImage = styled.img<StyledImageProps>``;
+const StyledImage = styled.img<StyledImageProps>`
+  ${tw`absolute top-0 left-0 z-10`}
+`;
+
+type PlaceholderImageProps = {};
+const PlaceholderImage = styled.img<PlaceholderImageProps>``;
 
 export { ResponsiveImage };

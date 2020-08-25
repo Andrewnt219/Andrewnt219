@@ -4,6 +4,7 @@ import tw, { styled } from "twin.macro";
 import { Link } from "@src/components/navigations/Link";
 import { APPBAR_HEIGHT } from "@src/constants/styles.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
+import { useInView } from "react-intersection-observer";
 
 enum Styling {
   Breakpoint = "xl",
@@ -11,10 +12,10 @@ enum Styling {
 }
 
 enum Carousel {
-  NumberOfImages = 8,
+  NumberOfImages = 11,
   FocusedImageScale = 1.5,
-  IntervalInMs = 2000,
   DisplayRange = 1,
+  IntervalInMs = 2000,
 }
 
 const IMAGE_SOURCES: string[] = [];
@@ -24,6 +25,11 @@ for (let i = 1; i <= Carousel.NumberOfImages; i++) {
 
 type Props = {};
 function HeroSection({}: Props): ReactElement {
+  const [ref, inView] = useInView();
+  const carouselInvtervalInMs = inView
+    ? Carousel.IntervalInMs
+    : Carousel.IntervalInMs * 9999;
+
   return (
     <Container>
       <InfoContainer>
@@ -44,11 +50,11 @@ function HeroSection({}: Props): ReactElement {
         </CustomButton>
       </InfoContainer>
 
-      <CarouselContainer>
+      <CarouselContainer ref={ref}>
         <ImageCarousel
           imageSrcs={IMAGE_SOURCES}
           options={{
-            intervalInMs: Carousel.IntervalInMs,
+            intervalInMs: carouselInvtervalInMs,
             displayRange: Carousel.DisplayRange,
             focusedImgScale: Carousel.FocusedImageScale,
           }}

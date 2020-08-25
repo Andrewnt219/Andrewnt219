@@ -31,7 +31,7 @@ function HeroSection({}: Props): ReactElement {
     : Carousel.IntervalInMs * 9999;
 
   return (
-    <Container>
+    <Container ref={ref}>
       <InfoContainer>
         <AuthorName>Andrew Nguyen</AuthorName>
 
@@ -50,17 +50,15 @@ function HeroSection({}: Props): ReactElement {
         </CustomButton>
       </InfoContainer>
 
-      <CarouselContainer ref={ref}>
-        <ImageCarousel
-          imageSrcs={IMAGE_SOURCES}
-          options={{
-            intervalInMs: carouselInvtervalInMs,
-            displayRange: Carousel.DisplayRange,
-            focusedImgScale: Carousel.FocusedImageScale,
-          }}
-          sizes={Styling.CarouselSizes}
-        />
-      </CarouselContainer>
+      <CarouselContainer
+        imageSrcs={IMAGE_SOURCES}
+        options={{
+          intervalInMs: carouselInvtervalInMs,
+          displayRange: Carousel.DisplayRange,
+          focusedImgScale: Carousel.FocusedImageScale,
+        }}
+        sizes={Styling.CarouselSizes}
+      />
     </Container>
   );
 }
@@ -132,7 +130,7 @@ const CustomButton = styled(Button)<CustomButtonProps>`
 `;
 
 type CarouselContainerProps = {};
-const CarouselContainer = styled.div<CarouselContainerProps>`
+const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
   --img-height: 15vmin;
   --width-scale: 3/2;
 
@@ -140,11 +138,11 @@ const CarouselContainer = styled.div<CarouselContainerProps>`
   margin-top: 4vh;
   height: calc(var(--img-height) * ${Carousel.FocusedImageScale});
 
-  picture,
+  > *,
   img {
     width: calc(var(--img-height) * var(--width-scale));
     height: var(--img-height);
-    border-radius: 4px;
+    border-radius: 0.5rem;
   }
 
   @media screen and (min-width: ${(p) =>

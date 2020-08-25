@@ -43,10 +43,6 @@ function ResponsiveImage({
     [path]
   );
 
-  const placeholderImage = useMemo(() => require(`images/${path}?lqip`), [
-    path,
-  ]);
-
   const sharedImageProps = {
     ...imgProps,
     width: responsiveImage.width,
@@ -55,7 +51,11 @@ function ResponsiveImage({
   };
 
   return (
-    <Picture key={key} className={className}>
+    <Picture
+      key={key}
+      className={className}
+      placeholder={responsiveImage.placeholder}
+    >
       <source srcSet={responsiveImageWebp.srcSet} type="image/webp" />
       <source srcSet={responsiveImage.srcSet} type="image/jpeg" />
       <StyledImage
@@ -63,27 +63,22 @@ function ResponsiveImage({
         //
         src={responsiveImage.src}
       />
-
-      <PlaceholderImage
-        {...sharedImageProps}
-        //
-        src={placeholderImage}
-      />
     </Picture>
   );
 }
 
-type PictureProps = {};
+type PictureProps = {
+  placeholder?: string;
+};
 const Picture = styled.picture<PictureProps>`
   position: relative;
+  background: url(${(p) => p.placeholder});
+  background-size: cover;
 `;
 
 type StyledImageProps = {};
 const StyledImage = styled.img<StyledImageProps>`
   ${tw`absolute top-0 left-0 z-10`}
 `;
-
-type PlaceholderImageProps = {};
-const PlaceholderImage = styled.img<PlaceholderImageProps>``;
 
 export { ResponsiveImage };

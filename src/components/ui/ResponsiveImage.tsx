@@ -51,19 +51,25 @@ function ResponsiveImage({
   };
 
   return (
-    <Picture
+    /* //! weird bug that make online inline-styling work with bgImage */
+    <div
       key={key}
       className={className}
-      placeholder={responsiveImage.placeholder}
+      style={{
+        backgroundSize: "cover",
+        backgroundImage: 'url("' + responsiveImage.placeholder + '")',
+      }}
     >
-      <source srcSet={responsiveImageWebp.srcSet} type="image/webp" />
-      <source srcSet={responsiveImage.srcSet} type="image/jpeg" />
-      <StyledImage
-        {...sharedImageProps}
-        //
-        src={responsiveImage.src}
-      />
-    </Picture>
+      <Picture placeholder={responsiveImage.placeholder}>
+        <source srcSet={responsiveImageWebp.srcSet} type="image/webp" />
+        <source srcSet={responsiveImage.srcSet} type="image/jpeg" />
+        <StyledImage
+          {...sharedImageProps}
+          //
+          src={responsiveImage.src}
+        />
+      </Picture>
+    </div>
   );
 }
 
@@ -77,8 +83,6 @@ const Picture = styled.picture<PictureProps>`
 `;
 
 type StyledImageProps = {};
-const StyledImage = styled.img<StyledImageProps>`
-  ${tw`absolute top-0 left-0 z-10`}
-`;
+const StyledImage = styled.img<StyledImageProps>``;
 
 export { ResponsiveImage };

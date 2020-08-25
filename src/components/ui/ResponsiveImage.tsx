@@ -1,4 +1,9 @@
-import React, { ImgHTMLAttributes, ReactElement, useMemo } from "react";
+import React, {
+  ImgHTMLAttributes,
+  ReactElement,
+  SourceHTMLAttributes,
+  useMemo,
+} from "react";
 import tw, { styled } from "twin.macro";
 
 type Props = ImgHTMLAttributes<HTMLImageElement> & {
@@ -29,10 +34,16 @@ type ResponsiveImage = {
 function ResponsiveImage({
   className,
   path,
-  alt,
+  sizes,
   key,
   ...imgProps
 }: Props): ReactElement {
+  const { alt } = imgProps;
+
+  const sharedSourceProps: SourceHTMLAttributes<HTMLSourceElement> = {
+    sizes: sizes,
+  };
+
   const responsiveImage: ResponsiveImage = useMemo(
     () => require(`images/${path}?resize`),
     [path]
@@ -42,13 +53,6 @@ function ResponsiveImage({
     () => require(`images/${path}?resize&format=webp`),
     [path]
   );
-
-  const sharedImageProps = {
-    ...imgProps,
-    width: responsiveImage.width,
-    height: responsiveImage.height,
-    alt: alt,
-  };
 
   return (
     /* //! weird bug that make online inline-styling work with bgImage */
@@ -61,11 +65,21 @@ function ResponsiveImage({
       }}
     >
       <Picture placeholder={responsiveImage.placeholder}>
-        <source srcSet={responsiveImageWebp.srcSet} type="image/webp" />
-        <source srcSet={responsiveImage.srcSet} type="image/jpeg" />
+        <source
+          {...sharedSourceProps}
+          srcSet={responsiveImageWebp.srcSet}
+          type="image/webp"
+        />
+        <source
+          {...sharedSourceProps}
+          srcSet={responsiveImage.srcSet}
+          type="image/jpeg"
+        />
         <StyledImage
-          {...sharedImageProps}
-          //
+          {...imgProps}
+          width={responsiveImage.width}
+          height={responsiveImage.height}
+          alt={alt}
           src={responsiveImage.src}
         />
       </Picture>

@@ -23,8 +23,8 @@ for (let i = 1; i <= Carousel.NumberOfImages; i++) {
   IMAGE_SOURCES.push(`carousel/carousel-${i}.jpg`);
 }
 
-type Props = {};
-function HeroSection({}: Props): ReactElement {
+function HeroSection(): ReactElement {
+  /* Stop carousel out of view */
   const [ref, inView] = useInView();
   const carouselInvtervalInMs = inView
     ? Carousel.IntervalInMs

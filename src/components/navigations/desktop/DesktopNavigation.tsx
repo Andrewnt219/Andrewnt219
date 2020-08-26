@@ -4,29 +4,58 @@ import { DesktopNavigationItem } from "./DesktopNavigationItem";
 import tw, { styled } from "twin.macro";
 import { LightSwitch } from "../../ui/LightSwitch";
 
+const EMAIL = "hey@andrewnt.dev";
+
 function DesktopNavigation(): ReactElement {
   return (
     <Container>
       {allRoutes.map(({ text, ...linkProps }) => (
         <DesktopNavigationItem key={text} text={text} {...linkProps} />
       ))}
-      {/* //TODO move this out of <ul> */}
-      <li
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+
+      <EmailContainer>
+        <EmailLink href={`mailto:${EMAIL}`}>{EMAIL}</EmailLink>
+      </EmailContainer>
+
+      <LightSwitchContainer>
         <CustomLightSwitch />
-      </li>
+      </LightSwitchContainer>
     </Container>
   );
 }
 
 type ContainerProps = {};
 const Container = styled.ul<ContainerProps>`
-  ${tw`flex space-x-5 `}
+  ${tw`flex space-x-5 text-xl font-heading`}
+
+  li > * {
+    ${tw`pb-2`}
+  }
+`;
+
+type EmailContainerProps = {};
+const EmailContainer = styled.li<EmailContainerProps>`
+  /* For vertically centered */
+  /* Padding bottom is the same as anchors in Container */
+  ${tw`flex justify-center items-center pb-2`}
+`;
+
+type EmailLinkProps = {};
+const EmailLink = styled.a<EmailLinkProps>`
+  ${tw`text-sm py-2 px-4 border  rounded-full bg-textColor text-primary border-textColor`}
+  border-style: inset;
+  ${tw`transition-transform duration-300 ease-in-out`};
+
+  :hover,
+  :focus {
+    ${tw` duration-300 ease-in-out`}
+    transform: scale(1.15);
+  }
+`;
+
+type LightSwitchContainerProps = {};
+const LightSwitchContainer = styled.li<LightSwitchContainerProps>`
+  ${tw`flex justify-center items-center`}
 `;
 
 type CustomLightSwitchProps = {};

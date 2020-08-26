@@ -96,40 +96,36 @@ export const flickering = keyframes`
     }
 `;
 
+/**
+ * @param shadow_1 css variable shadow-1
+ * @param shadow_2 css variable shadow-2
+ */
 export const buttonFlickering = keyframes`
-0% {
-    border-color: var(--accent-color);
-    -webkit-box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
-    box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
+0% {border-color: var(--accent-color);
+    box-shadow: var(--shadow-1);
 }
 15% {
     border-color: #56beff;
-    -webkit-box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
-    box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
+    box-shadow: var(--shadow-2);
 }
 16% {
     border-color: transparent;
-    -webkit-box-shadow: 0 0 20px transparent, inset 0 0 10px transparent, 0 2px 0 transparent;
-    box-shadow: 0 0 20px transparent, inset 0 0 10px transparent, 0 2px 0 transparent;
+    box-shadow: 0 0 2rem transparent, inset 0 0 1rem transparent, 0 .2rem 0 transparent;
 }
 17% {
     border-color: var(--accent-color);
-    -webkit-box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
-    box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
+    box-shadow: var(--shadow-1);
 }
 20% {
     border-color: #56beff;
-    -webkit-box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
-    box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
+    box-shadow: var(--shadow-2);
 }
 30% {
     border-color: var(--accent-color);
-    -webkit-box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
-    box-shadow: 0 0 5px rgba(67,183,255,.2), inset 0 0 5px rgba(67,183,255,.1), 0 2px 0 #000;
+    box-shadow: var(--shadow-1);
 }
 100% {
     border-color: #56beff;
-    -webkit-box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
-    box-shadow: 0 0 10px rgba(67,183,255,.6), inset 0 0 10px rgba(67,183,255,.4), 0 2px 0 #000;
+    box-shadow: var(--shadow-2);
 }
 `;

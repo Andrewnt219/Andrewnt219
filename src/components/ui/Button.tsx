@@ -146,10 +146,18 @@ export const LightButton = styled.button<LightButtonProps>`
 
 type DarkButtonProps = StyledButtonProps & {};
 const DarkButton = styled(motion.button)<DarkButtonProps>`
+  --shadow: 0 0 0.5rem 0 var(--accent-color);
+  --shadow-1: var(--shadow), inset 0 0 0.5rem rgba(67, 183, 255, 0.1),
+    0 0.2rem 0 #000;
+  --shadow-2: 0 0 1rem rgba(67, 183, 255, 0.6),
+    inset 0 0 1rem rgba(67, 183, 255, 0.4), 0 0.2rem 0 #000;
+
   ${buttonStyle}
   ${tw`text-accent border-accent border bg-transparent`}
+  box-shadow: var(--shadow);
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     animation: ${buttonFlickering} 0.8s ease-out infinite alternate;
   }
 `;

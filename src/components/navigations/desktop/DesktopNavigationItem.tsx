@@ -25,13 +25,15 @@ function DesktopNavigationItem({
 }
 
 type ContainerProps = {};
-const ListItem = styled.li<ContainerProps>``;
+const ListItem = styled.li<ContainerProps>`
+  ${tw`flex justify-center items-center`}
+`;
 
 type AnchorProps = {
   isActive: boolean;
 };
 const Anchor = styled.a<AnchorProps>`
-  ${tw`font-heading text-xl pb-2 relative`};
+  ${tw`pb-2 relative`};
 
   ::after {
     content: "";

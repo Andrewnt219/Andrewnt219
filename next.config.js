@@ -28,6 +28,7 @@ module.exports = withPlugins(
           dest: "public",
           disable: process.env.NODE_ENV === "development",
           buildExcludes: [/\/images\/.*$/],
+          publicExcludes: ["!imgs", "!og-image.jpg"],
         },
       },
     ],

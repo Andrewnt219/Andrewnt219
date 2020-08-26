@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import tw, { styled } from "twin.macro";
 import { FaGithubAlt, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { MediaIcon, MediaIconProps } from "../footer/MediaIcon";
+import { PersonalInfo } from "@src/constants/personalInfo.constants";
 
 type Props = ContainerProps & {};
 
@@ -21,19 +22,19 @@ function renderMediaIcons() {
     {
       Icon: FaGithubAlt,
       iconColor: "#6e5494",
-      href: "https://github.com/Andrewnt219",
+      href: PersonalInfo.GitHub,
       label: "Link to Github profile",
     },
     {
       Icon: FaFacebookF,
       iconColor: "#3b5998",
-      href: "https://www.facebook.com/phong.nguyentuan.108",
+      href: PersonalInfo.Facebook,
       label: "Link to Facebook profile",
     },
     {
       Icon: FaLinkedinIn,
       iconColor: "#0e76a8",
-      href: "https://www.linkedin.com/in/andrewnt219/",
+      href: PersonalInfo.LinkedIn,
       label: "Link to LinkedIn profile",
     },
   ];

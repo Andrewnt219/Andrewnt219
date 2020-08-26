@@ -1,6 +1,6 @@
-import { DESKTOP_SCREEN_BREAKPOINT } from "./../constants/mediaQuery.constants";
 import { useEffect, useState } from "react";
 import { useTheme } from "styled-components";
+import { GlobalStyling } from "@src/constants/globalStyles.constants";
 
 /**
  * @returns query is matched
@@ -11,7 +11,7 @@ export const useMediaQuery = (mediaQuery?: string): boolean => {
   const [matches, setMatches] = useState(false);
   // get mobile breakpoint
   const { breakpoints } = useTheme();
-  const defaultBreakpoint = breakpoints[DESKTOP_SCREEN_BREAKPOINT];
+  const defaultBreakpoint = breakpoints[GlobalStyling.DesktopScreenBreakpoint];
 
   useEffect(() => {
     const mqList = window.matchMedia(

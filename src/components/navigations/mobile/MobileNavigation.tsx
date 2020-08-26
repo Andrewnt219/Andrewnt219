@@ -1,3 +1,4 @@
+import { PersonalInfo } from "@src/constants/personalInfo.constants";
 import { allRoutes } from "@src/data/routes.data";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement, useState } from "react";
@@ -5,20 +6,20 @@ import tw, { styled } from "twin.macro";
 import { LightSwitch } from "../../ui/LightSwitch";
 import { Hamburger } from "./Hamburger";
 import { MobileNavigationItem } from "./MobileNavigationItem";
+import { FaGithubAlt, FaFacebookSquare, FaLinkedinIn } from "react-icons/fa";
 
-const navItemsVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0.5,
-      staggerChildren: 0.2,
-    },
-  },
-  exit: {
-    y: "-100%",
-    transition: { duration: 0.3 },
-  },
-};
+enum Styling {
+  PaddingLeft = "10%",
+}
+
+enum Timing {
+  NavDelayChildren = 0.5,
+  NavStaggerChildren = 0.2,
+}
+
+enum Data {
+  NavChildren = 3,
+}
 
 function MobileNavigation(): ReactElement {
   // control menu open state
@@ -44,7 +45,53 @@ function MobileNavigation(): ReactElement {
                 />
               ))}
             </NavigationItems>
-            <CustomLightSwitch />
+
+            <Footer
+              variants={footerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <Email
+                //
+                href={`mailto:${PersonalInfo.Email}`}
+              >
+                {PersonalInfo.Email}
+              </Email>
+              <CustomLightSwitch />
+              <Medias>
+                <li>
+                  <a
+                    href={PersonalInfo.Facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Link to Facebook profile"
+                  >
+                    <FaFacebookSquare />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={PersonalInfo.GitHub}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Link to GitHub profile"
+                  >
+                    <FaGithubAlt />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={PersonalInfo.LinkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Link to LinkedIn profile"
+                  >
+                    <FaLinkedinIn />
+                  </a>
+                </li>
+              </Medias>
+            </Footer>
           </>
         )}
       </AnimatePresence>
@@ -53,25 +100,71 @@ function MobileNavigation(): ReactElement {
   );
 }
 
-type ContainerProps = {};
-const NavigationItems = styled(motion.ul)<ContainerProps>`
-  padding-left: 10%;
+const navItemsVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      delayChildren: Timing.NavDelayChildren,
+      staggerChildren: Timing.NavStaggerChildren,
+    },
+  },
+  exit: {
+    y: "-100%",
+    transition: { duration: 0.3 },
+  },
+};
+
+const footerDelayTime =
+  Timing.NavDelayChildren + Timing.NavStaggerChildren * Data.NavChildren;
+const footerVariants: Variants = {
+  hidden: {
+    y: "100%",
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: footerDelayTime,
+    },
+  },
+  exit: {
+    y: "100%",
+    opacity: 0,
+  },
+};
+
+type NavigationItemsProps = {};
+const NavigationItems = styled(motion.ul)<NavigationItemsProps>`
+  padding-left: ${Styling.PaddingLeft};
   ${tw`absolute top-0 left-0 w-screen h-screen z-30 text-6xl flex flex-col justify-center items-start`}
+`;
+
+type FooterProps = {};
+const Footer = styled(motion.footer)<FooterProps>`
+  ${tw`z-30 fixed bottom-0 left-0 w-full`}
+  padding: 2rem 1rem 2rem ${Styling.PaddingLeft};
+  font-size: 1.6rem;
+
+  display: grid;
+  grid-template-areas:
+    "email    switcher"
+    "medias   switcher";
+  align-items: center;
+  row-gap: 1rem;
 `;
 
 type CustomLightSwitchProps = {};
 const CustomLightSwitch = styled(LightSwitch)<CustomLightSwitchProps>`
-  position: fixed;
-  bottom: 2rem;
-  right: 1rem;
-
+  grid-area: switcher;
+  justify-self: flex-end;
   background: rgba(var(--secondary-color-rgb), 0.8);
   transition: background 300ms ease;
 
-  ${tw`hocus:outline-none inline-flex justify-center items-center w-20 h-20 rounded-full z-30`}
+  ${tw`hocus:outline-none inline-flex justify-center items-center w-20 h-20 rounded-full`}
 
   svg {
-    font-size: 2rem;
+    font-size: larger;
     transition: fill 300ms ease;
   }
 
@@ -80,6 +173,35 @@ const CustomLightSwitch = styled(LightSwitch)<CustomLightSwitchProps>`
     ${tw`bg-textColor`}
     svg {
       fill: var(--primary-color);
+    }
+  }
+`;
+
+type EmailProps = {};
+const Email = styled.a<EmailProps>`
+  grid-area: email;
+  ${tw`font-heading animate-spin`}
+  display: inline-block;
+  text-decoration: underline;
+
+  :focus,
+  :hover {
+    ${tw`text-accent`}
+  }
+`;
+
+type MediasProps = {};
+const Medias = styled.ul<MediasProps>`
+  ${tw`flex justify-center items-center space-x-10`}
+  grid-area: medias;
+  justify-self: flex-start;
+
+  svg {
+    font-size: larger;
+
+    path {
+      ${tw`duration-theme ease-theme`}
+      transition-property: color;
     }
   }
 `;

@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { Button } from "@src/components/ui/Button";
 import tw, { styled } from "twin.macro";
 import { Link } from "@src/components/navigations/Link";
-import { APPBAR_HEIGHT } from "@src/constants/styles.constants";
+import { GlobalStyling } from "@src/constants/globalStyles.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { useInView } from "react-intersection-observer";
 
@@ -65,7 +65,7 @@ function HeroSection(): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
-  height: calc(100vh - ${APPBAR_HEIGHT});
+  height: calc(100vh - ${GlobalStyling.AppBarHeight});
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
 
   @media screen and (min-width: ${(p) =>

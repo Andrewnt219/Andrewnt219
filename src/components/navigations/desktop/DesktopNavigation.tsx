@@ -3,8 +3,7 @@ import React, { ReactElement } from "react";
 import { DesktopNavigationItem } from "./DesktopNavigationItem";
 import tw, { styled, theme } from "twin.macro";
 import { LightSwitch } from "../../ui/LightSwitch";
-
-const EMAIL = "hey@andrewnt.dev";
+import { PersonalInfo } from "@src/constants/personalInfo.constants";
 
 function DesktopNavigation(): ReactElement {
   return (
@@ -14,7 +13,9 @@ function DesktopNavigation(): ReactElement {
       ))}
 
       <EmailContainer>
-        <EmailLink href={`mailto:${EMAIL}`}>{EMAIL}</EmailLink>
+        <EmailLink href={`mailto:${PersonalInfo.Email}`}>
+          {PersonalInfo.Email}
+        </EmailLink>
       </EmailContainer>
 
       <LightSwitchContainer>

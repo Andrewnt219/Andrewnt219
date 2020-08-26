@@ -4,7 +4,7 @@ import { Footer } from "./Footer";
 import tw, { styled } from "twin.macro";
 
 import { HeadMeta } from "../head/HeadMeta";
-import { APPBAR_HEIGHT, FOOTER_HEIGHT } from "@src/constants/styles.constants";
+import { GlobalStyling } from "@src/constants/globalStyles.constants";
 
 type Props = {
   children: ReactNode;
@@ -18,11 +18,11 @@ function MainLayout({ children }: Props): ReactElement {
     <>
       <HeadMeta />
 
-      <AppBar height={APPBAR_HEIGHT} />
+      <AppBar height={GlobalStyling.AppBarHeight} />
 
       <Main>{children}</Main>
 
-      <Footer height={FOOTER_HEIGHT} />
+      <Footer height={GlobalStyling.FooterHeight} />
       {/* <CustomLightSwitch /> */}
     </>
   );
@@ -30,9 +30,8 @@ function MainLayout({ children }: Props): ReactElement {
 
 type MainProps = {};
 const Main = styled.main<MainProps>`
-  /* padding: calc(${APPBAR_HEIGHT} + 1rem) 5% calc(${FOOTER_HEIGHT} + 5rem) 5%; */
   padding: 0 5% 5rem 5%;
-  min-height: calc(100vh - ${APPBAR_HEIGHT});
+  min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
 
   ${tw`z-10 bg-primary relative top-0 transition-colors duration-theme ease-theme`};
 `;

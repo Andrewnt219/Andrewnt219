@@ -51,7 +51,7 @@ type ContainerProps = {
 const Container = styled.footer<ContainerProps>`
   height: ${(p) => p.height};
   transition-property: background-color;
-  ${tw`bg-lprimary sticky bottom-0 left-0 w-full duration-theme ease-in-out `};
+  ${tw`bg-lprimary sticky bottom-0 left-0 w-full duration-theme ease-theme `};
 `;
 
 type MediaIconsProps = {};

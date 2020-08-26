@@ -33,8 +33,8 @@ const Main = styled.main<MainProps>`
   /* padding: calc(${APPBAR_HEIGHT} + 1rem) 5% calc(${FOOTER_HEIGHT} + 5rem) 5%; */
   padding: 0 5% 5rem 5%;
   min-height: calc(100vh - ${APPBAR_HEIGHT});
-  
-  ${tw`z-10 bg-primary relative top-0 transition-colors duration-theme ease-in-out`};
+
+  ${tw`z-10 bg-primary relative top-0 transition-colors duration-theme ease-theme`};
 `;
 
 export { MainLayout };

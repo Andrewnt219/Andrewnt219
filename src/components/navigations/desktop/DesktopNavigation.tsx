@@ -1,7 +1,7 @@
 import { allRoutes } from "@src/data/routes.data";
 import React, { ReactElement } from "react";
 import { DesktopNavigationItem } from "./DesktopNavigationItem";
-import tw, { styled } from "twin.macro";
+import tw, { styled, theme } from "twin.macro";
 import { LightSwitch } from "../../ui/LightSwitch";
 
 const EMAIL = "hey@andrewnt.dev";
@@ -42,13 +42,13 @@ const EmailContainer = styled.li<EmailContainerProps>`
 
 type EmailLinkProps = {};
 const EmailLink = styled.a<EmailLinkProps>`
-  ${tw`text-sm py-2 px-4 border  rounded-full bg-textColor text-primary border-textColor`}
-  border-style: inset;
-  ${tw`transition-transform duration-300 ease-in-out`};
+  ${tw`text-sm py-2 px-4  rounded-full bg-textColor text-primary`}
+  transition: transform 300ms ease,
+    color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`},
+    background-color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`};
 
   :hover,
   :focus {
-    ${tw` duration-300 ease-in-out`}
     transform: scale(1.15);
   }
 `;

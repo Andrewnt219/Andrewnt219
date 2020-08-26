@@ -41,8 +41,8 @@ function HeroSection(): ReactElement {
         </Heading>
 
         <Summary>
-          Writing codes that does not upset readers. Creating websites that does
-          not confuse users
+          <span>Writing codes that does not upset readers.&nbsp;</span>
+          <span>Creating websites that does not confuse users</span>
         </Summary>
 
         <CustomButton>
@@ -90,6 +90,12 @@ const InfoContainer = styled.article<InfoContainerProps>`
   }
 `;
 
+type AuthorNameProps = {};
+const AuthorName = styled.span<AuthorNameProps>`
+  ${tw`block uppercase tracking-aloof text-ltextColor font-hBold`}
+  font-size: smaller;
+`;
+
 type HeadingProps = {};
 const Heading = styled.h1<HeadingProps>`
   ${tw`text-4xl font-hBold text-accent flex flex-wrap justify-center`}
@@ -105,20 +111,14 @@ const Heading = styled.h1<HeadingProps>`
   }
 `;
 
-type AuthorNameProps = {};
-const AuthorName = styled.span<AuthorNameProps>`
-  ${tw`block uppercase tracking-aloof text-ltextColor font-hBold`}
-  font-size: smaller;
-`;
-
 type SummaryProps = {};
 const Summary = styled.h2<SummaryProps>`
+  ${tw`flex flex-wrap justify-center text-center`}
   font-size: inherit;
-  text-align: center;
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[Styling.Breakpoint]}) {
-    text-align: left;
+    ${tw`justify-start`}
   }
 `;
 

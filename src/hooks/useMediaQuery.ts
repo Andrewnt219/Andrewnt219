@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
-import { useTheme } from "styled-components";
+import { useTheme, DefaultTheme } from "styled-components";
 import { GlobalStyling } from "@src/constants/globalStyles.constants";
 
 /**
  * @returns query is matched
- * @param mediaQuery mediaQuery string, default is mobile divide
+ * @param breakpoint mediaQuery string, default is mobile divide
  */
-export const useMediaQuery = (mediaQuery?: string): boolean => {
+export const useMediaQuery = (
+  breakpoint?: keyof DefaultTheme["breakpoints"]
+): boolean => {
   // matches state
   const [matches, setMatches] = useState(false);
   // get mobile breakpoint
   const { breakpoints } = useTheme();
-  const defaultBreakpoint = breakpoints[GlobalStyling.DesktopScreenBreakpoint];
 
   useEffect(() => {
+    const defaultBreakpoint = GlobalStyling.DesktopScreenBreakpoint;
     const mqList = window.matchMedia(
-      mediaQuery ?? `screen and (min-width: ${defaultBreakpoint})`
+      `screen and (min-width: ${breakpoints[breakpoint ?? defaultBreakpoint]})`
     );
+    console.log({ mediaQuery: breakpoint });
 
     // if query matches initially
     if (mqList.matches) {
@@ -34,7 +37,7 @@ export const useMediaQuery = (mediaQuery?: string): boolean => {
     return () => {
       mqList.removeEventListener("change", handler);
     };
-  }, [mediaQuery, defaultBreakpoint]);
+  }, [breakpoint, breakpoints]);
 
   return matches;
 };

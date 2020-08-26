@@ -32,22 +32,23 @@ function AppBar({ height }: Props): ReactElement {
   /* control static bar observer */
   const [ref, inView] = useInView();
 
-  /* control rendering mobile or desktop navigation */
-
-  const isDesktopScreen = useMediaQuery();
+  /* media queries */
+  const showDesktopNavigation = useMediaQuery();
+  const enableAnimation = useMediaQuery("xl");
 
   /* static and fixed nav contents */
-  const sharedNavContent = isDesktopScreen ? (
+  const sharedNavContent = showDesktopNavigation ? (
     <DesktopNavigation />
   ) : (
     <MobileNavigation />
   );
 
+  console.log({ enableAnimation, showDesktopNavigation });
   return (
     <Container>
       <StaticNav height={height} ref={ref}>
         {/* //! do not put Logo in shared */}
-        <Logo animated={isDesktopScreen} />
+        <Logo animated={enableAnimation} />
         {inView && sharedNavContent}
       </StaticNav>
 

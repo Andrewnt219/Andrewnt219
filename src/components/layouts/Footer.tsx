@@ -29,7 +29,7 @@ function Footer({ height }: Props): ReactElement {
 
   return (
     <Container height={height}>
-      <Logo animated={enableAnimation} size="20rem" />
+      <Logo size="20rem" animated={enableAnimation} />
 
       <MediaIcons>{renderMediaIcons()}</MediaIcons>
 

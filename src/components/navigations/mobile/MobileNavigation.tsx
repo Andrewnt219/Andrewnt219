@@ -180,7 +180,7 @@ const CustomLightSwitch = styled(LightSwitch)<CustomLightSwitchProps>`
 type EmailProps = {};
 const Email = styled.a<EmailProps>`
   grid-area: email;
-  ${tw`font-heading animate-spin`}
+  ${tw`font-heading`}
   display: inline-block;
   text-decoration: underline;
 

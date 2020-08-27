@@ -12,9 +12,9 @@ import { Logo } from "../ui/Logo";
 import { useMediaQuery } from "@src/hooks";
 import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
 import { spinZ } from "@src/styles/animation/spin.animation";
+import { GlobalStyling } from "@src/constants/globalStyles.constants";
 
 enum GridArea {
-  MenuLinks = "menuLinks",
   Medias = "medias",
   Email = "email",
   Text = "text",
@@ -34,8 +34,6 @@ function Footer({ height }: Props): ReactElement {
       <MediaIcons>{renderMediaIcons()}</MediaIcons>
 
       <Email href={`mailto:${PersonalInfo.Email}`}>{PersonalInfo.Email}</Email>
-
-      <MenuLinkContainer>{renderMenuLinks()}</MenuLinkContainer>
 
       <Text animated={enableAnimation}>
         Made by Andrew Nguyen with&nbsp;
@@ -74,33 +72,33 @@ function renderMediaIcons() {
   ));
 }
 
-function renderMenuLinks() {
-  return <li>First Link</li>;
-}
-
 type ContainerProps = {
   height: string;
 };
 const Container = styled.footer<ContainerProps>`
-  ${tw`bg-lprimary sticky bottom-0 left-0 w-full duration-theme ease-theme  p-5`};
+  ${tw`bg-lprimary text-xl sticky bottom-0 left-0 w-full duration-theme ease-theme py-5`};
   height: ${(p) => p.height};
   transition-property: background-color;
 
   display: grid;
-  grid-template-rows: 1fr auto auto;
   align-items: center;
+  justify-items: center;
   row-gap: 1rem;
   grid-template-areas: ${`
-    "${GlobalGridAreas.Logo} ${GridArea.MenuLinks}"
+    "${GlobalGridAreas.Logo}"
+    "${GridArea.Medias}"
+    "${GridArea.Email}"
+    "${GridArea.Text}"
+  `};
+
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.DesktopScreenBreakpoint]}) {
+    grid-template-areas: ${`
     "${GlobalGridAreas.Logo} ${GridArea.Medias}"
     "${GlobalGridAreas.Logo} ${GridArea.Email}"
     "${GridArea.Text} ${GridArea.Text}"
     `};
-`;
-
-type MenuLinkContainerProps = {};
-const MenuLinkContainer = styled.ul<MenuLinkContainerProps>`
-  grid-area: ${GridArea.MenuLinks};
+  }
 `;
 
 type MediaIconsProps = {};
@@ -111,7 +109,10 @@ const MediaIcons = styled.ul<MediaIconsProps>`
 
 type EmailProps = {};
 const Email = styled.a<EmailProps>`
+  ${tw`text-accent underline`}
   grid-area: ${GridArea.Email};
+
+  font-size: larger;
 `;
 
 type TextProps = {
@@ -119,7 +120,8 @@ type TextProps = {
 };
 const Text = styled.p<TextProps>`
   grid-area: ${GridArea.Text};
-  ${tw`flex justify-center items-center`}
+  ${tw`flex justify-center items-center `}
+  align-self: flex-end;
 
   svg {
     font-size: larger;

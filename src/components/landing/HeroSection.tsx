@@ -12,7 +12,7 @@ enum Styling {
 }
 
 enum Carousel {
-  NumberOfImages = 11,
+  NumberOfImages = 4,
   FocusedImageScale = 1.5,
   DisplayRange = 1,
   IntervalInMs = 2000,

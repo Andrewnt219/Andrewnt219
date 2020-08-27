@@ -4,7 +4,7 @@ import React, {
   SourceHTMLAttributes,
   useMemo,
 } from "react";
-import tw, { styled } from "twin.macro";
+import { styled } from "twin.macro";
 
 type Props = ImgHTMLAttributes<HTMLImageElement> & {
   path: string;

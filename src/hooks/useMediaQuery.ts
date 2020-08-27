@@ -19,7 +19,6 @@ export const useMediaQuery = (
     const mqList = window.matchMedia(
       `screen and (min-width: ${breakpoints[breakpoint ?? defaultBreakpoint]})`
     );
-    console.log({ mediaQuery: breakpoint });
 
     // if query matches initially
     if (mqList.matches) {

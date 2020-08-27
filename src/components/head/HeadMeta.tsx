@@ -1,9 +1,7 @@
 import Head from "next/head";
 import React, { ReactElement } from "react";
 
-type Props = {};
-
-function HeadMeta({}: Props): ReactElement {
+function HeadMeta(): ReactElement {
   return (
     <Head>
       <meta name="author" content="Andrew Nguyen" key="author" />

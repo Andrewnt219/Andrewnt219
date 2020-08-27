@@ -43,7 +43,6 @@ function AppBar({ height }: Props): ReactElement {
     <MobileNavigation />
   );
 
-  console.log({ enableAnimation, showDesktopNavigation });
   return (
     <Container>
       <StaticNav height={height} ref={ref}>

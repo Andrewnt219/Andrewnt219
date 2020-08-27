@@ -44,7 +44,7 @@ module.exports = withPlugins(
       // for dev liniting in terminal
       if (dev) {
         config.module.rules.push({
-          test: /\.(j|t)s?$/,
+          test: /\.(j|t)sx?$/,
           exclude: /node_modules/,
           loader: "eslint-loader",
         });

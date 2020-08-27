@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   --text-color: #000;
   --text-color-rgb: 0, 0, 0;
 
-  --text-color-light: #878a8f;
+  --text-color-light: #757678;
   --text-color-light-rgb: 135, 138, 143;
 
   font-size: 62.5%;
@@ -190,7 +190,7 @@ p {
     --text-color: #fff;
     --text-color-rgb: 255, 255, 255;
 
-    --text-color-light: #5a6072;
+    --text-color-light: #70778a;
     --text-color-light-rgb: 90, 96, 114;
   }
 

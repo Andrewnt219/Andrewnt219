@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { ReactElement } from "react";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import tw, { styled, css } from "twin.macro";
-import { spin } from "@src/styles/animation/spin.animation";
+import { spinX } from "@src/styles/animation/spin.animation";
 import { useRouteMatch } from "@src/hooks";
 
 const navItemVariants: Variants = {
@@ -64,7 +64,7 @@ const ListItem = styled(motion.li)<ListItemProps>`
   a:hover + svg,
   a:focus + svg {
     opacity: 1;
-    animation: ${spin} 1.5s linear infinite;
+    animation: ${spinX} 1.5s linear infinite;
   }
 `;
 

@@ -63,7 +63,7 @@ function AppBar({ height }: Props): ReactElement {
             height={height}
           >
             {/* //! do not put Logo in shared */}
-            <Logo animationOnEnter={enableAnimation} />
+            <Logo />
             {sharedNavContent}
           </FixedNav>
         )}

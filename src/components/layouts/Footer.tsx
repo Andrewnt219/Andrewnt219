@@ -20,22 +20,29 @@ enum GridArea {
   Text = "text",
 }
 
-type Props = ContainerProps & {};
+type Props = {};
 /**
  * @description renders page's footer
  */
-function Footer({ height }: Props): ReactElement {
+function Footer({}: Props): ReactElement {
   const enableAnimation = useMediaQuery("xl");
+  const isDesktop = useMediaQuery();
 
   return (
-    <Container height={height}>
+    <Container
+      height={
+        isDesktop
+          ? GlobalStyling.DesktopFooterHeight
+          : GlobalStyling.MobileFooterHeight
+      }
+    >
       <Logo size="20rem" animated={enableAnimation} />
 
       <MediaIcons>{renderMediaIcons()}</MediaIcons>
 
       <Email href={`mailto:${PersonalInfo.Email}`}>{PersonalInfo.Email}</Email>
 
-      <Text animated={enableAnimation}>
+      <Text>
         Made by Andrew Nguyen with&nbsp;
         <FaReact aria-label="react.js" role="img" />
       </Text>
@@ -84,6 +91,7 @@ const Container = styled.footer<ContainerProps>`
   align-items: center;
   justify-items: center;
   row-gap: 1rem;
+  grid-template-rows: 1fr repeat(3, auto);
   grid-template-areas: ${`
     "${GlobalGridAreas.Logo}"
     "${GridArea.Medias}"
@@ -93,6 +101,7 @@ const Container = styled.footer<ContainerProps>`
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopScreenBreakpoint]}) {
+    grid-template-rows: unset;
     grid-template-areas: ${`
     "${GlobalGridAreas.Logo} ${GridArea.Medias}"
     "${GlobalGridAreas.Logo} ${GridArea.Email}"
@@ -103,21 +112,19 @@ const Container = styled.footer<ContainerProps>`
 
 type MediaIconsProps = {};
 const MediaIcons = styled.ul<MediaIconsProps>`
-  ${tw`flex  space-x-5`}
+  ${tw`flex  space-x-10`}
   grid-area: ${GridArea.Medias};
 `;
 
 type EmailProps = {};
 const Email = styled.a<EmailProps>`
-  ${tw`text-accent underline`}
+  ${tw`font-bBold underline`}
   grid-area: ${GridArea.Email};
 
   font-size: larger;
 `;
 
-type TextProps = {
-  animated?: boolean;
-};
+type TextProps = {};
 const Text = styled.p<TextProps>`
   grid-area: ${GridArea.Text};
   ${tw`flex justify-center items-center `}

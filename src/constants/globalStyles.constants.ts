@@ -1,5 +1,6 @@
 export enum GlobalStyling {
   AppBarHeight = "5rem",
-  FooterHeight = "20rem",
+  DesktopFooterHeight = "20rem",
+  MobileFooterHeight = "25rem",
   DesktopScreenBreakpoint = "md",
 }

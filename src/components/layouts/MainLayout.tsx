@@ -22,7 +22,7 @@ function MainLayout({ children }: Props): ReactElement {
 
       <Main>{children}</Main>
 
-      <Footer height={GlobalStyling.FooterHeight} />
+      <Footer />
       {/* <CustomLightSwitch /> */}
     </>
   );

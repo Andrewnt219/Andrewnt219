@@ -10,10 +10,11 @@ import { useMediaQuery } from "@src/hooks";
 const navBarVarirants: Variants = {
   hidden: {
     y: "-100%",
+    willChange: "transform",
   },
   visible: {
     y: 0,
-
+    willChange: "auto",
     transition: {
       duration: 0.2,
     },

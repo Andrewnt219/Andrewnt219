@@ -20,24 +20,6 @@ type Props = {
  * @description A hamburger menu that toggles opening/closing menu and locked screen scroll
  */
 function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
-  // /* Locking screen */
-  // useEffect(() => {
-  //   const body = document.body;
-  //   const html = document.querySelector("html");
-  //   if (isOpened) {
-  //     body.classList.add("no-scroll");
-  //     html?.classList.add("no-scroll");
-  //   } else {
-  //     body.classList.remove("no-scroll");
-  //     html?.classList.remove("no-scroll");
-  //   }
-
-  //   return () => {
-  //     body.classList.remove("no-scroll");
-  //     html?.classList.remove("no-scroll");
-  //   };
-  // }, [isOpened]);
-
   const onBurgerClicked = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ): void => {
@@ -118,6 +100,7 @@ const Backdrop = styled.div<BackdropProps>`
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1),
     background 1s cubic-bezier(0.86, 0, 0.07, 1);
   ${tw`w-8 h-8 block pointer-events-none bg-accent rounded-full`};
+  will-change: transform;
 
   ${(p) =>
     p.isFullScreen &&

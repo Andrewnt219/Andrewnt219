@@ -98,8 +98,10 @@ const pathVariants: Variants = {
 const neonVariants: Variants = {
   hidden: {
     x: "-100%",
+    willChange: "transform",
   },
   visible: {
+    willChange: "auto",
     x: 0,
     scale: 1,
     transition: {

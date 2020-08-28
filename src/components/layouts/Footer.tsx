@@ -24,7 +24,7 @@ type Props = {};
 /**
  * @description renders page's footer
  */
-function Footer({}: Props): ReactElement {
+function Footer(): ReactElement {
   const enableAnimation = useMediaQuery("xl");
   const isDesktop = useMediaQuery();
 

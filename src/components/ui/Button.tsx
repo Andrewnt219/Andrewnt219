@@ -3,6 +3,7 @@ import React, { ReactElement, ReactNode, useContext } from "react";
 import { ThemeContext } from "@src/contexts/theme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
 import { motion, Variants } from "framer-motion";
+import { useMediaQuery } from "@src/hooks";
 
 const darkButtonVariants: Variants = {
   visible: {
@@ -86,12 +87,15 @@ type Props = StyledButtonProps & {
 function Button({ className, children, ...styleProps }: Props): ReactElement {
   const { mode } = useContext(ThemeContext);
 
+  // Disable flickering animation in mobile because it cannot be seen
+  const enableEnterAnimation = useMediaQuery();
+
   return mode === "dark-mode" ? (
     <DarkButton
       {...styleProps}
       className={className}
       //
-      variants={darkButtonVariants}
+      variants={enableEnterAnimation ? darkButtonVariants : undefined}
       animate="visible"
     >
       {children}

@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import tw, { css, styled } from "twin.macro";
+import tw, { styled } from "twin.macro";
 import {
   FaGithubAlt,
   FaFacebookF,
@@ -126,11 +126,7 @@ const Text = styled.p<TextProps>`
   svg {
     font-size: larger;
     fill: var(--accent-color);
-    ${(p) =>
-      p.animated &&
-      css`
-        animation: ${spinZ} 10s linear infinite;
-      `}
+    animation: ${spinZ} 10s linear infinite;
   }
 `;
 

@@ -1,5 +1,6 @@
 import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
 import { ThemeContext } from "@src/contexts/theme.context";
+import { useMediaQuery } from "@src/hooks";
 import { flickering } from "@src/styles/animation/flickering.animation";
 import { glow } from "@src/styles/animation/glow.animation";
 import { AnimatePresence, motion, Variants } from "framer-motion";
@@ -24,6 +25,7 @@ function Logo({
   size = "10rem",
 }: Props): ReactElement {
   const { mode } = useContext(ThemeContext);
+  const isDesktopMode = useMediaQuery();
 
   const logoSvg = (
     <motion.svg
@@ -67,6 +69,7 @@ function Logo({
             aria-hidden="true"
             animated={animated}
             size={size}
+            isMobile={!isDesktopMode}
             // framer-motion
             variants={animationOnEnter ? neonVariants : undefined}
             initial="hidden"
@@ -143,6 +146,7 @@ const Anchor = styled.a<AnchorProps>`
 type NeonTextProps = {
   animated?: boolean;
   size?: AnchorProps["size"];
+  isMobile?: boolean;
 };
 const NeonText = styled(motion.div)<NeonTextProps>`
   ${tw`space-x-1 font-bBold font-heading`}
@@ -154,9 +158,19 @@ const NeonText = styled(motion.div)<NeonTextProps>`
   bottom: calc(${(p) => p.size} / -25);
 
   span {
-    text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color),
-      0 0 40px var(--accent-color), 0 0 50px var(--accent-color),
-      0 0 60px var(--accent-color);
+    /* // TODO: Create a performance-optimized version of the website */
+    ${(p) =>
+      p.isMobile
+        ? css`
+            text-shadow: 1px 0 0 var(--accent-color),
+              0 -1px 0 var(--accent-color), 0 1px 0 var(--accent-color),
+              -1px 0 0 var(--accent-color);
+          `
+        : css`
+            text-shadow: 0 0 10px var(--accent-color),
+              0 0 20px var(--accent-color), 0 0 40px var(--accent-color),
+              0 0 50px var(--accent-color), 0 0 60px var(--accent-color);
+          `}
 
     animation: ${(p) =>
       p.animated &&

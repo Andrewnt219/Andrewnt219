@@ -4,14 +4,14 @@ export const GlobalStyle = createGlobalStyle`
 
 :root {
   --accent-color: #0070f3;
-  --accent-color-rgb:   58, 134, 255;
+  --accent-color-rgb: 58, 134, 255;
 
   --primary-color: #fff;
   --primary-color-rgb:   255, 255, 255;
 
 
   --primary-color-light: #F6F8FE;
-  --primary-color-light-rgb:   255, 255, 255;
+  --primary-color-light-rgb: 246, 248, 254;
 
   --secondary-color: #f4f4f4;
   --secondary-color-rgb: 244, 244, 244;
@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   --text-color-rgb: 0, 0, 0;
 
   --text-color-light: #757678;
-  --text-color-light-rgb: 135, 138, 143;
+  --text-color-light-rgb: 117, 118, 120;
 
   font-size: 62.5%;
   box-sizing: border-box;
@@ -177,23 +177,23 @@ p {
 
   /* //! theme must end with 'mode' for ease of removing */
   .dark-mode {
-    --accent-color: #43b7ff;
-    --acent-color-rgb: 84, 150, 255;
+    --accent-color: #51d7fd;
+    --acent-color-rgb: 81, 215, 253;
 
-    --primary-color:   #000;
-    --primary-color-rgb: 0, 0, 0;
+    --primary-color: #150d1c;
+    --primary-color-rgb: 21, 13, 28;
 
-    --primary-color-light: #1c1c1c;
-    --primary-color-light-rgb: 28, 28, 28;
+    --primary-color-light: #0f0717;
+    --primary-color-light-rgb: 15, 7, 23;
 
-    --secondary-color: #1c1c1c;
-    --secondary-color-rgb: 28, 28, 28;
+    --secondary-color: #0f0717;
+    --secondary-color-rgb: 15, 7, 23;
 
     --text-color: #fff;
     --text-color-rgb: 255, 255, 255;
 
-    --text-color-light: #70778a;
-    --text-color-light-rgb: 90, 96, 114;
+    --text-color-light: #9a9fac;
+    --text-color-light-rgb: 154, 159, 172;
   }
 
 *, *::before, *::after {

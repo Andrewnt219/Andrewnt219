@@ -34,7 +34,7 @@ function HeroSection(): ReactElement {
 
   /* Event handlers */
   const onArrowDownClicked = () => {
-    document.getElementById(ElementIds.SkillsSection)?.scrollIntoView();
+    document.getElementById(ElementIds.ProjectsSection)?.scrollIntoView();
   };
 
   return (

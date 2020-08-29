@@ -105,7 +105,7 @@ export const buttonFlickering = keyframes`
     box-shadow: var(--shadow-1);
 }
 15% {
-    border-color: #56beff;
+    border-color: #35d2fd;
     box-shadow: var(--shadow-2);
 }
 16% {
@@ -117,7 +117,7 @@ export const buttonFlickering = keyframes`
     box-shadow: var(--shadow-1);
 }
 20% {
-    border-color: #56beff;
+    border-color: #35d2fd;
     box-shadow: var(--shadow-2);
 }
 30% {
@@ -125,7 +125,7 @@ export const buttonFlickering = keyframes`
     box-shadow: var(--shadow-1);
 }
 100% {
-    border-color: #56beff;
+    border-color: #35d2fd;
     box-shadow: var(--shadow-2);
 }
 `;

@@ -3,4 +3,5 @@ export enum GlobalStyling {
   DesktopFooterHeight = "20rem",
   MobileFooterHeight = "25rem",
   DesktopScreenBreakpoint = "md",
+  ChromeBarHeight = "10vh",
 }

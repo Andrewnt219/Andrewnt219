@@ -40,7 +40,7 @@ type IconWrapperProps = {
   iconColor: string;
 };
 const IconWrapper = styled.a<IconWrapperProps>`
-  ${tw`inline-flex justify-center items-center w-12 h-12 bg-white rounded-sm cursor-pointer relative overflow-hidden`};
+  ${tw`inline-flex justify-center items-center w-12 h-12 bg-transparent rounded-sm cursor-pointer relative overflow-hidden`};
 
   ::after {
     content: "";

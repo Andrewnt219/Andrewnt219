@@ -83,7 +83,7 @@ type NavProps = {
 const navCss = css<NavProps>`
   height: ${(p) => p.height};
   transition-property: background-color;
-  ${tw`relative w-full bg-primary duration-theme ease-theme flex justify-between items-center p-5`};
+  ${tw`relative w-full bg-primary duration-theme ease-theme flex justify-between items-center px-5 py-10`};
 `;
 
 const StaticNav = styled.nav`
@@ -93,9 +93,10 @@ const StaticNav = styled.nav`
 
 const FixedNav = styled(motion.nav)`
   ${navCss}
-  ${tw`bg-lprimary fixed top-0 left-0 z-10`};
+  ${tw`bg-primary fixed top-0 left-0 z-10`};
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid #fff;
 `;
 
 export { AppBar };

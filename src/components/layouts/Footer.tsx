@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext, useMemo } from "react";
 import tw, { styled } from "twin.macro";
 import {
   FaGithubAlt,
@@ -13,6 +13,7 @@ import { useMediaQuery } from "@src/hooks";
 import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
 import { spinZ } from "@src/styles/animation/spin.animation";
 import { GlobalStyling } from "@src/constants/globalStyles.constants";
+import { ThemeContext } from "@src/contexts/theme.context";
 
 enum GridArea {
   Medias = "medias",
@@ -27,6 +28,32 @@ type Props = {};
 function Footer(): ReactElement {
   const enableAnimation = useMediaQuery("xl");
   const isDesktop = useMediaQuery();
+  const { mode } = useContext(ThemeContext);
+  const isDarkMode = mode === "dark-mode";
+
+  const mediaIcons: MediaIconProps[] = useMemo(
+    () => [
+      {
+        Icon: FaGithubAlt,
+        iconColor: isDarkMode ? "#b286f3" : "#6e5494",
+        href: PersonalInfo.GitHub,
+        label: "Link to Github profile",
+      },
+      {
+        Icon: FaFacebookF,
+        iconColor: isDarkMode ? "hsl(221deg 44% 57%)" : "#3b5998",
+        href: PersonalInfo.Facebook,
+        label: "Link to Facebook profile",
+      },
+      {
+        Icon: FaLinkedinIn,
+        iconColor: isDarkMode ? "hsl(199deg 85% 50%)" : "#0e76a8",
+        href: PersonalInfo.LinkedIn,
+        label: "Link to LinkedIn profile",
+      },
+    ],
+    [isDarkMode]
+  );
 
   return (
     <Container
@@ -38,7 +65,7 @@ function Footer(): ReactElement {
     >
       <Logo size="20rem" animated={enableAnimation} />
 
-      <MediaIcons>{renderMediaIcons()}</MediaIcons>
+      <MediaIcons>{renderMediaIcons(mediaIcons)}</MediaIcons>
 
       <Email href={`mailto:${PersonalInfo.Email}`}>{PersonalInfo.Email}</Email>
 
@@ -50,28 +77,7 @@ function Footer(): ReactElement {
   );
 }
 
-function renderMediaIcons() {
-  const mediaIcons: MediaIconProps[] = [
-    {
-      Icon: FaGithubAlt,
-      iconColor: "#6e5494",
-      href: PersonalInfo.GitHub,
-      label: "Link to Github profile",
-    },
-    {
-      Icon: FaFacebookF,
-      iconColor: "#3b5998",
-      href: PersonalInfo.Facebook,
-      label: "Link to Facebook profile",
-    },
-    {
-      Icon: FaLinkedinIn,
-      iconColor: "#0e76a8",
-      href: PersonalInfo.LinkedIn,
-      label: "Link to LinkedIn profile",
-    },
-  ];
-
+function renderMediaIcons(mediaIcons: MediaIconProps[]) {
   return mediaIcons.map((mediaIconProps, index) => (
     <li key={index}>
       <MediaIcon {...mediaIconProps} />

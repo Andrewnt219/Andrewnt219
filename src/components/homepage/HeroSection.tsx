@@ -5,6 +5,9 @@ import { Link } from "@src/components/navigations/Link";
 import { GlobalStyling } from "@src/constants/globalStyles.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { useInView } from "react-intersection-observer";
+import { FaChevronDown } from "react-icons/fa";
+import { keyframes } from "styled-components";
+import { ElementIds } from "@src/constants/elementIds.constants";
 
 enum Styling {
   Breakpoint = "xl",
@@ -30,8 +33,13 @@ function HeroSection(): ReactElement {
     ? Carousel.IntervalInMs
     : Carousel.IntervalInMs * 9999;
 
+  /* Event handlers */
+  const onArrowDownClicked = () => {
+    document.getElementById(ElementIds.SkillsSection)?.scrollIntoView();
+  };
+
   return (
-    <Container ref={ref}>
+    <Container ref={ref} id={ElementIds.HeroSection}>
       <InfoContainer>
         <AuthorName>Andrew Nguyen</AuthorName>
 
@@ -59,13 +67,17 @@ function HeroSection(): ReactElement {
         }}
         sizes={Styling.CarouselSizes}
       />
+
+      <BouncingArrowDown onClick={onArrowDownClicked} />
     </Container>
   );
 }
 
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
-  height: calc(100vh - ${GlobalStyling.AppBarHeight});
+  height: calc(
+    100vh - ${GlobalStyling.ChromeBarHeight} - ${GlobalStyling.AppBarHeight}
+  );
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
 
   @media screen and (min-width: ${(p) =>
@@ -152,6 +164,29 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
 
     margin-top: 0;
   }
+`;
+
+const bounce = keyframes`
+  0%, 100% {
+    animationTimingFunction: cubic-bezier(0.8, 0, 1, 1);
+    /* -50% X because of absolute positioning*/
+    transform: translate(-50%, -25%);
+  }
+  50% {
+    animationTimingFunction: cubic-bezier(0, 0, 0.2, 1);
+    /* -50% X because of absolute positioning*/
+    transform: translate(-50%, 0);
+  }
+`;
+type BouncingArrowDownProps = {};
+const BouncingArrowDown = styled(FaChevronDown)<BouncingArrowDownProps>`
+  animation: ${bounce} 1s infinite;
+  position: absolute;
+  bottom: 1vh;
+  left: 50%;
+  cursor: pointer;
+  fill: var(--accent-color);
+  font-size: 3rem;
 `;
 
 export { HeroSection };

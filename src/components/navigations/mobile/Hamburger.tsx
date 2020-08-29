@@ -37,7 +37,7 @@ function Hamburger({ setIsOpened, isOpened }: Props): ReactElement {
 
   return (
     <Container>
-      <Backdrop id="backdrop" isFullScreen={isOpened} />
+      <Backdrop isFullScreen={isOpened} />
 
       <MenuContainer
         href="#menu"

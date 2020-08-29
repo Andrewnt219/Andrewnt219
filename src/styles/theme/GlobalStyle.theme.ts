@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   --primary-color-rgb:   255, 255, 255;
 
 
-  --primary-color-light: #fff;
+  --primary-color-light: #F6F8FE;
   --primary-color-light-rgb:   255, 255, 255;
 
   --secondary-color: #f4f4f4;
@@ -26,6 +26,8 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: 'Raleway', sans-serif;
+
+  scroll-behavior: smooth;
 
   /* raleway-regular - latin */
   @font-face {

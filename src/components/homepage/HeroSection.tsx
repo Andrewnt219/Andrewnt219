@@ -74,15 +74,16 @@ function HeroSection(): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
-  min-height: calc(
+  --sectionHeight: calc(
     100vh - ${GlobalStyling.MobileBarHeight} - ${GlobalStyling.AppBarHeight}
   );
+
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
 
   @media screen and (min-width: ${(p) =>
     p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    --sectionHeight: calc(100vh - ${GlobalStyling.AppBarHeight});
     ${tw`text-2xl flex-row items-center`}
-    min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 `;
 

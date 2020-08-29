@@ -10,7 +10,7 @@ function SkillsSection({}: Props): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
-  ${tw`min-h-screen`}
+  ${tw`min-h-screen bg-textColor`}
 `;
 
 export { SkillsSection };

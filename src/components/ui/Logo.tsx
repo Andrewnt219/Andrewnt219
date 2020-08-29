@@ -1,4 +1,5 @@
 import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
+import { GlobalStyling } from "@src/constants/globalStyles.constants";
 import { ThemeContext } from "@src/contexts/theme.context";
 import { useMediaQuery } from "@src/hooks";
 import { flickering } from "@src/styles/animation/flickering.animation";
@@ -18,7 +19,7 @@ type Props = {
 
 function Logo({ animated, size = "10rem" }: Props): ReactElement {
   const { mode } = useContext(ThemeContext);
-  const isDesktopMode = useMediaQuery();
+  const isDesktopMode = useMediaQuery(GlobalStyling.DesktopBreakpoint);
 
   const logoSvg = (
     <motion.svg

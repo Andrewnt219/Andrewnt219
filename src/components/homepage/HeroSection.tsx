@@ -10,7 +10,6 @@ import { keyframes } from "styled-components";
 import { ElementIds } from "@src/constants/elementIds.constants";
 
 enum Styling {
-  Breakpoint = "xl",
   CarouselSizes = "(min-width: 1200px) 40vw, 40vmin",
 }
 
@@ -76,13 +75,14 @@ function HeroSection(): ReactElement {
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
   height: calc(
-    100vh - ${GlobalStyling.ChromeBarHeight} - ${GlobalStyling.AppBarHeight}
+    100vh - ${GlobalStyling.MobileBarHeight} - ${GlobalStyling.AppBarHeight}
   );
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
 
   @media screen and (min-width: ${(p) =>
-    p.theme.breakpoints[Styling.Breakpoint]}) {
+    p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     ${tw`text-2xl flex-row items-center`}
+    height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 `;
 
@@ -96,7 +96,7 @@ const InfoContainer = styled.article<InfoContainerProps>`
   }
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[Styling.Breakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     width: 60%;
     ${tw`items-start`}
   }
@@ -118,7 +118,7 @@ const Heading = styled.h1<HeadingProps>`
   }
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[Styling.Breakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     ${tw`text-5xl justify-start`}
   }
 `;
@@ -129,7 +129,7 @@ const Summary = styled.h2<SummaryProps>`
   font-size: inherit;
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[Styling.Breakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     ${tw`justify-start`}
   }
 `;
@@ -158,7 +158,7 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
   }
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[Styling.Breakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     --img-height: 14vw;
     --width-scale: 3/4;
 

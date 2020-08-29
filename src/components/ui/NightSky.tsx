@@ -22,7 +22,7 @@ type Props = {
 };
 
 function NightSky({ className }: Props): ReactElement {
-  const isDesktop = useMediaQuery();
+  const enableAnimation = useMediaQuery();
 
   return (
     <Container
@@ -33,7 +33,7 @@ function NightSky({ className }: Props): ReactElement {
       animate="visible"
     >
       <Stars />
-      <Twinkling animated={isDesktop} />
+      <Twinkling animated={enableAnimation} />
     </Container>
   );
 }

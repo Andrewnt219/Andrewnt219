@@ -15,7 +15,7 @@ export const useMediaQuery = (
   const { breakpoints } = useTheme();
 
   useEffect(() => {
-    const defaultBreakpoint = GlobalStyling.DesktopScreenBreakpoint;
+    const defaultBreakpoint = GlobalStyling.AppBarBreakpoint;
     const mqList = window.matchMedia(
       `screen and (min-width: ${breakpoints[breakpoint ?? defaultBreakpoint]})`
     );

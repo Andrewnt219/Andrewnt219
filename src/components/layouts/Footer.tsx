@@ -27,7 +27,7 @@ type Props = {};
  */
 function Footer(): ReactElement {
   const enableAnimation = useMediaQuery("xl");
-  const isDesktop = useMediaQuery();
+  const isLargeScreen = useMediaQuery();
   const { mode } = useContext(ThemeContext);
   const isDarkMode = mode === "dark-mode";
 
@@ -58,7 +58,7 @@ function Footer(): ReactElement {
   return (
     <Container
       height={
-        isDesktop
+        isLargeScreen
           ? GlobalStyling.DesktopFooterHeight
           : GlobalStyling.MobileFooterHeight
       }
@@ -106,7 +106,7 @@ const Container = styled.footer<ContainerProps>`
   `};
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.DesktopScreenBreakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
     grid-template-rows: unset;
     grid-template-areas: ${`
     "${GlobalGridAreas.Logo} ${GridArea.Medias}"

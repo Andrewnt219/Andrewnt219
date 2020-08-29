@@ -67,14 +67,14 @@ function HeroSection(): ReactElement {
         sizes={Styling.CarouselSizes}
       />
 
-      <BouncingArrowDown onClick={onArrowDownClicked} />
+      <BouncingArrowDown onClick={onArrowDownClicked} animated={inView} />
     </Container>
   );
 }
 
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
-  height: calc(
+  min-height: calc(
     100vh - ${GlobalStyling.MobileBarHeight} - ${GlobalStyling.AppBarHeight}
   );
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
@@ -82,7 +82,7 @@ const Container = styled.section<ContainerProps>`
   @media screen and (min-width: ${(p) =>
     p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     ${tw`text-2xl flex-row items-center`}
-    height: calc(100vh - ${GlobalStyling.AppBarHeight});
+    min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 `;
 
@@ -178,9 +178,11 @@ const bounce = keyframes`
     transform: translate(-50%, 0);
   }
 `;
-type BouncingArrowDownProps = {};
+type BouncingArrowDownProps = {
+  animated?: boolean;
+};
 const BouncingArrowDown = styled(FaChevronDown)<BouncingArrowDownProps>`
-  animation: ${bounce} 1s infinite;
+  animation: ${(p) => (p.animated ? bounce : null)} 1s infinite;
   position: absolute;
   bottom: 1vh;
   left: 50%;

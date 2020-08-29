@@ -129,15 +129,16 @@ export const LightButton = styled.button<LightButtonProps>`
   transition: transform 200ms ease, box-shadow 500ms ease;
   box-shadow: 0 4px 14px 0 var(--shadow-color);
 
-  :active {
-    box-shadow: 0 4px 14px 0 var(--shadow-color);
-    transform: translateY(0);
-  }
-
   :hover,
   :focus {
     box-shadow: 0 6px 20px var(--shadow-color);
     transform: translateY(-2px);
+  }
+
+  /* Active should be below hover */
+  :active {
+    box-shadow: 0 4px 14px 0 var(--shadow-color);
+    transform: translateY(0);
   }
 
   ${(p) =>

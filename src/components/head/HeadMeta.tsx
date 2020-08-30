@@ -15,7 +15,7 @@ function HeadMeta(): ReactElement {
       <meta
         key="keywords"
         name="keywords"
-        content="web, website, webapp, web app, project, portfolio, web developer, react, react-js, react.js, react developer, next-js, next.js, nextjs"
+        content="web, website, webapp, web app, project, portfolio, web developer, react, react-js, react.js, react developer, next-js, next.js, nextjs, front-end developer, frontend developer, front-end, frontend"
       />
 
       <meta key="theme" name="theme-color" content="#116dff" />
@@ -31,7 +31,7 @@ function HeadMeta(): ReactElement {
       <meta
         key="ogTitle"
         name="og:title"
-        content="Portfolio | Andrew Nguyen - React Web Developer"
+        content="Portfolio | Andrew Nguyen - Web Developer"
       />
       <meta
         key="ogDescription"

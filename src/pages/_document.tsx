@@ -37,17 +37,13 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            rel="preload"
-            href="fonts/raleway-v17-latin-regular.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin=""
-          />
+          {/* Favicon for google search */}
+          <link rel="shortcut icon" href="favicon.ico" />
 
+          {/* Preload fonts for homepage */}
           <link
             rel="preload"
-            href="fonts/montserrat-v14-latin-300.woff2"
+            href="fonts/montserrat-v14-latin-400.woff2"
             as="font"
             type="font/woff2"
             crossOrigin=""

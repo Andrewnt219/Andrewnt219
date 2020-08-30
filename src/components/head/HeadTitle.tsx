@@ -10,7 +10,7 @@ function HeadTitle({ title, noExtension }: Props): ReactElement {
   return (
     <Head>
       <title key="title">
-        {title + (!noExtension && " | Andrew Nguyen - React Web Developer")}
+        {title + (!noExtension && " | Andrew Nguyen - Web Developer")}
       </title>
     </Head>
   );

@@ -11,7 +11,6 @@ import { useInView } from "react-intersection-observer";
 import { FaChevronDown } from "react-icons/fa";
 import { keyframes } from "styled-components";
 import { HomepageSectionIds } from "@src/constants/elementIds.constants";
-import { Sidebar } from "./Sidebar";
 import { HomepageSections } from "@src/contexts/HomepageSections.context";
 
 enum Styling {
@@ -42,7 +41,7 @@ function HeroSection(): ReactElement {
     : Carousel.IntervalInMs * 9999;
 
   /* Handle Sidebar active link */
-  const { inViewSection, onSectionSwitch } = useContext(HomepageSections);
+  const { onSectionSwitch } = useContext(HomepageSections);
 
   useEffect(() => {
     if (inView) {
@@ -56,40 +55,37 @@ function HeroSection(): ReactElement {
   };
 
   return (
-    <>
-      <Container ref={ref} id={SECTION_ID}>
-        <InfoContainer>
-          <AuthorName>Andrew Nguyen</AuthorName>
+    <Container ref={ref} id={SECTION_ID}>
+      <InfoContainer>
+        <AuthorName>Andrew Nguyen</AuthorName>
 
-          <Heading>
-            <span>People-oriented&nbsp;</span>
-            <span>Web Developer</span>
-          </Heading>
+        <Heading>
+          <span>People-oriented&nbsp;</span>
+          <span>Web Developer</span>
+        </Heading>
 
-          <Summary>
-            <span>Writing codes that does not upset readers.&nbsp;</span>
-            <span>Creating websites that does not confuse users</span>
-          </Summary>
+        <Summary>
+          <span>Writing codes that does not upset readers.&nbsp;</span>
+          <span>Creating websites that does not confuse users</span>
+        </Summary>
 
-          <CustomButton>
-            <Link href="/projects">See my projects</Link>
-          </CustomButton>
-        </InfoContainer>
+        <CustomButton>
+          <Link href="/projects">See my projects</Link>
+        </CustomButton>
+      </InfoContainer>
 
-        <CarouselContainer
-          imageSrcs={IMAGE_SOURCES}
-          options={{
-            intervalInMs: carouselInvtervalInMs,
-            displayRange: Carousel.DisplayRange,
-            focusedImgScale: Carousel.FocusedImageScale,
-          }}
-          sizes={Styling.CarouselSizes}
-        />
+      <CarouselContainer
+        imageSrcs={IMAGE_SOURCES}
+        options={{
+          intervalInMs: carouselInvtervalInMs,
+          displayRange: Carousel.DisplayRange,
+          focusedImgScale: Carousel.FocusedImageScale,
+        }}
+        sizes={Styling.CarouselSizes}
+      />
 
-        <BouncingArrowDown onClick={onArrowDownClicked} animated={inView} />
-      </Container>
-      {!inView && <Sidebar inViewSection={inViewSection} />}
-    </>
+      <BouncingArrowDown onClick={onArrowDownClicked} animated={inView} />
+    </Container>
   );
 }
 

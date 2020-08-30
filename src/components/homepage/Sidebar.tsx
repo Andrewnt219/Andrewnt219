@@ -56,7 +56,7 @@ const StyledLink = styled(Link)<StyledLinkProps>`
   ${tw`text-ltextColor lowercase`}
   writing-mode: vertical-lr;
   transform: rotate(180deg);
-  /* // TODO styled active state with a sliding bar */
+
   color: ${(p) => p.active && "var(--accent-color)"};
 `;
 

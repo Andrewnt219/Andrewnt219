@@ -5,9 +5,9 @@ import React, { ReactElement, useContext, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import tw, { styled } from "twin.macro";
 
-const SECTION_ID = HomepageSectionIds.Projects;
+const SECTION_ID = HomepageSectionIds.About;
 
-function ProjectsSection(): ReactElement {
+function AboutSection(): ReactElement {
   /* Handle Sidebar active link */
   const [ref, inView] = useInView({
     threshold: GlobalNumbers.HomepageSectionInViewThreshhold,
@@ -22,19 +22,20 @@ function ProjectsSection(): ReactElement {
 
   return (
     <Container ref={ref} id={SECTION_ID}>
-      Projects
+      About
     </Container>
   );
 }
 
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
-  ${tw`bg-lprimary`}
   min-height: 100vh;
 
   /* Experimental */
   content-visibility: auto;
   contain-intrinsic-size: 100vh;
+
+  ${tw` bg-accent`}
 `;
 
-export { ProjectsSection };
+export { AboutSection };

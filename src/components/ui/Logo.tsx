@@ -156,17 +156,12 @@ const NeonText = styled(motion.div)<NeonTextProps>`
   span {
     /* // TODO: Create a performance-optimized version of the website */
     ${(p) =>
-      p.isMobile
-        ? css`
-            text-shadow: 1px 0 0 var(--accent-color),
-              0 -1px 0 var(--accent-color), 0 1px 0 var(--accent-color),
-              -1px 0 0 var(--accent-color);
-          `
-        : css`
-            text-shadow: 0 0 10px var(--accent-color),
-              0 0 20px var(--accent-color), 0 0 40px var(--accent-color),
-              0 0 50px var(--accent-color), 0 0 60px var(--accent-color);
-          `}
+      !p.isMobile &&
+      css`
+        text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color),
+          0 0 40px var(--accent-color), 0 0 50px var(--accent-color),
+          0 0 60px var(--accent-color);
+      `}
 
     animation: ${(p) =>
       p.animated &&

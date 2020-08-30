@@ -6,3 +6,7 @@ export enum GlobalStyling {
   DesktopBreakpoint = "xl",
   MobileBarHeight = "7vh",
 }
+
+export enum GlobalNumbers {
+  HomepageSectionInViewThreshhold = 0.6,
+}

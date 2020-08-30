@@ -1,13 +1,18 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext, useEffect } from "react";
 import { Button } from "@src/components/ui/Button";
 import tw, { styled } from "twin.macro";
 import { Link } from "@src/components/navigations/Link";
-import { GlobalStyling } from "@src/constants/globalStyles.constants";
+import {
+  GlobalNumbers,
+  GlobalStyling,
+} from "@src/constants/globalStyles.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { useInView } from "react-intersection-observer";
 import { FaChevronDown } from "react-icons/fa";
 import { keyframes } from "styled-components";
-import { ElementIds } from "@src/constants/elementIds.constants";
+import { HomepageSectionIds } from "@src/constants/elementIds.constants";
+import { Sidebar } from "./Sidebar";
+import { HomepageSections } from "@src/contexts/HomepageSections.context";
 
 enum Styling {
   CarouselSizes = "(min-width: 1200px) 40vw, 40vmin",
@@ -25,56 +30,78 @@ for (let i = 1; i <= Carousel.NumberOfImages; i++) {
   IMAGE_SOURCES.push(`carousel/carousel-${i}.jpg`);
 }
 
+const SECTION_ID = HomepageSectionIds.Hero;
+
 function HeroSection(): ReactElement {
   /* Stop carousel out of view */
-  const [ref, inView] = useInView();
+  const [ref, inView] = useInView({
+    threshold: GlobalNumbers.HomepageSectionInViewThreshhold,
+  });
   const carouselInvtervalInMs = inView
     ? Carousel.IntervalInMs
     : Carousel.IntervalInMs * 9999;
 
+  /* Handle Sidebar active link */
+  const { inViewSection, onSectionSwitch } = useContext(HomepageSections);
+
+  useEffect(() => {
+    if (inView) {
+      onSectionSwitch(SECTION_ID);
+    }
+  }, [inView, onSectionSwitch]);
+
   /* Event handlers */
   const onArrowDownClicked = () => {
-    document.getElementById(ElementIds.ProjectsSection)?.scrollIntoView();
+    document.getElementById(HomepageSectionIds.Projects)?.scrollIntoView();
   };
 
   return (
-    <Container ref={ref} id={ElementIds.HeroSection}>
-      <InfoContainer>
-        <AuthorName>Andrew Nguyen</AuthorName>
+    <>
+      <Container ref={ref} id={SECTION_ID}>
+        <InfoContainer>
+          <AuthorName>Andrew Nguyen</AuthorName>
 
-        <Heading>
-          <span>People-oriented&nbsp;</span>
-          <span>Web Developer</span>
-        </Heading>
+          <Heading>
+            <span>People-oriented&nbsp;</span>
+            <span>Web Developer</span>
+          </Heading>
 
-        <Summary>
-          <span>Writing codes that does not upset readers.&nbsp;</span>
-          <span>Creating websites that does not confuse users</span>
-        </Summary>
+          <Summary>
+            <span>Writing codes that does not upset readers.&nbsp;</span>
+            <span>Creating websites that does not confuse users</span>
+          </Summary>
 
-        <CustomButton>
-          <Link href="/projects">See my projects</Link>
-        </CustomButton>
-      </InfoContainer>
+          <CustomButton>
+            <Link href="/projects">See my projects</Link>
+          </CustomButton>
+        </InfoContainer>
 
-      <CarouselContainer
-        imageSrcs={IMAGE_SOURCES}
-        options={{
-          intervalInMs: carouselInvtervalInMs,
-          displayRange: Carousel.DisplayRange,
-          focusedImgScale: Carousel.FocusedImageScale,
-        }}
-        sizes={Styling.CarouselSizes}
-      />
+        <CarouselContainer
+          imageSrcs={IMAGE_SOURCES}
+          options={{
+            intervalInMs: carouselInvtervalInMs,
+            displayRange: Carousel.DisplayRange,
+            focusedImgScale: Carousel.FocusedImageScale,
+          }}
+          sizes={Styling.CarouselSizes}
+        />
 
-      <BouncingArrowDown onClick={onArrowDownClicked} animated={inView} />
-    </Container>
+        <BouncingArrowDown onClick={onArrowDownClicked} animated={inView} />
+      </Container>
+      {!inView && <Sidebar inViewSection={inViewSection} />}
+    </>
   );
 }
 
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
-  --sectionHeight: calc(
+  height: calc(
+    100vh - ${GlobalStyling.MobileBarHeight} - ${GlobalStyling.AppBarHeight}
+  );
+
+  /* Experimental */
+  content-visibility: auto;
+  contain-intrinsic-size: calc(
     100vh - ${GlobalStyling.MobileBarHeight} - ${GlobalStyling.AppBarHeight}
   );
 
@@ -82,8 +109,9 @@ const Container = styled.section<ContainerProps>`
 
   @media screen and (min-width: ${(p) =>
     p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    --sectionHeight: calc(100vh - ${GlobalStyling.AppBarHeight});
     ${tw`text-2xl flex-row items-center`}
+    height: calc(100vh - ${GlobalStyling.AppBarHeight});
+    contain-intrinsic-size: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 `;
 
@@ -190,6 +218,8 @@ const BouncingArrowDown = styled(FaChevronDown)<BouncingArrowDownProps>`
   cursor: pointer;
   fill: var(--accent-color);
   font-size: 3rem;
+  /* When the animation stop, still keep position */
+  transform: translateX(-50%);
 `;
 
 export { HeroSection };

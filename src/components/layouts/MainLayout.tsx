@@ -34,14 +34,6 @@ const Main = styled.main<MainProps>`
   min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
 
   ${tw`z-10 bg-primary relative top-0 transition-colors duration-theme ease-theme`};
-
-  & > section {
-    height: var(--sectionHeight);
-
-    /* Experimental */
-    content-visibility: auto;
-    contain-intrinsic-size: var(--sectionHeight);
-  }
 `;
 
 export { MainLayout };

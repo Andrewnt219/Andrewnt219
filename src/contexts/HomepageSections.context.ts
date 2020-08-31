@@ -15,7 +15,7 @@ type InViewSection = {
 };
 
 /**
- * @description context for theming, with current theme and switch handler
+ * @description context for Sidebar navigation in Homepage
  */
 export const HomepageSections = React.createContext<InViewSection>({
   inViewSection: null,

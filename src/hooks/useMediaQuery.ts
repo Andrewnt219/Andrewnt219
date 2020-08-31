@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTheme, DefaultTheme } from "styled-components";
-import { GlobalStyling } from "@src/constants/globalStyles.constants";
+import { GlobalStyling } from "@src/constants/global.constants";
 
 /**
  * @returns query is matched

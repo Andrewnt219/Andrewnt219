@@ -158,7 +158,7 @@ type CustomLightSwitchProps = {};
 const CustomLightSwitch = styled(LightSwitch)<CustomLightSwitchProps>`
   grid-area: switcher;
   justify-self: flex-end;
-  background: rgba(var(--secondary-color-rgb), 0.8);
+  background: rgba(var(--primary-color-light-rgb), 0.8);
   transition: background 300ms ease;
 
   ${tw`hocus:outline-none inline-flex justify-center items-center w-20 h-20 rounded-full`}

@@ -12,7 +12,7 @@ import { Logo } from "../ui/Logo";
 import { useMediaQuery } from "@src/hooks";
 import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
 import { spinZ } from "@src/styles/animation/spin.animation";
-import { GlobalStyling } from "@src/constants/globalStyles.constants";
+import { GlobalStyling } from "@src/constants/global.constants";
 import { ThemeContext } from "@src/contexts/theme.context";
 
 enum GridArea {

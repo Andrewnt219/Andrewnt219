@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   --primary-color-light: #F6F8FE;
   --primary-color-light-rgb: 246, 248, 254;
 
-  --secondary-color: #f4f4f4;
+  --secondary-color: #751bba;
   --secondary-color-rgb: 244, 244, 244;
 
   --text-color: #000;
@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   --text-color-light: #757678;
   --text-color-light-rgb: 117, 118, 120;
 
+
   font-size: 62.5%;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -29,97 +30,74 @@ export const GlobalStyle = createGlobalStyle`
 
   scroll-behavior: smooth;
 
+  /* SECTION Raleway */
   /* raleway-regular - latin */
   @font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  font-display: auto;
-  src: local(''),
-      url('/fonts/raleway-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url('/fonts/raleway-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('/fonts/raleway-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/fonts/raleway-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
   /* raleway-700 - latin */
   @font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-display: auto;
-  font-weight: 700;
-  src: local(''),
-      url('/fonts/raleway-v17-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url('/fonts/raleway-v17-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+        url('/fonts/raleway-v17-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/fonts/raleway-v17-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
   /* raleway-italic - latin */
   @font-face {
-  font-family: 'Raleway';
-  font-style: italic;
-  font-display: auto;
-  font-weight: 400;
-  src: local(''),
-      url('/fonts/raleway-v17-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url('/fonts/raleway-v17-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 400;
+    src: local(''),
+        url('/fonts/raleway-v17-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/fonts/raleway-v17-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
+  /* !SECTION */
 
+  /* SECTION Montserrat */
   /* montserrat-300 - latin */
   @font-face {
     font-family: 'Montserrat';
     font-style: normal;
-    font-display: auto;
     font-weight: 300;
-    src: url('/fonts/montserrat-v14-latin-300.eot'); /* IE9 Compat Modes */
     src: local('Montserrat Light'), local('Montserrat-Light'),
-        url('/fonts/montserrat-v14-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('/fonts/montserrat-v14-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
-        url('/fonts/montserrat-v14-latin-300.woff') format('woff'), /* Modern Browsers */
-        url('/fonts/montserrat-v14-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('/fonts/montserrat-v14-latin-300.svg#Montserrat') format('svg'); /* Legacy iOS */
+        url('/fonts/montserrat-v14-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/fonts/montserrat-v14-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
-
   /* montserrat-regular - latin */
   @font-face {
     font-family: 'Montserrat';
     font-style: normal;
-    font-display: auto;
     font-weight: 400;
-    src: url('/fonts/montserrat-v14-latin-regular.eot'); /* IE9 Compat Modes */
     src: local('Montserrat Regular'), local('Montserrat-Regular'),
-        url('/fonts/montserrat-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('/fonts/montserrat-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-        url('/fonts/montserrat-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
-        url('/fonts/montserrat-v14-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('/fonts/montserrat-v14-latin-regular.svg#Montserrat') format('svg'); /* Legacy iOS */
+        url('/fonts/montserrat-v14-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/fonts/montserrat-v14-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
-
   /* montserrat-700 - latin */
   @font-face {
     font-family: 'Montserrat';
     font-style: normal;
-    font-display: auto;
     font-weight: 700;
-    src: url('/fonts/montserrat-v14-latin-700.eot'); /* IE9 Compat Modes */
     src: local('Montserrat Bold'), local('Montserrat-Bold'),
-        url('/fonts/montserrat-v14-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('/fonts/montserrat-v14-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
-        url('/fonts/montserrat-v14-latin-700.woff') format('woff'), /* Modern Browsers */
-        url('/fonts/montserrat-v14-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('/fonts/montserrat-v14-latin-700.svg#Montserrat') format('svg'); /* Legacy iOS */
+        url('/fonts/montserrat-v14-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/fonts/montserrat-v14-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
-
   /* montserrat-900 - latin */
   @font-face {
     font-family: 'Montserrat';
     font-style: normal;
-    font-display: auto;
     font-weight: 900;
-    src: url('/fonts/montserrat-v14-latin-900.eot'); /* IE9 Compat Modes */
     src: local('Montserrat Black'), local('Montserrat-Black'),
-        url('/fonts/montserrat-v14-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('/fonts/montserrat-v14-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
-        url('/fonts/montserrat-v14-latin-900.woff') format('woff'), /* Modern Browsers */
-        url('/fonts/montserrat-v14-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('/fonts/montserrat-v14-latin-900.svg#Montserrat') format('svg'); /* Legacy iOS */
+        url('/fonts/montserrat-v14-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/fonts/montserrat-v14-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
-
+  /* !SECTION */
   
   @media screen and (min-width: ${(p) => p.theme.breakpoints.xxs}) {
     font-size: 75%; /* 16px => 12px */
@@ -186,7 +164,7 @@ p {
     --primary-color-light: #0f0717;
     --primary-color-light-rgb: 15, 7, 23;
 
-    --secondary-color: #0f0717;
+    --secondary-color: #6b46c1;
     --secondary-color-rgb: 15, 7, 23;
 
     --text-color: #fff;

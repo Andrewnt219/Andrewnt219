@@ -1,5 +1,5 @@
 import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
-import { GlobalStyling } from "@src/constants/globalStyles.constants";
+import { GlobalStyling } from "@src/constants/global.constants";
 import { ThemeContext } from "@src/contexts/theme.context";
 import { useMediaQuery } from "@src/hooks";
 import { flickering } from "@src/styles/animation/flickering.animation";
@@ -99,10 +99,8 @@ const pathVariants: Variants = {
 const neonVariants: Variants = {
   hidden: {
     x: "-100%",
-    willChange: "transform",
   },
   visible: {
-    willChange: "auto",
     x: 0,
     scale: 1,
     transition: {

@@ -39,6 +39,7 @@ const Container = styled.div<ContainerProps>``;
 type IconWrapperProps = {
   iconColor: string;
 };
+// TODO in dark-mode, make the svg white, and colored on hover
 const IconWrapper = styled.a<IconWrapperProps>`
   ${tw`inline-flex justify-center items-center w-12 h-12 bg-transparent rounded-sm cursor-pointer relative overflow-hidden`};
 

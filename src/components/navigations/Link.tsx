@@ -5,25 +5,29 @@ import { styled } from "twin.macro";
 type Props = LinkProps & {
   children: ReactNode;
   className?: string;
+  active?: AnchorProps["active"];
   anchorAttributes?: AnchorHTMLAttributes<HTMLAnchorElement>;
 };
 
 function Link({
   children,
+  active,
   className,
   anchorAttributes,
   ...linkProps
 }: Props): ReactElement {
   return (
     <NextLink {...linkProps} passHref>
-      <Anchor {...anchorAttributes} className={className}>
+      <Anchor {...anchorAttributes} active={active} className={className}>
         {children}
       </Anchor>
     </NextLink>
   );
 }
 
-type AnchorProps = {};
+type AnchorProps = {
+  active?: boolean;
+};
 const Anchor = styled.a<AnchorProps>``;
 
 export { Link };

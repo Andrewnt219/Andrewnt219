@@ -1,4 +1,4 @@
-import { GlobalStyling } from "@src/constants/globalStyles.constants";
+import { GlobalStyling } from "@src/constants/global.constants";
 import { HomepageSection } from "@src/contexts/HomepageSections.context";
 import { homepageSections } from "@src/data/homepageSections.data";
 import React, { ReactElement } from "react";
@@ -49,15 +49,13 @@ const Nav = styled.nav<NavProps>`
   ${tw`space-y-10`}
 `;
 
-type StyledLinkProps = {
-  active: boolean;
-};
-const StyledLink = styled(Link)<StyledLinkProps>`
+const StyledLink = styled(Link)`
   ${tw`text-ltextColor lowercase`}
   writing-mode: vertical-lr;
   transform: rotate(180deg);
 
-  color: ${(p) => p.active && "var(--accent-color)"};
+  /* TODO secondary or accent, which to choose */
+  color: ${(p) => p.active && "var(--secondary-color)"};
 `;
 
 export { Sidebar };

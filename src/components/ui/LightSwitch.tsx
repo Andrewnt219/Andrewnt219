@@ -7,10 +7,8 @@ const svgVariants: Variants = {
   enter: {
     opacity: 0,
     y: 25,
-    willChange: "transform, opacity",
   },
   visible: {
-    willChange: "auto",
     y: 0,
     opacity: 1,
     transition: {

@@ -1,5 +1,5 @@
 import { HomepageSectionIds } from "@src/constants/elementIds.constants";
-import { GlobalNumbers } from "@src/constants/globalStyles.constants";
+import { GlobalNumbers } from "@src/constants/global.constants";
 import { HomepageSections } from "@src/contexts/HomepageSections.context";
 import React, { ReactElement, useContext, useEffect } from "react";
 import { useInView } from "react-intersection-observer";

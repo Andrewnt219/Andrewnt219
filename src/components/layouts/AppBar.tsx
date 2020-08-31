@@ -7,25 +7,7 @@ import { MobileNavigation } from "../navigations/mobile/MobileNavigation";
 import { DesktopNavigation } from "../navigations/desktop/DesktopNavigation";
 import { useMediaQuery } from "@src/hooks";
 
-const navBarVarirants: Variants = {
-  hidden: {
-    y: "-100%",
-    willChange: "transform",
-  },
-  visible: {
-    y: 0,
-    willChange: "auto",
-    transition: {
-      duration: 0.2,
-    },
-  },
-  exit: {
-    y: -25,
-  },
-};
-
 type Props = NavProps & {};
-
 /**
  * @description renders a static nav bar and fixed nav bar
  */
@@ -72,6 +54,21 @@ function AppBar({ height }: Props): ReactElement {
     </Container>
   );
 }
+
+const navBarVarirants: Variants = {
+  hidden: {
+    y: "-100%",
+  },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  exit: {
+    y: -25,
+  },
+};
 
 type ContainerProps = {};
 const Container = styled.header<ContainerProps>`

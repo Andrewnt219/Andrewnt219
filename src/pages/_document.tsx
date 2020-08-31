@@ -43,7 +43,7 @@ export default class MyDocument extends Document {
           {/* Preload fonts for homepage */}
           <link
             rel="preload"
-            href="fonts/montserrat-v14-latin-400.woff2"
+            href="fonts/montserrat-v14-latin-regular.woff2"
             as="font"
             type="font/woff2"
             crossOrigin=""

@@ -114,8 +114,7 @@ type StyledButtonProps = {
   styledVariants?: "outlined" | "contained" | "text";
 };
 const buttonStyle = css`
-  ${tw`hocus:outline-none uppercase border border-transparent`}
-  border-radius: 7px;
+  ${tw`hocus:outline-none uppercase border border-transparent rounded`}
   padding: 0.75em 2em;
 `;
 

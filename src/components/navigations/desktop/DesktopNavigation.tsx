@@ -13,6 +13,7 @@ function DesktopNavigation(): ReactElement {
       ))}
 
       <EmailContainer>
+        {PersonalInfo.Email}
         <EmailLink href={`mailto:${PersonalInfo.Email}`}>
           {PersonalInfo.Email}
         </EmailLink>

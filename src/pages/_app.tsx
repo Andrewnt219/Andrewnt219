@@ -8,7 +8,7 @@ import { Mode, ThemeContext } from "@src/contexts/theme.context";
 import { useEffect, useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  /* // ^ Light/Dark Mode  */
+  /* SECTION Light/Dark Mode  */
   // the theme of the app
   const [mode, setMode] = useState<Mode | null>(null);
 
@@ -41,6 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       throw new Error("received a null for newMode");
     }
   };
+  /* !SECTION */
 
   return (
     <ThemeProvider theme={defaultTheme}>

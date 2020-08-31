@@ -2,10 +2,7 @@ import React, { ReactElement, useContext, useEffect } from "react";
 import { Button } from "@src/components/ui/Button";
 import tw, { styled } from "twin.macro";
 import { Link } from "@src/components/navigations/Link";
-import {
-  GlobalNumbers,
-  GlobalStyling,
-} from "@src/constants/globalStyles.constants";
+import { GlobalNumbers, GlobalStyling } from "@src/constants/global.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { useInView } from "react-intersection-observer";
 import { FaChevronDown } from "react-icons/fa";
@@ -84,7 +81,7 @@ function HeroSection(): ReactElement {
         sizes={Styling.CarouselSizes}
       />
 
-      <BouncingArrowDown onClick={onArrowDownClicked} animated={inView} />
+      <BouncingArrowDown onClick={onArrowDownClicked} />
     </Container>
   );
 }
@@ -179,7 +176,7 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
   img {
     width: calc(var(--img-height) * var(--width-scale));
     height: var(--img-height);
-    border-radius: 0.5rem;
+    ${tw`rounded`}
   }
 
   @media screen and (min-width: ${(p) =>
@@ -203,11 +200,10 @@ const bounce = keyframes`
     transform: translate(-50%, 0);
   }
 `;
-type BouncingArrowDownProps = {
-  animated?: boolean;
-};
+type BouncingArrowDownProps = {};
 const BouncingArrowDown = styled(FaChevronDown)<BouncingArrowDownProps>`
-  animation: ${(p) => (p.animated ? bounce : null)} 1s infinite;
+  /* animation: ${(p) => (p.animated ? bounce : null)} 1s infinite; */
+  animation: ${bounce} 1s infinite;
   position: absolute;
   bottom: 1vh;
   left: 50%;

@@ -100,13 +100,12 @@ const Backdrop = styled.div<BackdropProps>`
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1),
     background 1s cubic-bezier(0.86, 0, 0.07, 1);
   ${tw`w-8 h-8 block pointer-events-none bg-accent rounded-full`};
-  will-change: transform;
 
   ${(p) =>
     p.isFullScreen &&
     css`
       transform: scale(130);
-      ${tw`bg-secondary z-20 pointer-events-auto`}
+      ${tw`bg-lprimary z-20 pointer-events-auto`}
     `}
 `;
 

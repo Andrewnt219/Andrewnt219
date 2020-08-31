@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useEffect, useState } from "react";
+import React, { ReactElement, ReactNode, useState } from "react";
 import { AppBar } from "./AppBar";
 import { Footer } from "./Footer";
 import tw, { styled } from "twin.macro";

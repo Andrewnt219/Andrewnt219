@@ -1,19 +1,21 @@
 import { allRoutes } from "@src/data/routes.data";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext } from "react";
 import { DesktopNavigationItem } from "./DesktopNavigationItem";
 import tw, { styled, theme } from "twin.macro";
 import { LightSwitch } from "../../ui/LightSwitch";
 import { PersonalInfo } from "@src/constants/personalInfo.constants";
+import { SnackbarContext } from "@src/contexts/Snackbar.context";
 
 function DesktopNavigation(): ReactElement {
+  const { displaySnackbar } = useContext(SnackbarContext);
+
   return (
     <Container>
       {allRoutes.map(({ text, ...linkProps }) => (
         <DesktopNavigationItem key={text} text={text} {...linkProps} />
       ))}
 
-      <EmailContainer>
-        {PersonalInfo.Email}
+      <EmailContainer onClick={() => displaySnackbar("Copy to clipboard")}>
         <EmailLink href={`mailto:${PersonalInfo.Email}`}>
           {PersonalInfo.Email}
         </EmailLink>
@@ -44,7 +46,7 @@ const EmailContainer = styled.li<EmailContainerProps>`
 
 type EmailLinkProps = {};
 const EmailLink = styled.a<EmailLinkProps>`
-  ${tw`text-sm py-2 px-4  rounded-full bg-textColor text-primary`}
+  ${tw` py-2 px-4  rounded-full bg-textColor text-primary`}
   transition: transform 300ms ease,
     color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`},
     background-color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`};

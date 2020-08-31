@@ -7,6 +7,7 @@ import { GlobalNumbers, GlobalStyling } from "@src/constants/global.constants";
 import { SnackbarContext } from "@src/contexts/Snackbar.context";
 import drop from "lodash/drop";
 import { Snackbar } from "../ui/Snackbar";
+import { AnimatePresence } from "framer-motion";
 
 type Props = {
   children: ReactNode;
@@ -18,11 +19,17 @@ type Props = {
 function MainLayout({ children }: Props): ReactElement {
   /* SECTION Snack bar */
   // handle snackbar message
-  const [snackbarMessages, setSnackbarMessages] = useState<string[]>([]);
+  const [snackbarMessages, setSnackbarMessages] = useState<
+    { message: string; id: number }[]
+  >([]);
 
   const displaySnackbar = (message: string) => {
-    setSnackbarMessages((prevMessages) => prevMessages.concat(message));
+    // NOTE create a consistent id across renders for messages
+    setSnackbarMessages((prevMessages) =>
+      prevMessages.concat({ message, id: Math.random() })
+    );
 
+    // remove message after a short period
     setTimeout(() => {
       setSnackbarMessages((prevMessages) => drop(prevMessages));
     }, GlobalNumbers.SnackbarDisplayDurationInMs);
@@ -39,12 +46,11 @@ function MainLayout({ children }: Props): ReactElement {
 
       <Footer />
 
-      {snackbarMessages.map((message) => (
-        <Snackbar
-          key={message + (Math.random() * 100).toString()}
-          message={message}
-        />
-      ))}
+      <AnimatePresence>
+        {snackbarMessages.map(({ message, id }) => (
+          <Snackbar key={id} message={message} />
+        ))}
+      </AnimatePresence>
     </SnackbarContext.Provider>
   );
 }

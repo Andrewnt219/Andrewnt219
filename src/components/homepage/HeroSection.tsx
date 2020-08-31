@@ -67,7 +67,7 @@ function HeroSection(): ReactElement {
         </Summary>
 
         <CustomButton>
-          <Link href="/projects">See my projects</Link>
+          <Link href={`/#${HomepageSectionIds.Projects}`}>See my projects</Link>
         </CustomButton>
       </InfoContainer>
 

@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
 
 :root {
   --accent-color: #0070f3;
-  --accent-color-rgb: 58, 134, 255;
+  --accent-color-rgb: 0, 112, 243;
 
   --primary-color: #fff;
   --primary-color-rgb:   255, 255, 255;
@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   --primary-color-light-rgb: 246, 248, 254;
 
   --secondary-color: #751bba;
-  --secondary-color-rgb: 244, 244, 244;
+  --secondary-color-rgb: 117, 27, 186;
 
   --text-color: #000;
   --text-color-rgb: 0, 0, 0;
@@ -165,8 +165,8 @@ p {
     --primary-color-light: #0f0717;
     --primary-color-light-rgb: 15, 7, 23;
 
-    --secondary-color: #6b46c1;
-    --secondary-color-rgb: 15, 7, 23;
+    --secondary-color: #8c5bff;
+    --secondary-color-rgb: 140, 91, 255;
 
     --text-color: #fff;
     --text-color-rgb: 255, 255, 255;

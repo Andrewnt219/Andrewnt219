@@ -13,6 +13,7 @@ import { useMediaQuery } from "@src/hooks";
 import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
 import { spinZ } from "@src/styles/animation/spin.animation";
 import { GlobalStyling } from "@src/constants/global.constants";
+import { Email } from "../ui/Email";
 
 enum GridArea {
   Medias = "medias",
@@ -40,7 +41,7 @@ function Footer(): ReactElement {
 
       <MediaIcons>{renderMediaIcons()}</MediaIcons>
 
-      <Email href={`mailto:${PersonalInfo.Email}`}>{PersonalInfo.Email}</Email>
+      <EmailLink />
 
       <Text>
         Made by Andrew Nguyen with&nbsp;
@@ -116,9 +117,9 @@ const MediaIcons = styled.ul<MediaIconsProps>`
   grid-area: ${GridArea.Medias};
 `;
 
-type EmailProps = {};
-const Email = styled.a<EmailProps>`
-  ${tw`font-bBold underline`}
+type EmailLinkProps = {};
+const EmailLink = styled(Email)<EmailLinkProps>`
+  ${tw`font-bBold underline hocus:outline-none  hocus:text-secondary`}
   grid-area: ${GridArea.Email};
 
   font-size: larger;

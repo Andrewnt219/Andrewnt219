@@ -258,7 +258,7 @@ module.exports = {
       "6xl": "4rem",
     },
     fontWeight: {
-      bNomral: "400",
+      bNormal: "400",
       bBold: "700",
       hLight: "300",
       hNormal: "400",

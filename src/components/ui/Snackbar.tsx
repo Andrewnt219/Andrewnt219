@@ -34,7 +34,7 @@ const containerVariants: Variants = {
 
 type ContainerProps = {};
 const Container = styled(motion.div)<ContainerProps>`
-  ${tw`z-50 px-5 py-2  rounded bg-secondary text-white transition-colors duration-theme ease-theme`}
+  ${tw`z-50 px-5 py-2  rounded bg-secondary text-white transition-colors duration-theme ease-theme text-lg`}
   position: fixed;
   bottom: 2vh;
   left: 50%;

@@ -165,8 +165,8 @@ p {
     --primary-color-light: #0f0717;
     --primary-color-light-rgb: 15, 7, 23;
 
-    --secondary-color: #8c5bff;
-    --secondary-color-rgb: 140, 91, 255;
+    --secondary-color: #6a2cb1;
+    --secondary-color-rgb: 106, 44, 177;
 
     --text-color: #fff;
     --text-color-rgb: 255, 255, 255;
@@ -184,7 +184,9 @@ p {
   box-sizing: inherit;
   font-family: inherit;
   color: var(--text-color);
-  transition: color 300ms ease, background-color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`};
+  transition: fill 300ms ${theme`transitionTimingFunction.theme`},  
+    color 300ms ease, 
+    background-color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`};
 }
 
 input,

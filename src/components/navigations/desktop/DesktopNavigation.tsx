@@ -1,24 +1,19 @@
 import { allRoutes } from "@src/data/routes.data";
-import React, { ReactElement, useContext } from "react";
+import React, { ReactElement } from "react";
 import { DesktopNavigationItem } from "./DesktopNavigationItem";
 import tw, { styled, theme } from "twin.macro";
 import { LightSwitch } from "../../ui/LightSwitch";
-import { PersonalInfo } from "@src/constants/personalInfo.constants";
-import { SnackbarContext } from "@src/contexts/Snackbar.context";
+import { Email } from "@src/components/ui/Email";
 
 function DesktopNavigation(): ReactElement {
-  const { displaySnackbar } = useContext(SnackbarContext);
-
   return (
     <Container>
       {allRoutes.map(({ text, ...linkProps }) => (
         <DesktopNavigationItem key={text} text={text} {...linkProps} />
       ))}
 
-      <EmailContainer onClick={() => displaySnackbar("Copy to clipboard")}>
-        <EmailLink href={`mailto:${PersonalInfo.Email}`}>
-          {PersonalInfo.Email}
-        </EmailLink>
+      <EmailContainer>
+        <EmailLink />
       </EmailContainer>
 
       <LightSwitchContainer>
@@ -32,7 +27,7 @@ type ContainerProps = {};
 const Container = styled.ul<ContainerProps>`
   ${tw`flex space-x-5 text-xl font-heading`}
 
-  li > * {
+  & > li > * {
     ${tw`pb-2`}
   }
 `;
@@ -45,15 +40,18 @@ const EmailContainer = styled.li<EmailContainerProps>`
 `;
 
 type EmailLinkProps = {};
-const EmailLink = styled.a<EmailLinkProps>`
+const EmailLink = styled(Email)<EmailLinkProps>`
   ${tw` py-2 px-4  rounded-full bg-textColor text-primary`}
   transition: transform 300ms ease,
     color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`},
-    background-color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`};
+    background-color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`},
+    box-shadow 200ms ease;
 
   :hover,
   :focus {
-    transform: scale(1.15);
+    outline: none;
+    /* TODO an alternative way to show focus state */
+    box-shadow: 0 0.2rem 0.2rem var(--secondary-color);
   }
 `;
 

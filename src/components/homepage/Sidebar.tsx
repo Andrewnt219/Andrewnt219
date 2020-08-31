@@ -55,7 +55,7 @@ const StyledLink = styled(Link)`
   transform: rotate(180deg);
 
   /* TODO secondary or accent, which to choose */
-  color: ${(p) => p.active && "var(--secondary-color)"};
+  color: ${(p) => p.active && "var(--accent-color)"};
 `;
 
 export { Sidebar };

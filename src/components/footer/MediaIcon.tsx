@@ -86,7 +86,6 @@ type IconWrapperProps = {
   iconColor: string;
   isDarkMode: string;
 };
-// TODO in dark-mode, make the svg white, and colored on hover
 const IconWrapper = styled.a<IconWrapperProps>`
   ${tw`inline-flex justify-center items-center w-12 h-12 bg-transparent rounded-sm cursor-pointer relative overflow-hidden`};
 
@@ -97,7 +96,7 @@ const IconWrapper = styled.a<IconWrapperProps>`
 
   svg {
     font-size: 2rem;
-    transition: fill 250ms ease 50ms;
+    transition: fill 50ms ease;
   }
 
   ${({ isDarkMode, iconColor }) =>

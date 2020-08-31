@@ -1,3 +1,4 @@
+import { theme } from "twin.macro";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -183,7 +184,7 @@ p {
   box-sizing: inherit;
   font-family: inherit;
   color: var(--text-color);
-  transition: color 300ms ease;
+  transition: color 300ms ease, background-color ${theme`transitionDuration.theme`} ${theme`transitionTimingFunction.theme`};
 }
 
 input,

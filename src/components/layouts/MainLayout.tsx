@@ -60,7 +60,7 @@ const Main = styled.main<MainProps>`
   padding: 0 5% 5rem 5%;
   min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
 
-  ${tw`z-10 bg-primary relative top-0 transition-colors duration-theme ease-theme`};
+  ${tw`z-10 bg-primary relative top-0`};
 `;
 
 export { MainLayout };

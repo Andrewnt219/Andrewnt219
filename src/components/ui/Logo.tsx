@@ -154,7 +154,7 @@ const NeonText = styled(motion.div)<NeonTextProps>`
   bottom: calc(${(p) => p.size} / -25);
 
   span {
-    /* // TODO: Create a performance-optimized version of the website */
+    /* TODO: Create a performance-optimized version of the website */
     ${(p) =>
       !p.isMobile &&
       css`

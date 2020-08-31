@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 
 export default function Home() {
-  //* Should to be null on first page load
+  // NOTE Should to be null on first page load
   const [inViewSection, setInViewSection] = useState<null | HomepageSection>(
     null
   );
@@ -29,7 +29,7 @@ export default function Home() {
       <ProjectsSection />
       <AboutSection />
       <ContactSection />
-      {/* //* Need to be !== null to prevent disply on initial page load*/}
+      {/* NOTE Need to be !== null to prevent disply on initial page load*/}
       {inViewSection && inViewSection !== HomepageSectionIds.Hero && (
         <Sidebar inViewSection={inViewSection} />
       )}

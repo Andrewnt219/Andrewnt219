@@ -61,7 +61,7 @@ const Container = styled(motion.p)<ContainerProps>``;
 
 type TextProps = {};
 const Text = styled(motion.span)<TextProps>`
-  //! inline-block is important
+  /* NOTE inline-block is IMPORTANT */
   display: inline-block;
 `;
 

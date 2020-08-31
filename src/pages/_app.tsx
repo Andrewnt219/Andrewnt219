@@ -8,6 +8,7 @@ import { Mode, ThemeContext } from "@src/contexts/theme.context";
 import { useEffect, useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  /* // ^ Light/Dark Mode  */
   // the theme of the app
   const [mode, setMode] = useState<Mode | null>(null);
 
@@ -20,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  /* set theme for localStorage, themeContext, and body's classes */
+  // set theme for localStorage, themeContext, and body's classes
   const onModeSwitch = (newMode: Mode) => {
     // Check valid mode
     if (newMode) {

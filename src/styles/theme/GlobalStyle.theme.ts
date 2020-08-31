@@ -175,7 +175,7 @@ p {
   line-height: 1.6;
 }
 
-  /* //! theme must end with 'mode' for ease of removing */
+  /* NOTE theme must end with 'mode' for ease of removing */
   .dark-mode {
     --accent-color: #51d7fd;
     --acent-color-rgb: 81, 215, 253;

@@ -55,7 +55,7 @@ function ResponsiveImage({
   );
 
   return (
-    /* //! weird bug that make online inline-styling work with bgImage */
+    /* NOTE weird bug that make online inline-styling work with bgImage */
     <div
       key={key}
       className={className}

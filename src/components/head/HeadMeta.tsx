@@ -9,20 +9,20 @@ function HeadMeta(): ReactElement {
       <meta
         key="description"
         name="description"
-        content="I am a web developer undergraduate. I am actively looking for learning opportunities, internships, and mentorships. I bring user-oriented designs. My specialities are React, TypeScript, UI/Ux"
+        content="Andrew Nguyen is a web developer. Andrew is actively looking for learning opportunities, internships, and mentorships. Bringing user-oriented designs. Speacializing in React, TypeScript, and UI/Ux"
       />
 
+      {/* TODO Consider removing this keywords */}
       <meta
         key="keywords"
         name="keywords"
         content="web, website, webapp, web app, project, portfolio, web developer, react, react-js, react.js, react developer, next-js, next.js, nextjs, front-end developer, frontend developer, front-end, frontend"
       />
 
-      <meta key="theme" name="theme-color" content="#116dff" />
-
+      {/* OG */}
       <meta key="ogType" name="og:type" content="website" />
       <meta key="ogSiteName" name="og:site-name" content="Andrew Nguyen" />
-      {/* //TODO change image */}
+      {/* TODO change image */}
       <meta key="ogUrl" property="og:url" content="https://andrewnt.dev/" />
       <meta key="fbAppId" property="fb:app_id" content="349386242864659" />
       <meta key="ogImage" property="og:image" content="/og-image.jpg" />
@@ -61,6 +61,7 @@ function HeadMeta(): ReactElement {
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
       <meta name="msapplication-TileColor" content="#603cba" />
       <meta name="theme-color" content="#ffffff" />
+      <meta key="theme" name="theme-color" content="#116dff" />
     </Head>
   );
 }

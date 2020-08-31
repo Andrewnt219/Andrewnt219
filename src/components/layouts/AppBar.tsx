@@ -47,7 +47,7 @@ function AppBar({ height }: Props): ReactElement {
   return (
     <Container>
       <StaticNav height={height} ref={ref}>
-        {/* //! do not put Logo in shared */}
+        {/* NOTE do not put Logo in shared */}
         <Logo animated={enableAnimation} />
         {inView && sharedNavContent}
       </StaticNav>
@@ -63,7 +63,7 @@ function AppBar({ height }: Props): ReactElement {
             //
             height={height}
           >
-            {/* //! do not put Logo in shared */}
+            {/* NOTE do not put Logo in shared */}
             <Logo />
             {sharedNavContent}
           </FixedNav>

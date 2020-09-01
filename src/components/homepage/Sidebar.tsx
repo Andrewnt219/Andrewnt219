@@ -9,7 +9,6 @@ type Props = {
   inViewSection: HomepageSection;
 };
 
-// TODO Add animation
 function Sidebar({ inViewSection }: Props): ReactElement {
   return (
     <Container>
@@ -54,7 +53,6 @@ const StyledLink = styled(Link)`
   writing-mode: vertical-lr;
   transform: rotate(180deg);
 
-  /* TODO secondary or accent, which to choose */
   color: ${(p) => p.active && "var(--accent-color)"};
 `;
 

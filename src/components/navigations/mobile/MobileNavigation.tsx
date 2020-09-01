@@ -176,7 +176,7 @@ const CustomLightSwitch = styled(LightSwitch)<CustomLightSwitchProps>`
 type EmailLinkProps = {};
 const EmailLink = styled(Email)<EmailLinkProps>`
   grid-area: email;
-  ${tw`font-heading text-left hocus:outline-none hocus:text-secondary`}
+  ${tw`font-heading text-left hocus:outline-none hocus:text-accent`}
   display: inline-block;
   text-decoration: underline;
 `;

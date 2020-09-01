@@ -34,9 +34,9 @@ const Container = styled.ul<ContainerProps>`
 
 type EmailContainerProps = {};
 const EmailContainer = styled.li<EmailContainerProps>`
-  /* For vertically centered */
-  /* Padding bottom is the same as anchors in Container */
+  /* NOTE Padding bottom is the same as anchors in Container */
   ${tw`flex justify-center items-center pb-2`}
+  font-size: smaller;
 `;
 
 type EmailLinkProps = {};
@@ -50,7 +50,6 @@ const EmailLink = styled(Email)<EmailLinkProps>`
   :hover,
   :focus {
     outline: none;
-    /* TODO an alternative way to show focus state */
     box-shadow: 0 0.2rem 0.2rem var(--secondary-color);
   }
 `;

@@ -31,10 +31,6 @@ type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
   min-height: 100vh;
 
-  /* Experimental */
-  content-visibility: auto;
-  contain-intrinsic-size: 100vh;
-
   ${tw` bg-accent`}
 `;
 

@@ -7,6 +7,7 @@ import { LightSwitch } from "../../ui/LightSwitch";
 import { Hamburger } from "./Hamburger";
 import { MobileNavigationItem } from "./MobileNavigationItem";
 import { FaGithubAlt, FaFacebookSquare, FaLinkedinIn } from "react-icons/fa";
+import { Email } from "@src/components/ui/Email";
 
 enum Styling {
   PaddingLeft = "10%",
@@ -52,12 +53,7 @@ function MobileNavigation(): ReactElement {
               animate="visible"
               exit="exit"
             >
-              <Email
-                //
-                href={`mailto:${PersonalInfo.Email}`}
-              >
-                {PersonalInfo.Email}
-              </Email>
+              <EmailLink />
               <CustomLightSwitch />
               <Medias>
                 <li>
@@ -177,17 +173,12 @@ const CustomLightSwitch = styled(LightSwitch)<CustomLightSwitchProps>`
   }
 `;
 
-type EmailProps = {};
-const Email = styled.a<EmailProps>`
+type EmailLinkProps = {};
+const EmailLink = styled(Email)<EmailLinkProps>`
   grid-area: email;
-  ${tw`font-heading`}
+  ${tw`font-heading text-left hocus:outline-none hocus:text-secondary`}
   display: inline-block;
   text-decoration: underline;
-
-  :focus,
-  :hover {
-    ${tw`text-accent`}
-  }
 `;
 
 type MediasProps = {};

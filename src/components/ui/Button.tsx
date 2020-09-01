@@ -4,6 +4,7 @@ import { ThemeContext } from "@src/contexts/theme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
 import { motion, Variants } from "framer-motion";
 import { useMediaQuery } from "@src/hooks";
+import { StyledComponentInnerAttrs } from "styled-components";
 
 const darkButtonVariants: Variants = {
   visible: {
@@ -78,13 +79,19 @@ const darkButtonVariants: Variants = {
     },
   },
 };
-
+type a = HTMLElement;
 type Props = StyledButtonProps & {
   children: ReactNode;
   className?: string;
+  isButtonLink?: boolean;
 };
 
-function Button({ className, children, ...styleProps }: Props): ReactElement {
+function Button({
+  className,
+  children,
+  isButtonLink,
+  ...styleProps
+}: Props): ReactElement {
   const { mode } = useContext(ThemeContext);
 
   // Disable flickering animation in mobile because it cannot be seen
@@ -94,6 +101,7 @@ function Button({ className, children, ...styleProps }: Props): ReactElement {
     <DarkButton
       {...styleProps}
       className={className}
+      as={isButtonLink ? motion.a : undefined}
       //
       variants={enableEnterAnimation ? darkButtonVariants : undefined}
       animate="visible"
@@ -101,19 +109,24 @@ function Button({ className, children, ...styleProps }: Props): ReactElement {
       {children}
     </DarkButton>
   ) : (
-    <LightButton {...styleProps} className={className}>
+    <LightButton
+      {...styleProps}
+      className={className}
+      as={isButtonLink ? "a" : undefined}
+    >
       {children}
     </LightButton>
   );
 }
 
 export { Button };
+
 type StyledButtonProps = {
   primary?: boolean;
   secondary?: boolean;
   styledVariants?: "outlined" | "contained" | "text";
 };
-const buttonStyle = css`
+const sharedButtonStyle = css`
   ${tw`hocus:outline-none uppercase border border-transparent rounded`}
   padding: 0.75em 2em;
 `;
@@ -122,7 +135,7 @@ type LightButtonProps = StyledButtonProps & {};
 export const LightButton = styled.button<LightButtonProps>`
   --shadow-color: rgba(var(--accent-color-rgb), 0.4);
 
-  ${buttonStyle}
+  ${sharedButtonStyle}
   ${tw`bg-accent text-primary`}
 
   transition: transform 200ms ease, box-shadow 500ms ease;
@@ -156,7 +169,7 @@ const DarkButton = styled(motion.button)<DarkButtonProps>`
   --shadow-2: 0 0 1rem rgba(67, 183, 255, 0.6),
     inset 0 0 1rem rgba(67, 183, 255, 0.4), 0 0.2rem 0 #000;
 
-  ${buttonStyle}
+  ${sharedButtonStyle}
   ${tw`text-accent border-accent border bg-transparent`}
   box-shadow: var(--shadow);
 

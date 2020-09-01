@@ -1,7 +1,7 @@
 import React, { ReactElement, useContext, useEffect } from "react";
 import { Button } from "@src/components/ui/Button";
 import tw, { styled } from "twin.macro";
-import { Link } from "@src/components/navigations/Link";
+import NextLink from "next/link";
 import { GlobalNumbers, GlobalStyling } from "@src/constants/global.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { useInView } from "react-intersection-observer";
@@ -66,9 +66,9 @@ function HeroSection(): ReactElement {
           <span>Creating websites that does not confuse users</span>
         </Summary>
 
-        <CustomButton>
-          <Link href={`/#${HomepageSectionIds.Projects}`}>See my projects</Link>
-        </CustomButton>
+        <NextLink href={`/#${HomepageSectionIds.Projects}`} passHref>
+          <CustomButton isButtonLink>See my projects</CustomButton>
+        </NextLink>
       </InfoContainer>
 
       <CarouselContainer

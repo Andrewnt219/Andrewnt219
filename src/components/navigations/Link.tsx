@@ -1,8 +1,8 @@
-import NextLink, { LinkProps } from "next/link";
+import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import React, { ReactElement, ReactNode, AnchorHTMLAttributes } from "react";
 import { styled } from "twin.macro";
 
-type Props = LinkProps & {
+export type LinkProps = NextLinkProps & {
   children: ReactNode;
   className?: string;
   active?: AnchorProps["active"];
@@ -15,7 +15,7 @@ function Link({
   className,
   anchorAttributes,
   ...linkProps
-}: Props): ReactElement {
+}: LinkProps): ReactElement {
   return (
     <NextLink {...linkProps} passHref>
       <Anchor {...anchorAttributes} active={active} className={className}>

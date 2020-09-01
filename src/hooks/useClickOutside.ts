@@ -6,7 +6,7 @@ import { MutableRefObject, useEffect } from "react";
  * @param handler a callback to trigger on click "outside" of ref-ed element
  */
 export function useClickOutside(
-  ref: MutableRefObject<HTMLElement>,
+  ref: MutableRefObject<HTMLElement | null>,
   handler: (event: Event) => void
 ) {
   useEffect(

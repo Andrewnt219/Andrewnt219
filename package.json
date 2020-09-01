@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^9.5.1",
+    "@types/lodash": "^4.14.161",
     "@zeit/next-source-maps": "^0.0.3",
     "framer-motion": "^2.3.0",
     "imagemin-mozjpeg": "^9.0.0",

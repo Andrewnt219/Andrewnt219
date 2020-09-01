@@ -202,7 +202,6 @@ const bounce = keyframes`
 `;
 type BouncingArrowDownProps = {};
 const BouncingArrowDown = styled(FaChevronDown)<BouncingArrowDownProps>`
-  /* animation: ${(p) => (p.animated ? bounce : null)} 1s infinite; */
   animation: ${bounce} 1s infinite;
   position: absolute;
   bottom: 1vh;

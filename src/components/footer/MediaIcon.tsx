@@ -84,7 +84,7 @@ const darkMode = (iconColor: string) => css`
 
 type IconWrapperProps = {
   iconColor: string;
-  isDarkMode: string;
+  isDarkMode: boolean;
 };
 const IconWrapper = styled.a<IconWrapperProps>`
   ${tw`inline-flex justify-center items-center w-12 h-12 bg-transparent rounded-sm cursor-pointer relative overflow-hidden`};

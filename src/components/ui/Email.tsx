@@ -33,6 +33,7 @@ function Email({ className }: Props): ReactElement {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { displaySnackbar } = useContext(SnackbarContext);
 
+  // TODO prevent keyboard popup on mobile
   const onCopyButtonClicked = (): void => {
     if (inputRef.current) {
       // Execute copy
@@ -100,6 +101,8 @@ function Email({ className }: Props): ReactElement {
         type="text"
         defaultValue={PersonalInfo.Email}
         ref={inputRef}
+        // NOTE readOnly to prevent keyboard pop up on mobile
+        readOnly
         //a11y
         aria-hidden={true}
         tabIndex={-1}

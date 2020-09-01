@@ -4,7 +4,6 @@ import { ThemeContext } from "@src/contexts/theme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
 import { motion, Variants } from "framer-motion";
 import { useMediaQuery } from "@src/hooks";
-import { StyledComponentInnerAttrs } from "styled-components";
 
 const darkButtonVariants: Variants = {
   visible: {

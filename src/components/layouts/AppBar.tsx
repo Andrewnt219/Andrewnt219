@@ -28,7 +28,7 @@ function AppBar({ height }: Props): ReactElement {
 
   return (
     <Container>
-      <StaticNav height={height} ref={ref}>
+      <StaticNav aria-label="Primary" height={height} ref={ref}>
         {/* NOTE do not put Logo in shared */}
         <Logo animated={enableAnimation} />
         {inView && sharedNavContent}
@@ -37,6 +37,7 @@ function AppBar({ height }: Props): ReactElement {
       <AnimatePresence>
         {!inView && (
           <FixedNav
+            aria-label="Primary"
             // framer motion
             variants={navBarVarirants}
             initial="hidden"

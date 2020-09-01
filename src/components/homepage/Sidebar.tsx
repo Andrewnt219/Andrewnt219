@@ -12,7 +12,7 @@ type Props = {
 function Sidebar({ inViewSection }: Props): ReactElement {
   return (
     <Container>
-      <Nav>
+      <Nav aria-label="Secondary">
         {homepageSections.map(({ fragment, text }) => (
           <li key={fragment}>
             <StyledLink

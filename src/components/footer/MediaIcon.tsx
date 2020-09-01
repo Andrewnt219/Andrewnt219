@@ -25,7 +25,6 @@ function MediaIcon({
         {...anchorAttributes}
         target="_blank"
         rel="noopener"
-        aria-label={label}
         title={label}
         // styling
         isDarkMode={mode === "dark-mode"}

@@ -37,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
-    font-display: auto;
+    font-display: swap;
     src: local(''),
         url('/fonts/raleway-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/fonts/raleway-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -47,7 +47,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
-    font-display: auto;
+    font-display: swap;
     src: local(''),
         url('/fonts/raleway-v17-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/fonts/raleway-v17-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -57,7 +57,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Raleway';
     font-style: italic;
     font-weight: 400;
-    font-display: auto;
+    font-display: swap;
     src: local(''),
         url('/fonts/raleway-v17-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/fonts/raleway-v17-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -70,7 +70,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
-    font-display: auto;
+    font-display: swap;
     src: local('Montserrat Light'), local('Montserrat-Light'),
         url('/fonts/montserrat-v14-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/fonts/montserrat-v14-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -80,7 +80,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-display: auto;
+    font-display: swap;
     src: local('Montserrat Regular'), local('Montserrat-Regular'),
         url('/fonts/montserrat-v14-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/fonts/montserrat-v14-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -90,7 +90,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
-    font-display: auto;
+    font-display: swap;
     src: local('Montserrat Bold'), local('Montserrat-Bold'),
         url('/fonts/montserrat-v14-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/fonts/montserrat-v14-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -100,7 +100,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 900;
-    font-display: auto;
+    font-display: swap;
     src: local('Montserrat Black'), local('Montserrat-Black'),
         url('/fonts/montserrat-v14-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/fonts/montserrat-v14-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */

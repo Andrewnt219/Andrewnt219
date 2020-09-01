@@ -161,26 +161,26 @@ p {
   line-height: 1.6;
 }
 
-  /* NOTE theme must end with 'mode' for ease of removing */
-  .dark-mode {
-    --accent-color: #51d7fd;
-    --acent-color-rgb: 81, 215, 253;
+/* NOTE theme must end with 'mode' for ease of removing */
+.dark-mode {
+  --accent-color: #51d7fd;
+  --acent-color-rgb: 81, 215, 253;
 
-    --primary-color: #150d1c;
-    --primary-color-rgb: 21, 13, 28;
+  --primary-color: #150d1c;
+  --primary-color-rgb: 21, 13, 28;
 
-    --primary-color-light: #0f0717;
-    --primary-color-light-rgb: 15, 7, 23;
+  --primary-color-light: #0f0717;
+  --primary-color-light-rgb: 15, 7, 23;
 
-    --secondary-color: #6a2cb1;
-    --secondary-color-rgb: 106, 44, 177;
+  --secondary-color: #6a2cb1;
+  --secondary-color-rgb: 106, 44, 177;
 
-    --text-color: #fff;
-    --text-color-rgb: 255, 255, 255;
+  --text-color: #fff;
+  --text-color-rgb: 255, 255, 255;
 
-    --text-color-light: #9a9fac;
-    --text-color-light-rgb: 154, 159, 172;
-  }
+  --text-color-light: #9a9fac;
+  --text-color-light-rgb: 154, 159, 172;
+}
 
 *, *::before, *::after {
   margin: 0;

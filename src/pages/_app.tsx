@@ -4,7 +4,7 @@ import { GlobalStyle } from "../styles/theme/GlobalStyle.theme";
 import { AppProps } from "next/app";
 import "tailwindcss/dist/base.min.css";
 import { MainLayout } from "@src/components/layouts/MainLayout";
-import { Mode, ThemeContext } from "@src/contexts/Theme.context";
+import { Mode, ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { useEffect, useState } from "react";
 import { GlobalNumbers } from "@src/constants/global.constants";
 import { AchievementProps } from "@src/components/ui/Achievement";
@@ -73,14 +73,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ThemeContext.Provider value={{ mode, onModeSwitch }}>
+      <ColorThemeContext.Provider value={{ mode, onModeSwitch }}>
         <AchievementContext.Provider value={{ achievements, queueAchievement }}>
           <GlobalStyle />
           <MainLayout>
             <Component {...pageProps} />
           </MainLayout>
         </AchievementContext.Provider>
-      </ThemeContext.Provider>
+      </ColorThemeContext.Provider>
     </ThemeProvider>
   );
 }

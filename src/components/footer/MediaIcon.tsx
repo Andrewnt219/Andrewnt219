@@ -1,4 +1,4 @@
-import { ThemeContext } from "@src/contexts/Theme.context";
+import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import React, { ReactElement, useContext } from "react";
 import { IconType } from "react-icons";
 import tw, { css, styled } from "twin.macro";
@@ -16,7 +16,7 @@ function MediaIcon({
   label,
   ...anchorAttributes
 }: MediaIconProps): ReactElement {
-  const { mode } = useContext(ThemeContext);
+  const { mode } = useContext(ColorThemeContext);
 
   return (
     <Container>

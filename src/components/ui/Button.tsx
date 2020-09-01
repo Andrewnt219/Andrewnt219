@@ -1,6 +1,6 @@
 import tw, { styled, css } from "twin.macro";
 import React, { ReactElement, ReactNode, useContext } from "react";
-import { ThemeContext } from "@src/contexts/Theme.context";
+import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
 import { motion, Variants } from "framer-motion";
 import { useMediaQuery } from "@src/hooks";
@@ -91,7 +91,7 @@ function Button({
   isButtonLink,
   ...styleProps
 }: Props): ReactElement {
-  const { mode } = useContext(ThemeContext);
+  const { mode } = useContext(ColorThemeContext);
 
   // Disable flickering animation in mobile because it cannot be seen
   const enableEnterAnimation = useMediaQuery();

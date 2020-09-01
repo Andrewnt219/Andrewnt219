@@ -1,6 +1,6 @@
 import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
 import { GlobalStyling } from "@src/constants/global.constants";
-import { ThemeContext } from "@src/contexts/Theme.context";
+import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { useMediaQuery } from "@src/hooks";
 import { flickering } from "@src/styles/animation/flickering.animation";
 import { glow } from "@src/styles/animation/glow.animation";
@@ -18,7 +18,7 @@ type Props = {
 };
 
 function Logo({ animated, size = "10rem" }: Props): ReactElement {
-  const { mode } = useContext(ThemeContext);
+  const { mode } = useContext(ColorThemeContext);
   const isDesktopMode = useMediaQuery(GlobalStyling.DesktopBreakpoint);
 
   const logoSvg = (

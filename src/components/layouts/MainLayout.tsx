@@ -43,9 +43,11 @@ function MainLayout({ children }: Props): ReactElement {
         ))}
       </AnimatePresence>
 
-      {achievements.map(({ id, ...props }) => (
-        <Achievement key={id} {...props} />
-      ))}
+      <AnimatePresence>
+        {achievements.map(({ id, ...props }) => (
+          <Achievement key={id} {...props} />
+        ))}
+      </AnimatePresence>
     </SnackbarContext.Provider>
   );
 }

@@ -3,7 +3,7 @@ import React from "react";
 export type Mode = "light-mode" | "dark-mode" | null;
 export type ModeSwitchHandler = (newMode: Mode) => void;
 
-type Themer = {
+type Context = {
   mode: Mode;
   onModeSwitch: ModeSwitchHandler;
 };
@@ -11,7 +11,7 @@ type Themer = {
 /**
  * @description context for theming, with current theme and switch handler
  */
-export const ThemeContext = React.createContext<Themer>({
+export const ColorThemeContext = React.createContext<Context>({
   mode: null,
   onModeSwitch: () => {
     return;

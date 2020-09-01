@@ -83,19 +83,27 @@ export default class MyDocument extends Document {
                   switch (currentTheme) {
                     case "light-mode":
                       document.body.classList.add("light-mode");
-                      break;
+                      return;
                 
                     case "dark-mode":
                       document.body.classList.add("dark-mode");
-                      break;
+                      return;
                       
                     default:
-                      document.body.classList.add("light-mode");
                       break;
                   }
                 } catch(error) {
                   console.log(error);
                   console.warn('Failed to access localStorage');
+                }
+
+                const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if(userPrefersDark) {
+                  document.body.classList.add("dark-mode");
+                  return;
+                } else {
+                  document.body.classList.add("light-mode");
+                  return;
                 }
               })();
               

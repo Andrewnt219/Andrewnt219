@@ -51,14 +51,11 @@ function HeroSection(): ReactElement {
       <InfoContainer>
         <AuthorName>Andrew Nguyen</AuthorName>
 
-        <Heading>
-          <span>People-oriented&nbsp;</span>
-          <span>Web Developer</span>
-        </Heading>
+        <Heading>People-oriented Web&nbsp;Developer</Heading>
 
         <Summary>
-          <span>Writing codes that does not upset readers.&nbsp;</span>
-          <span>Creating websites that does not confuse users</span>
+          Writing codes that does not upset readers. Creating&nbsp;websites that
+          does&nbsp;not confuse&nbsp;users
         </Summary>
 
         <NextLink href={`/#${HomepageSectionIds.Projects}`} passHref>
@@ -120,7 +117,7 @@ const AuthorName = styled.span<AuthorNameProps>`
 
 type HeadingProps = {};
 const Heading = styled.h1<HeadingProps>`
-  ${tw`text-4xl font-hBold text-accent flex flex-wrap justify-center`}
+  ${tw`text-4xl font-hBold text-accent text-center`}
 
   * {
     color: inherit;
@@ -129,18 +126,18 @@ const Heading = styled.h1<HeadingProps>`
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-5xl justify-start`}
+    ${tw`text-5xl text-left`}
   }
 `;
 
 type SummaryProps = {};
 const Summary = styled.h2<SummaryProps>`
-  ${tw`flex flex-wrap justify-center text-center`}
+  ${tw`text-center`}
   font-size: inherit;
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`justify-start`}
+    ${tw`text-left`}
   }
 `;
 

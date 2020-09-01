@@ -56,6 +56,39 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin=""
           />
+
+          <link
+            rel="preload"
+            href="fonts/raleway-v17-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
+
+          <link
+            rel="preload"
+            href="fonts/raleway-v17-latin-700.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
+
+          <link
+            rel="preload"
+            href="site.webmanifest"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
+
+          <link rel="preload" href="sw.js" as="script" crossOrigin="" />
+
+          <link
+            rel="preload"
+            href="workbox-432e0d0b.js"
+            as="script"
+            crossOrigin=""
+          />
         </Head>
         <body>
           <script

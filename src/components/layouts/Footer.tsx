@@ -119,7 +119,7 @@ const MediaIcons = styled.ul<MediaIconsProps>`
 
 type EmailLinkProps = {};
 const EmailLink = styled(Email)<EmailLinkProps>`
-  ${tw`font-bBold underline hocus:outline-none  hocus:text-secondary`}
+  ${tw`font-bBold underline hocus:outline-none  hocus:text-accent`}
   grid-area: ${GridArea.Email};
 
   font-size: larger;

@@ -9,21 +9,16 @@ import { FaChevronDown } from "react-icons/fa";
 import { keyframes } from "styled-components";
 import { HomepageSectionIds } from "@src/constants/elementIds.constants";
 import { HomepageSections } from "@src/contexts/HomepageSections.context";
+import { carouselImages } from "@src/data/carouselImages.data";
 
 enum Styling {
   CarouselSizes = "(min-width: 1200px) 40vw, 40vmin",
 }
 
 enum Carousel {
-  NumberOfImages = 4,
   FocusedImageScale = 1.5,
   DisplayRange = 1,
   IntervalInMs = 2000,
-}
-
-const IMAGE_SOURCES: string[] = [];
-for (let i = 1; i <= Carousel.NumberOfImages; i++) {
-  IMAGE_SOURCES.push(`carousel/carousel-${i}.jpg`);
 }
 
 const SECTION_ID = HomepageSectionIds.Hero;
@@ -72,7 +67,7 @@ function HeroSection(): ReactElement {
       </InfoContainer>
 
       <CarouselContainer
-        imageSrcs={IMAGE_SOURCES}
+        images={carouselImages}
         options={{
           intervalInMs: carouselInvtervalInMs,
           displayRange: Carousel.DisplayRange,

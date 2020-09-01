@@ -5,6 +5,11 @@ import { keyframes } from "styled-components";
 import tw, { styled, css } from "twin.macro";
 import { ResponsiveImage } from "./ResponsiveImage";
 
+export type CarouselImage = {
+  src: string;
+  alt: string;
+};
+
 type Option = {
   intervalInMs: number;
   displayRange?: number;
@@ -12,34 +17,34 @@ type Option = {
 };
 type Props = {
   className?: string;
-  imageSrcs: string[];
+  images: CarouselImage[];
   options: Option;
   sizes: string;
 };
 
 function ImageCarousel({
   options: { intervalInMs = 2000, displayRange = 1, focusedImgScale = 1.5 },
-  imageSrcs,
+  images,
   sizes,
   className,
 }: Props): ReactElement {
-  const { currentIndex } = useCarousel(intervalInMs, imageSrcs.length);
+  const { currentIndex } = useCarousel(intervalInMs, images.length);
 
   const displayedIndexes = useMemo(
-    () => getIndexesInRange(displayRange, currentIndex, imageSrcs.length),
-    [currentIndex, displayRange, imageSrcs.length]
+    () => getIndexesInRange(displayRange, currentIndex, images.length),
+    [currentIndex, displayRange, images.length]
   );
 
   return (
     <Container className={className}>
       {displayedIndexes.map((index) => (
         <Image
-          key={imageSrcs[index]}
+          key={images[index].src}
           isFocused={index === currentIndex}
           focusedScale={focusedImgScale}
           //
-          alt={imageSrcs[index]}
-          path={imageSrcs[index]}
+          alt={images[index].alt}
+          path={images[index].src}
           sizes={sizes}
         />
       ))}

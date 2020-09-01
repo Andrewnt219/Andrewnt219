@@ -1,6 +1,6 @@
 import React from "react";
 
-type DisplaySnackbar = (message: string) => void;
+type DisplaySnackbar = ({ message }: { message: string }) => void;
 
 type SnackbarContext = {
   displaySnackbar: DisplaySnackbar;

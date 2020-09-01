@@ -40,10 +40,10 @@ function Email({ className }: Props): ReactElement {
       document.execCommand("copy");
 
       // Display success message
-      displaySnackbar("Copied to clipboard");
+      displaySnackbar({ message: "Copied to clipboard" });
     } else {
       // Display failure message
-      displaySnackbar("Failed to copy");
+      displaySnackbar({ message: "Failed to copy" });
     }
   };
 

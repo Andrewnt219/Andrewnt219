@@ -1,4 +1,4 @@
-import { ThemeContext } from "@src/contexts/theme.context";
+import { ThemeContext } from "@src/contexts/Theme.context";
 import React, { ReactElement, useContext } from "react";
 import { IconType } from "react-icons";
 import tw, { css, styled } from "twin.macro";

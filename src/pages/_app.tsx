@@ -4,10 +4,22 @@ import { GlobalStyle } from "../styles/theme/GlobalStyle.theme";
 import { AppProps } from "next/app";
 import "tailwindcss/dist/base.min.css";
 import { MainLayout } from "@src/components/layouts/MainLayout";
-import { Mode, ThemeContext } from "@src/contexts/theme.context";
+import { Mode, ThemeContext } from "@src/contexts/Theme.context";
 import { useEffect, useState } from "react";
+import { GlobalNumbers } from "@src/constants/global.constants";
+import { AchievementProps } from "@src/components/ui/Achievement";
+import { usePopup } from "@src/hooks";
+import { AchievementContext } from "@src/contexts/Achievement.context";
+import { LocalStorageKeys } from "@src/constants/localStorage.constants";
+import { achievementsData } from "@src/data/achievements.data";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  /* SECTION Achievements */
+  const [achievements, queueAchievement] = usePopup<AchievementProps>(
+    GlobalNumbers.AchievementDisplayDurationInMs
+  );
+  /* !SECTION Achievements */
+
   /* SECTION Light/Dark Mode  */
   // the theme of the app
   const [mode, setMode] = useState<Mode | null>(null);
@@ -25,9 +37,25 @@ function MyApp({ Component, pageProps }: AppProps) {
   const onModeSwitch = (newMode: Mode) => {
     // Check valid mode
     if (newMode) {
+      // ANCHOR Check for dark-mode achievement
+      if (newMode === "dark-mode") {
+        try {
+          const darkModeAchievement = localStorage.getItem(
+            LocalStorageKeys.DarkMode
+          );
+          if (!darkModeAchievement) {
+            queueAchievement(achievementsData.darkMode);
+            localStorage.setItem(LocalStorageKeys.DarkMode, "true");
+          }
+        } catch (error) {
+          console.warn("Failed to access localStorage");
+          console.log(error);
+        }
+      }
+
+      // ANCHOR change to new theme
       try {
-        // set up new theme
-        localStorage.setItem("theme", newMode);
+        localStorage.setItem(LocalStorageKeys.Theme, newMode);
         document.body.className = document.body.className.replace(
           /.*mode/,
           newMode
@@ -41,15 +69,17 @@ function MyApp({ Component, pageProps }: AppProps) {
       throw new Error("received a null for newMode");
     }
   };
-  /* !SECTION */
+  /* !SECTION Light/Dark Mode */
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <ThemeContext.Provider value={{ mode, onModeSwitch }}>
-        <GlobalStyle />
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
+        <AchievementContext.Provider value={{ achievements, queueAchievement }}>
+          <GlobalStyle />
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+        </AchievementContext.Provider>
       </ThemeContext.Provider>
     </ThemeProvider>
   );

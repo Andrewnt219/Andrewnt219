@@ -1,6 +1,6 @@
 import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
 import { GlobalStyling } from "@src/constants/global.constants";
-import { ThemeContext } from "@src/contexts/theme.context";
+import { ThemeContext } from "@src/contexts/Theme.context";
 import { useMediaQuery } from "@src/hooks";
 import { flickering } from "@src/styles/animation/flickering.animation";
 import { glow } from "@src/styles/animation/glow.animation";

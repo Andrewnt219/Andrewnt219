@@ -1,6 +1,6 @@
-import { ThemeContext } from "@src/contexts/theme.context";
+import { ThemeContext } from "@src/contexts/Theme.context";
 import { useCallback, useContext } from "react";
-import { Mode } from "@src/contexts/theme.context";
+import { Mode } from "@src/contexts/Theme.context";
 
 export const useToggleDarkMode = (): [Mode, () => void] => {
   const { onModeSwitch, mode } = useContext(ThemeContext);

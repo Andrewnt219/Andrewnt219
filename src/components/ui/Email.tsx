@@ -31,7 +31,7 @@ function Email({ className }: Props): ReactElement {
 
   /* SECTION Copy */
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const { displaySnackbar } = useContext(SnackbarContext);
+  const { queueSnackbarMessage } = useContext(SnackbarContext);
 
   const onCopyButtonClicked = (): void => {
     if (inputRef.current) {
@@ -40,10 +40,10 @@ function Email({ className }: Props): ReactElement {
       document.execCommand("copy");
 
       // Display success message
-      displaySnackbar({ message: "Copied to clipboard" });
+      queueSnackbarMessage({ message: "Copied to clipboard" });
     } else {
       // Display failure message
-      displaySnackbar({ message: "Failed to copy" });
+      queueSnackbarMessage({ message: "Failed to copy" });
     }
   };
 

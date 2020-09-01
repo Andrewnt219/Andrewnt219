@@ -1,6 +1,6 @@
 import tw, { styled, css } from "twin.macro";
 import React, { ReactElement, ReactNode, useContext } from "react";
-import { ThemeContext } from "@src/contexts/theme.context";
+import { ThemeContext } from "@src/contexts/Theme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
 import { motion, Variants } from "framer-motion";
 import { useMediaQuery } from "@src/hooks";
@@ -84,7 +84,7 @@ type Props = StyledButtonProps & {
   className?: string;
   isButtonLink?: boolean;
 };
-
+// TODO forwardRef
 function Button({
   className,
   children,

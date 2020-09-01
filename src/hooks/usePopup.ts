@@ -1,10 +1,10 @@
 import drop from "lodash/drop";
 import { useState } from "react";
 
-type QueueItem = {
+type PopupItem = {
   id: number;
 };
-type Return<T> = [(T & QueueItem)[], (item: T) => void];
+export type UsePopupReturns<T> = [(T & PopupItem)[], (item: T) => void];
 
 /**
  * @description add and remove items from popup queue
@@ -12,9 +12,9 @@ type Return<T> = [(T & QueueItem)[], (item: T) => void];
  */
 export const usePopup = <T extends object>(
   displayTimeInMs: number
-): Return<T> => {
+): UsePopupReturns<T> => {
   // handle displaying items in queue
-  const [itemsInQueue, setItemsInQueue] = useState<(T & QueueItem)[]>([]);
+  const [itemsInQueue, setItemsInQueue] = useState<(T & PopupItem)[]>([]);
 
   const queueItemToPopup = (item: T) => {
     // NOTE create a consistent id across renders for messages

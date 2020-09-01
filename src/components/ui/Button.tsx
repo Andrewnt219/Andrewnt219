@@ -1,5 +1,6 @@
+/* eslint react/prop-types: 0 */
 import tw, { styled, css } from "twin.macro";
-import React, { ReactElement, ReactNode, useContext } from "react";
+import React, { ReactNode, useContext } from "react";
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
 import { motion, Variants } from "framer-motion";
@@ -78,46 +79,47 @@ const darkButtonVariants: Variants = {
     },
   },
 };
-type a = HTMLElement;
+type Ref = HTMLAnchorElement;
 type Props = StyledButtonProps & {
   children: ReactNode;
   className?: string;
   isButtonLink?: boolean;
 };
-// TODO forwardRef
-function Button({
-  className,
-  children,
-  isButtonLink,
-  ...styleProps
-}: Props): ReactElement {
-  const { mode } = useContext(ColorThemeContext);
 
-  // Disable flickering animation in mobile because it cannot be seen
-  const enableEnterAnimation = useMediaQuery();
+// NOTE Ref is used for Button as a link only
+const Button = React.forwardRef<Ref, Props>(
+  ({ className, children, isButtonLink, ...styleProps }, ref) => {
+    const { mode } = useContext(ColorThemeContext);
 
-  return mode === "dark-mode" ? (
-    <DarkButton
-      {...styleProps}
-      className={className}
-      as={isButtonLink ? motion.a : undefined}
-      //
-      variants={enableEnterAnimation ? darkButtonVariants : undefined}
-      animate="visible"
-    >
-      {children}
-    </DarkButton>
-  ) : (
-    <LightButton
-      {...styleProps}
-      className={className}
-      as={isButtonLink ? "a" : undefined}
-    >
-      {children}
-    </LightButton>
-  );
-}
+    // Disable flickering animation in mobile because it cannot be seen
+    const enableEnterAnimation = useMediaQuery();
 
+    return mode === "dark-mode" ? (
+      <DarkButton
+        {...styleProps}
+        ref={isButtonLink ? ref : undefined}
+        className={className}
+        as={isButtonLink ? motion.a : undefined}
+        //
+        variants={enableEnterAnimation ? darkButtonVariants : undefined}
+        animate="visible"
+      >
+        {children}
+      </DarkButton>
+    ) : (
+      <LightButton
+        {...styleProps}
+        ref={isButtonLink ? ref : undefined}
+        className={className}
+        as={isButtonLink ? "a" : undefined}
+      >
+        {children}
+      </LightButton>
+    );
+  }
+);
+
+Button.displayName = "Button";
 export { Button };
 
 type StyledButtonProps = {

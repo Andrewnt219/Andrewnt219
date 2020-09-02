@@ -182,7 +182,8 @@ const CustomButton = styled(Button)<CustomButtonProps>`
   font-size: smaller;
   max-width: 25rem;
 
-  @media screen and (orientation: landscape) {
+  @media screen and (orientation: landscape) and (max-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     margin-top: 2vh;
   }
 `;

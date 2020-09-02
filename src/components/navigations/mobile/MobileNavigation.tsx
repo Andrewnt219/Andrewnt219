@@ -156,21 +156,25 @@ type CustomLightSwitchProps = {};
 const CustomLightSwitch = styled(LightSwitch)<CustomLightSwitchProps>`
   grid-area: switcher;
   justify-self: flex-end;
-  background: rgba(var(--primary-color-light-rgb), 0.8);
-  transition: background 300ms ease;
+  background: var(--text-color);
+  border: 2px solid transparent;
+
+  transition: background 300ms ease, border-color 300ms ease;
 
   ${tw`hocus:outline-none inline-flex justify-center items-center w-20 h-20 rounded-full`}
 
   svg {
+    fill: var(--primary-color);
     font-size: larger;
     transition: fill 300ms ease;
   }
 
   :hover,
   :focus {
-    ${tw`bg-textColor`}
+    border-color: var(--text-color);
+    background: transparent;
     svg {
-      fill: var(--primary-color);
+      fill: var(--text-color);
     }
   }
 `;

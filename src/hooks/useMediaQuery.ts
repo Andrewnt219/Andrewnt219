@@ -17,13 +17,14 @@ export const useMediaQuery = (
 
   useEffect(() => {
     const defaultBreakpoint = GlobalStyling.AppBarBreakpoint;
-    const mqList = window.matchMedia(
-      `screen and (min-width: ${
-        breakpoints[breakpoint ?? defaultBreakpoint]
-      })` + orientation
-        ? `, (orientation: ${orientation})`
-        : ""
-    );
+
+    const sizeQuery = `screen and (min-width: ${
+      breakpoints[breakpoint ?? defaultBreakpoint]
+    })`;
+    const orientationQuery = orientation
+      ? `, (orientation: ${orientation})`
+      : "";
+    const mqList = window.matchMedia(sizeQuery + orientationQuery);
 
     // if query matches initially
     if (mqList.matches) {

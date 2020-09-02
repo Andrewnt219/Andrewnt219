@@ -4,6 +4,7 @@ import { HomepageSections } from "@src/contexts/HomepageSections.context";
 import React, { ReactElement, useContext, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import tw, { styled } from "twin.macro";
+import { HomeSection } from "./shared/HomeSection";
 
 const SECTION_ID = HomepageSectionIds.Contact;
 
@@ -21,17 +22,9 @@ function ContactSection(): ReactElement {
   }, [inView, onSectionSwitch]);
 
   return (
-    <Container ref={ref} id={SECTION_ID}>
+    <HomeSection heading="Contacts" ref={ref} id={SECTION_ID}>
       Contact
-    </Container>
+    </HomeSection>
   );
 }
-
-type ContainerProps = {};
-const Container = styled.section<ContainerProps>`
-  min-height: 100vh;
-
-  ${tw` bg-blue-500`}
-`;
-
 export { ContactSection };

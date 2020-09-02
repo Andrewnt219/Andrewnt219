@@ -4,6 +4,7 @@ import { HomepageSections } from "@src/contexts/HomepageSections.context";
 import React, { ReactElement, useContext, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import tw, { styled } from "twin.macro";
+import { HomeSection } from "./shared/HomeSection";
 
 const SECTION_ID = HomepageSectionIds.Projects;
 
@@ -21,16 +22,10 @@ function ProjectsSection(): ReactElement {
   }, [inView, onSectionSwitch]);
 
   return (
-    <Container ref={ref} id={SECTION_ID}>
-      Projects
-    </Container>
+    <HomeSection heading="Projects" ref={ref} id={SECTION_ID}>
+      Project 1
+    </HomeSection>
   );
 }
-
-type ContainerProps = {};
-const Container = styled.section<ContainerProps>`
-  ${tw`bg-lprimary`}
-  min-height: 100vh;
-`;
 
 export { ProjectsSection };

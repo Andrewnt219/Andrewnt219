@@ -1,12 +1,8 @@
 import { HomepageSectionIds } from "@src/constants/elementIds.constants";
 import React from "react";
 
-export type HomepageSection =
-  | HomepageSectionIds.About
-  | HomepageSectionIds.Hero
-  | HomepageSectionIds.Contact
-  | HomepageSectionIds.Projects
-  | null;
+export type HomepageSection = HomepageSectionIds | null;
+
 export type HomepageSectionSwitchHandler = (section: HomepageSection) => void;
 
 type InViewSection = {

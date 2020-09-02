@@ -204,6 +204,12 @@ textarea {
   background: transparent;
 }
 
+img {
+  font-size: 1rem;
+  color: white;
+  
+}
+
 #__next {
   background: var(--primary-color);
   transition: all 1000ms ease;

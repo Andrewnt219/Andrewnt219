@@ -20,6 +20,6 @@ export const carouselImages: CarouselImage[] = [
   },
   {
     src: `${RootFolder.Path}/carousel-4.jpg`,
-    alt: "Andrew hanged out at Woodbine beach",
+    alt: "Andrew visited Woodbine beach",
   },
 ];

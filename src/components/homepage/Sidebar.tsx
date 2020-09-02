@@ -52,7 +52,7 @@ const Container = styled(motion.aside)<ContainerProps>`
   display: none;
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     ${tw`z-10 font-heading font-hBold`}
     display: block;
     position: fixed;

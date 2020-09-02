@@ -98,19 +98,20 @@ const Container = styled.section<ContainerProps>`
 
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
 
-  @media screen and (orientation: landscape) {
-    ${tw`text-xl flex-row items-center`}
-    height: calc(100vh - ${GlobalStyling.AppBarHeight});
-  }
-
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.ModernMobileBreakpoint]}) {
+    p.theme.breakpoints[GlobalStyling.ModernMobileBreakpoint]}) {
     ${tw`text-2xl`}
   }
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     ${tw`text-3xl flex-row items-center`}
+    height: calc(100vh - ${GlobalStyling.AppBarHeight});
+  }
+
+  @media screen and (orientation: landscape) and (max-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    ${tw`text-xl flex-row items-center`}
     height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 `;
@@ -147,10 +148,6 @@ const Heading = styled.h1<HeadingProps>`
     font-size: inherit;
   }
 
-  @media screen and (orientation: landscape) {
-    ${tw`text-left`}
-  }
-
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.ModernMobileBreakpoint]}) {
     ${tw`text-5xl`}
@@ -159,6 +156,11 @@ const Heading = styled.h1<HeadingProps>`
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     ${tw`text-6xl text-left`}
+  }
+
+  @media screen and (orientation: landscape) and (max-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    ${tw`text-left text-4xl`}
   }
 `;
 
@@ -180,7 +182,8 @@ const CustomButton = styled(Button)<CustomButtonProps>`
   font-size: smaller;
   max-width: 25rem;
 
-  @media screen and (orientation: landscape) {
+  @media screen and (orientation: landscape) and (max-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     margin-top: 2vh;
   }
 `;
@@ -203,11 +206,6 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
     ${tw`rounded`}
   }
 
-  @media screen and (orientation: landscape) {
-    --img-width: ${CarouselStyling.ImageWidthDesktop};
-    --height-scale: 2/3;
-  }
-
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     /* NOTE change these stats with caution, it might cause weird janking at certain screen width (img too big) */
@@ -217,6 +215,12 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
     margin-top: 0;
     height: max-content;
     width: calc(var(--img-width) * ${Carousel.FocusedImageScale});
+  }
+
+  @media screen and (orientation: landscape) and (max-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    --img-width: ${CarouselStyling.ImageWidthDesktop};
+    --height-scale: 2/3;
   }
 `;
 

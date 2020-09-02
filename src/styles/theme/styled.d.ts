@@ -5,7 +5,7 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     breakpoints: {
-      xxs: "320px";
+      xxs: "340px";
       xs: "480px";
       sm: "640px";
       md: "768px";

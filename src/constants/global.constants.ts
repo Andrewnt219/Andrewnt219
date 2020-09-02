@@ -1,10 +1,12 @@
 export enum GlobalStyling {
   AppBarHeight = "5rem",
   DesktopFooterHeight = "20rem",
+  MobileBarHeight = "7vh",
   MobileFooterHeight = "25rem",
+  // Breakpoints
   AppBarBreakpoint = "md",
   DesktopBreakpoint = "xl",
-  MobileBarHeight = "7vh",
+  ModernMobileBreakpoint = "xxs",
 }
 
 export enum GlobalNumbers {

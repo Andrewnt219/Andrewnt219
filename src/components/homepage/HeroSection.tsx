@@ -96,11 +96,16 @@ const Container = styled.section<ContainerProps>`
     100vh - ${GlobalStyling.MobileBarHeight} - ${GlobalStyling.AppBarHeight}
   );
 
-  ${tw`relative z-10 text-2xl font-heading flex flex-col justify-center`}
+  ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
 
   @media screen and (orientation: landscape) {
     ${tw`text-xl flex-row items-center`}
     height: calc(100vh - ${GlobalStyling.AppBarHeight});
+  }
+
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.ModernMobileBreakpoint]}) {
+    ${tw`text-2xl`}
   }
 
   @media screen and (min-width: ${(p) =>
@@ -135,7 +140,7 @@ const AuthorName = styled.span<AuthorNameProps>`
 
 type HeadingProps = {};
 const Heading = styled.h1<HeadingProps>`
-  ${tw`text-5xl font-hBold text-accent text-center`}
+  ${tw`text-4xl font-hBold text-accent text-center`}
 
   * {
     color: inherit;
@@ -144,6 +149,11 @@ const Heading = styled.h1<HeadingProps>`
 
   @media screen and (orientation: landscape) {
     ${tw`text-left`}
+  }
+
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.ModernMobileBreakpoint]}) {
+    ${tw`text-5xl`}
   }
 
   @media screen and (min-width: ${(p) =>

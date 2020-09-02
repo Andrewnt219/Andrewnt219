@@ -2,7 +2,7 @@ import { DefaultTheme } from "styled-components";
 
 export const defaultTheme: DefaultTheme = {
   breakpoints: {
-    xxs: "320px",
+    xxs: "340px",
     xs: "480px",
     sm: "640px",
     md: "768px",

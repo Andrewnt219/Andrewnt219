@@ -7,7 +7,8 @@ import { GlobalStyling } from "@src/constants/global.constants";
  * @param breakpoint mediaQuery string, default is mobile divide
  */
 export const useMediaQuery = (
-  breakpoint?: keyof DefaultTheme["breakpoints"]
+  breakpoint?: keyof DefaultTheme["breakpoints"],
+  orientation?: "landscape" | "portrait"
 ): boolean => {
   // matches state
   const [matches, setMatches] = useState(false);
@@ -17,7 +18,11 @@ export const useMediaQuery = (
   useEffect(() => {
     const defaultBreakpoint = GlobalStyling.AppBarBreakpoint;
     const mqList = window.matchMedia(
-      `screen and (min-width: ${breakpoints[breakpoint ?? defaultBreakpoint]})`
+      `screen and (min-width: ${
+        breakpoints[breakpoint ?? defaultBreakpoint]
+      })` + orientation
+        ? `, (orientation: ${orientation})`
+        : ""
     );
 
     // if query matches initially
@@ -36,7 +41,7 @@ export const useMediaQuery = (
     return () => {
       mqList.removeEventListener("change", handler);
     };
-  }, [breakpoint, breakpoints]);
+  }, [breakpoint, breakpoints, orientation]);
 
   return matches;
 };

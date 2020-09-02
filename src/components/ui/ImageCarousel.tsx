@@ -14,6 +14,7 @@ type Option = {
   intervalInMs: number;
   displayRange?: number;
   focusedImgScale?: number;
+  isHorizontal?: boolean;
 };
 type Props = {
   className?: string;
@@ -23,7 +24,12 @@ type Props = {
 };
 
 function ImageCarousel({
-  options: { intervalInMs = 2000, displayRange = 1, focusedImgScale = 1.5 },
+  options: {
+    intervalInMs = 2000,
+    displayRange = 1,
+    focusedImgScale = 1.5,
+    isHorizontal = true,
+  },
   images,
   sizes,
   className,
@@ -36,12 +42,13 @@ function ImageCarousel({
   );
 
   return (
-    <Container className={className}>
+    <Container className={className} isHorizontal={isHorizontal}>
       {displayedIndexes.map((index) => (
         <Image
           key={images[index].src}
           isFocused={index === currentIndex}
           focusedScale={focusedImgScale}
+          isHorizontal={isHorizontal}
           //
           alt={images[index].alt}
           path={images[index].src}
@@ -52,30 +59,69 @@ function ImageCarousel({
   );
 }
 
-type ContainerProps = {};
+type ContainerProps = {
+  isHorizontal: boolean;
+};
 const Container = styled.div<ContainerProps>`
   ${tw`flex items-center justify-center`}
+  flex-direction: ${(p) => (p.isHorizontal ? "row" : "column")};
 `;
 
-const slideIn = keyframes`
-  from {
-    transform: translateX(50%);
-  }
+const slideIn = (isHorizontal: boolean) => keyframes`
+${
+  isHorizontal
+    ? css`
+        from {
+          transform: translateX(50%);
+        }
 
-  to {
-    transform: translateX(0) ;
-  }
-`;
+        to {
+          transform: translateX(0);
+        }
+      `
+    : css`
+        from {
+          transform: translateY(50%);
+        }
 
-const focus = (scale: number) => keyframes`
+        to {
+          transform: translateY(0);
+        }
+      `
+}`;
+
+const focus = ({
+  scale,
+  isHorizontal,
+}: {
+  scale: number;
+  isHorizontal: boolean;
+}) => keyframes`
   from {
-    transform: translateX(50%) scale(1);
+    
+    ${
+      isHorizontal
+        ? css`
+            transform: translateX(50%) scale(1);
+          `
+        : css`
+            transform: translateY(50%) scale(1);
+          `
+    }
     opacity: .5;
 
   }
 
   to {
-    transform: translateX(0) scale(${scale});
+    ${
+      isHorizontal
+        ? css`
+            transform: translateX(0) scale(${scale});
+          `
+        : css`
+            transform: translateY(0) scale(${scale});
+          `
+    }
     opacity: 1;
   }
 `;
@@ -83,20 +129,25 @@ const focus = (scale: number) => keyframes`
 type ImageProps = {
   isFocused: boolean;
   focusedScale: number;
+  isHorizontal: boolean;
 };
 const Image = styled(ResponsiveImage)<ImageProps>`
   opacity: 0.7;
-  animation: ${slideIn} 450ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  ${({ isHorizontal }) => css`
+    animation: ${slideIn(isHorizontal)} 450ms cubic-bezier(0, 0, 0.2, 1)
+      forwards;
+  `}
+
   background: var(--textColor);
 
   img {
     object-fit: cover;
   }
 
-  ${(p) =>
-    p.isFocused &&
+  ${({ focusedScale, isHorizontal, isFocused }) =>
+    isFocused &&
     css`
-      animation-name: ${focus(p.focusedScale)};
+      animation-name: ${focus({ scale: focusedScale, isHorizontal })};
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
         0 15px 12px rgba(0, 0, 0, 0.22);
       z-index: 10;

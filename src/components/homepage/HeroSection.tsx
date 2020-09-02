@@ -10,20 +10,23 @@ import { keyframes } from "styled-components";
 import { HomepageSectionIds } from "@src/constants/elementIds.constants";
 import { HomepageSections } from "@src/contexts/HomepageSections.context";
 import { carouselImages } from "@src/data/carouselImages.data";
+import { useMediaQuery } from "@src/hooks";
 
-enum Styling {
-  CarouselSizes = "(min-width: 1200px) 40vw, 40vmin",
+enum CarouselStyling {
+  ImageWidthMobile = "25vw",
+  ImageWidthDesktop = "15vw",
 }
-
 enum Carousel {
   FocusedImageScale = 1.5,
   DisplayRange = 1,
   IntervalInMs = 2000,
 }
 
+const CAROUSEL_SIZES = `(min-width: ${GlobalStyling.DesktopBreakpoint}) ${CarouselStyling.ImageWidthDesktop}, ${CarouselStyling.ImageWidthMobile}`;
 const SECTION_ID = HomepageSectionIds.Hero;
 
 function HeroSection(): ReactElement {
+  /* SECTION Carousel */
   /* Stop carousel out of view */
   const [ref, inView] = useInView({
     threshold: GlobalNumbers.HomepageSectionInViewThreshhold,
@@ -32,7 +35,13 @@ function HeroSection(): ReactElement {
     ? Carousel.IntervalInMs
     : Carousel.IntervalInMs * 9999;
 
-  /* Handle Sidebar active link */
+  const isDesktopOrLandscape = useMediaQuery(
+    GlobalStyling.DesktopBreakpoint,
+    "landscape"
+  );
+  /* !SECTION Carousel */
+
+  /* SECTION Sidebar active link */
   const { onSectionSwitch } = useContext(HomepageSections);
 
   useEffect(() => {
@@ -40,11 +49,13 @@ function HeroSection(): ReactElement {
       onSectionSwitch(SECTION_ID);
     }
   }, [inView, onSectionSwitch]);
+  /* !SECTION Sidebar active link */
 
-  /* Event handlers */
+  /* SECTION Event handlers */
   const onArrowDownClicked = () => {
     document.getElementById(HomepageSectionIds.Projects)?.scrollIntoView();
   };
+  /* !SECTION Event handlers */
 
   return (
     <Container ref={ref} id={SECTION_ID}>
@@ -69,8 +80,9 @@ function HeroSection(): ReactElement {
           intervalInMs: carouselInvtervalInMs,
           displayRange: Carousel.DisplayRange,
           focusedImgScale: Carousel.FocusedImageScale,
+          isHorizontal: !isDesktopOrLandscape,
         }}
-        sizes={Styling.CarouselSizes}
+        sizes={CAROUSEL_SIZES}
       />
 
       <BouncingArrowDown onClick={onArrowDownClicked} />
@@ -165,34 +177,36 @@ const CustomButton = styled(Button)<CustomButtonProps>`
 
 type CarouselContainerProps = {};
 const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
-  --img-height: 15vmin;
-  --width-scale: 3/2;
+  --img-width: ${CarouselStyling.ImageWidthMobile};
+  --height-scale: 2/3;
 
   ${tw` flex items-center mx-auto`}
   margin-top: 2em;
-  height: calc(var(--img-height) * ${Carousel.FocusedImageScale});
+  height: calc(
+    var(--img-width) * var(--height-scale) * ${Carousel.FocusedImageScale}
+  );
 
   > *,
   img {
-    width: calc(var(--img-height) * var(--width-scale));
-    height: var(--img-height);
+    height: calc(var(--img-width) * var(--height-scale));
+    width: var(--img-width);
     ${tw`rounded`}
   }
 
   @media screen and (orientation: landscape) {
-    --img-height: 14vw;
-    --width-scale: 3/4;
-
-    margin-top: 4vh;
+    --img-width: ${CarouselStyling.ImageWidthDesktop};
+    --height-scale: 2/3;
   }
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     /* NOTE change these stats with caution, it might cause weird janking at certain screen width (img too big) */
-    --img-height: 14vw;
-    --width-scale: 3/4;
+    --img-width: ${CarouselStyling.ImageWidthDesktop};
+    --height-scale: 2/3;
 
     margin-top: 0;
+    height: max-content;
+    width: calc(var(--img-width) * ${Carousel.FocusedImageScale});
   }
 `;
 

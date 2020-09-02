@@ -104,8 +104,9 @@ const Backdrop = styled.div<BackdropProps>`
   ${(p) =>
     p.isFullScreen &&
     css`
-      transform: scale(130);
-      ${tw`bg-lprimary z-20 pointer-events-auto`}
+      /* NOTE cover up to 940px in height  */
+      transform: scale(80);
+      ${tw`bg-primary z-20 pointer-events-auto`}
     `}
 `;
 

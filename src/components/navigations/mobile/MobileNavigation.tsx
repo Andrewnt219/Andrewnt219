@@ -8,6 +8,7 @@ import { Hamburger } from "./Hamburger";
 import { MobileNavigationItem } from "./MobileNavigationItem";
 import { FaGithubAlt, FaFacebookSquare, FaLinkedinIn } from "react-icons/fa";
 import { Email } from "@src/components/ui/Email";
+import { GlobalStyling } from "@src/constants/global.constants";
 
 enum Styling {
   PaddingLeft = "10%",
@@ -133,7 +134,8 @@ const footerVariants: Variants = {
 type NavigationItemsProps = {};
 const NavigationItems = styled(motion.ul)<NavigationItemsProps>`
   padding-left: ${Styling.PaddingLeft};
-  ${tw`absolute top-0 left-0 w-screen h-screen z-30 text-6xl flex flex-col justify-center items-start`}
+  ${tw`absolute top-0 left-0 w-screen z-30 text-6xl flex flex-col justify-center items-start`}
+  height: calc(100vh - ${GlobalStyling.MobileBarHeight})
 `;
 
 type FooterProps = {};

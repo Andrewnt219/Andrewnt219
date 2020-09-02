@@ -86,8 +86,13 @@ const Container = styled.section<ContainerProps>`
 
   ${tw`relative z-10 text-2xl font-heading flex flex-col justify-center`}
 
+  @media screen and (orientation: landscape) {
+    ${tw`text-xl flex-row items-center`}
+    height: calc(100vh - ${GlobalStyling.AppBarHeight});
+  }
+
   @media screen and (min-width: ${(p) =>
-    p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     ${tw`text-3xl flex-row items-center`}
     height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
@@ -103,7 +108,8 @@ const InfoContainer = styled.article<InfoContainerProps>`
   }
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}),
+    (orientation: landscape) {
     width: 60%;
     ${tw`items-start`}
   }
@@ -124,6 +130,10 @@ const Heading = styled.h1<HeadingProps>`
     font-size: inherit;
   }
 
+  @media screen and (orientation: landscape) {
+    ${tw`text-left`}
+  }
+
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     ${tw`text-6xl text-left`}
@@ -136,16 +146,21 @@ const Summary = styled.h2<SummaryProps>`
   font-size: inherit;
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}),
+    (orientation: landscape) {
     ${tw`text-left`}
   }
 `;
 
 type CustomButtonProps = {};
 const CustomButton = styled(Button)<CustomButtonProps>`
-  margin-top: 2vh;
+  margin-top: 2em;
   font-size: smaller;
   max-width: 25rem;
+
+  @media screen and (orientation: landscape) {
+    margin-top: 2vh;
+  }
 `;
 
 type CarouselContainerProps = {};
@@ -154,7 +169,7 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
   --width-scale: 3/2;
 
   ${tw` flex items-center mx-auto`}
-  margin-top: 4vh;
+  margin-top: 2em;
   height: calc(var(--img-height) * ${Carousel.FocusedImageScale});
 
   > *,
@@ -162,6 +177,13 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
     width: calc(var(--img-height) * var(--width-scale));
     height: var(--img-height);
     ${tw`rounded`}
+  }
+
+  @media screen and (orientation: landscape) {
+    --img-height: 14vw;
+    --width-scale: 3/4;
+
+    margin-top: 4vh;
   }
 
   @media screen and (min-width: ${(p) =>

@@ -10,6 +10,7 @@ import {
   HomepageSection,
   HomepageSectionSwitchHandler,
 } from "@src/contexts/HomepageSections.context";
+import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 export default function Home() {
@@ -29,10 +30,12 @@ export default function Home() {
       <ProjectsSection />
       <AboutSection />
       <ContactSection />
-      {/* NOTE Need to be !== null to prevent disply on initial page load*/}
-      {inViewSection && inViewSection !== HomepageSectionIds.Hero && (
-        <Sidebar inViewSection={inViewSection} />
-      )}
+      <AnimatePresence>
+        {/* NOTE Need to be !== null to prevent disply on initial page load*/}
+        {inViewSection && inViewSection !== HomepageSectionIds.Hero && (
+          <Sidebar inViewSection={inViewSection} />
+        )}
+      </AnimatePresence>
     </HomepageSections.Provider>
   );
 }

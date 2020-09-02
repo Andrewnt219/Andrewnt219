@@ -1,6 +1,7 @@
 import { GlobalStyling } from "@src/constants/global.constants";
 import { HomepageSection } from "@src/contexts/HomepageSections.context";
 import { homepageSections } from "@src/data/homepageSections.data";
+import { motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
 import tw, { styled } from "twin.macro";
 import { Link } from "../navigations/Link";
@@ -11,7 +12,12 @@ type Props = {
 
 function Sidebar({ inViewSection }: Props): ReactElement {
   return (
-    <Container>
+    <Container
+      variants={containerVariants}
+      initial="hidden"
+      exit="hidden"
+      animate="visible"
+    >
       <Nav aria-label="Secondary">
         {homepageSections.map(({ fragment, text }) => (
           <li key={fragment}>
@@ -28,8 +34,21 @@ function Sidebar({ inViewSection }: Props): ReactElement {
   );
 }
 
+const containerVariants: Variants = {
+  hidden: {
+    y: "-50%",
+    x: "-20vh",
+  },
+  visible: {
+    x: "-50%",
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
 type ContainerProps = {};
-const Container = styled.aside<ContainerProps>`
+const Container = styled(motion.aside)<ContainerProps>`
   display: none;
 
   @media screen and (min-width: ${(p) =>

@@ -22,7 +22,12 @@ function ProjectsSection(): ReactElement {
   }, [inView, onSectionSwitch]);
 
   return (
-    <HomeSection heading="Projects" ref={ref} id={SECTION_ID}>
+    <HomeSection
+      heading="Projects"
+      subHeading="Selected projects"
+      ref={ref}
+      id={SECTION_ID}
+    >
       Project 1
     </HomeSection>
   );

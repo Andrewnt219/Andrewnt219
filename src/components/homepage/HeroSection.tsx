@@ -84,11 +84,11 @@ const Container = styled.section<ContainerProps>`
     100vh - ${GlobalStyling.MobileBarHeight} - ${GlobalStyling.AppBarHeight}
   );
 
-  ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
+  ${tw`relative z-10 text-2xl font-heading flex flex-col justify-center`}
 
   @media screen and (min-width: ${(p) =>
     p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-2xl flex-row items-center`}
+    ${tw`text-3xl flex-row items-center`}
     height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 `;
@@ -117,7 +117,7 @@ const AuthorName = styled.span<AuthorNameProps>`
 
 type HeadingProps = {};
 const Heading = styled.h1<HeadingProps>`
-  ${tw`text-4xl font-hBold text-accent text-center`}
+  ${tw`text-5xl font-hBold text-accent text-center`}
 
   * {
     color: inherit;
@@ -126,7 +126,7 @@ const Heading = styled.h1<HeadingProps>`
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-5xl text-left`}
+    ${tw`text-6xl text-left`}
   }
 `;
 
@@ -145,7 +145,7 @@ type CustomButtonProps = {};
 const CustomButton = styled(Button)<CustomButtonProps>`
   margin-top: 2vh;
   font-size: smaller;
-  max-width: 20rem;
+  max-width: 25rem;
 `;
 
 type CarouselContainerProps = {};
@@ -166,6 +166,7 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    /* NOTE change these stats with caution, it might cause weird janking at certain screen width (img too big) */
     --img-height: 14vw;
     --width-scale: 3/4;
 

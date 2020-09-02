@@ -21,7 +21,10 @@ const navItemVariants: Variants = {
       damping: 20,
     },
   },
-  exit: {},
+  exit: {
+    opacity: 0,
+    y: "-80vh",
+  },
 };
 
 type Props = Route & {

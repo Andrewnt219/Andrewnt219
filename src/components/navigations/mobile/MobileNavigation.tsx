@@ -16,7 +16,8 @@ enum Styling {
 
 enum Timing {
   NavDelayChildren = 0.5,
-  NavStaggerChildren = 0.2,
+  NavStaggerChildrenEnter = 0.2,
+  NavStaggerChildrenExit = 0.1,
 }
 
 enum Data {
@@ -102,17 +103,18 @@ const navItemsVariants: Variants = {
   visible: {
     transition: {
       delayChildren: Timing.NavDelayChildren,
-      staggerChildren: Timing.NavStaggerChildren,
+      staggerChildren: Timing.NavStaggerChildrenEnter,
     },
   },
   exit: {
-    y: "-100%",
-    transition: { duration: 0.3 },
+    transition: {
+      staggerChildren: Timing.NavStaggerChildrenExit,
+    },
   },
 };
 
 const footerDelayTime =
-  Timing.NavDelayChildren + Timing.NavStaggerChildren * Data.NavChildren;
+  Timing.NavDelayChildren + Timing.NavStaggerChildrenEnter * Data.NavChildren;
 const footerVariants: Variants = {
   hidden: {
     y: "100%",
@@ -128,6 +130,9 @@ const footerVariants: Variants = {
   exit: {
     y: "100%",
     opacity: 0,
+    transition: {
+      duration: 0.3,
+    },
   },
 };
 

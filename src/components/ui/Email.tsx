@@ -30,18 +30,13 @@ function Email({ className }: Props): ReactElement {
   const { queueSnackbarMessage } = useContext(SnackbarContext);
 
   const clickHandler = () => {
-    // Expand option
     setShowOptions((prevState) => !prevState);
   };
 
   // NOTE need to be in useEffect to only trigger AFTER state has updated
   useEffect(() => {
+    // NOTE only trigger copy and set focus on initial click
     if (showOptions) {
-      // Set focus to opened option
-      emailOptionRef.current?.focus();
-
-      // NOTE only trigger on initial click
-      console.log(showOptions);
       /* Copy to clipboard */
       if (inputRef.current) {
         // Execute copy
@@ -54,6 +49,10 @@ function Email({ className }: Props): ReactElement {
         // Display failure message
         queueSnackbarMessage({ message: "Failed to copy" });
       }
+
+      // NOTE  this should be AFTER copy, because inputRef steal the focus
+      // Set focus to opened option
+      emailOptionRef.current?.focus();
     }
   }, [showOptions, queueSnackbarMessage]);
 

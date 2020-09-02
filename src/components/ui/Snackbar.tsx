@@ -12,6 +12,8 @@ function Snackbar({ message }: Props): ReactElement {
       initial="hidden"
       animate="visible"
       exit="hidden"
+      //
+      tabIndex={-1}
     >
       {message}
     </Container>
@@ -34,11 +36,15 @@ const containerVariants: Variants = {
 
 type ContainerProps = {};
 const Container = styled(motion.div)<ContainerProps>`
-  ${tw`z-50 px-5 py-2  rounded bg-secondary text-white transition-colors duration-theme ease-theme text-lg`}
+  ${tw`z-50 px-5 py-2  rounded bg-secondary text-white transition-colors duration-theme ease-theme text-lg border-2 border-white font-bBold `}
+
   position: fixed;
   bottom: 2vh;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  pointer-events: none;
+  user-select: none;
 `;
 
 export { Snackbar };

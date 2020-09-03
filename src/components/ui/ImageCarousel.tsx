@@ -59,6 +59,10 @@ function ImageCarousel({
   );
 }
 
+enum Styling {
+  FocusedImageInitialScale = 0.75,
+}
+
 type ContainerProps = {
   isHorizontal: boolean;
 };
@@ -97,19 +101,19 @@ const focus = ({
   scale: number;
   isHorizontal: boolean;
 }) => keyframes`
-  from {
-    
+  from {    
     ${
       isHorizontal
         ? css`
-            transform: translateX(50%) scale(1);
+            transform: translateX(50%)
+              scale(${scale * Styling.FocusedImageInitialScale});
           `
         : css`
-            transform: translateY(50%) scale(1);
+            transform: translateY(80%)
+              scale(${scale * Styling.FocusedImageInitialScale});
           `
-    }
-    opacity: .5;
-
+    } 
+    opacity: 0.5;
   }
 
   to {
@@ -150,7 +154,7 @@ const Image = styled(ResponsiveImage)<ImageProps>`
       animation-name: ${focus({ scale: focusedScale, isHorizontal })};
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
         0 15px 12px rgba(0, 0, 0, 0.22);
-      z-index: 10;
+      z-index: 1;
     `};
 `;
 

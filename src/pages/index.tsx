@@ -11,7 +11,7 @@ import {
   HomepageSectionSwitchHandler,
 } from "@src/contexts/HomepageSections.context";
 import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 export default function Home() {
   // NOTE Should to be null on first page load
@@ -19,9 +19,13 @@ export default function Home() {
     null
   );
 
-  const onSectionSwitch: HomepageSectionSwitchHandler = (section) => {
-    setInViewSection(section);
-  };
+  const onSectionSwitch: HomepageSectionSwitchHandler = useCallback(
+    (section) => {
+      setInViewSection(section);
+      console.log(section);
+    },
+    []
+  );
 
   return (
     <HomepageSections.Provider value={{ inViewSection, onSectionSwitch }}>

@@ -1,6 +1,8 @@
 import { HomepageSectionIds } from "@src/constants/elementIds.constants";
 import { GlobalStyling } from "@src/constants/global.constants";
+import { useSidebarActive } from "@src/hooks";
 import React, { ReactNode } from "react";
+import { useInView } from "react-intersection-observer";
 import tw, { styled } from "twin.macro";
 
 type Ref = HTMLElement;
@@ -14,15 +16,17 @@ type Props = {
 
 const HomeSection = React.forwardRef<Ref, Props>(
   ({ heading, subHeading, className, children, id }, ref) => {
+    const sectionRef = useSidebarActive(id);
     return (
-      <Container className={className} ref={ref}>
+      <>
         {/* NOTE Spacer is used to align the heading in sight (not blocked by Appbar) */}
         <Spacer aria-hidden id={id} />
-
-        <Heading>{heading}</Heading>
-        <SubHeading>{subHeading}</SubHeading>
-        {children}
-      </Container>
+        <Container className={className} ref={sectionRef}>
+          <Heading>{heading}</Heading>
+          <SubHeading>{subHeading}</SubHeading>
+          {children}
+        </Container>
+      </>
     );
   }
 );
@@ -41,7 +45,7 @@ const Container = styled.section<ContainerProps>`
 
 const Spacer = styled.div`
   height: ${GlobalStyling.AppBarHeight};
-  background: transparent;
+  /* background: transparent; */
   pointer-events: none;
 `;
 

@@ -21,6 +21,7 @@ const STACKS = [
   "styled-components",
   "tailwindcss",
   "typescript",
+  "mdx",
 ] as const;
 
 type Stack = typeof STACKS[number];
@@ -59,7 +60,7 @@ export type HomePageProject = {
 
 export const homepageProjectsData: HomePageProject[] = [
   {
-    title: "animovies",
+    title: "AniMovies",
     shortDescription: "a movie database",
     stackIconSources: _generateStackIconPaths([
       "sass",
@@ -74,7 +75,7 @@ export const homepageProjectsData: HomePageProject[] = [
     imageSrc: _generateProjectImageSource("ani-movies-thumbnail.jpg"),
   },
   {
-    title: "tamago-sushi-bar",
+    title: "Tamago",
     shortDescription: "A sushi bar",
     stackIconSources: _generateStackIconPaths([
       "framer-motion",

@@ -1,11 +1,11 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useMemo } from "react";
 import { Button } from "@src/components/ui/Button";
 import tw, { styled } from "twin.macro";
 import NextLink from "next/link";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { FaChevronDown } from "react-icons/fa";
-import { keyframes } from "styled-components";
+import { keyframes, useTheme } from "styled-components";
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { carouselImages } from "@src/data/carouselImages.data";
 import { useMediaQuery, useSidebarActive } from "@src/hooks";
@@ -20,7 +20,6 @@ enum Carousel {
   IntervalInMs = 2000,
 }
 
-const CAROUSEL_SIZES = `(min-width: ${GlobalStyling.DesktopBreakpoint}) ${CarouselStyling.ImageWidthDesktop}, ${CarouselStyling.ImageWidthMobile}`;
 const SECTION_ID = HomepageSectionIds.Hero;
 
 function HeroSection(): ReactElement {
@@ -29,6 +28,15 @@ function HeroSection(): ReactElement {
   const [ref, inView] = useSidebarActive(SECTION_ID);
 
   /* ANCHOR Carousel */
+  // Carousel sizes
+  const theme = useTheme();
+  const desktopBreakpoint = theme.breakpoints[GlobalStyling.DesktopBreakpoint];
+  const CAROUSEL_SIZES = useMemo(
+    () =>
+      `(min-width: ${desktopBreakpoint}) ${CarouselStyling.ImageWidthDesktop}, ${CarouselStyling.ImageWidthMobile}`,
+    [desktopBreakpoint]
+  );
+
   // Stop carousel when out of view
   const carouselInvtervalInMs = inView
     ? Carousel.IntervalInMs

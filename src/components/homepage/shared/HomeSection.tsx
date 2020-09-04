@@ -21,8 +21,8 @@ function HomeSection({ heading, subHeading, className, children, id }: Props) {
       {/* NOTE Spacer is used to align the heading in sight (not blocked by Appbar) */}
       <Spacer aria-hidden id={id} />
       <Container className={className} ref={isDesktopMode ? sectionRef : null}>
-        <Heading>{heading}</Heading>
         <SubHeading>{subHeading}</SubHeading>
+        <Heading>{heading}</Heading>
         {children}
       </Container>
     </>
@@ -43,7 +43,7 @@ const Container = styled.section<ContainerProps>`
 
 const Spacer = styled.div`
   height: ${GlobalStyling.AppBarHeight};
-  /* background: transparent; */
+  background: transparent;
   pointer-events: none;
 `;
 

@@ -29,6 +29,7 @@ type ResponsiveImage = {
 };
 
 /**
+ * @note must set width on the container, and the image
  * @param path a path with root from /public/images/
  */
 function ResponsiveImage({
@@ -65,7 +66,7 @@ function ResponsiveImage({
         width,
       }}
     >
-      <Picture placeholder={responsiveImage.placeholder}>
+      <Picture>
         <source
           {...sharedSourceProps}
           srcSet={responsiveImageWebp.srcSet}

@@ -23,6 +23,8 @@ export const GlobalStyle = createGlobalStyle`
   --text-color-light: #757678;
   --text-color-light-rgb: 117, 118, 120;
 
+  --border-color: #d6dbe6;
+
 
   font-size: 62.5%;
   box-sizing: border-box;
@@ -180,6 +182,8 @@ p {
 
   --text-color-light: #9a9fac;
   --text-color-light-rgb: 154, 159, 172;
+
+  --border-color: #ffffff2b;
 }
 
 *, *::before, *::after {

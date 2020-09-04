@@ -10,7 +10,6 @@ export enum GlobalStyling {
 }
 
 export enum GlobalNumbers {
-  HomepageSectionInViewThreshhold = 0.6,
   SnackbarDisplayDurationInMs = 2000,
   AchievementDisplayDurationInMs = 5000,
 }

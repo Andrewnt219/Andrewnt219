@@ -4,7 +4,7 @@ import { ContactSection } from "@src/components/homepage/ContactSection";
 import { HeroSection } from "@src/components/homepage/HeroSection";
 import { ProjectsSection } from "@src/components/homepage/ProjectsSection";
 import { Sidebar } from "@src/components/homepage/Sidebar";
-import { HomepageSectionIds } from "@src/constants/elementIds.constants";
+import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import {
   HomepageSections,
   HomepageSection,
@@ -22,7 +22,6 @@ export default function Home() {
   const onSectionSwitch: HomepageSectionSwitchHandler = useCallback(
     (section) => {
       setInViewSection(section);
-      console.log(section);
     },
     []
   );

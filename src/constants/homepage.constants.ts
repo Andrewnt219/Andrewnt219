@@ -4,3 +4,7 @@ export enum HomepageSectionIds {
   About = "about-me-section",
   Contact = "contact-section",
 }
+
+export enum HomepageSection {
+  InViewThreshold = 0.2,
+}

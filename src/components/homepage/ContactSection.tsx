@@ -1,4 +1,4 @@
-import { HomepageSectionIds } from "@src/constants/elementIds.constants";
+import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import React, { ReactElement } from "react";
 import { HomeSection } from "./shared/HomeSection";
 

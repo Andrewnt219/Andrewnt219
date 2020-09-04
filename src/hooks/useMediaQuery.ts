@@ -4,7 +4,7 @@ import { GlobalStyling } from "@src/constants/global.constants";
 
 /**
  * @returns query is matched
- * @param breakpoint mediaQuery string, default is mobile divide
+ * @param breakpoint mediaQuery string, default is appbar breakpoint
  */
 export const useMediaQuery = (
   breakpoint?: keyof DefaultTheme["breakpoints"],

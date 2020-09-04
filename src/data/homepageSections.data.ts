@@ -1,4 +1,4 @@
-import { HomepageSectionIds } from "@src/constants/elementIds.constants";
+import { HomepageSectionIds } from "@src/constants/homepage.constants";
 
 type homepageSectionProps = {
   fragment: string;

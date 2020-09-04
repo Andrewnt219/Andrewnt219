@@ -1,11 +1,9 @@
-import { HomepageSectionIds } from "@src/constants/elementIds.constants";
+import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { GlobalStyling } from "@src/constants/global.constants";
-import { useSidebarActive } from "@src/hooks";
+import { useMediaQuery, useSidebarActive } from "@src/hooks";
 import React, { ReactNode } from "react";
-import { useInView } from "react-intersection-observer";
 import tw, { styled } from "twin.macro";
 
-type Ref = HTMLElement;
 type Props = {
   heading: string;
   subHeading?: string;
@@ -14,22 +12,22 @@ type Props = {
   children: ReactNode;
 };
 
-const HomeSection = React.forwardRef<Ref, Props>(
-  ({ heading, subHeading, className, children, id }, ref) => {
-    const sectionRef = useSidebarActive(id);
-    return (
-      <>
-        {/* NOTE Spacer is used to align the heading in sight (not blocked by Appbar) */}
-        <Spacer aria-hidden id={id} />
-        <Container className={className} ref={sectionRef}>
-          <Heading>{heading}</Heading>
-          <SubHeading>{subHeading}</SubHeading>
-          {children}
-        </Container>
-      </>
-    );
-  }
-);
+function HomeSection({ heading, subHeading, className, children, id }: Props) {
+  const sectionRef = useSidebarActive(id);
+  const isDesktopMode = useMediaQuery(GlobalStyling.DesktopBreakpoint);
+
+  return (
+    <>
+      {/* NOTE Spacer is used to align the heading in sight (not blocked by Appbar) */}
+      <Spacer aria-hidden id={id} />
+      <Container className={className} ref={isDesktopMode ? sectionRef : null}>
+        <Heading>{heading}</Heading>
+        <SubHeading>{subHeading}</SubHeading>
+        {children}
+      </Container>
+    </>
+  );
+}
 
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
@@ -39,7 +37,7 @@ const Container = styled.section<ContainerProps>`
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
+    min-height: 100vh;
   }
 `;
 
@@ -59,5 +57,4 @@ const SubHeading = styled.h3<SubHeadingProps>`
   ${tw`text-xl`}
 `;
 
-HomeSection.displayName = "HomeSection";
 export { HomeSection };

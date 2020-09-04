@@ -1,4 +1,4 @@
-import { HomepageSectionIds } from "@src/constants/elementIds.constants";
+import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import React from "react";
 
 export type HomepageSection = HomepageSectionIds | null;

@@ -2,12 +2,15 @@ import React, { ReactElement, useContext, useEffect } from "react";
 import { Button } from "@src/components/ui/Button";
 import tw, { styled } from "twin.macro";
 import NextLink from "next/link";
-import { GlobalNumbers, GlobalStyling } from "@src/constants/global.constants";
+import { GlobalStyling } from "@src/constants/global.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { useInView } from "react-intersection-observer";
 import { FaChevronDown } from "react-icons/fa";
 import { keyframes } from "styled-components";
-import { HomepageSectionIds } from "@src/constants/elementIds.constants";
+import {
+  HomepageSection,
+  HomepageSectionIds,
+} from "@src/constants/homepage.constants";
 import { HomepageSections } from "@src/contexts/HomepageSections.context";
 import { carouselImages } from "@src/data/carouselImages.data";
 import { useMediaQuery } from "@src/hooks";
@@ -29,7 +32,7 @@ function HeroSection(): ReactElement {
   /* SECTION Carousel */
   /* Stop carousel out of view */
   const [ref, inView] = useInView({
-    threshold: GlobalNumbers.HomepageSectionInViewThreshhold,
+    threshold: HomepageSection.InViewThreshold,
   });
   const carouselInvtervalInMs = inView
     ? Carousel.IntervalInMs

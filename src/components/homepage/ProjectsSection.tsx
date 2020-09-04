@@ -1,8 +1,10 @@
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
-import { stacksData } from "@src/data/homepageProjects.data";
+import { homepageProjectsData } from "@src/data/homepageProjects.data";
 import React, { ReactElement } from "react";
+import { ProjectCard } from "../ui/ProjectCard";
 
 import { HomeSection } from "./shared/HomeSection";
+import LazyLoad from "react-lazyload";
 
 function ProjectsSection(): ReactElement {
   return (
@@ -11,7 +13,11 @@ function ProjectsSection(): ReactElement {
       subHeading="Selected"
       id={HomepageSectionIds.Projects}
     >
-      Projects
+      {homepageProjectsData.map((projectProps) => (
+        <LazyLoad key={projectProps.title}>
+          <ProjectCard {...projectProps} />
+        </LazyLoad>
+      ))}
     </HomeSection>
   );
 }

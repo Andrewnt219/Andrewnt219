@@ -38,7 +38,7 @@ function ResponsiveImage({
   key,
   ...imgProps
 }: Props): ReactElement {
-  const { alt } = imgProps;
+  const { alt, width } = imgProps;
 
   const sharedSourceProps: SourceHTMLAttributes<HTMLSourceElement> = {
     sizes: sizes,
@@ -62,6 +62,7 @@ function ResponsiveImage({
       style={{
         backgroundSize: "cover",
         backgroundImage: 'url("' + responsiveImage.placeholder + '")',
+        width,
       }}
     >
       <Picture placeholder={responsiveImage.placeholder}>
@@ -81,6 +82,8 @@ function ResponsiveImage({
           height={responsiveImage.height}
           alt={alt}
           src={responsiveImage.src}
+          // NOTE this is the actual width on screen
+          computedWidth={width?.toString()}
         />
       </Picture>
     </div>
@@ -96,7 +99,11 @@ const Picture = styled.picture<PictureProps>`
   background-size: cover;
 `;
 
-type StyledImageProps = {};
-const StyledImage = styled.img<StyledImageProps>``;
+type StyledImageProps = {
+  computedWidth?: string;
+};
+const StyledImage = styled.img<StyledImageProps>`
+  width: ${(p) => p.computedWidth};
+`;
 
 export { ResponsiveImage };

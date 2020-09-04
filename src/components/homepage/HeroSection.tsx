@@ -20,7 +20,7 @@ enum Carousel {
   IntervalInMs = 2000,
 }
 
-const CAROUSEL_SIZES = `(min-width: ${GlobalStyling.DesktopBreakpoint}) ${CarouselStyling.ImageWidthDesktop}, ${CarouselStyling.ImageWidthMobile}`;
+const CAROUSEL_SIZES = `${CarouselStyling.ImageWidthMobile}`;
 const SECTION_ID = HomepageSectionIds.Hero;
 
 function HeroSection(): ReactElement {
@@ -198,7 +198,6 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     /* NOTE change these stats with caution, it might cause weird janking at certain screen width (img too big) */
     --img-width: ${CarouselStyling.ImageWidthDesktop};
-    --height-scale: 2/3;
 
     margin-top: 0;
     height: max-content;
@@ -208,7 +207,6 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
   @media screen and (orientation: landscape) and (max-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     --img-width: ${CarouselStyling.ImageWidthDesktop};
-    --height-scale: 2/3;
   }
 `;
 

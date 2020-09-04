@@ -1,19 +1,14 @@
-import React, { ReactElement, useContext, useEffect } from "react";
+import React, { ReactElement } from "react";
 import { Button } from "@src/components/ui/Button";
 import tw, { styled } from "twin.macro";
 import NextLink from "next/link";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
-import { useInView } from "react-intersection-observer";
 import { FaChevronDown } from "react-icons/fa";
 import { keyframes } from "styled-components";
-import {
-  HomepageSection,
-  HomepageSectionIds,
-} from "@src/constants/homepage.constants";
-import { HomepageSections } from "@src/contexts/HomepageSections.context";
+import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { carouselImages } from "@src/data/carouselImages.data";
-import { useMediaQuery } from "@src/hooks";
+import { useMediaQuery, useSidebarActive } from "@src/hooks";
 
 enum CarouselStyling {
   ImageWidthMobile = "25vw",
@@ -29,36 +24,26 @@ const CAROUSEL_SIZES = `(min-width: ${GlobalStyling.DesktopBreakpoint}) ${Carous
 const SECTION_ID = HomepageSectionIds.Hero;
 
 function HeroSection(): ReactElement {
-  /* SECTION Carousel */
-  /* Stop carousel out of view */
-  const [ref, inView] = useInView({
-    threshold: HomepageSection.InViewThreshold,
-  });
+  // Change active section in sidebar
+  // Check if HeroSection is inView
+  const [ref, inView] = useSidebarActive(SECTION_ID);
+
+  /* ANCHOR Carousel */
+  // Stop carousel when out of view
   const carouselInvtervalInMs = inView
     ? Carousel.IntervalInMs
     : Carousel.IntervalInMs * 9999;
 
+  // Switch between horizontal and vertical carousel
   const isDesktopOrLandscape = useMediaQuery(
     GlobalStyling.DesktopBreakpoint,
     "landscape"
   );
-  /* !SECTION Carousel */
 
-  /* SECTION Sidebar active link */
-  const { onSectionSwitch } = useContext(HomepageSections);
-
-  useEffect(() => {
-    if (inView) {
-      onSectionSwitch(SECTION_ID);
-    }
-  }, [inView, onSectionSwitch]);
-  /* !SECTION Sidebar active link */
-
-  /* SECTION Event handlers */
+  /* ANCHOR Event handlers */
   const onArrowDownClicked = () => {
     document.getElementById(HomepageSectionIds.Projects)?.scrollIntoView();
   };
-  /* !SECTION Event handlers */
 
   return (
     <Container ref={ref} id={SECTION_ID}>

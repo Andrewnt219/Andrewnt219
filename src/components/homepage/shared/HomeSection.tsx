@@ -13,7 +13,7 @@ type Props = {
 };
 
 function HomeSection({ heading, subHeading, className, children, id }: Props) {
-  const sectionRef = useSidebarActive(id);
+  const [sectionRef] = useSidebarActive(id);
   const isDesktopMode = useMediaQuery(GlobalStyling.DesktopBreakpoint);
 
   return (
@@ -37,7 +37,7 @@ const Container = styled.section<ContainerProps>`
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    min-height: 100vh;
+    min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 `;
 

@@ -1,4 +1,3 @@
-import { GlobalStyling } from "@src/constants/global.constants";
 import { HomepageSection } from "@src/contexts/HomepageSections.context";
 import { homepageSections } from "@src/data/homepageSections.data";
 import { motion, Variants } from "framer-motion";

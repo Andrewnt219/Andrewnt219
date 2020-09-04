@@ -1,11 +1,11 @@
-import React, { ReactElement, useMemo } from "react";
+import React, { ReactElement } from "react";
 import { Button } from "@src/components/ui/Button";
 import tw, { styled } from "twin.macro";
 import NextLink from "next/link";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { FaChevronDown } from "react-icons/fa";
-import { keyframes, useTheme } from "styled-components";
+import { keyframes } from "styled-components";
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { carouselImages } from "@src/data/carouselImages.data";
 import { useMediaQuery, useSidebarActive } from "@src/hooks";
@@ -20,6 +20,7 @@ enum Carousel {
   IntervalInMs = 2000,
 }
 
+const CAROUSEL_SIZES = `${CarouselStyling.ImageWidthMobile}`;
 const SECTION_ID = HomepageSectionIds.Hero;
 
 function HeroSection(): ReactElement {
@@ -28,15 +29,6 @@ function HeroSection(): ReactElement {
   const [ref, inView] = useSidebarActive(SECTION_ID);
 
   /* ANCHOR Carousel */
-  // Carousel sizes
-  const theme = useTheme();
-  const desktopBreakpoint = theme.breakpoints[GlobalStyling.DesktopBreakpoint];
-  const CAROUSEL_SIZES = useMemo(
-    () =>
-      `(min-width: ${desktopBreakpoint}) ${CarouselStyling.ImageWidthDesktop}, ${CarouselStyling.ImageWidthMobile}`,
-    [desktopBreakpoint]
-  );
-
   // Stop carousel when out of view
   const carouselInvtervalInMs = inView
     ? Carousel.IntervalInMs
@@ -206,7 +198,6 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     /* NOTE change these stats with caution, it might cause weird janking at certain screen width (img too big) */
     --img-width: ${CarouselStyling.ImageWidthDesktop};
-    --height-scale: 2/3;
 
     margin-top: 0;
     height: max-content;
@@ -216,7 +207,6 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
   @media screen and (orientation: landscape) and (max-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     --img-width: ${CarouselStyling.ImageWidthDesktop};
-    --height-scale: 2/3;
   }
 `;
 

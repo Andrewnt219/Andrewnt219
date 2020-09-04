@@ -21,6 +21,7 @@ type Props = {
   images: CarouselImage[];
   options: Option;
   sizes: string;
+  focusedSizes: string;
 };
 
 function ImageCarousel({
@@ -32,6 +33,7 @@ function ImageCarousel({
   },
   images,
   sizes,
+  focusedSizes,
   className,
 }: Props): ReactElement {
   const { currentIndex } = useCarousel(intervalInMs, images.length);
@@ -43,18 +45,21 @@ function ImageCarousel({
 
   return (
     <Container className={className} isHorizontal={isHorizontal}>
-      {displayedIndexes.map((index) => (
-        <Image
-          key={images[index].src}
-          isFocused={index === currentIndex}
-          focusedScale={focusedImgScale}
-          isHorizontal={isHorizontal}
-          //
-          alt={images[index].alt}
-          path={images[index].src}
-          sizes={sizes}
-        />
-      ))}
+      {displayedIndexes.map((index) => {
+        const isFocused = index === currentIndex;
+        return (
+          <Image
+            key={images[index].src}
+            isFocused={isFocused}
+            focusedScale={focusedImgScale}
+            isHorizontal={isHorizontal}
+            //
+            alt={images[index].alt}
+            path={images[index].src}
+            sizes={isFocused ? sizes : focusedSizes}
+          />
+        );
+      })}
     </Container>
   );
 }

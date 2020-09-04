@@ -1,18 +1,19 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useMemo } from "react";
 import { Button } from "@src/components/ui/Button";
 import tw, { styled } from "twin.macro";
 import NextLink from "next/link";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { FaChevronDown } from "react-icons/fa";
-import { keyframes } from "styled-components";
+import { keyframes, useTheme } from "styled-components";
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { carouselImages } from "@src/data/carouselImages.data";
 import { useMediaQuery, useSidebarActive } from "@src/hooks";
 
 enum CarouselStyling {
-  ImageWidthMobile = "25vw",
-  ImageWidthDesktop = "15vw",
+  ImageWidthMobile = "25",
+  ImageWidthDesktop = "15",
+  ImageWidthUnit = "vw",
 }
 enum Carousel {
   FocusedImageScale = 1.5,
@@ -20,7 +21,6 @@ enum Carousel {
   IntervalInMs = 2000,
 }
 
-const CAROUSEL_SIZES = `(min-width: ${GlobalStyling.DesktopBreakpoint}) ${CarouselStyling.ImageWidthDesktop}, ${CarouselStyling.ImageWidthMobile}`;
 const SECTION_ID = HomepageSectionIds.Hero;
 
 function HeroSection(): ReactElement {
@@ -29,6 +29,24 @@ function HeroSection(): ReactElement {
   const [ref, inView] = useSidebarActive(SECTION_ID);
 
   /* ANCHOR Carousel */
+  // Carousel sizes
+  const theme = useTheme();
+  const desktopBreakpoint = theme.breakpoints[GlobalStyling.DesktopBreakpoint];
+
+  // With focused, width is scaled with focus
+  const FOCUSED_CAROUSEL_SIZES = `(min-width: ${desktopBreakpoint}) ${
+    +CarouselStyling.ImageWidthDesktop * Carousel.FocusedImageScale +
+    CarouselStyling.ImageWidthUnit
+  }, ${
+    +CarouselStyling.ImageWidthMobile * Carousel.FocusedImageScale +
+    CarouselStyling.ImageWidthUnit
+  }`;
+
+  // scale down images when out of focus
+  const CAROUSEL_SIZES = `(min-width: ${desktopBreakpoint}) ${
+    CarouselStyling.ImageWidthDesktop + CarouselStyling.ImageWidthUnit
+  }, ${CarouselStyling.ImageWidthMobile + CarouselStyling.ImageWidthUnit}`;
+
   // Stop carousel when out of view
   const carouselInvtervalInMs = inView
     ? Carousel.IntervalInMs
@@ -71,6 +89,7 @@ function HeroSection(): ReactElement {
           isHorizontal: !isDesktopOrLandscape,
         }}
         sizes={CAROUSEL_SIZES}
+        focusedSizes={FOCUSED_CAROUSEL_SIZES}
       />
 
       <BouncingArrowDown onClick={onArrowDownClicked} />
@@ -178,7 +197,8 @@ const CustomButton = styled(Button)<CustomButtonProps>`
 
 type CarouselContainerProps = {};
 const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
-  --img-width: ${CarouselStyling.ImageWidthMobile};
+  --img-width: ${CarouselStyling.ImageWidthMobile +
+  CarouselStyling.ImageWidthUnit};
   --height-scale: 2/3;
 
   ${tw` flex items-center mx-auto`}
@@ -197,8 +217,8 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     /* NOTE change these stats with caution, it might cause weird janking at certain screen width (img too big) */
-    --img-width: ${CarouselStyling.ImageWidthDesktop};
-    --height-scale: 2/3;
+    --img-width: ${CarouselStyling.ImageWidthDesktop +
+    CarouselStyling.ImageWidthUnit};
 
     margin-top: 0;
     height: max-content;
@@ -207,8 +227,8 @@ const CarouselContainer = styled(ImageCarousel)<CarouselContainerProps>`
 
   @media screen and (orientation: landscape) and (max-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    --img-width: ${CarouselStyling.ImageWidthDesktop};
-    --height-scale: 2/3;
+    --img-width: ${CarouselStyling.ImageWidthDesktop +
+    CarouselStyling.ImageWidthUnit};
   }
 `;
 

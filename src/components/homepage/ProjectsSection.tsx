@@ -135,7 +135,14 @@ function filePathToName(path: string) {
 
 type ProjectCardContainerProps = {};
 const ProjectCardContainer = styled.div<ProjectCardContainerProps>`
-  ${tw`text-textColor bg-lprimary border-2 border-borderColor p-10 flex flex-col`}
+  ${tw`text-textColor bg-lprimary border-2 border-borderColor p-10 transition-colors duration-200 ease-linear`}
+  display: grid;
+  gap: 1em;
+
+  :hover,
+  :focus-within {
+    ${tw`border-accent`}
+  }
 `;
 
 type InfoContainerProps = {};

@@ -97,8 +97,8 @@ export const flickering = keyframes`
     }
 `;
 
-const visibleStateOne = (useTextShadow?: boolean) => css`
-  ${useTextShadow
+const visibleStateOne = (secondary?: boolean) => css`
+  ${secondary
     ? css`
         border-color: var(--text-color);
       `
@@ -108,52 +108,50 @@ const visibleStateOne = (useTextShadow?: boolean) => css`
       `}
 `;
 
-const visibleStateTwo = (useTextShadow?: boolean) => css`
-  ${useTextShadow
-    ? css`
-        border-color: transparent;
-      `
-    : css`
-        border-color: #35d2fd;
-        box-shadow: var(--shadow-2);
-      `}
+const visibleStateTwo = css`
+  border-color: #35d2fd;
+  box-shadow: var(--shadow-2);
 `;
 
-const hiddenState = (useTextShadow?: boolean) => css`
-  ${useTextShadow
-    ? css`
-        border-color: transparent;
-      `
-    : css`
-        border-color: transparent;
-        box-shadow: 0 0 2rem transparent, inset 0 0 1rem transparent,
-          0 0.2rem 0 transparent;
-      `}
+const hiddenState = css`
+  border-color: transparent;
+  box-shadow: 0 0 2rem transparent, inset 0 0 1rem transparent,
+    0 0.2rem 0 transparent;
 `;
 /**
  * @param shadow_1 css variable shadow-1
  * @param shadow_2 css variable shadow-2
  */
-export const buttonFlickering = (useTextShadow?: boolean) => keyframes`
-0% {
-    ${visibleStateOne(useTextShadow)}
-}
-15% {
-    ${visibleStateTwo(useTextShadow)}
-}
-16% {
-    ${hiddenState(useTextShadow)}
-}
-17% {
-    ${visibleStateOne(useTextShadow)}
-}
-20% {
-    ${visibleStateTwo(useTextShadow)}
-}
-30% {
-    ${visibleStateOne(useTextShadow)}
-}
-100% {
-    ${visibleStateTwo(useTextShadow)}
-}
-`;
+export const buttonFlickering = (secondary?: boolean) =>
+  secondary
+    ? keyframes`
+        from {
+            ${visibleStateOne(secondary)}
+        }
+       
+        to {
+            ${hiddenState}
+        }
+    `
+    : keyframes`
+        0% {
+            ${visibleStateOne(secondary)}
+        }
+        15% {
+            ${visibleStateTwo}
+        }
+        16% {
+            ${hiddenState}
+        }
+        17% {
+            ${visibleStateOne(secondary)}
+        }
+        20% {
+            ${visibleStateTwo}
+        }
+        30% {
+            ${visibleStateOne(secondary)}
+        }
+        100% {
+            ${visibleStateTwo}
+        }`;

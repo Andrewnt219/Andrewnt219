@@ -1,5 +1,10 @@
 import tw, { styled, css } from "twin.macro";
-import React, { AnchorHTMLAttributes, ReactNode, useContext } from "react";
+import React, {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ReactNode,
+  useContext,
+} from "react";
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
 import { motion, Variants } from "framer-motion";
@@ -9,12 +14,13 @@ type Ref = HTMLAnchorElement;
 type Props = StyledButtonProps & {
   children: ReactNode;
   className?: string;
-  anchorProps?: boolean | AnchorHTMLAttributes<HTMLAnchorElement>;
+  // NOTE conflict between button and anchor event handlers
+  anchorProps?: boolean | { href: string; target?: string; rel?: string };
 };
 
 // NOTE Ref is used for Button as a link only
 const Button = React.forwardRef<Ref, Props>(
-  ({ className, children, anchorProps: isButtonLink, ...styleProps }, ref) => {
+  ({ className, children, anchorProps, ...styleProps }, ref) => {
     const { mode } = useContext(ColorThemeContext);
 
     // Disable flickering animation in mobile because it cannot be seen
@@ -23,9 +29,10 @@ const Button = React.forwardRef<Ref, Props>(
     return mode === "dark-mode" ? (
       <DarkButton
         {...styleProps}
-        ref={isButtonLink ? ref : undefined}
+        ref={anchorProps ? ref : undefined}
         className={className}
-        as={isButtonLink ? motion.a : undefined}
+        as={anchorProps ? motion.a : undefined}
+        {...anchorProps}
         //
         variants={enableEnterAnimation ? darkButtonVariants : undefined}
         animate="visible"
@@ -35,9 +42,9 @@ const Button = React.forwardRef<Ref, Props>(
     ) : (
       <LightButton
         {...styleProps}
-        ref={isButtonLink ? ref : undefined}
+        ref={anchorProps ? ref : undefined}
         className={className}
-        as={isButtonLink ? "a" : undefined}
+        as={anchorProps ? "a" : undefined}
       >
         {children}
       </LightButton>

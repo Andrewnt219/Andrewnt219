@@ -13,4 +13,5 @@ export const defaultTheme: DefaultTheme = {
     wqhd: "2560px",
     uhd: "3840px",
   },
+  isDarkMode: false,
 };

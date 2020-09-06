@@ -5,7 +5,7 @@ import { HomeSection } from "./shared/HomeSection";
 import LazyLoad from "react-lazyload";
 import { useTheme } from "styled-components";
 import { GlobalStyling } from "@src/constants/global.constants";
-import tw, { styled } from "twin.macro";
+import tw, { css, styled, theme } from "twin.macro";
 import { HomePageProject } from "@src/data/homepageProjects.data";
 import NextLink from "next/link";
 import { ResponsiveImage } from "../ui/ResponsiveImage";
@@ -137,14 +137,28 @@ function filePathToName(path: string) {
 
 type ProjectCardContainerProps = {};
 const ProjectCardContainer = styled.div<ProjectCardContainerProps>`
-  ${tw`text-textColor bg-lprimary border-2 border-borderColor p-10 transition-colors duration-200 ease-linear`}
+  ${tw`text-textColor  border-2 border-borderColor p-10`}
+
   display: grid;
   gap: 1em;
+
+  transition: background-color ${theme`transitionDuration.theme`}
+      ${theme`transitionTimingFunction.theme`},
+    border ${theme`transitionDuration.200`} ease;
 
   :hover,
   :focus-within {
     ${tw`border-accent`}
   }
+
+  ${(p) =>
+    p.theme.isDarkMode
+      ? css`
+          ${tw`bg-lprimary`}
+        `
+      : css`
+          ${tw`bg-primary`}
+        `}
 `;
 
 type InfoContainerProps = {};

@@ -45,7 +45,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   /* !SECTION Light/Dark Mode */
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider
+      theme={{ ...defaultTheme, isDarkMode: mode === "dark-mode" }}
+    >
       <ColorThemeContext.Provider value={{ mode, onModeSwitch }}>
         <GlobalStyle />
         <MainLayout>

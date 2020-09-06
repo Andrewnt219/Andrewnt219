@@ -37,7 +37,13 @@ const Container = styled.section<ContainerProps>`
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    ${tw`text-lg`}
     min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
+  }
+
+  @media screen and (orientation: landscape) and (max-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    ${tw`text-base`}
   }
 `;
 
@@ -49,7 +55,8 @@ const Spacer = styled.div`
 
 type HeadingProps = {};
 const Heading = styled.h2<HeadingProps>`
-  ${tw`text-5xl font-hBold uppercase`}
+  ${tw`font-hBold uppercase`}
+  font-size: 3.5em;
 `;
 
 type SubHeadingProps = {};

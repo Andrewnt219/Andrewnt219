@@ -87,19 +87,14 @@ const Container = styled.section<ContainerProps>`
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
 
   @media screen and (min-width: ${(p) =>
-    p.theme.breakpoints[GlobalStyling.ModernMobileBreakpoint]}) {
-    ${tw`text-2xl`}
-  }
-
-  @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-3xl flex-row items-center`}
+    p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    ${tw`text-2xl flex-row items-center`}
     height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 
   @media screen and (orientation: landscape) and (max-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-xl flex-row items-center`}
+    ${tw`text-lg flex-row items-center`}
     height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 `;
@@ -129,26 +124,16 @@ const AuthorName = styled.span<AuthorNameProps>`
 
 type HeadingProps = {};
 const Heading = styled.h1<HeadingProps>`
-  ${tw`text-4xl font-hBold text-accent text-center`}
+  ${tw`font-hBold text-accent text-center`}
 
+  font-size: 2.5em;
   * {
     color: inherit;
     font-size: inherit;
   }
 
-  @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.ModernMobileBreakpoint]}) {
-    ${tw`text-5xl`}
-  }
-
-  @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-6xl text-left`}
-  }
-
-  @media screen and (orientation: landscape) and (max-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-left text-4xl`}
+  @media screen and (orientation: landscape) {
+    ${tw` text-left`}
   }
 `;
 

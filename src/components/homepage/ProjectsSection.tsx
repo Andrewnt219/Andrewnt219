@@ -124,7 +124,7 @@ function filePathToName(path: string) {
 
 type ProjectCardContainerProps = {};
 const ProjectCardContainer = styled.div<ProjectCardContainerProps>`
-  ${tw`text-lg text-textColor bg-lprimary border-2 border-borderColor`}
+  ${tw`text-textColor bg-lprimary border-2 border-borderColor`}
 
   display: flex;
 
@@ -153,7 +153,9 @@ const Thumbnail = styled(ResponsiveImage)<ImageProps>`
 
 type TitleProps = {};
 const Title = styled.h4<TitleProps>`
-  ${tw`font-hBold text-3xl`}
+  ${tw`font-hBold`}
+
+  font-size: 2.5em;
 `;
 
 type DescriptionProps = {};

@@ -86,20 +86,22 @@ const Container = styled.section<ContainerProps>`
 
   ${tw`relative z-10 text-xl font-heading flex flex-col justify-center`}
 
-  @media screen and (min-width: ${(p) =>
-    p.theme.breakpoints[GlobalStyling.ModernMobileBreakpoint]}) {
-    ${tw`text-2xl`}
-  }
+  /* @media screen and (min-width: ${(p) =>
+    p.theme.breakpoints[
+      GlobalStyling.ModernMobileBreakpoint
+    ]}) {
+    ${tw`text-xl`}
+  } */
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-3xl flex-row items-center`}
+    p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    ${tw`text-2xl flex-row items-center`}
     height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 
   @media screen and (orientation: landscape) and (max-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-xl flex-row items-center`}
+    ${tw`text-lg flex-row items-center`}
     height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 `;

@@ -5,7 +5,7 @@ export const achievementsData: Record<string, AchievementProps> = {
     "Discover dark mode",
     "Hello darkness, my old friend...",
     "moon icon",
-    "darkmode.svg"
+    "dark-mode.svg"
   ),
 };
 
@@ -15,13 +15,12 @@ function _generateAchievementData(
   alt: string,
   fileName: string
 ): AchievementProps {
-  const ROOT_FOLDER = "/svgs/achievements";
   return {
     title,
     subtitle,
     image: {
       alt,
-      src: `${ROOT_FOLDER}/${fileName}`,
+      src: `/svgs/achievements/${fileName}`,
     },
   };
 }

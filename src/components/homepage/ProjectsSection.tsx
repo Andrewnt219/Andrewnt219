@@ -106,9 +106,11 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
 
           <li style={{ gridArea: "github" }}>
             <CustomSecondaryButton
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
+              anchorProps={{
+                href: github,
+                target: "_blank",
+                rel: "noopener noreferrer",
+              }}
             >
               GitHub
             </CustomSecondaryButton>

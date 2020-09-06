@@ -57,9 +57,21 @@ type StyledButtonProps = {
   secondary?: boolean;
   styledVariants?: "outlined" | "contained" | "text";
 };
-const sharedButtonStyle = css`
-  ${tw`hocus:outline-none uppercase border border-transparent rounded cursor-pointer`}
+// Keep the transparent border to avoid layout shift between dark/light mode
+const sharedButtonStyle = css<StyledButtonProps>`
+  ${tw`hocus:outline-none uppercase cursor-pointer`}
   padding: 0.75em 2em;
+
+  ${(p) =>
+    p.primary &&
+    css`
+      ${tw`border border-transparent rounded`}
+    `}
+  ${(p) =>
+    p.secondary &&
+    css`
+      ${tw`border-b border-current`}
+    `}
 `;
 
 type LightButtonProps = StyledButtonProps & {};
@@ -67,28 +79,36 @@ export const LightButton = styled.button<LightButtonProps>`
   --shadow-color: rgba(var(--accent-color-rgb), 0.4);
 
   ${sharedButtonStyle}
-  ${tw`bg-accent text-primary`}
 
-  transition: transform 200ms ease, box-shadow 500ms ease;
-  box-shadow: 0 4px 14px 0 var(--shadow-color);
+  ${(p) =>
+    p.primary &&
+    css`
+      ${tw`bg-accent text-primary`}
+      box-shadow: 0 4px 14px 0 var(--shadow-color);
+      transition: transform 200ms ease, box-shadow 500ms ease;
 
-  :hover,
-  :focus {
-    box-shadow: 0 6px 20px var(--shadow-color);
-    transform: translateY(-2px);
-  }
+      :hover,
+      :focus {
+        transform: translateY(-0.2em);
+        box-shadow: 0 6px 20px var(--shadow-color);
+      }
 
-  /* Active should be below hover */
-  :active {
-    box-shadow: 0 4px 14px 0 var(--shadow-color);
-    transform: translateY(0);
-  }
+      /* Active should be below hover */
+      :active {
+        box-shadow: 0 4px 14px 0 var(--shadow-color);
+        transform: translateY(0);
+      }
+    `}
 
   ${(p) =>
     p.secondary &&
     css`
-      --shadow-color: rgba(0, 0, 0, 0.1);
-      ${tw`bg-primary text-textColor`};
+      ${tw`transition-colors duration-200 ease-linear`};
+
+      :hover,
+      :focus {
+        ${tw`text-accent`};
+      }
     `}
 `;
 
@@ -118,9 +138,7 @@ const DarkButton = styled(motion.button)<DarkButtonProps>`
   ${(p) =>
     p.secondary &&
     css`
-      border-radius: initial;
-
-      ${tw`border-0 border-b border-textColor py-0 rounded-none`}
+      ${tw`border-textColor py-0 rounded-none`}
 
       :hover,
       :focus {

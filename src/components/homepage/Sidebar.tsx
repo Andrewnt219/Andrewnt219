@@ -3,7 +3,7 @@ import { homepageSections } from "@src/data/homepageSections.data";
 import { motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
 import tw, { styled } from "twin.macro";
-import { Link } from "../navigations/Link";
+import NextLink from "next/link";
 
 type Props = {
   inViewSection: HomepageSection;
@@ -20,12 +20,11 @@ function Sidebar({ inViewSection }: Props): ReactElement {
       <Nav aria-label="Secondary">
         {homepageSections.map(({ fragment, text }) => (
           <li key={fragment}>
-            <StyledLink
-              active={inViewSection === fragment}
-              href={`/#${fragment}`}
-            >
-              {text}
-            </StyledLink>
+            <NextLink href={`/#${fragment}`} passHref>
+              <StyledLink active={inViewSection === fragment}>
+                {text}
+              </StyledLink>
+            </NextLink>
           </li>
         ))}
       </Nav>
@@ -61,7 +60,10 @@ const Nav = styled.nav<NavProps>`
   ${tw`space-y-10`}
 `;
 
-const StyledLink = styled(Link)`
+type StyledLinkProps = {
+  active?: boolean;
+};
+const StyledLink = styled.a<StyledLinkProps>`
   ${tw`text-ltextColor lowercase`}
   writing-mode: vertical-lr;
   transform: rotate(180deg);

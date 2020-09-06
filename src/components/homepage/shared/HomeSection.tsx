@@ -61,7 +61,8 @@ const Heading = styled.h2<HeadingProps>`
 
 type SubHeadingProps = {};
 const SubHeading = styled.h3<SubHeadingProps>`
-  ${tw`text-xl`}
+  font-size: 1.25em;
+  ${tw`text-ltextColor`};
 `;
 
 export { HomeSection };

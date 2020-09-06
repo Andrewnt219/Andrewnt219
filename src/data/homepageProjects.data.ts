@@ -72,7 +72,23 @@ export const homepageProjectsData: HomePageProject[] = [
       demo: "demo",
       github: "github",
     },
-    imageSrc: _generateProjectImageSource("ani-movies-thumbnail.jpg"),
+    imageSrc: _generateProjectImageSource("ani-movies-thumbnail.png"),
+  },
+  {
+    title: "Tamago",
+    shortDescription: "A sushi bar",
+    stackIconSources: _generateStackIconPaths([
+      "framer-motion",
+      "react-js",
+      "styled-components",
+      "firebase",
+    ]),
+    links: {
+      readMore: "readmore",
+      demo: "demo",
+      github: "github",
+    },
+    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.jpg"),
   },
   {
     title: "Tamago",

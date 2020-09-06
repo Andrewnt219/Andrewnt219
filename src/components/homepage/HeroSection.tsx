@@ -58,7 +58,9 @@ function HeroSection(): ReactElement {
         </Summary>
 
         <NextLink href={`/#${HomepageSectionIds.Projects}`} passHref>
-          <CustomButton isButtonLink>See my projects</CustomButton>
+          <CustomButton anchorProps primary>
+            See my projects
+          </CustomButton>
         </NextLink>
       </InfoContainer>
 

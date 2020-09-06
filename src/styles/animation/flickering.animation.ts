@@ -1,4 +1,5 @@
 import { keyframes } from "styled-components";
+import { css } from "twin.macro";
 
 export const flickering = keyframes`
     0% {
@@ -96,36 +97,63 @@ export const flickering = keyframes`
     }
 `;
 
+const visibleStateOne = (useTextShadow?: boolean) => css`
+  ${useTextShadow
+    ? css`
+        border-color: var(--text-color);
+      `
+    : css`
+        border-color: var(--accent-color);
+        box-shadow: var(--shadow-1);
+      `}
+`;
+
+const visibleStateTwo = (useTextShadow?: boolean) => css`
+  ${useTextShadow
+    ? css`
+        border-color: transparent;
+      `
+    : css`
+        border-color: #35d2fd;
+        box-shadow: var(--shadow-2);
+      `}
+`;
+
+const hiddenState = (useTextShadow?: boolean) => css`
+  ${useTextShadow
+    ? css`
+        border-color: transparent;
+      `
+    : css`
+        border-color: transparent;
+        box-shadow: 0 0 2rem transparent, inset 0 0 1rem transparent,
+          0 0.2rem 0 transparent;
+      `}
+`;
 /**
  * @param shadow_1 css variable shadow-1
  * @param shadow_2 css variable shadow-2
  */
-export const buttonFlickering = keyframes`
-0% {border-color: var(--accent-color);
-    box-shadow: var(--shadow-1);
+export const buttonFlickering = (useTextShadow?: boolean) => keyframes`
+0% {
+    ${visibleStateOne(useTextShadow)}
 }
 15% {
-    border-color: #35d2fd;
-    box-shadow: var(--shadow-2);
+    ${visibleStateTwo(useTextShadow)}
 }
 16% {
-    border-color: transparent;
-    box-shadow: 0 0 2rem transparent, inset 0 0 1rem transparent, 0 .2rem 0 transparent;
+    ${hiddenState(useTextShadow)}
 }
 17% {
-    border-color: var(--accent-color);
-    box-shadow: var(--shadow-1);
+    ${visibleStateOne(useTextShadow)}
 }
 20% {
-    border-color: #35d2fd;
-    box-shadow: var(--shadow-2);
+    ${visibleStateTwo(useTextShadow)}
 }
 30% {
-    border-color: var(--accent-color);
-    box-shadow: var(--shadow-1);
+    ${visibleStateOne(useTextShadow)}
 }
 100% {
-    border-color: #35d2fd;
-    box-shadow: var(--shadow-2);
+    ${visibleStateTwo(useTextShadow)}
 }
 `;

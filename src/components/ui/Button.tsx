@@ -1,5 +1,5 @@
 import tw, { styled, css } from "twin.macro";
-import React, { ReactNode, useContext } from "react";
+import React, { AnchorHTMLAttributes, ReactNode, useContext } from "react";
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
 import { motion, Variants } from "framer-motion";
@@ -9,12 +9,12 @@ type Ref = HTMLAnchorElement;
 type Props = StyledButtonProps & {
   children: ReactNode;
   className?: string;
-  isButtonLink?: boolean;
+  anchorProps?: boolean | AnchorHTMLAttributes<HTMLAnchorElement>;
 };
 
 // NOTE Ref is used for Button as a link only
 const Button = React.forwardRef<Ref, Props>(
-  ({ className, children, isButtonLink, ...styleProps }, ref) => {
+  ({ className, children, anchorProps: isButtonLink, ...styleProps }, ref) => {
     const { mode } = useContext(ColorThemeContext);
 
     // Disable flickering animation in mobile because it cannot be seen
@@ -51,7 +51,7 @@ type StyledButtonProps = {
   styledVariants?: "outlined" | "contained" | "text";
 };
 const sharedButtonStyle = css`
-  ${tw`hocus:outline-none uppercase border border-transparent rounded`}
+  ${tw`hocus:outline-none uppercase border border-transparent rounded cursor-pointer`}
   padding: 0.75em 2em;
 `;
 
@@ -94,13 +94,31 @@ const DarkButton = styled(motion.button)<DarkButtonProps>`
     inset 0 0 1rem rgba(67, 183, 255, 0.4), 0 0.2rem 0 #000;
 
   ${sharedButtonStyle}
-  ${tw`text-accent border-accent border bg-transparent`}
-  box-shadow: var(--shadow);
 
   &:hover,
   &:focus {
-    animation: ${buttonFlickering} 0.8s ease-out infinite alternate;
+    animation: ${(p) => buttonFlickering(p.secondary)} 0.8s ease-out infinite
+      alternate;
   }
+
+  ${(p) =>
+    p.primary &&
+    css`
+      ${tw`text-accent border-accent border bg-transparent`}
+      box-shadow: var(--shadow);
+    `}
+
+  ${(p) =>
+    p.secondary &&
+    css`
+      border-radius: initial;
+
+      ${tw`border-0 border-b border-textColor py-0 rounded-none`}
+
+      :hover,
+      :focus {
+      }
+    `}
 `;
 
 const darkButtonVariants: Variants = {

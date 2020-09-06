@@ -7,8 +7,9 @@ import { useTheme } from "styled-components";
 import { GlobalStyling } from "@src/constants/global.constants";
 import tw, { styled } from "twin.macro";
 import { HomePageProject } from "@src/data/homepageProjects.data";
-import { Link } from "../navigations/Link";
+import NextLink from "next/link";
 import { ResponsiveImage } from "../ui/ResponsiveImage";
+import { Button } from "../ui/Button";
 
 /* SECTION ProjectsSection */
 function ProjectsSection(): ReactElement {
@@ -16,7 +17,7 @@ function ProjectsSection(): ReactElement {
   const { breakpoints } = useTheme();
   const thumbnailSizes = `(min-width: ${
     breakpoints[GlobalStyling.DesktopBreakpoint]
-  }): 20vw, 40vw`;
+  }): 40vw, 85vw`;
 
   return (
     <HomeSection
@@ -43,8 +44,8 @@ const ProjectCards = styled.ul<ProjectCardsProps>`
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    column-gap: 2vw;
     grid-template-columns: 1fr 1fr;
+    gap: 1vw;
   }
 `;
 
@@ -72,6 +73,7 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
           path={imageSrc}
           sizes={thumbnailSizes}
           alt={filePathToName(imageSrc)}
+          config={{ isPng: true, enablePlaceholder: false }}
         />
       </LazyLoad>
 
@@ -80,27 +82,36 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
         <Description>{shortDescription}</Description>
 
         <Links>
-          <li>
-            <Link
-              href={readMore}
-              anchorAttributes={{
-                "aria-label": `Read more about project ${title}`,
+          <li style={{ gridArea: "demo" }}>
+            <CustomPrimaryButton
+              anchorProps={{
+                href: demo,
+                target: "_blank",
+                rel: "noopener noreferrer",
               }}
             >
-              Read More
-            </Link>
-          </li>
-
-          <li>
-            <a href={github} target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-          </li>
-
-          <li>
-            <a href={demo} target="_blank" rel="noopener noreferrer">
               Demo
-            </a>
+            </CustomPrimaryButton>
+          </li>
+
+          <li style={{ gridArea: "readMore" }}>
+            <NextLink passHref href={readMore}>
+              <CustomSecondaryButton
+                aria-label={`Read more about project ${title}`}
+              >
+                Read More
+              </CustomSecondaryButton>
+            </NextLink>
+          </li>
+
+          <li style={{ gridArea: "github" }}>
+            <CustomSecondaryButton
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </CustomSecondaryButton>
           </li>
         </Links>
 
@@ -124,46 +135,77 @@ function filePathToName(path: string) {
 
 type ProjectCardContainerProps = {};
 const ProjectCardContainer = styled.div<ProjectCardContainerProps>`
-  ${tw`text-textColor bg-lprimary border-2 border-borderColor`}
-
-  display: flex;
-
-  & > * {
-    flex: 1;
-  }
-
-  .lazyload-wrapper {
-  }
+  ${tw`text-textColor bg-lprimary border-2 border-borderColor p-10 flex flex-col`}
 `;
 
 type InfoContainerProps = {};
 const InfoContainer = styled.div<InfoContainerProps>`
-  ${tw`flex flex-col p-4`}
+  ${tw`flex flex-col`}
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 1em;
+  grid-template-areas:
+    "title        links"
+    "description  links"
+    "stacks       links";
 `;
 
 type ImageProps = {};
 const Thumbnail = styled(ResponsiveImage)<ImageProps>`
   &,
   img {
+    --aspect-ratio: 320 / 224;
     width: 100%;
-    object-fit: cover;
-    height: 30vmax;
+    height: calc(100% / (var(--aspect-ratio)));
   }
 `;
 
 type TitleProps = {};
 const Title = styled.h4<TitleProps>`
   ${tw`font-hBold`}
-
-  font-size: 2.5em;
+  font-size: 2em;
+  grid-area: title;
 `;
 
 type DescriptionProps = {};
-const Description = styled.p<DescriptionProps>``;
+const Description = styled.p<DescriptionProps>`
+  grid-area: description;
+`;
 
 type LinksProps = {};
 const Links = styled.ul<LinksProps>`
-  ${tw`flex`}
+  grid-area: links;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(2, max-content);
+  align-items: center;
+  justify-self: flex-end;
+  grid-template-areas:
+    "demo     demo"
+    "readMore github";
+
+  & > li {
+    display: flex;
+    place-items: center;
+  }
+`;
+
+type CustomPrimaryButtonProps = {};
+const CustomPrimaryButton = styled(Button).attrs({ primary: true })<
+  CustomPrimaryButtonProps
+>`
+  font-size: larger;
+  padding: 0.5em 1em;
+  width: 100%;
+  text-align: center;
+`;
+
+type CustomSecondaryButtonProps = {};
+const CustomSecondaryButton = styled(Button).attrs({ secondary: true })<
+  CustomSecondaryButtonProps
+>`
+  font-size: smaller;
+  padding: 0.5em 0;
 `;
 
 type StackIconsProps = {};
@@ -171,11 +213,13 @@ const StackIcons = styled.ul<StackIconsProps>`
   display: flex;
   flex: 1;
   align-items: flex-end;
+  grid-area: stacks;
 `;
 
 type StackIconProps = {};
 const StackIcon = styled.img<StackIconProps>`
   width: 2em;
+  filter: grayscale(1);
 `;
 
 /* !SECTION ProjectCard */

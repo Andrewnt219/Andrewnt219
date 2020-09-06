@@ -11,6 +11,10 @@ type Props = ImgHTMLAttributes<HTMLImageElement> & {
   className?: string;
   key?: string;
   src?: never;
+  config?: {
+    isPng?: boolean;
+    enablePlaceholder?: boolean;
+  };
 };
 
 type ResponsiveImage = {
@@ -37,6 +41,7 @@ function ResponsiveImage({
   path,
   sizes,
   key,
+  config,
   ...imgProps
 }: Props): ReactElement {
   const { alt, width } = imgProps;
@@ -60,11 +65,15 @@ function ResponsiveImage({
     <div
       key={key}
       className={className}
-      style={{
-        backgroundSize: "cover",
-        backgroundImage: 'url("' + responsiveImage.placeholder + '")',
-        width,
-      }}
+      style={
+        config?.enablePlaceholder
+          ? {
+              backgroundSize: "cover",
+              backgroundImage: 'url("' + responsiveImage.placeholder + '")',
+              width,
+            }
+          : undefined
+      }
     >
       <Picture>
         <source
@@ -75,7 +84,7 @@ function ResponsiveImage({
         <source
           {...sharedSourceProps}
           srcSet={responsiveImage.srcSet}
-          type="image/jpeg"
+          type={`image/${config?.isPng ? "png" : "jpeg"}`}
         />
         <StyledImage
           {...imgProps}

@@ -194,10 +194,10 @@ const CustomSecondaryButton = styled(Button).attrs({ secondary: true })<
 
 type StacksInfoProps = {};
 const StacksInfo = styled.ul<StacksInfoProps>`
+  grid-area: stacks;
   display: flex;
   flex: 1;
-  align-items: flex-end;
-  grid-area: stacks;
+  flex-wrap: wrap;
 `;
 
 const CustomStackInfo = styled(StackInfo)``;

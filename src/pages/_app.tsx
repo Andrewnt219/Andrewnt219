@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const onModeSwitch = (newMode: Mode) => {
     // Check valid mode
     if (newMode) {
-      // ANCHOR change to new theme
+      // change to new theme
       try {
         localStorage.setItem(LocalStorageKeys.Theme, newMode);
         document.body.className = document.body.className.replace(
@@ -45,9 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   /* !SECTION Light/Dark Mode */
 
   return (
-    <ThemeProvider
-      theme={{ ...defaultTheme, isDarkMode: mode === "dark-mode" }}
-    >
+    <ThemeProvider theme={defaultTheme}>
       <ColorThemeContext.Provider value={{ mode, onModeSwitch }}>
         <GlobalStyle />
         <MainLayout>

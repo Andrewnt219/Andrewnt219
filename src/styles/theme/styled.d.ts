@@ -16,6 +16,5 @@ declare module "styled-components" {
       wqhd: "2560px";
       uhd: "3840px";
     };
-    isDarkMode: boolean;
   }
 }

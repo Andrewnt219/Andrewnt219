@@ -1,6 +1,6 @@
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { homepageProjectsData } from "@src/data/homepageProjects.data";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext } from "react";
 import { HomeSection } from "./shared/HomeSection";
 import LazyLoad from "react-lazyload";
 import { useTheme } from "styled-components";
@@ -10,6 +10,7 @@ import { HomePageProject } from "@src/data/homepageProjects.data";
 import NextLink from "next/link";
 import { ResponsiveImage } from "../ui/ResponsiveImage";
 import { Button } from "../ui/Button";
+import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 
 /* SECTION ProjectsSection */
 function ProjectsSection(): ReactElement {
@@ -66,8 +67,12 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
     imageSrc,
   } = data;
 
+  /* Change style base on light/dark */
+  const { mode } = useContext(ColorThemeContext);
+  const isDarkMode = mode === "dark-mode";
+
   return (
-    <ProjectCardContainer>
+    <ProjectCardContainer isDarkMode={isDarkMode}>
       <LazyLoad>
         <Thumbnail
           path={imageSrc}
@@ -124,7 +129,12 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
             return (
               <li key={iconSource}>
                 {/* TODO make a chip: text on the left, icon in a rounded area on the right */}
-                <StackIcon src={iconSource} alt={title} title={title} />
+                <StackIcon
+                  isDarkMode={isDarkMode}
+                  src={iconSource}
+                  alt={title}
+                  title={title}
+                />
               </li>
             );
           })}
@@ -140,7 +150,9 @@ function filePathToName(path: string) {
   return path.replace(/^.*[/\\]/, "").replace(/\..*$/, "");
 }
 
-type ProjectCardContainerProps = {};
+type ProjectCardContainerProps = {
+  isDarkMode: boolean;
+};
 const ProjectCardContainer = styled.div<ProjectCardContainerProps>`
   ${tw`text-textColor  border-2 border-borderColor p-10`}
 
@@ -157,7 +169,7 @@ const ProjectCardContainer = styled.div<ProjectCardContainerProps>`
   }
 
   ${(p) =>
-    p.theme.isDarkMode
+    p.isDarkMode
       ? css`
           ${tw`bg-lprimary`}
         `
@@ -244,12 +256,14 @@ const StackIcons = styled.ul<StackIconsProps>`
   grid-area: stacks;
 `;
 
-type StackIconProps = {};
+type StackIconProps = {
+  isDarkMode: boolean;
+};
 const StackIcon = styled.img<StackIconProps>`
   width: 2em;
 
   ${(p) =>
-    p.theme.isDarkMode
+    p.isDarkMode
       ? css`
           filter: saturate(70%);
         `

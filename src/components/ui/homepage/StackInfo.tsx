@@ -1,8 +1,7 @@
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { StackInfo as StackInfoProps } from "@src/data/homepageProjects.data";
-import { useClickOutside } from "@src/hooks";
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import React, { ReactElement, useContext, useRef, useState } from "react";
+import React, { ReactElement, useContext, useState } from "react";
 import tw, { css, styled } from "twin.macro";
 
 type Props = {
@@ -13,17 +12,17 @@ type Props = {
 function StackInfo({ data, className }: Props): ReactElement {
   const { imageSource, name } = data;
 
-  /* Styling bases on light/dark */
+  /* ANCHOR Styling bases on light/dark */
   const { mode } = useContext(ColorThemeContext);
   const isDarkMode = mode === "dark-mode";
 
-  /* Expand/Collapse */
+  /* ANCHOR Expand/Collapse */
   const [isExpanded, setIsExpanded] = useState(false);
 
-  /* Container handlers */
-  // expands/collapse on click
-  const onClick = () => {
-    setIsExpanded((prev) => !prev);
+  /* ANCHOR Container handlers */
+  // expand on focus
+  const onFocus = () => {
+    setIsExpanded(true);
   };
 
   // collapse on blur
@@ -31,19 +30,14 @@ function StackInfo({ data, className }: Props): ReactElement {
     setIsExpanded(false);
   };
 
-  /* collapse on click outside */
-  const containerRef = useRef<HTMLButtonElement | null>(null);
-  useClickOutside(containerRef, () => setIsExpanded(false));
-
   return (
     <Container
       // styling
       className={className}
       isActive={isExpanded}
       // handlers
-      ref={containerRef}
-      onClick={onClick}
       onBlur={onBlur}
+      onFocus={onFocus}
     >
       <StackIcon
         src={imageSource}
@@ -90,7 +84,7 @@ type ContainerProps = {
   isActive: boolean;
 };
 const Container = styled.button<ContainerProps>`
-  ${tw`flex justify-center items-center h-full p-2 space-x-2 cursor-pointer`}
+  ${tw`flex justify-center items-center h-full p-2 space-x-2 cursor-pointer rounded`}
   transition: background-color 200ms ease;
   filter: saturate(300%);
 

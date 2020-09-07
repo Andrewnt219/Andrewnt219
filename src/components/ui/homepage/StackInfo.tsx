@@ -39,7 +39,6 @@ function StackInfo({ data, className }: Props): ReactElement {
     <Container
       // styling
       className={className}
-      isDarkMode={isDarkMode}
       isActive={isExpanded}
       // handlers
       ref={containerRef}
@@ -88,25 +87,18 @@ const stackNameVairants: Variants = {
 };
 
 type ContainerProps = {
-  isDarkMode: boolean;
   isActive: boolean;
 };
 const Container = styled.button<ContainerProps>`
   ${tw`flex justify-center items-center h-full p-2 space-x-2 cursor-pointer`}
   transition: background-color 200ms ease;
+  filter: saturate(300%);
 
   :hover,
   :focus {
     outline: none;
     background-color: var(--primary-color-light);
-    filter: saturate(300%);
   }
-
-  ${(p) =>
-    (p.isDarkMode || p.isActive) &&
-    css`
-      filter: saturate(300%);
-    `}
 
   ${(p) =>
     p.isActive &&

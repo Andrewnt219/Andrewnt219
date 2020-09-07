@@ -61,7 +61,8 @@ export type HomePageProject = {
 export const homepageProjectsData: HomePageProject[] = [
   {
     title: "AniMovies",
-    shortDescription: "a movie database",
+    shortDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum vitae, vel eaque dolore culpa veritatis fugit quia porro cupiditate, inventore placeat cum! Ullam, quam deserunt!",
     stacksInfo: _generateStackIconPaths([
       "sass",
       "react.js",
@@ -91,8 +92,24 @@ export const homepageProjectsData: HomePageProject[] = [
     imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.jpg"),
   },
   {
-    title: "Tamago",
-    shortDescription: "A sushi bar",
+    title: "Next Article",
+    shortDescription: "An agrregator",
+    stacksInfo: _generateStackIconPaths([
+      "framer-motion",
+      "react.js",
+      "styled-components",
+      "firebase",
+    ]),
+    links: {
+      readMore: "readmore",
+      demo: "demo",
+      github: "github",
+    },
+    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.jpg"),
+  },
+  {
+    title: "Nodeflix",
+    shortDescription: "An agrregator",
     stacksInfo: _generateStackIconPaths([
       "framer-motion",
       "react.js",

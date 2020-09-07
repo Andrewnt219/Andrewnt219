@@ -38,11 +38,11 @@ function ProjectsSection(): ReactElement {
 type ProjectCardsProps = {};
 const ProjectCards = styled.ul<ProjectCardsProps>`
   display: grid;
+  gap: 1em;
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     grid-template-columns: 1fr 1fr;
-    gap: 1vw;
   }
 `;
 

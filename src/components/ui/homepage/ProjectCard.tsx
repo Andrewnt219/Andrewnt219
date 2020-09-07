@@ -140,7 +140,11 @@ const InfoContainer = styled.div<InfoContainerProps>`
   grid-template-areas:
     "title        links"
     "description  links"
-    "stacks       links";
+    "stacks       stacks";
+
+  & > *:last-child {
+    margin-top: 1em;
+  }
 `;
 
 type TitleProps = {};
@@ -158,10 +162,12 @@ const Description = styled.p<DescriptionProps>`
 type LinksProps = {};
 const Links = styled.ul<LinksProps>`
   grid-area: links;
+
   display: grid;
   gap: 1em;
   grid-template-columns: repeat(2, max-content);
   align-items: center;
+  align-content: flex-start;
   justify-self: flex-end;
   grid-template-areas:
     "demo     demo"
@@ -193,7 +199,11 @@ const CustomSecondaryButton = styled(Button).attrs({ secondary: true })<
 
 type StacksInfoProps = {};
 const StacksInfo = styled.ul<StacksInfoProps>`
+  /* Negative left margin is based on StackInfo individual padding */
+  ${tw`-ml-2`}
+
   grid-area: stacks;
+
   display: flex;
   flex: 1;
   flex-wrap: wrap;

@@ -2,7 +2,7 @@ import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { HomePageProject } from "@src/data/homepageProjects.data";
 import { filePathToName } from "@src/helpers/utils.helpers";
 import { ReactElement, useContext } from "react";
-import LazyLoad from "react-lazyload";
+
 import tw, { css, styled, theme } from "twin.macro";
 import { Button } from "../Button";
 import { StackInfo } from "./StackInfo";
@@ -23,20 +23,18 @@ function ProjectCard({ thumbnailSizes, data }: Props): ReactElement {
     imageSrc,
   } = data;
 
-  /* Change style base on light/dark */
+  /* ANCHOR Change style base on light/dark */
   const { mode } = useContext(ColorThemeContext);
   const isDarkMode = mode === "dark-mode";
 
   return (
     <Container isDarkMode={isDarkMode}>
-      <LazyLoad>
-        <Thumbnail
-          path={imageSrc}
-          sizes={thumbnailSizes}
-          alt={filePathToName(imageSrc)}
-          config={{ isPng: true, enablePlaceholder: false }}
-        />
-      </LazyLoad>
+      <Thumbnail
+        path={imageSrc}
+        sizes={thumbnailSizes}
+        alt={filePathToName(imageSrc)}
+        config={{ isPng: true, enablePlaceholder: false }}
+      />
 
       <InfoContainer>
         <Title>{title}</Title>

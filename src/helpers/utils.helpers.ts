@@ -36,6 +36,10 @@ export const removeSlug = (string: string, replaceSlugWith = " "): string => {
   return string.replace(/-/g, replaceSlugWith);
 };
 
+/**
+ * @description extract filename from file import path
+ * @param path the path to the file
+ */
 export function filePathToName(path: string) {
   // NOTE remove anything before the final slash
   //      remove extension

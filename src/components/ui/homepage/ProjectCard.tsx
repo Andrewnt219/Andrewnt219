@@ -28,7 +28,7 @@ function ProjectCard({ thumbnailSizes, data }: Props): ReactElement {
   const isDarkMode = mode === "dark-mode";
 
   return (
-    <ProjectCardContainer isDarkMode={isDarkMode}>
+    <Container isDarkMode={isDarkMode}>
       <LazyLoad>
         <Thumbnail
           path={imageSrc}
@@ -90,14 +90,14 @@ function ProjectCard({ thumbnailSizes, data }: Props): ReactElement {
           })}
         </StacksInfo>
       </InfoContainer>
-    </ProjectCardContainer>
+    </Container>
   );
 }
 
-type ProjectCardContainerProps = {
+type ContainerProps = {
   isDarkMode: boolean;
 };
-const ProjectCardContainer = styled.div<ProjectCardContainerProps>`
+const Container = styled.div<ContainerProps>`
   ${tw`text-textColor  border-2 border-borderColor p-10 rounded`}
 
   display: grid;
@@ -122,6 +122,15 @@ const ProjectCardContainer = styled.div<ProjectCardContainerProps>`
         `}
 `;
 
+type ImageProps = {};
+const Thumbnail = styled(ResponsiveImage)<ImageProps>`
+  &,
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 type InfoContainerProps = {};
 const InfoContainer = styled.div<InfoContainerProps>`
   ${tw`flex flex-col`}
@@ -132,16 +141,6 @@ const InfoContainer = styled.div<InfoContainerProps>`
     "title        links"
     "description  links"
     "stacks       links";
-`;
-
-type ImageProps = {};
-const Thumbnail = styled(ResponsiveImage)<ImageProps>`
-  &,
-  img {
-    --aspect-ratio: 320 / 224;
-    width: 100%;
-    height: calc(100% / (var(--aspect-ratio)));
-  }
 `;
 
 type TitleProps = {};

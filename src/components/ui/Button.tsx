@@ -1,10 +1,5 @@
 import tw, { styled, css } from "twin.macro";
-import React, {
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  ReactNode,
-  useContext,
-} from "react";
+import React, { ReactNode, useContext } from "react";
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { buttonFlickering } from "@src/styles/animation/flickering.animation";
 import { motion, Variants } from "framer-motion";
@@ -26,13 +21,17 @@ const Button = React.forwardRef<Ref, Props>(
     // Disable flickering animation in mobile because it cannot be seen
     const enableEnterAnimation = useMediaQuery();
 
+    const sharedButtonProps = {
+      ...styleProps,
+      ...(typeof anchorProps === "object" ? anchorProps : {}),
+      className,
+      ref: anchorProps ? ref : undefined,
+      as: anchorProps ? motion.a : undefined,
+    };
+
     return mode === "dark-mode" ? (
       <DarkButton
-        {...styleProps}
-        ref={anchorProps ? ref : undefined}
-        className={className}
-        as={anchorProps ? motion.a : undefined}
-        {...anchorProps}
+        {...sharedButtonProps}
         //
         variants={enableEnterAnimation ? darkButtonVariants : undefined}
         animate="visible"
@@ -40,14 +39,7 @@ const Button = React.forwardRef<Ref, Props>(
         {children}
       </DarkButton>
     ) : (
-      <LightButton
-        {...styleProps}
-        ref={anchorProps ? ref : undefined}
-        className={className}
-        as={anchorProps ? "a" : undefined}
-      >
-        {children}
-      </LightButton>
+      <LightButton {...sharedButtonProps}>{children}</LightButton>
     );
   }
 );
@@ -75,7 +67,7 @@ const sharedButtonStyle = css<StyledButtonProps>`
 `;
 
 type LightButtonProps = StyledButtonProps & {};
-export const LightButton = styled.button<LightButtonProps>`
+export const LightButton = styled(motion.button)<LightButtonProps>`
   --shadow-color: rgba(var(--accent-color-rgb), 0.4);
 
   ${sharedButtonStyle}

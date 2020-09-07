@@ -98,6 +98,7 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
             <NextLink passHref href={readMore}>
               <CustomSecondaryButton
                 aria-label={`Read more about project ${title}`}
+                anchorProps
               >
                 Read More
               </CustomSecondaryButton>
@@ -118,11 +119,15 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
         </Links>
 
         <StackIcons>
-          {stackIconSources.map((iconSource) => (
-            <li key={iconSource}>
-              <StackIcon src={iconSource} alt={filePathToName(iconSource)} />
-            </li>
-          ))}
+          {stackIconSources.map((iconSource) => {
+            const title = filePathToName(iconSource);
+            return (
+              <li key={iconSource}>
+                {/* TODO make a chip: text on the left, icon in a rounded area on the right */}
+                <StackIcon src={iconSource} alt={title} title={title} />
+              </li>
+            );
+          })}
         </StackIcons>
       </InfoContainer>
     </ProjectCardContainer>
@@ -242,7 +247,13 @@ const StackIcons = styled.ul<StackIconsProps>`
 type StackIconProps = {};
 const StackIcon = styled.img<StackIconProps>`
   width: 2em;
-  filter: grayscale(1);
+
+  ${(p) =>
+    p.theme.isDarkMode
+      ? css`
+          filter: saturate(70%);
+        `
+      : css``}
 `;
 
 /* !SECTION ProjectCard */

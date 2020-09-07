@@ -25,5 +25,6 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-var-requires": 0,
     "react/prop-types": 0,
+    "no-debugger": process.env.NODE_ENV === "production" ? 1 : 0,
   },
 };

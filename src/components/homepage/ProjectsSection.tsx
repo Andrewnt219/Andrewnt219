@@ -11,6 +11,7 @@ import NextLink from "next/link";
 import { ResponsiveImage } from "../ui/ResponsiveImage";
 import { Button } from "../ui/Button";
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
+import { filePathToName } from "@src/helpers/utils.helpers";
 
 /* SECTION ProjectsSection */
 function ProjectsSection(): ReactElement {
@@ -62,7 +63,7 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
   const {
     title,
     shortDescription,
-    stackIconSources,
+    stacksInfo,
     links: { github, demo, readMore },
     imageSrc,
   } = data;
@@ -112,6 +113,7 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
 
           <li style={{ gridArea: "github" }}>
             <CustomSecondaryButton
+              aria-label={`See ${title}'s source code`}
               anchorProps={{
                 href: github,
                 target: "_blank",
@@ -124,17 +126,19 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
         </Links>
 
         <StackIcons>
-          {stackIconSources.map((iconSource) => {
-            const title = filePathToName(iconSource);
+          {stacksInfo.map(({ name, imageSource }) => {
             return (
-              <li key={iconSource}>
+              <li key={name}>
                 {/* TODO make a chip: text on the left, icon in a rounded area on the right */}
-                <StackIcon
-                  isDarkMode={isDarkMode}
-                  src={iconSource}
-                  alt={title}
-                  title={title}
-                />
+                <StackContainer>
+                  <StackName>{name}</StackName>
+                  <StackIcon
+                    isDarkMode={isDarkMode}
+                    src={imageSource}
+                    alt={name}
+                    title={name}
+                  />
+                </StackContainer>
               </li>
             );
           })}
@@ -144,17 +148,11 @@ function ProjectCard({ thumbnailSizes, ...data }: Props): ReactElement {
   );
 }
 
-function filePathToName(path: string) {
-  // NOTE remove anything before the final slash
-  //      remove extension
-  return path.replace(/^.*[/\\]/, "").replace(/\..*$/, "");
-}
-
 type ProjectCardContainerProps = {
   isDarkMode: boolean;
 };
 const ProjectCardContainer = styled.div<ProjectCardContainerProps>`
-  ${tw`text-textColor  border-2 border-borderColor p-10`}
+  ${tw`text-textColor  border-2 border-borderColor p-10 rounded`}
 
   display: grid;
   gap: 1em;
@@ -256,6 +254,14 @@ const StackIcons = styled.ul<StackIconsProps>`
   grid-area: stacks;
 `;
 
+type StackContainerProps = {};
+const StackContainer = styled.div<StackContainerProps>``;
+
+type StackNameProps = {};
+const StackName = styled.span<StackNameProps>`
+  font-size: 0.75em;
+`;
+
 type StackIconProps = {
   isDarkMode: boolean;
 };
@@ -263,11 +269,10 @@ const StackIcon = styled.img<StackIconProps>`
   width: 2em;
 
   ${(p) =>
-    p.isDarkMode
-      ? css`
-          filter: saturate(70%);
-        `
-      : css``}
+    p.isDarkMode &&
+    css`
+      filter: saturate(300%);
+    `}
 `;
 
 /* !SECTION ProjectCard */

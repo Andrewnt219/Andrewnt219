@@ -1,8 +1,10 @@
+import { removeSlug, toTitleCase } from "@src/helpers/utils.helpers";
+
 /* SECTION Stacks data*/
 // NOTE STACKS are also filenames.svg
 const STACKS = [
   "css",
-  "express-js",
+  "express.js",
   "firebase",
   "framer-motion",
   "handlebars",
@@ -11,10 +13,10 @@ const STACKS = [
   "jest",
   "material-ui",
   "mongoDB",
-  "next-js",
-  "node-js",
+  "next.js",
+  "node.js",
   "pwa",
-  "react-js",
+  "react.js",
   "react-router",
   "redux",
   "sass",
@@ -24,32 +26,30 @@ const STACKS = [
   "mdx",
 ] as const;
 
-type Stack = typeof STACKS[number];
-// type StacksData = Record<Stack, string>;
+type StackName = typeof STACKS[number];
 
-// export const stacksData: StacksData = _generateStacksData();
-
-// function _generateStacksData(): StacksData {
-//   return STACKS.reduce(
-//     (newObject, stack) => ({
-//       ...newObject,
-//       [stack]: _generateStackIconPath(stack),
-//     }),
-//     {} as StacksData
-//   );
-// }
-
-function _generateStackIconPaths(fileNames: Stack[]) {
-  return fileNames.map((fileName) => `/svgs/stacks/${fileName}-icon.svg`);
+function _generateStackIconPaths(
+  fileNames: StackName[]
+): HomePageProject["stacksInfo"] {
+  // remove slug, then transform to capital casing
+  return fileNames.map((fileName) => ({
+    name: toTitleCase(removeSlug(fileName)),
+    imageSource: `/svgs/stacks/${fileName}-icon.svg`,
+  }));
 }
 /* !SECTION Stacks data*/
 
 /* SECTION Projects data */
+export type StackInfo = {
+  name: string;
+  imageSource: string;
+};
+
 // NOTE imageSrc are from root images/
 export type HomePageProject = {
   title: string;
   shortDescription: string;
-  stackIconSources: string[];
+  stacksInfo: StackInfo[];
   imageSrc: string;
   links: {
     readMore: string;
@@ -62,9 +62,9 @@ export const homepageProjectsData: HomePageProject[] = [
   {
     title: "AniMovies",
     shortDescription: "a movie database",
-    stackIconSources: _generateStackIconPaths([
+    stacksInfo: _generateStackIconPaths([
       "sass",
-      "react-js",
+      "react.js",
       "styled-components",
     ]),
     links: {
@@ -77,9 +77,9 @@ export const homepageProjectsData: HomePageProject[] = [
   {
     title: "Tamago",
     shortDescription: "A sushi bar",
-    stackIconSources: _generateStackIconPaths([
+    stacksInfo: _generateStackIconPaths([
       "framer-motion",
-      "react-js",
+      "react.js",
       "styled-components",
       "firebase",
     ]),
@@ -93,9 +93,9 @@ export const homepageProjectsData: HomePageProject[] = [
   {
     title: "Tamago",
     shortDescription: "A sushi bar",
-    stackIconSources: _generateStackIconPaths([
+    stacksInfo: _generateStackIconPaths([
       "framer-motion",
-      "react-js",
+      "react.js",
       "styled-components",
       "firebase",
     ]),

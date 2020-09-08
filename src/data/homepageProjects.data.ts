@@ -1,4 +1,8 @@
-import { removeSlug, toTitleCase } from "@src/helpers/utils.helpers";
+import {
+  removeSlug,
+  toSlugString,
+  toTitleCase,
+} from "@src/helpers/utils.helpers";
 
 /* SECTION Stacks data*/
 // NOTE STACKS are also filenames.svg
@@ -51,6 +55,7 @@ export type StackInfo = {
 export type HomePageProject = {
   title: ProjectName;
   shortDescription: string;
+  additionalNote?: string;
   stacksInfo: StackInfo[];
   imageSrc: string;
   links: {
@@ -64,70 +69,86 @@ export const homepageProjectsData: HomePageProject[] = [
   {
     title: "AniMovies",
     shortDescription:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum vitae, vel eaque dolore culpa veritatis fugit quia porro cupiditate, inventore placeat cum! Ullam, quam deserunt!",
+      "Get the lastest trending movies, look up movies' info, watch trailers, all in a single click.",
+    additionalNote: "AniMovies was created for playing with styled-components.",
     stacksInfo: _generateStackIconPaths([
-      "sass",
       "react.js",
       "styled-components",
+      "framer-motion",
+      "redux",
     ]),
     links: {
-      readMore: "readmore",
-      demo: "demo",
-      github: "github",
+      readMore: _generateReadMoreLink("AniMovies"),
+      demo: "https://andrewnt219.github.io/animovies",
+      github: _generateGitHubLink("animovies"),
     },
     imageSrc: _generateProjectImageSource("ani-movies-thumbnail.png"),
   },
   {
     title: "Tamago",
-    shortDescription: "A sushi bar",
+    shortDescription:
+      "There is always something for everybody. A place to relax your mind, and enjoy japanese authentic food.",
+    additionalNote: "Tamago was created for exploring TypeScript.",
     stacksInfo: _generateStackIconPaths([
-      "framer-motion",
+      "typescript",
       "react.js",
-      "styled-components",
+      "redux",
       "firebase",
     ]),
     links: {
-      readMore: "readmore",
-      demo: "demo",
-      github: "github",
+      readMore: _generateReadMoreLink("Tamago"),
+      demo: "https://andrewnt219.github.io/tamago-sushi-bar",
+      github: _generateGitHubLink("tamago-sushi-bar"),
     },
     imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.png"),
   },
   {
     title: "Next Article",
-    shortDescription: "An agrregator",
+    shortDescription:
+      "Get updated on what everyone is talking about. Accurately look for articles with advanced search tools.",
+    additionalNote: "Next Article was created for practicing Next.js.",
     stacksInfo: _generateStackIconPaths([
-      "framer-motion",
-      "react.js",
+      "next.js",
+      "material-ui",
       "styled-components",
-      "firebase",
     ]),
     links: {
-      readMore: "readmore",
-      demo: "demo",
-      github: "github",
+      readMore: _generateReadMoreLink("Next Article"),
+      demo: "https://next-article.vercel.app/",
+      github: _generateGitHubLink("next-article"),
     },
-    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.png"),
+    imageSrc: _generateProjectImageSource("next-article-thumbnail.png"),
   },
   {
     title: "Nodeflix",
-    shortDescription: "An agrregator",
+    shortDescription:
+      "Sign up to rent hundreds of movies at discounted price. Order now to get your favorite movies in just 24 hours.",
+    additionalNote:
+      "Nodeflix was created to learn back-end with Express.js, MongoDB, JWT, etc.",
     stacksInfo: _generateStackIconPaths([
-      "framer-motion",
-      "react.js",
-      "styled-components",
-      "firebase",
+      "express.js",
+      "mongoDB",
+      "node.js",
+      "sass",
     ]),
     links: {
-      readMore: "readmore",
-      demo: "demo",
-      github: "github",
+      readMore: _generateReadMoreLink("Nodeflix"),
+      demo: "http://nodeflix.herokuapp.com/",
+      github: _generateGitHubLink("nodeflix"),
     },
-    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.png"),
+    imageSrc: _generateProjectImageSource("nodeflix-thumbnail.png"),
   },
 ];
 
 function _generateProjectImageSource(filename: string) {
   return `projects/${filename}`;
+}
+
+function _generateReadMoreLink(projectName: ProjectName) {
+  return `/projects/${toSlugString(projectName.toLowerCase())}`;
+}
+
+function _generateGitHubLink(repoName: string) {
+  return `https://github.com/Andrewnt219/${repoName}`;
 }
 /* !SECTION Projects data */

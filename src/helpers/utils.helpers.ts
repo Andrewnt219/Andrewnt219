@@ -45,3 +45,10 @@ export function filePathToName(path: string) {
   //      remove extension
   return path.replace(/^.*[/\\]/, "").replace(/\..*$/, "");
 }
+
+/**
+ * @description replace all separator with slug (-)
+ */
+export function toSlugString(string: string, separator = " ") {
+  return string.replace(new RegExp(separator, "g"), "-");
+}

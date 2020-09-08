@@ -26,7 +26,10 @@ function ProjectsSection(): ReactElement {
         {homepageProjectsData.map((project) => (
           <li key={project.title}>
             <LazyLoad>
-              <ProjectCard data={project} thumbnailSizes={thumbnailSizes} />
+              <CustomProjectCard
+                data={project}
+                thumbnailSizes={thumbnailSizes}
+              />
             </LazyLoad>
           </li>
         ))}
@@ -40,10 +43,19 @@ const ProjectCards = styled.ul<ProjectCardsProps>`
   display: grid;
   gap: 1em;
 
+  & .lazyload-wrapper:first-of-type {
+    height: 100%;
+  }
+
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     grid-template-columns: 1fr 1fr;
   }
+`;
+
+const CustomProjectCard = styled(ProjectCard)`
+  height: 100%;
+  align-content: flex-start;
 `;
 
 export { ProjectsSection };

@@ -12,12 +12,14 @@ import { ResponsiveImage } from "../ResponsiveImage";
 type Props = {
   thumbnailSizes: string;
   data: HomePageProject;
+  className?: string;
 };
 
-function ProjectCard({ thumbnailSizes, data }: Props): ReactElement {
+function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
   const {
     title,
     shortDescription,
+    additionalNote,
     stacksInfo,
     links: { github, demo, readMore },
     imageSrc,
@@ -28,7 +30,7 @@ function ProjectCard({ thumbnailSizes, data }: Props): ReactElement {
   const isDarkMode = mode === "dark-mode";
 
   return (
-    <Container isDarkMode={isDarkMode}>
+    <Container isDarkMode={isDarkMode} className={className}>
       <Thumbnail
         path={imageSrc}
         sizes={thumbnailSizes}
@@ -38,7 +40,9 @@ function ProjectCard({ thumbnailSizes, data }: Props): ReactElement {
 
       <InfoContainer>
         <Title>{title}</Title>
-        <Description>{shortDescription}</Description>
+        <Description>
+          {shortDescription}&nbsp;<Note>{additionalNote}</Note>
+        </Description>
 
         <Links>
           <li style={{ gridArea: "demo" }}>
@@ -137,6 +141,7 @@ const InfoContainer = styled.div<InfoContainerProps>`
   column-gap: 1em;
   grid-template-areas:
     "title        links"
+    "note         links"
     "description  links"
     "stacks       stacks";
 
@@ -155,6 +160,11 @@ const Title = styled.h4<TitleProps>`
 type DescriptionProps = {};
 const Description = styled.p<DescriptionProps>`
   grid-area: description;
+`;
+
+type NoteProps = {};
+const Note = styled.span<NoteProps>`
+  ${tw`text-accent`}
 `;
 
 type LinksProps = {};

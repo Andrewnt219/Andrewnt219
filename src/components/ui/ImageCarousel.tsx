@@ -53,6 +53,7 @@ function ImageCarousel({
           alt={images[index].alt}
           path={images[index].src}
           sizes={sizes}
+          config={{ enablePlaceholder: true }}
         />
       ))}
     </Container>

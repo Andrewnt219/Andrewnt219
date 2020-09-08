@@ -71,7 +71,10 @@ const ResponsiveImage = forwardRef<Ref, Props>(
           config?.enablePlaceholder
             ? {
                 backgroundSize: "cover",
-                backgroundImage: 'url("' + responsiveImage.placeholder + '")',
+                // NOTE remove the placeholder after loaded because it causes distortion
+                backgroundImage: isLoading
+                  ? 'url("' + responsiveImage.placeholder + '")'
+                  : "",
                 width,
               }
             : undefined

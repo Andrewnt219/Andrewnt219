@@ -40,6 +40,8 @@ function _generateStackIconPaths(
 /* !SECTION Stacks data*/
 
 /* SECTION Projects data */
+export type ProjectName = "AniMovies" | "Tamago" | "Next Article" | "Nodeflix";
+
 export type StackInfo = {
   name: string;
   imageSource: string;
@@ -47,7 +49,7 @@ export type StackInfo = {
 
 // NOTE imageSrc are from root images/
 export type HomePageProject = {
-  title: string;
+  title: ProjectName;
   shortDescription: string;
   stacksInfo: StackInfo[];
   imageSrc: string;
@@ -89,7 +91,7 @@ export const homepageProjectsData: HomePageProject[] = [
       demo: "demo",
       github: "github",
     },
-    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.jpg"),
+    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.png"),
   },
   {
     title: "Next Article",
@@ -105,7 +107,7 @@ export const homepageProjectsData: HomePageProject[] = [
       demo: "demo",
       github: "github",
     },
-    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.jpg"),
+    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.png"),
   },
   {
     title: "Nodeflix",
@@ -121,7 +123,7 @@ export const homepageProjectsData: HomePageProject[] = [
       demo: "demo",
       github: "github",
     },
-    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.jpg"),
+    imageSrc: _generateProjectImageSource("tamago-sushi-bar-thumbnail.png"),
   },
 ];
 

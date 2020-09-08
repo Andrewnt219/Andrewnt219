@@ -11,7 +11,9 @@ type Return<T> = [
  * @note requires grid-auto-row and gap on grid parent
  */
 export const useMonsary = <T extends HTMLElement>(
-  gridAutoRow: number
+  gridAutoRow: number,
+  gridRowGap?: number,
+  listener?: (span: number) => void
 ): Return<T> => {
   const containerRef = useRef<T | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
@@ -23,10 +25,17 @@ export const useMonsary = <T extends HTMLElement>(
       const container = containerRef.current;
 
       if (container) {
+        const rowGap = gridRowGap ?? 0;
         const numberOfRowSpanned = Math.ceil(
-          container.clientHeight / gridAutoRow
+          (container.clientHeight + rowGap) / (gridAutoRow + rowGap)
         );
+
+        // update span and invoke listener if any
         setSpan(numberOfRowSpanned);
+
+        if (listener) {
+          listener(numberOfRowSpanned);
+        }
       }
     };
 
@@ -41,7 +50,7 @@ export const useMonsary = <T extends HTMLElement>(
       image?.removeEventListener("load", calculateSpanArea);
       window.removeEventListener("resize", calculateSpanArea);
     };
-  }, [gridAutoRow]);
+  }, [gridAutoRow, gridRowGap, listener]);
 
   return [containerRef, imageRef, span];
 };

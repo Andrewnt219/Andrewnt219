@@ -30,7 +30,7 @@ module.exports = withPlugins(
                   2560,
                   3840,
                 ]
-              : [320, 768, 1200],
+              : [1920],
           placeholder: true,
           placeholderSize: 40,
         },

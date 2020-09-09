@@ -81,10 +81,13 @@ function MainLayout({ children }: Props): ReactElement {
 
 type MainProps = {};
 const Main = styled.main<MainProps>`
-  padding: 0 5% 5rem 5%;
   min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
 
   ${tw`z-10 bg-primary relative top-0`};
+
+  & > section:nth-child(2n + 3) {
+    ${tw`bg-lprimary`}
+  }
 `;
 
 export { MainLayout };

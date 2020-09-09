@@ -8,3 +8,7 @@ export enum HomepageSectionIds {
 export enum HomepageSection {
   InViewThreshold = 0.2,
 }
+
+export enum HomepageStyling {
+  PaddingY = "5%",
+}

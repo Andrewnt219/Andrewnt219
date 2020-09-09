@@ -6,7 +6,10 @@ import { GlobalStyling } from "@src/constants/global.constants";
 import { ImageCarousel } from "@src/components/ui/ImageCarousel";
 import { FaChevronDown } from "react-icons/fa";
 import { keyframes } from "styled-components";
-import { HomepageSectionIds } from "@src/constants/homepage.constants";
+import {
+  HomepageSectionIds,
+  HomepageStyling,
+} from "@src/constants/homepage.constants";
 import { carouselImages } from "@src/data/carouselImages.data";
 import { useMediaQuery, useSidebarActive } from "@src/hooks";
 
@@ -82,6 +85,7 @@ function HeroSection(): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.section<ContainerProps>`
+  padding: 0 ${HomepageStyling.PaddingY};
   height: calc(
     100vh - ${GlobalStyling.MobileBarHeight} - ${GlobalStyling.AppBarHeight}
   );

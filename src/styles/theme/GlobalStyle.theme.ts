@@ -29,40 +29,30 @@ export const GlobalStyle = createGlobalStyle`
   font-size: 62.5%;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 
   scroll-behavior: smooth;
 
-  /* SECTION Raleway */
-  /* raleway-regular - latin */
+  /* SECTION Lato */
+  /* quicksand-regular - latin */
   @font-face {
-    font-family: 'Raleway';
+    font-family: 'Quicksand';
     font-style: normal;
-    font-weight: 400;
     font-display: swap;
+    font-weight: 400;
     src: local(''),
-        url('/fonts/raleway-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('/fonts/raleway-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        url('/fonts/quicksand-v21-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/fonts/quicksand-v21-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
-  /* raleway-700 - latin */
+  /* quicksand-700 - latin */
   @font-face {
-    font-family: 'Raleway';
+    font-family: 'Quicksand';
     font-style: normal;
+    font-display: swap;
     font-weight: 700;
-    font-display: swap;
     src: local(''),
-        url('/fonts/raleway-v17-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('/fonts/raleway-v17-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-  }
-  /* raleway-italic - latin */
-  @font-face {
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: local(''),
-        url('/fonts/raleway-v17-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('/fonts/raleway-v17-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        url('/fonts/quicksand-v21-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/fonts/quicksand-v21-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
   /* !SECTION */
 

@@ -1,13 +1,13 @@
-import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { HomePageProject } from "@src/data/homepageProjects.data";
 import { filePathToName } from "@src/helpers/utils.helpers";
-import { ReactElement, useContext } from "react";
+import { ReactElement } from "react";
 
-import tw, { css, styled, theme } from "twin.macro";
+import tw, { styled } from "twin.macro";
 import { Button } from "../Button";
 import { StackInfo } from "./StackInfo";
 import NextLink from "next/link";
 import { ResponsiveImage } from "../ResponsiveImage";
+import { Card } from "../Card";
 
 type Props = {
   thumbnailSizes: string;
@@ -25,12 +25,8 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
     imageSrc,
   } = data;
 
-  /* ANCHOR Change style base on light/dark */
-  const { mode } = useContext(ColorThemeContext);
-  const isDarkMode = mode === "dark-mode";
-
   return (
-    <Container isDarkMode={isDarkMode} className={className}>
+    <CustomCard className={className}>
       <Thumbnail
         path={imageSrc}
         sizes={thumbnailSizes}
@@ -92,36 +88,14 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
           })}
         </StacksInfo>
       </InfoContainer>
-    </Container>
+    </CustomCard>
   );
 }
 
-type ContainerProps = {
-  isDarkMode: boolean;
-};
-const Container = styled.div<ContainerProps>`
-  ${tw`text-textColor  border-2 border-borderColor p-10 rounded`}
-
+type ContainerProps = {};
+const CustomCard = styled(Card)<ContainerProps>`
   display: grid;
   gap: 1em;
-
-  transition: background-color ${theme`transitionDuration.theme`}
-      ${theme`transitionTimingFunction.theme`},
-    border ${theme`transitionDuration.200`} ease;
-
-  :hover,
-  :focus-within {
-    ${tw`border-accent`}
-  }
-
-  ${(p) =>
-    p.isDarkMode
-      ? css`
-          ${tw`bg-lprimary`}
-        `
-      : css`
-          ${tw`bg-primary`}
-        `}
 `;
 
 type ImageProps = {};

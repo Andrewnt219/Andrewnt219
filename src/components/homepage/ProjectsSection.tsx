@@ -22,18 +22,19 @@ function ProjectsSection(): ReactElement {
       subHeading="Selected"
       id={HomepageSectionIds.Projects}
     >
-      <ProjectCards>
-        {homepageProjectsData.map((project) => (
-          <li key={project.title}>
-            <LazyLoad>
+      {/* NOTE Don't place LazyLoad for individual Card, it will affect the sidebar scroll to position */}
+      <LazyLoad>
+        <ProjectCards>
+          {homepageProjectsData.map((project) => (
+            <li key={project.title}>
               <CustomProjectCard
                 data={project}
                 thumbnailSizes={thumbnailSizes}
               />
-            </LazyLoad>
-          </li>
-        ))}
-      </ProjectCards>
+            </li>
+          ))}
+        </ProjectCards>
+      </LazyLoad>
     </HomeSection>
   );
 }
@@ -42,10 +43,6 @@ type ProjectCardsProps = {};
 const ProjectCards = styled.ul<ProjectCardsProps>`
   display: grid;
   gap: 1em;
-
-  & .lazyload-wrapper:first-of-type {
-    height: 100%;
-  }
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {

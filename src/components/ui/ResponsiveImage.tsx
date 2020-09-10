@@ -66,6 +66,7 @@ const ResponsiveImage = forwardRef<Ref, Props>(
       /* NOTE weird bug that make online inline-styling work with bgImage */
       <Container
         key={key}
+        /* NOTE className is here, not on the img because of ImageCarousel transition */
         className={className}
         style={
           config?.enablePlaceholder

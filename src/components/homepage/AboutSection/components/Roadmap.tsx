@@ -1,111 +1,166 @@
-import React, { ReactElement, useState } from "react";
+import { ResponsiveImage } from "@src/components/ui/ResponsiveImage";
+import { GlobalStyling } from "@src/constants/global.constants";
+import { carouselImages } from "@src/data/carouselImages.data";
+import React, { ReactElement } from "react";
+import LazyLoad from "react-lazyload";
 import tw, { styled } from "twin.macro";
 
-type Props = {};
-
-function Roadmap({}: Props): ReactElement {
-  const [tldr, setTldr] = useState(false);
+function Roadmap(): ReactElement {
+  const { src, alt } = carouselImages[2];
   return (
     <Container>
-      <h3>Road to web development</h3>
-      <button onClick={() => setTldr((prev) => !prev)}>TLDR</button>
+      <LazyLoad>
+        <ThumbnailContainer>
+          <Thumbnail path={src} alt={alt} sizes="60vw" />
+          <ThumbnailTitle>Road to web&nbsp;development</ThumbnailTitle>
+        </ThumbnailContainer>
+      </LazyLoad>
 
-      {tldr ? (
-        <div>
-          Initially, my mind was not really bright when it came to talking with
-          machines. After going through lots of struggles with computer
-          programming, and even once decided to switch my major despite good
-          grades, I have finally found my passion in web development thanks to{" "}
-          <a
-            href="https://twitter.com/humphd?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            a dedicated professor
-          </a>
-          . Building one page, and the next thing I know, I have several sites
-          with each one{" "}
-          <a
-            href="https://how-i-met-your-mother.fandom.com/wiki/The_Over-Correction"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontStyle: "italic" }}
-          >
-            over-corrected
-          </a>{" "}
-          mistakes in the previous. With all the shiny new technology gets
-          introduced daily, it is hard to not be excited when I wake up.
-        </div>
-      ) : (
-        <div>
-          <div>
-            <p>
-              <EffectText>The year 2020</EffectText> I will tell you an
-              incredible story, the story of how I &quot;met&quot; web
-              development <EffectText>camera flashback</EffectText>.
-            </p>
-            <p>
-              <EffectText>Year 2015</EffectText> When I first learned Pascal
-              back in highschool, I knew... I was bad at programming. I had a
-              hard time expressing what I wanted to the machine.
-            </p>
-            <p>
-              <EffectText>Year 2017</EffectText> I came across the webdev
-              subreddit, which was full of amazing things people could do on the
-              web. Out of curiosity, I learned HTML and CSS, but quickly moved
-              on after boxes refused to be centered.
-            </p>
-            <p>
-              <EffectText>Year 2018</EffectText> Eventually, I still picked IT
-              as my major since computers were what I was most familiar with. To
-              get myself prepared for college, I attended a beginner class for
-              programming. They taught me C#, and I could say I did not do any
-              better than I did with Pascal.
-            </p>
-            <p>
-              <EffectText>Year 2019</EffectText> Believing that anything can be
-              achieved with enough willpower, I passed all courses with an A or
-              higher.{" "}
-              <em style={{ color: "var(--accent-color)" }}>
-                But something was defnitely missing. It was passion.
-              </em>{" "}
-              I had planned to switch to Hospitality because of how much I liked
-              to interact with people, but <em>the universe</em> told me not to.
-              To this day, I am still deeply grateful to{" "}
-              {/* TODO added David Humphrey achievement */}
-              <a
-                href="https://twitter.com/humphd?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                the professor
-              </a>{" "}
-              whose lecture I attended by chance that invoked my curiosity for
-              web once more.
-            </p>
-            <p>
-              <EffectText>Now</EffectText> All the things that I once could not
-              stand, are now knowledge that I cannot get enough of. Web
-              development is addicting, build one site and I cannot help but
-              build a better one. Sometimes, it feels frightening with so many
-              things are going on in the world of web, but seeing my favorite
-              stacks get updated, or all the shiny new toys I can play, are just
-              some of the good vibes to wake up with.
-            </p>
-          </div>
-        </div>
-      )}
+      <Paragraph>
+        <ParagraphTitle>The year 2020</ParagraphTitle>I will tell you an
+        incredible story, the story of how I &quot;met&quot; web development.{" "}
+        <EffectText>camera flashback</EffectText>
+      </Paragraph>
+
+      <Paragraph>
+        <ParagraphTitle>Year 2015</ParagraphTitle>
+        When I first learned Pascal back in highschool, I knew...{" "}
+        <EmphasizedText>I was bad at programming.</EmphasizedText> I had a hard
+        time expressing what I wanted to the machine.
+      </Paragraph>
+
+      <Paragraph>
+        <ParagraphTitle>Year 2017</ParagraphTitle> I came across the webdev
+        subreddit, which was{" "}
+        <EmphasizedText>
+          full of amazing things people could do on the web.
+        </EmphasizedText>{" "}
+        Out of curiosity, I learned HTML and CSS, but quickly moved on after
+        boxes refused to be centered.
+      </Paragraph>
+
+      <Paragraph>
+        <ParagraphTitle>Year 2018</ParagraphTitle> Eventually, I still picked IT
+        as my major since computers were what I was most familiar with. To get
+        myself prepared for college, I attended a beginner class for
+        programming. They taught me C#, and I could say{" "}
+        <EmphasizedText>
+          I did not do any better than I did with Pascal.
+        </EmphasizedText>
+      </Paragraph>
+
+      <Paragraph>
+        <ParagraphTitle>Year 2019</ParagraphTitle> Believing that anything can
+        be achieved with enough willpower, I passed all courses with an A or
+        higher.{" "}
+        <EmphasizedText>
+          But something was defnitely missing. It was... passion.
+        </EmphasizedText>{" "}
+        I had planned to switch to Hospitality because of how much I liked to
+        interact with people, but <em>the universe</em> told me not to. In my
+        second semester, a friend invited me to join her in one lecture. Little
+        did I know, my whole life just turned to a new chapter.
+      </Paragraph>
+
+      <Paragraph>
+        <ParagraphTitle>Now</ParagraphTitle> To this day, I am still deeply
+        grateful to {/* TODO added David Humphrey achievement */}
+        <a
+          href="https://twitter.com/humphd?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          the professor
+        </a>{" "}
+        who invoked my curiosity for web once more.{" "}
+        <EmphasizedText>
+          All the things that I once could not stand, are now knowledge that I
+          cannot get enough of.
+        </EmphasizedText>{" "}
+        Web development is addicting, build one site and I cannot help but build
+        a better one. Sometimes, it feels frightening with so many things are
+        going on in the world of web, but seeing my favorite stacks get updated,
+        or all the shiny new toys I can play with, are just some of the good
+        vibes to wake up to.
+      </Paragraph>
     </Container>
   );
 }
 
-type EffectTextProps = {};
-const EffectText = styled.span<EffectTextProps>`
-  /* TODO add a background to text  in lightmode */
-  ${tw`text-ltextColor`}
+type ContainerProps = {};
+const Container = styled.div<ContainerProps>`
+  & > *:not(:last-child) {
+    ${tw`mb-5`}
+  }
 `;
 
-type ContainerProps = {};
-const Container = styled.div<ContainerProps>``;
+type ThumbnailContainerProps = {};
+const ThumbnailContainer = styled.div<ThumbnailContainerProps>`
+  position: relative;
+
+  :hover {
+    img {
+      transform: scale(1);
+      filter: blur(1rem);
+    }
+  }
+`;
+
+type ThumbnailTitleProps = {};
+const ThumbnailTitle = styled.h3<ThumbnailTitleProps>`
+  ${tw`absolute top-1/2 left-0 transform -translate-y-1/2 text-center text-primary w-full font-hBold font-heading uppercase`};
+
+  font-size: 1.5em;
+  background: rgba(var(--text-color-rgb), 0.8);
+  padding: 0.25em 0;
+
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
+    font-size: 2em;
+  }
+`;
+
+const Thumbnail = styled(ResponsiveImage)`
+  ${tw`overflow-hidden rounded`}
+
+  img {
+    width: 100%;
+    height: 35vw;
+    object-fit: cover;
+    filter: blur(0.3rem);
+    transform: scale(1.1);
+
+    transition: transform 300ms ease, filter 300ms linear;
+  }
+`;
+
+type ParagraphProps = {};
+const Paragraph = styled.p<ParagraphProps>``;
+
+type ParagraphTitleProps = {};
+const ParagraphTitle = styled.p<ParagraphTitleProps>`
+  ${tw`text-ltextColor block relative flex items-center`}
+
+  ::before {
+    content: "";
+    height: 1px;
+    width: 2rem;
+    display: inline-block;
+
+    /* NOTE inherit color is important for currentColor */
+    color: inherit;
+    ${tw`bg-current mr-2`}
+  }
+`;
+
+type EffectTextProps = {};
+const EffectText = styled.span<EffectTextProps>`
+  ${tw`text-ltextColor italic`}
+`;
+
+type EmphasizedTextProps = {};
+const EmphasizedText = styled.span<EmphasizedTextProps>`
+  ${tw`italic text-accent`}
+`;
 
 export { Roadmap };

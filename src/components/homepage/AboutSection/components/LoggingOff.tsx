@@ -24,17 +24,13 @@ function LoggingOff(): ReactElement {
 
         <PayItForwardImages>
           <li style={{ gridArea: "seneca" }}>
-            <AboutPicture
-              image={{ ...aboutPictures["seneca-open-house"], sizes: "40vw" }}
-            />
+            <AboutPicture image={aboutPictures["seneca-open-house"]} />
           </li>
           <li style={{ gridArea: "ssf" }}>
-            <AboutPicture image={{ ...aboutPictures["ssf"], sizes: "40vw" }} />
+            <AboutPicture image={aboutPictures["ssf"]} />
           </li>
           <li style={{ gridArea: "vietnam" }}>
-            <AboutPicture
-              image={{ ...aboutPictures["taste-of-vietnam"], sizes: "40vw" }}
-            />
+            <AboutPicture image={aboutPictures["taste-of-vietnam"]} />
           </li>
         </PayItForwardImages>
       </ParagraphContainer>
@@ -55,25 +51,13 @@ function LoggingOff(): ReactElement {
 
         <FriendsImages>
           <li>
-            <AboutPicture
-              image={{ ...aboutPictures["toronto-island"], sizes: "30vw" }}
-            />
+            <AboutPicture image={aboutPictures["toronto-island"]} />
           </li>
           <li>
-            <AboutPicture
-              image={{
-                ...aboutPictures["coffee-table-gathering"],
-                sizes: "30vw",
-              }}
-            />
+            <AboutPicture image={aboutPictures["coffee-table-gathering"]} />
           </li>
           <li>
-            <AboutPicture
-              image={{
-                ...aboutPictures["party-table-gathering"],
-                sizes: "30vw",
-              }}
-            />
+            <AboutPicture image={aboutPictures["party-table-gathering"]} />
           </li>
         </FriendsImages>
       </ParagraphContainer>
@@ -111,8 +95,11 @@ const PayItForwardImages = styled.ul<ImagesProps>`
 const FriendsImages = styled.ul<ImagesProps>`
   ${imagesSharedCss}
 
-  /* grid-template-areas: "coffee  party island"; */
   grid-template-columns: repeat(3, 1fr);
+
+  img {
+    height: 20vw;
+  }
 `;
 
 export { LoggingOff };

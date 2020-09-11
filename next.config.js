@@ -16,7 +16,20 @@ module.exports = withPlugins(
           quality: 60,
           sizes:
             process.env.NODE_ENV === "production"
-              ? [320, 480, 640, 768, 1024, 1200, 1600, 1920, 2560, 3840]
+              ? [
+                  100,
+                  200,
+                  320,
+                  480,
+                  640,
+                  768,
+                  1024,
+                  1200,
+                  1600,
+                  1920,
+                  2560,
+                  3840,
+                ]
               : [1920],
           placeholder: true,
           placeholderSize: 40,

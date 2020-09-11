@@ -52,7 +52,7 @@ function ImageCarousel({
           //
           alt={images[index].alt}
           path={images[index].src}
-          sizes={sizes}
+          sizes={index === currentIndex ? sizes : "12.5vw"}
           config={{ enablePlaceholder: true }}
         />
       ))}

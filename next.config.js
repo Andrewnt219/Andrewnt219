@@ -42,7 +42,7 @@ module.exports = withPlugins(
       config.resolve.modules.push(__dirname);
 
       // for next-optimized-images
-      config.resolve.alias.images = path.join(__dirname, "/public/images");
+      config.resolve.alias.images = path.join(__dirname, "/images");
 
       // for dev liniting in terminal
       if (dev) {

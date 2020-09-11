@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import tw, { styled } from "twin.macro";
-import { Loader } from "./Loader";
+// import { Loader } from "./Loader";
 
 type Ref = HTMLImageElement;
 type Props = ImgHTMLAttributes<HTMLImageElement> & {
@@ -132,9 +132,9 @@ const StyledImage = styled.img<StyledImageProps>`
   width: 100%;
 `;
 
-const CustomLoader = styled(Loader)`
-  ${tw`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-accent`};
-`;
+// const CustomLoader = styled(Loader)`
+//   ${tw`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-accent`};
+// `;
 
 ResponsiveImage.displayName = "ResponsiveImage";
 export { ResponsiveImage };

@@ -1,8 +1,8 @@
 import { ResponsiveImage } from "@src/components/ui/ResponsiveImage";
 import { AboutPictureProps } from "@src/data/images.data";
 import { trimLastWord } from "@src/helpers/utils.helpers";
-import React, { CSSProperties, ReactElement, useState } from "react";
-import tw, { css, styled } from "twin.macro";
+import React, { CSSProperties, ReactElement } from "react";
+import tw, { styled } from "twin.macro";
 
 type Props = {
   image: AboutPictureProps & { sizes: string };
@@ -48,7 +48,7 @@ const Caption = styled.figcaption<CaptionProps>`
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(var(--text-color-rgb), 0.7);
+  background: rgba(var(--text-color-rgb), 0.8);
   padding: 0 0.25em;
   font-size: 0.8em;
 `;

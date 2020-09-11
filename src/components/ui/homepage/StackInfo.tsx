@@ -1,6 +1,6 @@
 import { StackInfo as StackInfoProps } from "@src/data/homepageProjects.data";
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import React, { ReactElement, useContext, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import tw, { css, styled } from "twin.macro";
 
 type Props = {

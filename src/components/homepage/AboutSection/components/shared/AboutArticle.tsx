@@ -47,7 +47,7 @@ const Container = styled.div<ContainerProps>`
 type ThumbnailContainerProps = {};
 const ThumbnailContainer = styled.div<ThumbnailContainerProps>`
   position: relative;
-
+  margin-bottom: 2rem;
   :hover {
     img {
       transform: scale(1);

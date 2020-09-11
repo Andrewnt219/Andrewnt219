@@ -1,23 +1,28 @@
-import { GlobalStyling } from "@src/constants/global.constants";
 import { aboutPictures, aboutThumbnails } from "@src/data/images.data";
 import React, { ReactElement } from "react";
-import tw, { styled } from "twin.macro";
+import { css, styled } from "twin.macro";
 import { AboutArticle } from "./shared/AboutArticle";
 import { AboutParagraph } from "./shared/AboutParagraph";
 import { AboutPicture } from "./shared/AboutPicture";
 
-type Props = {};
-
-function LoggingOff({}: Props): ReactElement {
+function LoggingOff(): ReactElement {
   return (
     <AboutArticle thumbnail={aboutThumbnails["logging-off"]}>
       <ParagraphContainer>
         <ParagraphTitle>Pay it forward</ParagraphTitle>
-        Whenever my schedule is cleared, I enjoy connecting with others through
-        voluntary positions. It is a great way for me to make new friends and
-        learn about the diversity. Human interaction is also the reason why I
-        love front-end work so much!
-        <Images>
+
+        <p>
+          Whenever my schedule is cleared, I enjoy connecting with others
+          through voluntary positions.{" "}
+          <EmphasizedText>
+            I can sleep soundly at night knowing that I put smiles on
+            people&apos;s faces
+          </EmphasizedText>
+          . Human interaction is also the reason why I love front-end work so
+          much!
+        </p>
+
+        <PayItForwardImages>
           <li style={{ gridArea: "seneca" }}>
             <AboutPicture
               image={{ ...aboutPictures["seneca-open-house"], sizes: "40vw" }}
@@ -31,28 +36,83 @@ function LoggingOff({}: Props): ReactElement {
               image={{ ...aboutPictures["taste-of-vietnam"], sizes: "40vw" }}
             />
           </li>
-        </Images>
+        </PayItForwardImages>
+      </ParagraphContainer>
+
+      <ParagraphContainer>
+        <ParagraphTitle>
+          It&apos;s not legendary, unless your friends are there to see&nbsp;it
+        </ParagraphTitle>
+
+        <p>
+          As much as I love meeting new people,{" "}
+          <EmphasizedText>
+            I treasure those who are there for me.
+          </EmphasizedText>{" "}
+          Making new memories, laughing at old stories as we grow, just nothing
+          is better than a friend, unless it is a friend with chocolate.
+        </p>
+
+        <FriendsImages>
+          <li>
+            <AboutPicture
+              image={{ ...aboutPictures["toronto-island"], sizes: "30vw" }}
+            />
+          </li>
+          <li>
+            <AboutPicture
+              image={{
+                ...aboutPictures["coffee-table-gathering"],
+                sizes: "30vw",
+              }}
+            />
+          </li>
+          <li>
+            <AboutPicture
+              image={{
+                ...aboutPictures["party-table-gathering"],
+                sizes: "30vw",
+              }}
+            />
+          </li>
+        </FriendsImages>
       </ParagraphContainer>
     </AboutArticle>
   );
 }
 
-const { Title: ParagraphTitle, Container: ParagraphContainer } = AboutParagraph;
+const {
+  Title: ParagraphTitle,
+  Container: ParagraphContainer,
+  EmphasizedText,
+} = AboutParagraph;
 
 type ImagesProps = {};
-const Images = styled.ul<ImagesProps>`
-  width: 40%;
+const imagesSharedCss = css`
+  margin: 1rem 0 2rem 0;
+  width: 100%;
   display: grid;
   gap: 1rem;
+
+  img {
+    object-fit: cover;
+  }
+`;
+
+const PayItForwardImages = styled.ul<ImagesProps>`
+  ${imagesSharedCss}
 
   /* NOTE consider changing sizes if grid-template-areas is changed  */
   grid-template-areas:
     "ssf  seneca"
     "ssf  vietnam";
+`;
 
-  img {
-    object-fit: cover;
-  }
+const FriendsImages = styled.ul<ImagesProps>`
+  ${imagesSharedCss}
+
+  /* grid-template-areas: "coffee  party island"; */
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 export { LoggingOff };

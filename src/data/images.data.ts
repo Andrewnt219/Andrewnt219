@@ -67,6 +67,7 @@ type AboutPictureName =
   | "party-table-gathering"
   | "coffee-table-gathering";
 
+// NOTE don't pick a long caption
 export const aboutPictures: Record<AboutPictureName, AboutPictureProps> = {
   "seneca-open-house": {
     src: `${RootFolder.About}/giving-back-1.jpg`,
@@ -91,7 +92,7 @@ export const aboutPictures: Record<AboutPictureName, AboutPictureProps> = {
   "party-table-gathering": {
     src: `${RootFolder.About}/friends-2.jpg`,
     alt: "Andrew at his farewell party before going to Canada",
-    caption: "Friends sent me off to Canada",
+    caption: "My Canada-farewell party",
   },
   "coffee-table-gathering": {
     src: `${RootFolder.About}/friends-3.jpg`,

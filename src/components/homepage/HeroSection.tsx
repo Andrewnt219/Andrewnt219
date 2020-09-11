@@ -10,7 +10,7 @@ import {
   HomepageSectionIds,
   HomepageStyling,
 } from "@src/constants/homepage.constants";
-import { carouselImages } from "@src/data/carouselImages.data";
+import { carouselImages } from "@src/data/images.data";
 import { useMediaQuery, useSidebarActive } from "@src/hooks";
 
 enum CarouselStyling {

@@ -138,6 +138,7 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   color: var(--text-color);
+  font-size: 1.5rem;
 }
 
 h1,

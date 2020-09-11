@@ -1,4 +1,3 @@
-import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { StackInfo as StackInfoProps } from "@src/data/homepageProjects.data";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { ReactElement, useContext, useState } from "react";
@@ -11,10 +10,6 @@ type Props = {
 
 function StackInfo({ data, className }: Props): ReactElement {
   const { imageSource, name } = data;
-
-  /* ANCHOR Styling bases on light/dark */
-  const { mode } = useContext(ColorThemeContext);
-  const isDarkMode = mode === "dark-mode";
 
   /* ANCHOR Expand/Collapse */
   const [isExpanded, setIsExpanded] = useState(false);
@@ -39,12 +34,7 @@ function StackInfo({ data, className }: Props): ReactElement {
       onBlur={onBlur}
       onFocus={onFocus}
     >
-      <StackIcon
-        src={imageSource}
-        alt={name}
-        isDarkMode={isDarkMode}
-        title={name}
-      />
+      <StackIcon src={imageSource} alt={name} title={name} />
 
       {/* NOTE Removing AnimatePresence makes "miss-clicking" other stack icons  */}
       <AnimatePresence>
@@ -102,15 +92,14 @@ const Container = styled.button<ContainerProps>`
 `;
 
 type StackNameProps = {};
-const StackName = styled(motion.span)<StackNameProps>``;
+const StackName = styled(motion.span)<StackNameProps>`
+  /* NOTE 1em font-size will cause a small jump on active */
+  font-size: 0.9em;
+`;
 
-type StackIconProps = {
-  isDarkMode: boolean;
-};
+type StackIconProps = {};
 const StackIcon = styled.img<StackIconProps>`
   width: 2em;
-
-  ${(p) => p.isDarkMode && css``}
 `;
 
 export { StackInfo };

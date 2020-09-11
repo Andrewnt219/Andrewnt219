@@ -52,3 +52,18 @@ export function filePathToName(path: string) {
 export function toSlugString(string: string, separator = " ") {
   return string.replace(new RegExp(separator, "g"), "-");
 }
+
+/**
+ * @description cuts the last word from a string and returns both cut
+ */
+export function trimLastWord(
+  string: string,
+  separator = " "
+): [string, string] {
+  const lastIndex = string.lastIndexOf(separator);
+
+  const head = string.substring(0, lastIndex).trim();
+  const tail = string.substring(lastIndex).trim();
+
+  return [head, tail];
+}

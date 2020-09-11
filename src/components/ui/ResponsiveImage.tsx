@@ -105,7 +105,7 @@ const ResponsiveImage = forwardRef<Ref, Props>(
             onLoad={() => setIsLoading(false)}
           />
         </Picture>
-        {isLoading && <CustomLoader />}
+        {/* {isLoading && <CustomLoader />} */}
       </Container>
     );
   }
@@ -129,7 +129,7 @@ type StyledImageProps = {
   computedWidth?: string;
 };
 const StyledImage = styled.img<StyledImageProps>`
-  width: ${(p) => p.computedWidth};
+  width: 100%;
 `;
 
 const CustomLoader = styled(Loader)`

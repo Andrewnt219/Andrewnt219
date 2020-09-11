@@ -47,7 +47,7 @@ const containerVariants: Variants = {
 
 type ContainerProps = {};
 const Container = styled(motion.aside)<ContainerProps>`
-  ${tw`z-10 font-heading font-hBold`}
+  ${tw`z-10 font-heading font-hBold text-lg`}
   display: block;
   position: fixed;
   left: 2%;

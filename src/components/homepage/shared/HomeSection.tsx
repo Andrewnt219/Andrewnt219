@@ -21,11 +21,13 @@ function HomeSection({ heading, subHeading, className, children, id }: Props) {
   return (
     <>
       <Container className={className} ref={sectionRef} id={id}>
-        <SubHeading>{subHeading}</SubHeading>
+        <header>
+          <SubHeading>{subHeading}</SubHeading>
 
-        <Heading>{heading}</Heading>
+          <Heading>{heading}</Heading>
+        </header>
 
-        {children}
+        <main>{children}</main>
       </Container>
     </>
   );
@@ -43,26 +45,29 @@ const Container = styled.section<ContainerProps>`
 
   @media screen and (min-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-lg`}
     min-height: calc(100vh - ${GlobalStyling.AppBarHeight});
   }
 
   @media screen and (orientation: landscape) and (max-width: ${(p) =>
       p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    ${tw`text-base`}
   }
 `;
 
 type HeadingProps = {};
 const Heading = styled.h2<HeadingProps>`
   ${tw`font-hBold uppercase`}
-  font-size: 3.5em;
+  font-size: 2.5em;
   margin-bottom: 1rem;
+
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
+    font-size: 3em;
+  }
 `;
 
 type SubHeadingProps = {};
 const SubHeading = styled.span<SubHeadingProps>`
-  font-size: 1.25em;
+  font-size: 1em;
   ${tw`text-ltextColor font-heading`};
 `;
 

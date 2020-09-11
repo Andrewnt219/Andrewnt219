@@ -8,6 +8,7 @@ import { StackInfo } from "./StackInfo";
 import NextLink from "next/link";
 import { ResponsiveImage } from "../ResponsiveImage";
 import { Card } from "../Card";
+import { GlobalStyling } from "@src/constants/global.constants";
 
 type Props = {
   thumbnailSizes: string;
@@ -36,9 +37,20 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
 
       <InfoContainer>
         <Title>{title}</Title>
+
         <Description>
           {shortDescription}&nbsp;<Note>{additionalNote}</Note>
         </Description>
+
+        <StacksInfo>
+          {stacksInfo.map((stack) => {
+            return (
+              <li key={stack.name}>
+                <CustomStackInfo data={stack} />
+              </li>
+            );
+          })}
+        </StacksInfo>
 
         <Links>
           <li style={{ gridArea: "demo" }}>
@@ -77,16 +89,6 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
             </CustomSecondaryButton>
           </li>
         </Links>
-
-        <StacksInfo>
-          {stacksInfo.map((stack) => {
-            return (
-              <li key={stack.name}>
-                <CustomStackInfo data={stack} />
-              </li>
-            );
-          })}
-        </StacksInfo>
       </InfoContainer>
     </CustomCard>
   );
@@ -109,18 +111,24 @@ const Thumbnail = styled(ResponsiveImage)<ImageProps>`
 
 type InfoContainerProps = {};
 const InfoContainer = styled.div<InfoContainerProps>`
-  ${tw`flex flex-col`}
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  column-gap: 1em;
+  row-gap: 1em;
   grid-template-areas:
-    "title        links"
-    "note         links"
-    "description  links"
-    "stacks       stacks";
+    "title"
+    "description"
+    "stacks"
+    "links";
 
-  & > *:last-child {
-    margin-top: 1em;
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
+    grid-template-columns: 2fr 1fr;
+    column-gap: 1em;
+    align-items: center;
+
+    grid-template-areas:
+      "title        links"
+      "description  description"
+      "stacks       stacks";
   }
 `;
 
@@ -147,17 +155,23 @@ const Links = styled.ul<LinksProps>`
 
   display: grid;
   gap: 1em;
-  grid-template-columns: repeat(2, max-content);
   align-items: center;
   align-content: flex-start;
-  justify-self: flex-end;
+  justify-content: space-between;
   grid-template-areas:
     "demo     demo"
     "readMore github";
 
   & > li {
     display: flex;
-    place-items: center;
+    align-items: center;
+  }
+
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
+    justify-self: flex-end;
+    justify-content: initial;
+    grid-template-columns: repeat(2, max-content);
   }
 `;
 

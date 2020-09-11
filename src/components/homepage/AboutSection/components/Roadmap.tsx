@@ -1,22 +1,11 @@
-import { ResponsiveImage } from "@src/components/ui/ResponsiveImage";
-import { GlobalStyling } from "@src/constants/global.constants";
-import { carouselImages } from "@src/data/carouselImages.data";
+import { aboutThumbnails } from "@src/data/images.data";
 import React, { ReactElement } from "react";
-import LazyLoad from "react-lazyload";
-import tw, { styled } from "twin.macro";
+import { AboutArticle } from "./shared/AboutArticle";
+import { AboutParagraph } from "./shared/AboutParagraph";
 
 function Roadmap(): ReactElement {
-  const { src, alt } = carouselImages[2];
   return (
-    <Container>
-      <LazyLoad>
-        <ThumbnailContainer>
-          {/* NOTE Intentionally set smaller sizes, because the image is blurred anyway */}
-          <Thumbnail path={src} alt={alt} sizes="20vw" />
-          <ThumbnailTitle>Road to web&nbsp;development</ThumbnailTitle>
-        </ThumbnailContainer>
-      </LazyLoad>
-
+    <AboutArticle thumbnail={aboutThumbnails["road-to-web-development"]}>
       <ParagraphContainer>
         <ParagraphTitle>The year 2020</ParagraphTitle>
         <p>
@@ -94,86 +83,17 @@ function Roadmap(): ReactElement {
         a better one. Sometimes, it feels frightening with so many things are
         going on in the world of web, but seeing my favorite stacks get updated,
         or all the shiny new toys I can play with, are just some of the good
-        vibes to wake up&nbsp;to.
+        vibes waking up&nbsp;to.
       </ParagraphContainer>
-    </Container>
+    </AboutArticle>
   );
 }
 
-type ContainerProps = {};
-const Container = styled.div<ContainerProps>`
-  & > *:not(:last-child) {
-    ${tw`mb-5`}
-  }
-`;
-
-type ThumbnailContainerProps = {};
-const ThumbnailContainer = styled.div<ThumbnailContainerProps>`
-  position: relative;
-
-  :hover {
-    img {
-      transform: scale(1);
-      filter: blur(1rem);
-    }
-  }
-`;
-
-type ThumbnailTitleProps = {};
-const ThumbnailTitle = styled.h3<ThumbnailTitleProps>`
-  ${tw`absolute top-1/2 left-0 transform -translate-y-1/2 text-center text-primary w-full font-hBold font-heading uppercase`};
-
-  font-size: 1.5em;
-  background: rgba(var(--text-color-rgb), 0.8);
-  padding: 0.25em 0;
-
-  @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
-    font-size: 2em;
-  }
-`;
-
-const Thumbnail = styled(ResponsiveImage)`
-  ${tw`overflow-hidden rounded`}
-
-  img {
-    width: 100%;
-    height: 35vw;
-    object-fit: cover;
-    filter: blur(0.3rem);
-    transform: scale(1.1);
-
-    transition: transform 300ms ease, filter 300ms linear;
-  }
-`;
-
-type ParagraphConainer = {};
-const ParagraphContainer = styled.div<ParagraphConainer>``;
-
-type ParagraphTitleProps = {};
-const ParagraphTitle = styled.h4<ParagraphTitleProps>`
-  ${tw`text-ltextColor block relative flex items-center`}
-
-  ::before {
-    content: "";
-    height: 1px;
-    width: 2rem;
-    display: inline-block;
-
-    /* NOTE inherit color is important for currentColor */
-    color: inherit;
-    ${tw`bg-current mr-2`}
-  }
-`;
-
-type EffectTextProps = {};
-const EffectText = styled.span<EffectTextProps>`
-  ${tw`text-ltextColor italic`}
-`;
-
-type EmphasizedTextProps = {};
-const EmphasizedText = styled.span<EmphasizedTextProps>`
-  ${tw`italic text-accent`}
-`;
+const {
+  Container: ParagraphContainer,
+  EffectText,
+  EmphasizedText,
+  Title: ParagraphTitle,
+} = AboutParagraph;
 
 export { Roadmap };

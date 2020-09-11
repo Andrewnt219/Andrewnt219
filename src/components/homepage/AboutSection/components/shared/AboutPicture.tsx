@@ -157,18 +157,20 @@ const Image = styled(ResponsiveImage)<ImageProps>`
 type ZoomedImageProps = {};
 // NOTE because of some weird interaction, only img works
 const ZoomedImage = styled(ResponsiveImage)<ZoomedImageProps>`
-  position: fixed;
-  ${tw`z-10`}
-  top: 50%;
-  left: 50%;
+  && {
+    position: fixed;
+    ${tw`z-10`}
+    top: 50%;
+    left: 50%;
 
-  /* NOTE These all go together to make sure zoomed images is appropriately visible */
-  width: ${Styling.ImageWidth};
-  img {
-    height: 70vh;
-    object-fit: contain;
+    /* NOTE These all go together to make sure zoomed images is appropriately visible */
+    width: ${Styling.ImageWidth};
+    img {
+      height: 70vh;
+      object-fit: contain;
+    }
+    /*  */
   }
-  /*  */
 `;
 
 type CaptionProps = {};

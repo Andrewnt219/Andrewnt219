@@ -37,6 +37,7 @@ function AboutArticle({ thumbnail, children }: Props): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.div<ContainerProps>`
+  ${tw`mb-16`}
   & > *:not(:last-child) {
     ${tw`mb-5`}
   }

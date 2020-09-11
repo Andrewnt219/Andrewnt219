@@ -21,13 +21,11 @@ function HomeSection({ heading, subHeading, className, children, id }: Props) {
   return (
     <>
       <Container className={className} ref={sectionRef} id={id}>
-        <header>
-          <SubHeading>{subHeading}</SubHeading>
+        <SubHeading>{subHeading}</SubHeading>
 
-          <Heading>{heading}</Heading>
-        </header>
+        <Heading>{heading}</Heading>
 
-        <main>{children}</main>
+        {children}
       </Container>
     </>
   );

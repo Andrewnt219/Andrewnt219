@@ -72,7 +72,7 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
                 aria-label={`Read more about project ${title}`}
                 anchorProps
               >
-                Read More
+                Summary
               </CustomSecondaryButton>
             </NextLink>
           </li>
@@ -134,7 +134,7 @@ const InfoContainer = styled.div<InfoContainerProps>`
 `;
 
 type TitleProps = {};
-const Title = styled.h4<TitleProps>`
+const Title = styled.h3<TitleProps>`
   ${tw`font-hBold`}
   font-size: 2em;
   grid-area: title;

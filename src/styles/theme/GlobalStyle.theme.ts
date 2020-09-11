@@ -4,8 +4,8 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-  --accent-color: #0070f3;
-  --accent-color-rgb: 0, 112, 243;
+  --accent-color: #006ae6;
+  --accent-color-rgb: 0, 106, 230;
 
   --primary-color: #fff;
   --primary-color-rgb:   255, 255, 255;
@@ -20,8 +20,8 @@ export const GlobalStyle = createGlobalStyle`
   --text-color: #000;
   --text-color-rgb: 0, 0, 0;
 
-  --text-color-light: #757678;
-  --text-color-light-rgb: 117, 118, 120;
+  --text-color-light: #717172;
+  --text-color-light-rgb: 113, 113, 114;
 
   --border-color: #d6dbe6;
 

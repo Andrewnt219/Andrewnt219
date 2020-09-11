@@ -7,6 +7,7 @@ type TitleProps = {};
 const Title = styled.h4<TitleProps>`
   ${tw`text-ltextColor block relative flex items-center`}
 
+  font-size: 1.25em;
   ::before {
     content: "";
     height: 1px;

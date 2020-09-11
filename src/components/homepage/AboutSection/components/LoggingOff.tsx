@@ -24,13 +24,17 @@ function LoggingOff(): ReactElement {
 
         <PayItForwardImages>
           <li style={{ gridArea: "seneca" }}>
-            <AboutPicture image={aboutPictures["seneca-open-house"]} />
+            <AboutPicture
+              image={{ ...aboutPictures["seneca-open-house"], sizes: "40vw" }}
+            />
           </li>
           <li style={{ gridArea: "ssf" }}>
-            <AboutPicture image={aboutPictures["ssf"]} />
+            <AboutPicture image={{ ...aboutPictures["ssf"], sizes: "40vw" }} />
           </li>
           <li style={{ gridArea: "vietnam" }}>
-            <AboutPicture image={aboutPictures["taste-of-vietnam"]} />
+            <AboutPicture
+              image={{ ...aboutPictures["taste-of-vietnam"], sizes: "40vw" }}
+            />
           </li>
         </PayItForwardImages>
       </ParagraphContainer>
@@ -51,13 +55,25 @@ function LoggingOff(): ReactElement {
 
         <FriendsImages>
           <li>
-            <AboutPicture image={aboutPictures["toronto-island"]} />
+            <AboutPicture
+              image={{ ...aboutPictures["toronto-island"], sizes: "30vw" }}
+            />
           </li>
           <li>
-            <AboutPicture image={aboutPictures["coffee-table-gathering"]} />
+            <AboutPicture
+              image={{
+                ...aboutPictures["coffee-table-gathering"],
+                sizes: "30vw",
+              }}
+            />
           </li>
           <li>
-            <AboutPicture image={aboutPictures["party-table-gathering"]} />
+            <AboutPicture
+              image={{
+                ...aboutPictures["party-table-gathering"],
+                sizes: "30vw",
+              }}
+            />
           </li>
         </FriendsImages>
       </ParagraphContainer>

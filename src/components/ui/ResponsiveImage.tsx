@@ -1,3 +1,9 @@
+import {
+  ForwardRefComponent,
+  HTMLMotionProps,
+  motion,
+  MotionProps,
+} from "framer-motion";
 import React, {
   forwardRef,
   ImgHTMLAttributes,
@@ -6,7 +12,7 @@ import React, {
   useState,
 } from "react";
 import tw, { styled } from "twin.macro";
-// import { Loader } from "./Loader";
+import { Loader } from "./Loader";
 
 type Ref = HTMLImageElement;
 type Props = ImgHTMLAttributes<HTMLImageElement> & {
@@ -17,7 +23,13 @@ type Props = ImgHTMLAttributes<HTMLImageElement> & {
   config?: {
     isPng?: boolean;
     enablePlaceholder?: boolean;
+    enableLoading?: boolean;
   };
+  imageProps?: ForwardRefComponent<
+    HTMLImageElement,
+    HTMLMotionProps<"img">
+  >["defaultProps"];
+  animationProps?: MotionProps;
 };
 
 type ResponsiveImage = {
@@ -40,12 +52,12 @@ type ResponsiveImage = {
  * @param path a path with root from /public/images/
  */
 const ResponsiveImage = forwardRef<Ref, Props>(
-  ({ className, path, sizes, key, config, ...imgProps }, ref) => {
+  (
+    { className, path, sizes, key, config, imageProps, animationProps },
+    ref
+  ) => {
     /* ANCHOR loading state */
     const [isLoading, setIsLoading] = useState(true);
-
-    /* ANCHOR image props */
-    const { alt, width } = imgProps;
 
     const sharedSourceProps: SourceHTMLAttributes<HTMLSourceElement> = {
       sizes: sizes,
@@ -76,7 +88,7 @@ const ResponsiveImage = forwardRef<Ref, Props>(
                 backgroundImage: isLoading
                   ? 'url("' + responsiveImage.placeholder + '")'
                   : "",
-                width,
+                width: imageProps?.width,
               }
             : undefined
         }
@@ -93,19 +105,21 @@ const ResponsiveImage = forwardRef<Ref, Props>(
             type={`image/${config?.isPng ? "png" : "jpeg"}`}
           />
           <StyledImage
-            {...imgProps}
+            {...imageProps}
             width={responsiveImage.width}
             height={responsiveImage.height}
-            alt={alt}
             src={responsiveImage.src}
             ref={ref}
             // NOTE this is the actual width on screen
-            computedWidth={width?.toString()}
-            //
+            computedWidth={imageProps?.width?.toString()}
+            // loading event
             onLoad={() => setIsLoading(false)}
+            // animation
+            {...animationProps}
+            initial
           />
         </Picture>
-        {/* {isLoading && <CustomLoader />} */}
+        {isLoading && config?.enableLoading && <CustomLoader />}
       </Container>
     );
   }
@@ -128,13 +142,13 @@ const Picture = styled.picture<PictureProps>`
 type StyledImageProps = {
   computedWidth?: string;
 };
-const StyledImage = styled.img<StyledImageProps>`
+const StyledImage = styled(motion.img)<StyledImageProps>`
   width: 100%;
 `;
 
-// const CustomLoader = styled(Loader)`
-//   ${tw`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-accent`};
-// `;
+const CustomLoader = styled(Loader)`
+  ${tw`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-accent`};
+`;
 
 ResponsiveImage.displayName = "ResponsiveImage";
 export { ResponsiveImage };

@@ -13,7 +13,7 @@ enum Styling {
 }
 
 enum Timing {
-  Zoom = 1,
+  Zoom = 0.5,
 }
 
 type Props = {
@@ -150,7 +150,7 @@ const Image = styled(ResponsiveImage)<ImageProps>`
   ${(p) =>
     p.isFullScreen &&
     css`
-      animation: ${slideOut} ${Timing.Zoom + 0.5}s ease forwards;
+      animation: ${slideOut} ${Timing.Zoom}s ease forwards;
     `}
 `;
 

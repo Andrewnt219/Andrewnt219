@@ -6,6 +6,7 @@ import { GlobalStyling } from "@src/constants/global.constants";
 import { useSidebarActive } from "@src/hooks";
 import React, { ReactNode } from "react";
 import tw, { styled } from "twin.macro";
+import LazyLoad from "react-lazyload";
 
 type Props = {
   heading: string;
@@ -25,7 +26,9 @@ function HomeSection({ heading, subHeading, className, children, id }: Props) {
 
         <Heading>{heading}</Heading>
 
-        {children}
+        <LazyLoad offset={100} height="100vh">
+          {children}
+        </LazyLoad>
       </Container>
     </>
   );

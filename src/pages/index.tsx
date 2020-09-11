@@ -37,9 +37,13 @@ export default function Home() {
     <HomepageSections.Provider value={{ inViewSection, onSectionSwitch }}>
       <HeadTitle title="Portfolio" />
       <HeroSection />
+
       <ProjectsSection />
+
       <AboutSection />
+
       <ContactSection />
+
       <AnimatePresence>
         {/* NOTE Need to be !== null to prevent disply on initial page load*/}
         {showSideBar && <Sidebar inViewSection={inViewSection} />}

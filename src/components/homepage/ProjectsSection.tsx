@@ -2,7 +2,6 @@ import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { homepageProjectsData } from "@src/data/homepageProjects.data";
 import React, { ReactElement } from "react";
 import { HomeSection } from "./shared/HomeSection";
-import LazyLoad from "react-lazyload";
 import { useTheme } from "styled-components";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { styled } from "twin.macro";
@@ -22,19 +21,13 @@ function ProjectsSection(): ReactElement {
       subHeading="Selected"
       id={HomepageSectionIds.Projects}
     >
-      {/* NOTE Don't place LazyLoad for individual Card, it will affect the sidebar scroll to position */}
-      <LazyLoad>
-        <ProjectCards>
-          {homepageProjectsData.map((project) => (
-            <li key={project.title}>
-              <CustomProjectCard
-                data={project}
-                thumbnailSizes={thumbnailSizes}
-              />
-            </li>
-          ))}
-        </ProjectCards>
-      </LazyLoad>
+      <ProjectCards>
+        {homepageProjectsData.map((project) => (
+          <li key={project.title}>
+            <CustomProjectCard data={project} thumbnailSizes={thumbnailSizes} />
+          </li>
+        ))}
+      </ProjectCards>
     </HomeSection>
   );
 }

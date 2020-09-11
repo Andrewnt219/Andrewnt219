@@ -52,6 +52,7 @@ function AboutPicture({ image, className, style }: Props): ReactElement {
         path={src}
         alt={alt}
         sizes={sizes}
+        loading="lazy"
         //
         isFullScreen={imageIsFullScreen}
       />

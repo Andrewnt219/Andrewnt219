@@ -6,7 +6,6 @@ import {
 } from "framer-motion";
 import React, {
   forwardRef,
-  ImgHTMLAttributes,
   SourceHTMLAttributes,
   useMemo,
   useState,
@@ -15,7 +14,10 @@ import tw, { styled } from "twin.macro";
 import { Loader } from "./Loader";
 
 type Ref = HTMLImageElement;
-type Props = ImgHTMLAttributes<HTMLImageElement> & {
+type Props = ForwardRefComponent<
+  HTMLImageElement,
+  HTMLMotionProps<"img">
+>["defaultProps"] & {
   path: string;
   className?: string;
   key?: string;
@@ -25,10 +27,6 @@ type Props = ImgHTMLAttributes<HTMLImageElement> & {
     enablePlaceholder?: boolean;
     enableLoading?: boolean;
   };
-  imageProps?: ForwardRefComponent<
-    HTMLImageElement,
-    HTMLMotionProps<"img">
-  >["defaultProps"];
   animationProps?: MotionProps;
 };
 
@@ -53,7 +51,7 @@ type ResponsiveImage = {
  */
 const ResponsiveImage = forwardRef<Ref, Props>(
   (
-    { className, path, sizes, key, config, imageProps, animationProps },
+    { className, path, sizes, key, config, animationProps, ...imageProps },
     ref
   ) => {
     /* ANCHOR loading state */
@@ -116,7 +114,6 @@ const ResponsiveImage = forwardRef<Ref, Props>(
             onLoad={() => setIsLoading(false)}
             // animation
             {...animationProps}
-            initial
           />
         </Picture>
         {isLoading && config?.enableLoading && <CustomLoader />}

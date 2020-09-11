@@ -2,7 +2,6 @@ import { ResponsiveImage } from "@src/components/ui/ResponsiveImage";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { AboutThumbnailProps } from "@src/data/images.data";
 import React, { ReactElement, ReactNode } from "react";
-import LazyLoad from "react-lazyload";
 import tw, { styled } from "twin.macro";
 
 enum Styling {
@@ -19,18 +18,17 @@ function AboutArticle({ thumbnail, children }: Props): ReactElement {
 
   return (
     <Container>
-      <LazyLoad height={Styling.ThumbnailHeight}>
-        <ThumbnailContainer>
-          {/* NOTE Intentionally set smaller sizes, because the image is blurred anyway */}
-          <Thumbnail
-            path={src}
-            alt={alt}
-            sizes="20vw"
-            config={{ enablePlaceholder: true }}
-          />
-          <ThumbnailTitle>{title}</ThumbnailTitle>
-        </ThumbnailContainer>
-      </LazyLoad>
+      <ThumbnailContainer>
+        {/* NOTE Intentionally set smaller sizes, because the image is blurred anyway */}
+        <Thumbnail
+          path={src}
+          alt={alt}
+          sizes="20vw"
+          config={{ enablePlaceholder: true }}
+          loading="lazy"
+        />
+        <ThumbnailTitle>{title}</ThumbnailTitle>
+      </ThumbnailContainer>
 
       {children}
     </Container>

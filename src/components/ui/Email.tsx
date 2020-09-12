@@ -9,7 +9,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import tw, { styled } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 
 type Props = {
   className?: string;
@@ -67,6 +67,8 @@ function Email({ className }: Props): ReactElement {
       aria-expanded={showOptions}
       role="button"
       tabIndex={0}
+      //
+      increaseZIndex={showOptions}
     >
       {PersonalInfo.Email}
 
@@ -100,10 +102,18 @@ function Email({ className }: Props): ReactElement {
   );
 }
 
-type ContainerProps = {};
+type ContainerProps = {
+  increaseZIndex: boolean;
+};
 const Container = styled.button<ContainerProps>`
   ${tw`relative`}
   user-select: none;
+
+  ${(p) =>
+    p.increaseZIndex &&
+    css`
+      ${tw`z-20`}
+    `}
 `;
 
 const emailOptionsVariants: Variants = {

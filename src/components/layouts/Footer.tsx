@@ -14,16 +14,9 @@ import { FaReact } from "react-icons/fa";
  */
 function Footer(): ReactElement {
   const enableAnimation = useMediaQuery("xl");
-  const isLargeScreen = useMediaQuery();
 
   return (
-    <Container
-      height={
-        isLargeScreen
-          ? GlobalStyling.DesktopFooterHeight
-          : GlobalStyling.MobileFooterHeight
-      }
-    >
+    <Container height={GlobalStyling.FooterHeight}>
       <Logo size="20rem" animated={enableAnimation} />
 
       <Text>
@@ -38,19 +31,18 @@ type ContainerProps = {
   height: string;
 };
 const Container = styled.footer<ContainerProps>`
-  ${tw`bg-lprimary text-xl sticky bottom-0 left-0 w-full duration-theme ease-theme py-5`};
+  ${tw`bg-lprimary text-xl sticky bottom-0 left-0 w-full py-5`};
   height: ${(p) => p.height};
-  transition-property: background-color;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-items: center;
+  justify-content: space-between;
 `;
 
 type TextProps = {};
 const Text = styled.p<TextProps>`
   ${tw`flex justify-center items-center `}
-  align-self: flex-end;
 
   svg {
     font-size: larger;

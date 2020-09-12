@@ -21,7 +21,7 @@ function ContactSection(): ReactElement {
         </li>
 
         <li>
-          <CvButton href="/CV.pdf" download>
+          <CvButton href="/Andrew Nguyen_CV.pdf" download>
             Download CV
           </CvButton>
         </li>

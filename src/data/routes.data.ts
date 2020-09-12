@@ -1,27 +1,38 @@
+import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { LinkProps } from "next/link";
 
 export type Route = LinkProps & {
   // textContent
   text: string;
-  // use === for matching
-  exact?: boolean;
 };
 
 export const allRoutes: Route[] = [
   {
-    href: "/",
-    as: "/",
+    href: {
+      pathname: "/",
+    },
     text: "Home",
-    exact: true,
   },
   {
-    href: "/about",
-    as: "/about",
+    href: {
+      pathname: "/",
+      hash: HomepageSectionIds.Projects,
+    },
+
+    text: "Projects",
+  },
+  {
+    href: {
+      pathname: "/",
+      hash: HomepageSectionIds.About,
+    },
     text: "About",
   },
   {
-    href: "/projects",
-    as: "/projects",
-    text: "Projects",
+    href: {
+      pathname: "/",
+      hash: HomepageSectionIds.Contact,
+    },
+    text: "Contact",
   },
 ];

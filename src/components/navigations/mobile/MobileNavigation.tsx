@@ -20,10 +20,6 @@ enum Timing {
   NavStaggerChildrenExit = 0.1,
 }
 
-enum Data {
-  NavChildren = 3,
-}
-
 function MobileNavigation(): ReactElement {
   // control menu open state
   const [menuIsOpened, setMenuIsOpened] = useState(false);
@@ -114,7 +110,7 @@ const navItemsVariants: Variants = {
 };
 
 const footerDelayTime =
-  Timing.NavDelayChildren + Timing.NavStaggerChildrenEnter * Data.NavChildren;
+  Timing.NavDelayChildren + Timing.NavStaggerChildrenEnter * allRoutes.length;
 const footerVariants: Variants = {
   hidden: {
     y: "100%",

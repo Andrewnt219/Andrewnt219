@@ -4,10 +4,6 @@ import { AboutThumbnailProps } from "@src/data/images.data";
 import React, { ReactElement, ReactNode } from "react";
 import tw, { styled } from "twin.macro";
 
-enum Styling {
-  ThumbnailHeight = "35vw",
-}
-
 type Props = {
   thumbnail: AboutThumbnailProps;
   children: ReactNode;

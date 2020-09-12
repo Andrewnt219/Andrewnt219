@@ -99,6 +99,7 @@ const CvButton = styled.a<CvButtonProps>`
 
   height: 100%;
   width: 100%;
+  line-height: 3;
 
   transition: border-color 300ms ease;
 

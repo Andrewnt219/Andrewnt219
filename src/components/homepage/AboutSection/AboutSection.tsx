@@ -1,5 +1,4 @@
 import { Button } from "@src/components/ui/Button";
-import { GlobalStyling } from "@src/constants/global.constants";
 
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import React, { ReactElement } from "react";

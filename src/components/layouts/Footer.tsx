@@ -1,27 +1,14 @@
 import React, { ReactElement } from "react";
 import tw, { styled } from "twin.macro";
-import {
-  FaGithubAlt,
-  FaFacebookF,
-  FaLinkedinIn,
-  FaReact,
-} from "react-icons/fa";
-import { MediaIcon, MediaIconProps } from "../footer/MediaIcon";
-import { PersonalInfo } from "@src/constants/personalInfo.constants";
+
 import { Logo } from "../ui/Logo";
 import { useMediaQuery } from "@src/hooks";
-import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
+
 import { spinZ } from "@src/styles/animation/spin.animation";
 import { GlobalStyling } from "@src/constants/global.constants";
-import { Email } from "../ui/Email";
 
-enum GridArea {
-  Medias = "medias",
-  Email = "email",
-  Text = "text",
-}
+import { FaReact } from "react-icons/fa";
 
-type Props = {};
 /**
  * @description renders page's footer
  */
@@ -39,45 +26,12 @@ function Footer(): ReactElement {
     >
       <Logo size="20rem" animated={enableAnimation} />
 
-      <MediaIcons>{renderMediaIcons()}</MediaIcons>
-
-      <EmailLink />
-
       <Text>
         Made by Andrew Nguyen with&nbsp;
         <FaReact aria-label="react.js" role="img" />
       </Text>
     </Container>
   );
-}
-
-function renderMediaIcons() {
-  const mediaIcons: MediaIconProps[] = [
-    {
-      Icon: FaGithubAlt,
-      iconColor: "#6e5494",
-      href: PersonalInfo.GitHub,
-      label: "Link to Github profile",
-    },
-    {
-      Icon: FaFacebookF,
-      iconColor: "#3b5998",
-      href: PersonalInfo.Facebook,
-      label: "Link to Facebook profile",
-    },
-    {
-      Icon: FaLinkedinIn,
-      iconColor: "#0e76a8",
-      href: PersonalInfo.LinkedIn,
-      label: "Link to LinkedIn profile",
-    },
-  ];
-
-  return mediaIcons.map((mediaIconProps, index) => (
-    <li key={index}>
-      <MediaIcon {...mediaIconProps} />
-    </li>
-  ));
 }
 
 type ContainerProps = {
@@ -88,46 +42,13 @@ const Container = styled.footer<ContainerProps>`
   height: ${(p) => p.height};
   transition-property: background-color;
 
-  display: grid;
+  display: flex;
   align-items: center;
   justify-items: center;
-  row-gap: 1rem;
-  grid-template-rows: 1fr repeat(3, auto);
-  grid-template-areas: ${`
-    "${GlobalGridAreas.Logo}"
-    "${GridArea.Medias}"
-    "${GridArea.Email}"
-    "${GridArea.Text}"
-  `};
-
-  @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
-    grid-template-rows: unset;
-    grid-template-areas: ${`
-    "${GlobalGridAreas.Logo} ${GridArea.Medias}"
-    "${GlobalGridAreas.Logo} ${GridArea.Email}"
-    "${GridArea.Text} ${GridArea.Text}"
-    `};
-  }
-`;
-
-type MediaIconsProps = {};
-const MediaIcons = styled.ul<MediaIconsProps>`
-  ${tw`flex  space-x-10`}
-  grid-area: ${GridArea.Medias};
-`;
-
-type EmailLinkProps = {};
-const EmailLink = styled(Email)<EmailLinkProps>`
-  ${tw`font-bBold underline hocus:outline-none  hocus:text-accent`}
-  grid-area: ${GridArea.Email};
-
-  font-size: larger;
 `;
 
 type TextProps = {};
 const Text = styled.p<TextProps>`
-  grid-area: ${GridArea.Text};
   ${tw`flex justify-center items-center `}
   align-self: flex-end;
 

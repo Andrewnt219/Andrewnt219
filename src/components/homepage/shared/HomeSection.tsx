@@ -23,7 +23,6 @@ function HomeSection({ heading, subHeading, className, children, id }: Props) {
     <>
       <Container className={className} ref={sectionRef} id={id}>
         <SubHeading>{subHeading}</SubHeading>
-
         <Heading>{heading}</Heading>
 
         <LazyLoad offset={100} height="100vh">

@@ -37,16 +37,26 @@ function AboutArticle({ thumbnail, children }: Props): ReactElement {
 
 type ContainerProps = {};
 const Container = styled.div<ContainerProps>`
-  ${tw`mb-16`}
+  margin-bottom: 4em;
+
   & > *:not(:last-child) {
-    ${tw`mb-5`}
+    margin-bottom: 2em;
+  }
+
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
+    margin-bottom: 6em;
   }
 `;
 
 type ThumbnailContainerProps = {};
 const ThumbnailContainer = styled.div<ThumbnailContainerProps>`
   position: relative;
-  margin-bottom: 2rem;
+
+  && {
+    margin-bottom: 1em;
+  }
+
   :hover {
     img {
       transform: scale(1);
@@ -79,13 +89,19 @@ const Thumbnail = styled(ResponsiveImage)`
 
   img {
     width: 100%;
-    height: ${Styling.ThumbnailHeight};
     object-fit: cover;
     object-position: center;
     filter: blur(0.3rem);
     transform: scale(1.1);
-
+    height: 25vh;
     transition: transform 300ms ease, filter 300ms linear;
+  }
+
+  @media screen and (min-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
+    img {
+      height: 30vw;
+    }
   }
 `;
 

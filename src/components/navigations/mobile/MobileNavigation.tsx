@@ -15,8 +15,8 @@ enum Styling {
 }
 
 enum Timing {
-  NavDelayChildren = 0.5,
-  NavStaggerChildrenEnter = 0.2,
+  NavDelayChildren = 0.4,
+  NavStaggerChildrenEnter = 0.1,
   NavStaggerChildrenExit = 0.1,
 }
 

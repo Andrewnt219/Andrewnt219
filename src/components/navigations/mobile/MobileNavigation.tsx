@@ -117,7 +117,7 @@ const footerVariants: Variants = {
     opacity: 0,
   },
   visible: {
-    y: 0,
+    y: "-50%",
     opacity: 1,
     transition: {
       delay: footerDelayTime,
@@ -141,7 +141,14 @@ const NavigationItems = styled(motion.ul)<NavigationItemsProps>`
 
 type FooterProps = {};
 const Footer = styled(motion.footer)<FooterProps>`
-  ${tw`z-30 fixed bottom-0 left-0 w-full`}
+  ${tw`z-30 w-full`}
+
+  /* NOTE Dirty fixed because FixedNavBar make fixed Footer follows the navbar, not viewport */
+  position: absolute;
+  bottom: calc(-100vh + ${GlobalStyling.AppBarHeight});
+  left: 0;
+  /*  */
+
   padding: 2rem 1rem 2rem ${Styling.PaddingLeft};
   font-size: 1.6rem;
 

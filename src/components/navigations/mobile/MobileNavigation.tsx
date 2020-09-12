@@ -21,6 +21,18 @@ enum Timing {
 }
 
 function MobileNavigation(): ReactElement {
+  // Remove scroll lock
+  const navItemClickHandler = () => {
+    const body = document.querySelector("body");
+    const html = document.querySelector("html");
+    if (body && html) {
+      body.classList.remove("no-scroll");
+      html.classList.remove("no-scroll");
+    }
+
+    setMenuIsOpened(false);
+  };
+
   // control menu open state
   const [menuIsOpened, setMenuIsOpened] = useState(false);
   return (
@@ -40,7 +52,7 @@ function MobileNavigation(): ReactElement {
                   key={text}
                   text={text}
                   {...linkProps}
-                  onClick={() => setMenuIsOpened(false)}
+                  onClick={navItemClickHandler}
                 />
               ))}
             </NavigationItems>

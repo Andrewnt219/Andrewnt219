@@ -15,16 +15,24 @@ enum Styling {
 }
 
 enum Timing {
-  NavDelayChildren = 0.5,
-  NavStaggerChildrenEnter = 0.2,
+  NavDelayChildren = 0.4,
+  NavStaggerChildrenEnter = 0.1,
   NavStaggerChildrenExit = 0.1,
 }
 
-enum Data {
-  NavChildren = 3,
-}
-
 function MobileNavigation(): ReactElement {
+  // Remove scroll lock
+  const navItemClickHandler = () => {
+    const body = document.querySelector("body");
+    const html = document.querySelector("html");
+    if (body && html) {
+      body.classList.remove("no-scroll");
+      html.classList.remove("no-scroll");
+    }
+
+    setMenuIsOpened(false);
+  };
+
   // control menu open state
   const [menuIsOpened, setMenuIsOpened] = useState(false);
   return (
@@ -44,7 +52,7 @@ function MobileNavigation(): ReactElement {
                   key={text}
                   text={text}
                   {...linkProps}
-                  onClick={() => setMenuIsOpened(false)}
+                  onClick={navItemClickHandler}
                 />
               ))}
             </NavigationItems>
@@ -114,14 +122,14 @@ const navItemsVariants: Variants = {
 };
 
 const footerDelayTime =
-  Timing.NavDelayChildren + Timing.NavStaggerChildrenEnter * Data.NavChildren;
+  Timing.NavDelayChildren + Timing.NavStaggerChildrenEnter * allRoutes.length;
 const footerVariants: Variants = {
   hidden: {
     y: "100%",
     opacity: 0,
   },
   visible: {
-    y: 0,
+    y: "-50%",
     opacity: 1,
     transition: {
       delay: footerDelayTime,
@@ -145,7 +153,14 @@ const NavigationItems = styled(motion.ul)<NavigationItemsProps>`
 
 type FooterProps = {};
 const Footer = styled(motion.footer)<FooterProps>`
-  ${tw`z-30 fixed bottom-0 left-0 w-full`}
+  ${tw`z-30 w-full`}
+
+  /* NOTE Dirty fixed because FixedNavBar make fixed Footer follows the navbar, not viewport */
+  position: absolute;
+  bottom: calc(-100vh + ${GlobalStyling.AppBarHeight});
+  left: 0;
+  /*  */
+
   padding: 2rem 1rem 2rem ${Styling.PaddingLeft};
   font-size: 1.6rem;
 

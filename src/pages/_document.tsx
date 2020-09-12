@@ -64,6 +64,14 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin=""
           />
+
+          <link
+            rel="preload"
+            href="fonts/quicksand-v21-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
         </Head>
         <body>
           <script

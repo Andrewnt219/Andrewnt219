@@ -4,6 +4,7 @@ import { motion, Variants } from "framer-motion";
 import React, { ReactElement } from "react";
 import tw, { styled } from "twin.macro";
 import NextLink from "next/link";
+import { HomepageSectionIds } from "@src/constants/homepage.constants";
 
 type Props = {
   inViewSection: HomepageSection;
@@ -20,7 +21,12 @@ function Sidebar({ inViewSection }: Props): ReactElement {
       <Nav aria-label="Secondary">
         {homepageSections.map(({ fragment, text }) => (
           <li key={fragment}>
-            <NextLink href={`/#${fragment}`} passHref>
+            <NextLink
+              href={
+                fragment === HomepageSectionIds.Hero ? "/" : `/#${fragment}`
+              }
+              passHref
+            >
               <StyledLink active={inViewSection === fragment}>
                 {text}
               </StyledLink>

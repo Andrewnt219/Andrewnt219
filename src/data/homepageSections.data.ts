@@ -1,7 +1,7 @@
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
 
 type homepageSectionProps = {
-  fragment: string;
+  fragment: HomepageSectionIds;
   text: string;
 };
 export const homepageSections: homepageSectionProps[] = [

@@ -1,6 +1,4 @@
-import { allRoutes } from "@src/data/routes.data";
 import React, { ReactElement } from "react";
-import { DesktopNavigationItem } from "./DesktopNavigationItem";
 import tw, { styled, theme } from "twin.macro";
 import { LightSwitch } from "../../ui/LightSwitch";
 import { Email } from "@src/components/ui/Email";
@@ -8,10 +6,6 @@ import { Email } from "@src/components/ui/Email";
 function DesktopNavigation(): ReactElement {
   return (
     <Container>
-      {allRoutes.map(({ text, ...linkProps }) => (
-        <DesktopNavigationItem key={text} text={text} {...linkProps} />
-      ))}
-
       <EmailContainer>
         <EmailLink />
       </EmailContainer>

@@ -8,12 +8,14 @@ export type MediaIconProps = {
   iconColor: IconWrapperProps["iconColor"];
   href: string;
   label: string;
+  caption?: string;
 };
 
 function MediaIcon({
   Icon,
   iconColor,
   label,
+  caption,
   ...anchorAttributes
 }: MediaIconProps): ReactElement {
   const { mode } = useContext(ColorThemeContext);
@@ -32,12 +34,18 @@ function MediaIcon({
       >
         <Icon />
       </IconWrapper>
+      <Caption>{caption}</Caption>
     </Container>
   );
 }
 
 type ContainerProps = {};
-const Container = styled.div<ContainerProps>``;
+const Container = styled.div<ContainerProps>`
+  height: 20rem;
+  width: 100%;
+
+  ${tw`flex flex-col justify-center items-center rounded overflow-hidden border-borderColor border-2`}
+`;
 
 const lightMode = (iconColor: string) => css`
   ::after {
@@ -55,7 +63,7 @@ const lightMode = (iconColor: string) => css`
 
   svg {
     fill: ${iconColor};
-    ${tw`z-20 relative`}
+    ${tw`z-20`}
   }
 
   :hover,
@@ -72,21 +80,14 @@ const lightMode = (iconColor: string) => css`
   }
 `;
 
-const darkMode = (iconColor: string) => css`
-  :hover,
-  :focus {
-    svg {
-      fill: ${iconColor};
-    }
-  }
-`;
-
 type IconWrapperProps = {
   iconColor: string;
   isDarkMode: boolean;
 };
 const IconWrapper = styled.a<IconWrapperProps>`
-  ${tw`inline-flex justify-center items-center w-12 h-12 bg-transparent rounded-sm cursor-pointer relative overflow-hidden`};
+  ${tw`inline-flex justify-center items-center bg-transparent rounded cursor-pointer relative `};
+  width: 100%;
+  height: 100%;
 
   :hover,
   :focus {
@@ -94,12 +95,20 @@ const IconWrapper = styled.a<IconWrapperProps>`
   }
 
   svg {
-    font-size: 2rem;
+    font-size: 5em;
     transition: fill 50ms ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  ${({ isDarkMode, iconColor }) =>
-    isDarkMode ? darkMode(iconColor) : lightMode(iconColor)}
+  ${(p) => lightMode(p.iconColor)};
+`;
+
+type CaptionProps = {};
+const Caption = styled.span<CaptionProps>`
+  line-height: 3;
 `;
 
 export { MediaIcon };

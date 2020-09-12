@@ -1,4 +1,11 @@
-import React, { ReactElement, ReactNode, useContext, useEffect } from "react";
+import React, {
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { AppBar } from "./AppBar";
 import { Footer } from "./Footer";
 import tw, { styled } from "twin.macro";
@@ -13,6 +20,11 @@ import { AchievementContext } from "@src/contexts/Achievement.context";
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { LocalStorageKeys } from "@src/constants/localStorage.constants";
 import { achievementsData } from "@src/data/achievements.data";
+import {
+  HomepageSections,
+  HomepageSection,
+  HomepageSectionSwitchHandler,
+} from "@src/contexts/HomepageSections.context";
 
 type Props = {
   children: ReactNode;
@@ -52,28 +64,44 @@ function MainLayout({ children }: Props): ReactElement {
   }, [mode, queueAchievement]);
   /* !SECTION DarkMode Achievement */
 
+  /* SECTION Active Link Item */
+  // NOTE Should to be null on first page load
+  const [inViewSection, setInViewSection] = useState<null | HomepageSection>(
+    null
+  );
+
+  const onSectionSwitch: HomepageSectionSwitchHandler = useCallback(
+    (section) => {
+      setInViewSection(section);
+    },
+    []
+  );
+  /* !SECTION Active Link Item */
+
   return (
     <SnackbarContext.Provider value={{ queueSnackbarMessage }}>
       <AchievementContext.Provider value={{ queueAchievement }}>
-        <HeadMeta />
+        <HomepageSections.Provider value={{ inViewSection, onSectionSwitch }}>
+          <HeadMeta />
 
-        <AppBar height={GlobalStyling.AppBarHeight} />
+          <AppBar height={GlobalStyling.AppBarHeight} />
 
-        <Main>{children}</Main>
+          <Main>{children}</Main>
 
-        <Footer />
+          <Footer />
 
-        <AnimatePresence>
-          {snackbarMessages.map(({ message, id }) => (
-            <Snackbar key={id} message={message} />
-          ))}
-        </AnimatePresence>
+          <AnimatePresence>
+            {snackbarMessages.map(({ message, id }) => (
+              <Snackbar key={id} message={message} />
+            ))}
+          </AnimatePresence>
 
-        <AnimatePresence>
-          {achievements.map(({ id, ...props }) => (
-            <Achievement key={id} {...props} />
-          ))}
-        </AnimatePresence>
+          <AnimatePresence>
+            {achievements.map(({ id, ...props }) => (
+              <Achievement key={id} {...props} />
+            ))}
+          </AnimatePresence>
+        </HomepageSections.Provider>
       </AchievementContext.Provider>
     </SnackbarContext.Provider>
   );

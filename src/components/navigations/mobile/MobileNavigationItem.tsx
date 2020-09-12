@@ -1,11 +1,12 @@
 import { Route } from "@src/data/routes.data";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext, useEffect, useState } from "react";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import tw, { styled, css } from "twin.macro";
 import { spinX } from "@src/styles/animation/spin.animation";
-import { useRouteMatch } from "@src/hooks";
+import { HomepageSections } from "@src/contexts/HomepageSections.context";
+import { HomepageSectionIds } from "@src/constants/homepage.constants";
 
 const navItemVariants: Variants = {
   hidden: {
@@ -37,12 +38,22 @@ type Props = Route & {
 function MobileNavigationItem({
   text,
   onClick,
-  exact,
   ...linkProps
 }: Props): ReactElement {
   /* Matching */
+  const { inViewSection } = useContext(HomepageSections);
   const { href } = linkProps;
-  const isActive = useRouteMatch(href.toString(), exact);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (typeof href !== "string") {
+      if (inViewSection === HomepageSectionIds.Hero) {
+        setIsActive(!href.hash);
+      } else {
+        setIsActive(href.hash === inViewSection);
+      }
+    }
+  }, [href, inViewSection]);
 
   return (
     <ListItem variants={navItemVariants}>

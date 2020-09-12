@@ -52,6 +52,7 @@ function ImageCarousel({
           //
           alt={images[index].alt}
           path={images[index].src}
+          // NOTE Consider changing 12.5vw for reusability
           sizes={index === currentIndex ? sizes : "12.5vw"}
           config={{ enablePlaceholder: true }}
         />

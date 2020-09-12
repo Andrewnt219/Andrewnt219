@@ -1,4 +1,3 @@
-import { GlobalGridAreas } from "@src/constants/globalGridAreas.constants";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { useMediaQuery } from "@src/hooks";
@@ -117,7 +116,6 @@ const neonVariants: Variants = {
 
 type ContainerProps = {};
 const Container = styled.div<ContainerProps>`
-  grid-area: ${GlobalGridAreas.Logo};
   display: inline-block;
   position: relative;
   /* width and height set to minimum so the Logo and Neon stay near */

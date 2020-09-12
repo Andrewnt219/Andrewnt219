@@ -1,11 +1,17 @@
+import { GlobalStyling } from "@src/constants/global.constants";
 import { aboutPictures, aboutThumbnails } from "@src/data/images.data";
 import React, { ReactElement } from "react";
+import { useTheme } from "styled-components";
 import { css, styled } from "twin.macro";
 import { AboutArticle } from "./shared/AboutArticle";
 import { AboutParagraph } from "./shared/AboutParagraph";
 import { AboutPicture } from "./shared/AboutPicture";
 
+const BREAKPOINT = GlobalStyling.AppBarBreakpoint;
+
 function LoggingOff(): ReactElement {
+  const { breakpoints } = useTheme();
+
   return (
     <AboutArticle thumbnail={aboutThumbnails["logging-off"]}>
       <ParagraphContainer>
@@ -54,24 +60,27 @@ function LoggingOff(): ReactElement {
         </p>
 
         <FriendsImages>
-          <li>
-            <AboutPicture
-              image={{ ...aboutPictures["toronto-island"], sizes: "30vw" }}
-            />
-          </li>
-          <li>
+          <li style={{ gridArea: "toronto" }}>
             <AboutPicture
               image={{
-                ...aboutPictures["coffee-table-gathering"],
-                sizes: "30vw",
+                ...aboutPictures["toronto-island"],
+                sizes: `(min-width: ${breakpoints[BREAKPOINT]}): 30vw, 40vw`,
               }}
             />
           </li>
-          <li>
+          <li style={{ gridArea: "coffee" }}>
+            <AboutPicture
+              image={{
+                ...aboutPictures["coffee-table-gathering"],
+                sizes: `(min-width: ${breakpoints[BREAKPOINT]}): 30vw, 90vw`,
+              }}
+            />
+          </li>
+          <li style={{ gridArea: "party" }}>
             <AboutPicture
               image={{
                 ...aboutPictures["party-table-gathering"],
-                sizes: "30vw",
+                sizes: `(min-width: ${breakpoints[BREAKPOINT]}): 30vw, 40vw`,
               }}
             />
           </li>
@@ -89,7 +98,7 @@ const {
 
 type ImagesProps = {};
 const imagesSharedCss = css`
-  margin: 1rem 0 2rem 0;
+  margin: 1em 0 2em 0;
   width: 100%;
   display: grid;
   gap: 1rem;
@@ -111,10 +120,16 @@ const PayItForwardImages = styled.ul<ImagesProps>`
 const FriendsImages = styled.ul<ImagesProps>`
   ${imagesSharedCss}
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+  "toronto   party"
+  "coffee  coffee";
 
-  img {
-    height: 20vw;
+  @media screen and (min-width: ${(p) => p.theme.breakpoints[BREAKPOINT]}) {
+    grid-template-areas: "toronto coffee  party";
+
+    img {
+      height: 20vw;
+    }
   }
 `;
 

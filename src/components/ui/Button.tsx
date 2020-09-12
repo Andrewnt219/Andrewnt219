@@ -51,7 +51,7 @@ type StyledButtonProps = {
 };
 // Keep the transparent border to avoid layout shift between dark/light mode
 const sharedButtonStyle = css<StyledButtonProps>`
-  ${tw`hocus:outline-none uppercase cursor-pointer`}
+  ${tw`hocus:outline-none uppercase cursor-pointer text-center`}
   padding: 0.75em 2em;
 
   ${(p) =>

@@ -52,13 +52,6 @@ const ThumbnailContainer = styled.div<ThumbnailContainerProps>`
   && {
     margin-bottom: 1em;
   }
-
-  :hover {
-    img {
-      transform: scale(1);
-      filter: blur(1rem);
-    }
-  }
 `;
 
 type ThumbnailTitleProps = {};
@@ -88,7 +81,7 @@ const Thumbnail = styled(ResponsiveImage)`
     object-fit: cover;
     object-position: center;
     filter: blur(0.3rem);
-    transform: scale(1.1);
+    transform: scale(1);
     height: 25vh;
     transition: transform 300ms ease, filter 300ms linear;
   }

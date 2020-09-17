@@ -7,6 +7,7 @@ export const achievementsData: Record<string, AchievementProps> = {
     "moon icon",
     "dark-mode.svg"
   ),
+  // TODO Legend. Wait for it... (subtitle) ...dary
 };
 
 function _generateAchievementData(

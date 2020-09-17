@@ -8,25 +8,24 @@ function Roadmap(): ReactElement {
     <AboutArticle thumbnail={aboutThumbnails["road-to-web-development"]}>
       <ParagraphContainer>
         <ParagraphTitle>The year 2020</ParagraphTitle>
-        <p>
+        <Content>
           I will tell you an incredible story, the story of how I
           &quot;met&quot; web development.{" "}
-          <EffectText>camera&nbsp;flashback</EffectText>
-        </p>
+        </Content>
       </ParagraphContainer>
 
       <ParagraphContainer>
         <ParagraphTitle>Year 2015</ParagraphTitle>
-        <p>
+        <Content>
           When I first learned Pascal back in highschool, I knew...{" "}
           <EmphasizedText>I was bad at programming.</EmphasizedText> I had a
           hard time expressing what I wanted to the&nbsp;machine.
-        </p>
+        </Content>
       </ParagraphContainer>
 
       <ParagraphContainer>
         <ParagraphTitle>Year 2017</ParagraphTitle>{" "}
-        <p>
+        <Content>
           {" "}
           I came across the webdev subreddit, which was{" "}
           <EmphasizedText>
@@ -34,24 +33,24 @@ function Roadmap(): ReactElement {
           </EmphasizedText>{" "}
           Out of curiosity, I learned HTML and CSS, but quickly moved on after
           boxes refused to be&nbsp;centered.
-        </p>
+        </Content>
       </ParagraphContainer>
 
       <ParagraphContainer>
         <ParagraphTitle>Year 2018</ParagraphTitle>{" "}
-        <p>
+        <Content>
           Eventually, I still picked IT as my major since computers were what I
           was most familiar with. To get myself prepared for college, I attended
           a beginner class for programming. They taught me C#, and I could say{" "}
           <EmphasizedText>
             I did not do any better than I did with&nbsp;Pascal.
           </EmphasizedText>
-        </p>
+        </Content>
       </ParagraphContainer>
 
       <ParagraphContainer>
         <ParagraphTitle>Year 2019</ParagraphTitle>
-        <p>
+        <Content>
           Believing that anything can be achieved with enough willpower, I
           passed all courses with an A or higher.{" "}
           <EmphasizedText>
@@ -61,7 +60,7 @@ function Roadmap(): ReactElement {
           interact with people, but <em>the universe</em> told me not to. In my
           second semester, a friend invited me to join her in one lecture.
           Little did I know, my whole life just turned to a new&nbsp;chapter.
-        </p>
+        </Content>
       </ParagraphContainer>
 
       <ParagraphContainer>
@@ -91,9 +90,9 @@ function Roadmap(): ReactElement {
 
 const {
   Container: ParagraphContainer,
-  EffectText,
   EmphasizedText,
   Title: ParagraphTitle,
+  Content,
 } = AboutParagraph;
 
 export { Roadmap };

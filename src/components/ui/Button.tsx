@@ -11,11 +11,14 @@ type Props = StyledButtonProps & {
   className?: string;
   // NOTE conflict between button and anchor event handlers
   anchorProps?: boolean | { href: string; target?: string; rel?: string };
+  onClick?: (
+    event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>
+  ) => void;
 };
 
 // NOTE Ref is used for Button as a link only
 const Button = React.forwardRef<Ref, Props>(
-  ({ className, children, anchorProps, ...styleProps }, ref) => {
+  ({ className, children, anchorProps, onClick, ...styleProps }, ref) => {
     const { mode } = useContext(ColorThemeContext);
 
     // Disable flickering animation in mobile because it cannot be seen
@@ -27,6 +30,7 @@ const Button = React.forwardRef<Ref, Props>(
       className,
       ref: anchorProps ? ref : undefined,
       as: anchorProps ? motion.a : undefined,
+      onClick,
     };
 
     return mode === "dark-mode" ? (

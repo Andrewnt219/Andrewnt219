@@ -8,6 +8,7 @@ import { PersonalInfo } from "@src/constants/personalInfo.constants";
 import { MediaIcon, MediaIconProps } from "../footer/MediaIcon";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { AnimatePresence, motion, Variants } from "framer-motion";
+import { PopupVideo } from "./AboutSection/components/PopupVideo";
 
 function ContactSection(): ReactElement {
   const [showVideo, setShowVideo] = useState<boolean>(false);
@@ -42,15 +43,12 @@ function ContactSection(): ReactElement {
             animate="visible"
           >
             <Video
-              muted
-              autoPlay
+              mp4Src="/videos/kindness.mp4"
               width={460}
               height={258}
-              onEnded={() => setShowVideo(false)}
-            >
-              <source src="/videos/kindness.mp4" type="video/mp4" />
-              Sorry, your browser doesn&abpos;t support embedded videos.
-            </Video>
+              videoEndedHandler={() => setShowVideo(false)}
+            />
+
             <CloseVideoButton onClick={() => setShowVideo(false)}>
               Close
             </CloseVideoButton>
@@ -195,14 +193,11 @@ const VideoContainer = styled(motion.div)<VideoContainerProps>`
 `;
 
 type VideoProps = {};
-const Video = styled.video<VideoProps>`
-  ${tw`rounded`}
-  width: 90vw;
-
-  @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    width: 60vw;
-  }
+const Video = styled(PopupVideo)<VideoProps>`
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
 `;
 
 type CloseVideoButtonProps = {};

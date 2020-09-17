@@ -8,8 +8,8 @@ import { spinZ } from "@src/styles/animation/spin.animation";
 import { GlobalStyling } from "@src/constants/global.constants";
 
 import { generateStackIconPaths } from "@src/data/homepageProjects.data";
-import { keyframes } from "styled-components";
 import { AnimatePresence, motion, Variants } from "framer-motion";
+import { pulse } from "@src/styles/animation/pulse.animation";
 
 /**
  * @description renders page's footer
@@ -81,15 +81,6 @@ const iconVariants: Variants = {
     },
   },
 };
-
-const pulse = keyframes`
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: .5;
-  }
-`;
 
 type ContainerProps = {
   height: string;

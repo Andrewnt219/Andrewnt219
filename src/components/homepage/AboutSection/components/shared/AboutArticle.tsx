@@ -21,7 +21,6 @@ function AboutArticle({ thumbnail, children }: Props): ReactElement {
           alt={alt}
           sizes="20vw"
           config={{ enablePlaceholder: true }}
-          loading="lazy"
         />
         <ThumbnailTitle>{title}</ThumbnailTitle>
       </ThumbnailContainer>

@@ -34,7 +34,7 @@ function StackInfo({ data, className }: Props): ReactElement {
       onBlur={onBlur}
       onFocus={onFocus}
     >
-      <StackIcon src={imageSource} alt={name} title={name} loading="lazy" />
+      <StackIcon src={imageSource} alt={name} title={name} />
 
       {/* NOTE Removing AnimatePresence makes "miss-clicking" other stack icons  */}
       <AnimatePresence>

@@ -1,9 +1,37 @@
+import { AchievementContext } from "@src/contexts/Achievement.context";
+import { achievementsData } from "@src/data/achievements.data";
 import { aboutThumbnails } from "@src/data/images.data";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext, useEffect, useState } from "react";
+import { styled } from "twin.macro";
 import { AboutArticle } from "./shared/AboutArticle";
 import { AboutParagraph } from "./shared/AboutParagraph";
 
 function Roadmap(): ReactElement {
+  /* ANCHOR Professor David achievement */
+  const [professorDavidClicked, setProfessorDavidClicked] = useState<boolean>(
+    false
+  );
+  const { queueAchievement } = useContext(AchievementContext);
+
+  const professorDavidClickHandler = () => {
+    setProfessorDavidClicked(true);
+  };
+
+  // Only show the achievement when the user go back to our page
+  useEffect(() => {
+    const visibilityHandler = () => {
+      if (professorDavidClicked && document.visibilityState === "visible") {
+        queueAchievement(achievementsData.professorDavid);
+      }
+    };
+
+    document.addEventListener("visibilitychange", visibilityHandler);
+
+    return () => {
+      document.removeEventListener("visibilitychange", visibilityHandler);
+    };
+  }, [queueAchievement, professorDavidClicked]);
+
   return (
     <AboutArticle thumbnail={aboutThumbnails["road-to-web-development"]}>
       <ParagraphContainer>
@@ -66,13 +94,16 @@ function Roadmap(): ReactElement {
       <ParagraphContainer>
         <ParagraphTitle>Now</ParagraphTitle> To this day, I am still deeply
         grateful to {/* TODO added David Humphrey achievement */}
-        <a
+        <ProfessorDavid
           href="https://twitter.com/humphd?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
           target="_blank"
           rel="noopener noreferrer"
+          tabIndex={0}
+          //
+          onClick={professorDavidClickHandler}
         >
           the professor
-        </a>{" "}
+        </ProfessorDavid>{" "}
         who invoked my curiosity for web once more.{" "}
         <EmphasizedText>
           All the things that I once could not stand, are now knowledge that I
@@ -94,5 +125,14 @@ const {
   Title: ParagraphTitle,
   Content,
 } = AboutParagraph;
+
+type ProfessorDavidProps = {};
+const ProfessorDavid = styled.a<ProfessorDavidProps>`
+  :hover,
+  :focus {
+    text-decoration: underline;
+    outline: none;
+  }
+`;
 
 export { Roadmap };

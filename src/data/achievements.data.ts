@@ -1,6 +1,10 @@
 import { AchievementProps } from "@src/components/ui/Achievement";
 
-export type AchievementName = "darkMode" | "legendary" | "professorDavid";
+export type AchievementName =
+  | "darkMode"
+  | "legendary"
+  | "professorDavid"
+  | "compliment";
 export const achievementsData: Record<AchievementName, AchievementProps> = {
   darkMode: _generateAchievementData(
     "Discover dark mode",
@@ -19,6 +23,12 @@ export const achievementsData: Record<AchievementName, AchievementProps> = {
     "My utmost respect to your passion",
     "fire icon",
     "professor.svg"
+  ),
+  compliment: _generateAchievementData(
+    'You used "compliment"',
+    "It is super effective!",
+    "heart icon",
+    "compliment.svg"
   ),
 };
 

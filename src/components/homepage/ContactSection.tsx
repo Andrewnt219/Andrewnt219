@@ -1,5 +1,5 @@
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useContext, useEffect, useState } from "react";
 import tw, { styled } from "twin.macro";
 import { Email } from "../ui/Email";
 import { HomeSection } from "./shared/HomeSection";
@@ -9,9 +9,23 @@ import { MediaIcon, MediaIconProps } from "../footer/MediaIcon";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { PopupVideo } from "./AboutSection/components/PopupVideo";
+import { AchievementContext } from "@src/contexts/Achievement.context";
 
 function ContactSection(): ReactElement {
   const [showVideo, setShowVideo] = useState<boolean>(false);
+  const [showAchievement, setShowAchievement] = useState<boolean>(false);
+  const { queueAchievement } = useContext(AchievementContext);
+
+  const videoEndedHandler = () => {
+    setShowVideo(false);
+    setShowAchievement(true);
+  };
+
+  useEffect(() => {
+    if (showAchievement) {
+      queueAchievement("compliment");
+    }
+  }, [showAchievement, queueAchievement]);
 
   return (
     <CustomHomeSection
@@ -46,7 +60,7 @@ function ContactSection(): ReactElement {
               mp4Src="/videos/kindness.mp4"
               width={460}
               height={258}
-              videoEndedHandler={() => setShowVideo(false)}
+              videoEndedHandler={videoEndedHandler}
             />
 
             <CloseVideoButton onClick={() => setShowVideo(false)}>

@@ -7,9 +7,10 @@ import { MainLayout } from "@src/components/layouts/MainLayout";
 import { Mode, ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { useEffect, useState } from "react";
 import { LocalStorageKeys } from "@src/constants/localStorage.constants";
+import { printToConsole } from "@src/helpers/printing.helpers";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  /* SECTION Light/Dark Mode  */
+  /* ANCHOR Light/Dark Mode  */
   // the theme of the app
   const [mode, setMode] = useState<Mode | null>(null);
 
@@ -42,7 +43,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       throw new Error("received a null for newMode");
     }
   };
-  /* !SECTION Light/Dark Mode */
+
+  /* ANCHOR Dev console log */
+  useEffect(() => {
+    printToConsole();
+  }, []);
 
   return (
     <ThemeProvider theme={defaultTheme}>

@@ -2,7 +2,7 @@ import { Button } from "@src/components/ui/Button";
 
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { AchievementContext } from "@src/contexts/Achievement.context";
-import { achievementsData } from "@src/data/achievements.data";
+
 import React, { ReactElement, useContext, useEffect, useState } from "react";
 import tw, { styled } from "twin.macro";
 
@@ -36,7 +36,7 @@ function AboutSection(): ReactElement {
   useEffect(() => {
     // if clicked order = legen -> dary
     if (showAchievement.join("").includes("legendary")) {
-      queueAchievement(achievementsData.legendary);
+      queueAchievement("legendary");
       // Reset attempt
       setShowAchievement([]);
     }

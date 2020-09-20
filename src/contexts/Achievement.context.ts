@@ -1,15 +1,16 @@
-import { AchievementProps } from "@src/components/ui/Achievement";
-import { UsePopupReturns } from "@src/hooks";
+import { AchievementName } from "./../data/achievements.data";
 import React from "react";
 
 type Context = {
-  queueAchievement: UsePopupReturns<AchievementProps>[1];
+  finishedAchievements: AchievementName[];
+  queueAchievement: (name: AchievementName) => void;
 };
 
 /**
  * @description context for Achievement gained
  */
 export const AchievementContext = React.createContext<Context>({
+  finishedAchievements: [],
   queueAchievement: () => {
     return;
   },

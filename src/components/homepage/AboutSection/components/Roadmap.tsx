@@ -1,5 +1,5 @@
 import { AchievementContext } from "@src/contexts/Achievement.context";
-import { achievementsData } from "@src/data/achievements.data";
+
 import { aboutThumbnails } from "@src/data/images.data";
 import React, { ReactElement, useContext, useEffect, useState } from "react";
 import { styled } from "twin.macro";
@@ -21,7 +21,7 @@ function Roadmap(): ReactElement {
   useEffect(() => {
     const visibilityHandler = () => {
       if (professorDavidClicked && document.visibilityState === "visible") {
-        queueAchievement(achievementsData.professorDavid);
+        queueAchievement("professorDavid");
       }
     };
 

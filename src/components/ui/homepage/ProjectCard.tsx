@@ -9,6 +9,7 @@ import { StackInfo } from "./StackInfo";
 import { ResponsiveImage } from "../ResponsiveImage";
 import { Card } from "../Card";
 import { GlobalStyling } from "@src/constants/global.constants";
+import { useAnalytics } from "@src/hooks/useAnalytic";
 
 type Props = {
   thumbnailSizes: string;
@@ -25,6 +26,21 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
     links: { github, demo, readMore },
     imageSrc,
   } = data;
+
+  /* ANCHOR Tracking */
+  const { trackEvent } = useAnalytics();
+
+  const githubButtonClickHandler = () => {
+    trackEvent({ action: `${title} - GitHub Clicked`, category: "Projects" });
+  };
+
+  const demoButtonClickHandler = () => {
+    trackEvent({ action: `${title} - Demo Clicked`, category: "Projects" });
+  };
+
+  const readMoreButtonClickHandler = () => {
+    trackEvent({ action: `${title} - Readmore Clicked`, category: "Projects" });
+  };
 
   return (
     <CustomCard className={className}>
@@ -60,6 +76,7 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
                 target: "_blank",
                 rel: "noopener noreferrer",
               }}
+              onClick={demoButtonClickHandler}
             >
               Demo
             </CustomPrimaryButton>
@@ -73,8 +90,9 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
                 target: "_blank",
                 rel: "noopener noreferrer",
               }}
+              onClick={readMoreButtonClickHandler}
             >
-              Summary
+              Read More
             </CustomSecondaryButton>
           </li>
 
@@ -86,6 +104,7 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
                 target: "_blank",
                 rel: "noopener noreferrer",
               }}
+              onClick={githubButtonClickHandler}
             >
               GitHub
             </CustomSecondaryButton>

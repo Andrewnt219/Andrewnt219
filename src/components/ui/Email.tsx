@@ -1,6 +1,7 @@
 import { PersonalInfo } from "@src/constants/personalInfo.constants";
 import { SnackbarContext } from "@src/contexts/Snackbar.context";
 import { useClickOutside } from "@src/hooks";
+import { useAnalytics } from "@src/hooks/useAnalytic";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, {
   ReactElement,
@@ -16,6 +17,9 @@ type Props = {
 };
 
 function Email({ className }: Props): ReactElement {
+  /* ANCHOR Tracking */
+  const { trackEvent } = useAnalytics();
+
   /* ANCHOR show/hide options */
   const [showOptions, setShowOptions] = useState(false);
 
@@ -31,6 +35,8 @@ function Email({ className }: Props): ReactElement {
 
   const clickHandler = () => {
     setShowOptions((prevState) => !prevState);
+
+    trackEvent({ action: "Email Clicked", category: "Contact" });
   };
 
   // NOTE need to be in useEffect to only trigger AFTER state has updated

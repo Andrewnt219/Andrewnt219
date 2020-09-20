@@ -12,6 +12,7 @@ import {
 } from "@src/constants/homepage.constants";
 import { carouselImages } from "@src/data/images.data";
 import { useMediaQuery, useSidebarActive } from "@src/hooks";
+import { useAnalytics } from "@src/hooks/useAnalytic";
 
 enum CarouselStyling {
   ImageWidthMobile = "25vw",
@@ -27,6 +28,13 @@ const CAROUSEL_SIZES = `${CarouselStyling.ImageWidthMobile}`;
 const SECTION_ID = HomepageSectionIds.Hero;
 
 function HeroSection(): ReactElement {
+  /* ANCHOR tracking */
+  const { trackEvent } = useAnalytics();
+
+  const projectsButtonClickHandler = () => {
+    trackEvent({ action: "Clicked Projects", category: "Hero Section" });
+  };
+
   // Change active section in sidebar
   // Check if HeroSection is inView
   const [ref, inView] = useSidebarActive(SECTION_ID);
@@ -46,6 +54,7 @@ function HeroSection(): ReactElement {
   /* ANCHOR Event handlers */
   const onArrowDownClicked = () => {
     document.getElementById(HomepageSectionIds.Projects)?.scrollIntoView();
+    trackEvent({ action: "Arrow Down Clicked", category: "Hero Section" });
   };
 
   return (
@@ -61,7 +70,11 @@ function HeroSection(): ReactElement {
         </Summary>
 
         <NextLink href={`/#${HomepageSectionIds.Projects}`} passHref>
-          <CustomButton anchorProps primary>
+          <CustomButton
+            anchorProps
+            primary
+            onClick={projectsButtonClickHandler}
+          >
             See my projects
           </CustomButton>
         </NextLink>

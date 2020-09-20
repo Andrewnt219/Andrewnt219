@@ -10,8 +10,17 @@ import { GlobalStyling } from "@src/constants/global.constants";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { PopupVideo } from "./AboutSection/components/PopupVideo";
 import { AchievementContext } from "@src/contexts/Achievement.context";
+import { useAnalytics } from "@src/hooks/useAnalytic";
 
 function ContactSection(): ReactElement {
+  /* ANCHOR Tracking  */
+  const { trackEvent } = useAnalytics();
+
+  const cvButtonClicked = () => {
+    trackEvent({ action: "CV Button Clicked", category: "Contact" });
+  };
+
+  /* ANCHOR Compliment achievement */
   const [showVideo, setShowVideo] = useState<boolean>(false);
   const [showAchievement, setShowAchievement] = useState<boolean>(false);
   const { queueAchievement } = useContext(AchievementContext);
@@ -39,15 +48,22 @@ function ContactSection(): ReactElement {
         </li>
 
         <li>
-          <CvButton href="/Andrew Nguyen_CV.pdf" download>
+          <CvButton
+            href="/Andrew Nguyen_CV.pdf"
+            download
+            onClick={cvButtonClicked}
+          >
             Download CV
           </CvButton>
         </li>
       </Grid>
+
       <Grid>{renderMediaIcons()}</Grid>
+
       <Compliment onClick={() => setShowVideo(true)}>
         Send a compliment
       </Compliment>
+
       <AnimatePresence>
         {showVideo && (
           <VideoContainer

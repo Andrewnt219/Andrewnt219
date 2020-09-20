@@ -1,4 +1,5 @@
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
+import { useAnalytics } from "@src/hooks/useAnalytic";
 import React, { ReactElement, useContext } from "react";
 import { IconType } from "react-icons";
 import tw, { css, styled } from "twin.macro";
@@ -20,6 +21,13 @@ function MediaIcon({
 }: MediaIconProps): ReactElement {
   const { mode } = useContext(ColorThemeContext);
 
+  /* ANCHOR Tracking */
+  const { trackEvent } = useAnalytics();
+
+  const onLinkClicked = () => {
+    trackEvent({ action: `${label} Clicked`, category: "Contact" });
+  };
+
   return (
     <Container>
       <IconWrapper
@@ -31,6 +39,8 @@ function MediaIcon({
         // styling
         isDarkMode={mode === "dark-mode"}
         iconColor={iconColor}
+        //
+        onClick={onLinkClicked}
       >
         <Icon />
       </IconWrapper>

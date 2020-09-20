@@ -8,6 +8,8 @@ import { Mode, ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { useEffect, useState } from "react";
 import { LocalStorageKeys } from "@src/constants/localStorage.constants";
 import { printToConsole } from "@src/helpers/printing.helpers";
+import { useAnalytics } from "@src/hooks/useAnalytic";
+import { Router } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
   /* ANCHOR Light/Dark Mode  */
@@ -48,6 +50,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     printToConsole();
   }, []);
+
+  /* ANCHOR GA */
+  const { init, trackPageViewed } = useAnalytics();
+
+  useEffect(() => {
+    init("UA-163130540-1");
+
+    trackPageViewed();
+
+    Router.events.on("routeChangeComplete", () => {
+      trackPageViewed();
+    });
+  }, [init, trackPageViewed]);
 
   return (
     <ThemeProvider theme={defaultTheme}>

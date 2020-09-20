@@ -11,18 +11,19 @@ import { AboutPicture } from "./shared/AboutPicture";
 
 const BREAKPOINT = GlobalStyling.AppBarBreakpoint;
 
-function LoggingOff(): ReactElement {
+type Props = {
+  onVideoEnded: () => void;
+};
+
+function LoggingOff({ onVideoEnded }: Props): ReactElement {
   const { breakpoints } = useTheme();
 
-  /*  ANCHOR show barney legend  */
   const [showVideo, setShowVideo] = useState(false);
 
-  const legendTitleClickHandler = () => {
-    setShowVideo(true);
-  };
-
+  const legendTitleClickHandler = () => setShowVideo(true);
   const videoEndedHandler = () => {
     setShowVideo(false);
+    onVideoEnded();
   };
 
   return (

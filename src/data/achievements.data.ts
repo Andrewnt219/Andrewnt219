@@ -1,13 +1,19 @@
 import { AchievementProps } from "@src/components/ui/Achievement";
 
-export const achievementsData: Record<string, AchievementProps> = {
+type AchievementName = "darkMode" | "legendary";
+export const achievementsData: Record<AchievementName, AchievementProps> = {
   darkMode: _generateAchievementData(
     "Discover dark mode",
     "Hello darkness, my old friend...",
     "moon icon",
     "dark-mode.svg"
   ),
-  // TODO Legend. Wait for it... (subtitle) ...dary
+  legendary: _generateAchievementData(
+    "Legend",
+    "Wait for it...",
+    "cocktail icon",
+    "wait-for-it.svg"
+  ),
 };
 
 function _generateAchievementData(

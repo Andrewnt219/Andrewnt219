@@ -27,7 +27,6 @@ export const carouselImages: CarouselImage[] = [
   },
 ];
 
-/* TODO Compress all images in About */
 /* ANCHOR About thumbnails */
 export type AboutThumbnailProps = {
   src: string;

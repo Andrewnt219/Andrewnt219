@@ -22,7 +22,7 @@ function HeadMeta(): ReactElement {
       {/* OG */}
       <meta key="ogType" name="og:type" content="website" />
       <meta key="ogSiteName" name="og:site-name" content="Andrew Nguyen" />
-      {/* TODO change image */}
+
       <meta key="ogUrl" property="og:url" content="https://andrewnt.dev/" />
       <meta key="fbAppId" property="fb:app_id" content="349386242864659" />
       <meta key="ogImage" property="og:image" content="/og-image.jpg" />

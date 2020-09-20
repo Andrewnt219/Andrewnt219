@@ -13,7 +13,7 @@ function ProjectsSection(): ReactElement {
   const { breakpoints } = useTheme();
   const thumbnailSizes = `(min-width: ${
     breakpoints[GlobalStyling.DesktopBreakpoint]
-  }): 40vw, 85vw`;
+  }): 40vw, 70vw`;
 
   return (
     <HomeSection

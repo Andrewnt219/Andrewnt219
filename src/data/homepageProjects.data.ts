@@ -32,7 +32,7 @@ const STACKS = [
 
 type StackName = typeof STACKS[number];
 
-function _generateStackIconPaths(
+export function generateStackIconPaths(
   fileNames: StackName[]
 ): HomePageProject["stacksInfo"] {
   // remove slug, then transform to capital casing
@@ -71,7 +71,7 @@ export const homepageProjectsData: HomePageProject[] = [
     shortDescription:
       "Get the lastest trending movies, look up movies' info, watch trailers, all in a single click.",
     additionalNote: "AniMovies was created for playing with styled-components.",
-    stacksInfo: _generateStackIconPaths([
+    stacksInfo: generateStackIconPaths([
       "react.js",
       "styled-components",
       "framer-motion",
@@ -89,7 +89,7 @@ export const homepageProjectsData: HomePageProject[] = [
     shortDescription:
       "There is always something for everybody. A place to relax your mind, and enjoy japanese authentic food.",
     additionalNote: "Tamago was created for exploring TypeScript.",
-    stacksInfo: _generateStackIconPaths([
+    stacksInfo: generateStackIconPaths([
       "typescript",
       "react.js",
       "redux",
@@ -107,7 +107,7 @@ export const homepageProjectsData: HomePageProject[] = [
     shortDescription:
       "Get updated on what everyone is talking about. Accurately look for articles with advanced search tools.",
     additionalNote: "Next Article was created for practicing Next.js.",
-    stacksInfo: _generateStackIconPaths([
+    stacksInfo: generateStackIconPaths([
       "next.js",
       "material-ui",
       "styled-components",
@@ -125,7 +125,7 @@ export const homepageProjectsData: HomePageProject[] = [
       "Sign up to rent hundreds of movies at discounted price. Order now to get your favorite movies in just 24 hours.",
     additionalNote:
       "Nodeflix was created to learn back-end with Express.js, MongoDB, JWT, etc.",
-    stacksInfo: _generateStackIconPaths([
+    stacksInfo: generateStackIconPaths([
       "express.js",
       "mongoDB",
       "node.js",

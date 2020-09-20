@@ -1,5 +1,5 @@
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import tw, { styled } from "twin.macro";
 import { Email } from "../ui/Email";
 import { HomeSection } from "./shared/HomeSection";
@@ -7,8 +7,12 @@ import { FaGithubAlt, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { PersonalInfo } from "@src/constants/personalInfo.constants";
 import { MediaIcon, MediaIconProps } from "../footer/MediaIcon";
 import { GlobalStyling } from "@src/constants/global.constants";
+import { AnimatePresence, motion, Variants } from "framer-motion";
+import { PopupVideo } from "./AboutSection/components/PopupVideo";
 
 function ContactSection(): ReactElement {
+  const [showVideo, setShowVideo] = useState<boolean>(false);
+
   return (
     <CustomHomeSection
       heading="Contacts"
@@ -27,6 +31,30 @@ function ContactSection(): ReactElement {
         </li>
       </Grid>
       <Grid>{renderMediaIcons()}</Grid>
+      <Compliment onClick={() => setShowVideo(true)}>
+        Send a compliment
+      </Compliment>
+      <AnimatePresence>
+        {showVideo && (
+          <VideoContainer
+            variants={videoContainerVariants}
+            initial="hidden"
+            exit="exit"
+            animate="visible"
+          >
+            <Video
+              mp4Src="/videos/kindness.mp4"
+              width={460}
+              height={258}
+              videoEndedHandler={() => setShowVideo(false)}
+            />
+
+            <CloseVideoButton onClick={() => setShowVideo(false)}>
+              Close
+            </CloseVideoButton>
+          </VideoContainer>
+        )}
+      </AnimatePresence>
     </CustomHomeSection>
   );
 }
@@ -63,7 +91,9 @@ function renderMediaIcons() {
   ));
 }
 
-const CustomHomeSection = styled(HomeSection)``;
+const CustomHomeSection = styled(HomeSection)`
+  ${tw`relative`}
+`;
 
 type GridProps = {};
 const Grid = styled.ul<GridProps>`
@@ -72,7 +102,7 @@ const Grid = styled.ul<GridProps>`
   margin-bottom: 1em;
 
   @media screen and (min-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.AppBarBreakpoint]}) {
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
     grid-template-columns: repeat(3, 1fr);
   }
 `;
@@ -108,6 +138,71 @@ const CvButton = styled.a<CvButtonProps>`
     ${tw`border-secondary`}
     text-decoration: underline;
   }
+`;
+
+type ComplimentProps = {};
+const Compliment = styled.button<ComplimentProps>`
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  font-size: 0.5em;
+
+  :hover,
+  :focus {
+    outline: none;
+    text-decoration: underline;
+  }
+`;
+
+const videoContainerVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    scale: 1,
+  },
+  exit: {
+    scale: 0,
+    x: "100vw",
+    y: "100vh",
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+type VideoContainerProps = {};
+const VideoContainer = styled(motion.div)<VideoContainerProps>`
+  ${tw`z-50`}
+
+  position: fixed;
+  top: 2rem;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--primary-color-rgb), 0.9);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+type VideoProps = {};
+const Video = styled(PopupVideo)<VideoProps>`
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+`;
+
+type CloseVideoButtonProps = {};
+const CloseVideoButton = styled.button<CloseVideoButtonProps>`
+  ${tw`uppercase focus:outline-none mt-5 hocus:underline`}
 `;
 
 export { ContactSection };

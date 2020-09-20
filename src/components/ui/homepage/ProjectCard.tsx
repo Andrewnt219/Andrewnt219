@@ -33,7 +33,6 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
         sizes={thumbnailSizes}
         alt={filePathToName(imageSrc)}
         config={{ isPng: true, enablePlaceholder: true }}
-        loading="lazy"
       />
 
       <InfoContainer>

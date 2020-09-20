@@ -31,16 +31,12 @@ export const useMediaQuery = (
       setMatches(true);
     }
     // Subscribe for later changes
-    const handler = (e: MediaQueryListEvent): void => {
+    mqList.onchange = (e: MediaQueryListEvent): void => {
       if (e.matches) {
         setMatches(true);
       } else {
         setMatches(false);
       }
-    };
-    mqList.addEventListener("change", handler);
-    return () => {
-      mqList.removeEventListener("change", handler);
     };
   }, [breakpoint, breakpoints, orientation]);
 

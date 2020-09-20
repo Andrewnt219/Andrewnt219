@@ -38,7 +38,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* Favicon for google search */}
-          <link rel="shortcut icon" href="favicon.ico" />
+          <link rel="shortcut icon" href="/favicon.ico" />
 
           {/* Preload fonts for homepage */}
           <link
@@ -106,7 +106,6 @@ export default class MyDocument extends Document {
                   return;
                 }
               })();
-              
             `,
             }}
           />

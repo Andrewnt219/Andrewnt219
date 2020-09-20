@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import tw, { styled } from "twin.macro";
 
 import { Logo } from "../ui/Logo";
@@ -7,7 +7,9 @@ import { useMediaQuery } from "@src/hooks";
 import { spinZ } from "@src/styles/animation/spin.animation";
 import { GlobalStyling } from "@src/constants/global.constants";
 
-import { FaReact } from "react-icons/fa";
+import { generateStackIconPaths } from "@src/data/homepageProjects.data";
+import { AnimatePresence, motion, Variants } from "framer-motion";
+import { pulse } from "@src/styles/animation/pulse.animation";
 
 /**
  * @description renders page's footer
@@ -15,17 +17,70 @@ import { FaReact } from "react-icons/fa";
 function Footer(): ReactElement {
   const enableAnimation = useMediaQuery("xl");
 
+  /* ANCHOR switch icon on click */
+  const [isReactIcon, setIsReactIcon] = useState<boolean>(true);
+  const [nextJsIcon, reactJsIcon] = generateStackIconPaths([
+    "next.js",
+    "react.js",
+  ]);
+
+  const iconClickHandler = () => {
+    setIsReactIcon((prev) => !prev);
+  };
+
   return (
     <Container height={GlobalStyling.FooterHeight}>
       <Logo size="20rem" animated={enableAnimation} />
 
-      <Text>
+      <Text onClick={iconClickHandler} isReactIcon={isReactIcon}>
         Made by Andrew Nguyen with&nbsp;
-        <FaReact aria-label="react.js" role="img" />
+        <AnimatePresence exitBeforeEnter>
+          {isReactIcon ? (
+            <ReactJsIcon
+              src={reactJsIcon.imageSource}
+              alt={reactJsIcon.name}
+              //
+              key={reactJsIcon.name}
+              variants={iconVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            />
+          ) : (
+            <NextJsIcon
+              src={nextJsIcon.imageSource}
+              alt={nextJsIcon.name}
+              //
+              key={nextJsIcon.name}
+              variants={iconVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            />
+          )}
+        </AnimatePresence>
       </Text>
     </Container>
   );
 }
+
+const iconVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 1,
+    },
+  },
+};
 
 type ContainerProps = {
   height: string;
@@ -40,15 +95,23 @@ const Container = styled.footer<ContainerProps>`
   justify-content: space-between;
 `;
 
-type TextProps = {};
+type TextProps = {
+  isReactIcon: boolean;
+};
 const Text = styled.p<TextProps>`
-  ${tw`flex justify-center items-center `}
+  ${tw`flex justify-center items-center cursor-pointer`}
 
-  svg {
-    font-size: larger;
-    fill: var(--accent-color);
-    animation: ${spinZ} 10s linear infinite;
+  img {
+    height: 1.75em;
   }
+`;
+
+const NextJsIcon = styled(motion.img)`
+  animation: ${pulse} 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+`;
+
+const ReactJsIcon = styled(motion.img)`
+  animation: ${spinZ} 10s linear infinite;
 `;
 
 export { Footer };

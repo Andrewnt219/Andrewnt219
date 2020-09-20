@@ -15,34 +15,34 @@ export const useMediaQuery = (
   // get mobile breakpoint
   const { breakpoints } = useTheme();
 
-  useEffect(() => {
-    const defaultBreakpoint = GlobalStyling.AppBarBreakpoint;
+  // useEffect(() => {
+  //   const defaultBreakpoint = GlobalStyling.AppBarBreakpoint;
 
-    const sizeQuery = `screen and (min-width: ${
-      breakpoints[breakpoint ?? defaultBreakpoint]
-    })`;
-    const orientationQuery = orientation
-      ? `, (orientation: ${orientation})`
-      : "";
-    const mqList = window.matchMedia(sizeQuery + orientationQuery);
+  //   const sizeQuery = `screen and (min-width: ${
+  //     breakpoints[breakpoint ?? defaultBreakpoint]
+  //   })`;
+  //   const orientationQuery = orientation
+  //     ? `, (orientation: ${orientation})`
+  //     : "";
+  //   const mqList = window.matchMedia(sizeQuery + orientationQuery);
 
-    // if query matches initially
-    if (mqList.matches) {
-      setMatches(true);
-    }
-    // Subscribe for later changes
-    const handler = (e: MediaQueryListEvent): void => {
-      if (e.matches) {
-        setMatches(true);
-      } else {
-        setMatches(false);
-      }
-    };
-    mqList.addEventListener("change", handler);
-    return () => {
-      mqList.removeEventListener("change", handler);
-    };
-  }, [breakpoint, breakpoints, orientation]);
+  //   // if query matches initially
+  //   if (mqList.matches) {
+  //     setMatches(true);
+  //   }
+  //   // Subscribe for later changes
+  //   const handler = (e: MediaQueryListEvent): void => {
+  //     if (e.matches) {
+  //       setMatches(true);
+  //     } else {
+  //       setMatches(false);
+  //     }
+  //   };
+  //   mqList.addEventListener("change", handler);
+  //   return () => {
+  //     mqList.removeEventListener("change", handler);
+  //   };
+  // }, [breakpoint, breakpoints, orientation]);
 
   return matches;
 };

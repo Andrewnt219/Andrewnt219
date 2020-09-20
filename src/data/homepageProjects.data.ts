@@ -1,8 +1,4 @@
-import {
-  removeSlug,
-  toSlugString,
-  toTitleCase,
-} from "@src/helpers/utils.helpers";
+import { removeSlug, toTitleCase } from "@src/helpers/utils.helpers";
 
 /* SECTION Stacks data*/
 // NOTE STACKS are also filenames.svg
@@ -78,7 +74,8 @@ export const homepageProjectsData: HomePageProject[] = [
       "redux",
     ]),
     links: {
-      readMore: _generateReadMoreLink("AniMovies"),
+      readMore:
+        "https://github.com/Andrewnt219/animovies/blob/master/README.md",
       demo: "https://andrewnt219.github.io/animovies",
       github: _generateGitHubLink("animovies"),
     },
@@ -96,7 +93,8 @@ export const homepageProjectsData: HomePageProject[] = [
       "firebase",
     ]),
     links: {
-      readMore: _generateReadMoreLink("Tamago"),
+      readMore:
+        "https://github.com/Andrewnt219/tamago-sushi-bar/blob/master/README.md",
       demo: "https://andrewnt219.github.io/tamago-sushi-bar",
       github: _generateGitHubLink("tamago-sushi-bar"),
     },
@@ -113,7 +111,8 @@ export const homepageProjectsData: HomePageProject[] = [
       "styled-components",
     ]),
     links: {
-      readMore: _generateReadMoreLink("Next Article"),
+      readMore:
+        "https://github.com/Andrewnt219/next-article/blob/master/README.md",
       demo: "https://next-article.vercel.app/",
       github: _generateGitHubLink("next-article"),
     },
@@ -132,7 +131,7 @@ export const homepageProjectsData: HomePageProject[] = [
       "sass",
     ]),
     links: {
-      readMore: _generateReadMoreLink("Nodeflix"),
+      readMore: "https://github.com/Andrewnt219/nodeflix/blob/master/README.md",
       demo: "http://nodeflix.herokuapp.com/",
       github: _generateGitHubLink("nodeflix"),
     },
@@ -142,10 +141,6 @@ export const homepageProjectsData: HomePageProject[] = [
 
 function _generateProjectImageSource(filename: string) {
   return `projects/${filename}`;
-}
-
-function _generateReadMoreLink(projectName: ProjectName) {
-  return `/projects/${toSlugString(projectName.toLowerCase())}`;
 }
 
 function _generateGitHubLink(repoName: string) {

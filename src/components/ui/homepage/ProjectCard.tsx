@@ -5,7 +5,7 @@ import { ReactElement } from "react";
 import tw, { styled } from "twin.macro";
 import { Button } from "../Button";
 import { StackInfo } from "./StackInfo";
-import NextLink from "next/link";
+
 import { ResponsiveImage } from "../ResponsiveImage";
 import { Card } from "../Card";
 import { GlobalStyling } from "@src/constants/global.constants";
@@ -66,14 +66,16 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
           </li>
 
           <li style={{ gridArea: "readMore" }}>
-            <NextLink passHref href={readMore}>
-              <CustomSecondaryButton
-                aria-label={`Read more about project ${title}`}
-                anchorProps
-              >
-                Summary
-              </CustomSecondaryButton>
-            </NextLink>
+            <CustomSecondaryButton
+              aria-label={`Overview of project ${title}`}
+              anchorProps={{
+                href: readMore,
+                target: "_blank",
+                rel: "noopener noreferrer",
+              }}
+            >
+              Summary
+            </CustomSecondaryButton>
           </li>
 
           <li style={{ gridArea: "github" }}>

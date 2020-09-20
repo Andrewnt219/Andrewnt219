@@ -96,9 +96,16 @@ export default class MyDocument extends Document {
                   console.log(error);
                   console.warn('Failed to access localStorage');
                 }
+
+                const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if(userPrefersDark) {
+                  document.body.classList.add("dark-mode");
+                  return;
+                } else {
+                  document.body.classList.add("light-mode");
+                  return;
+                }
               })();
-              
-              
             `,
             }}
           />

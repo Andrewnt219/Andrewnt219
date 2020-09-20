@@ -14,7 +14,23 @@ module.exports = withPlugins(
         responsive: {
           adapter: require("responsive-loader/sharp"),
           quality: 60,
-          sizes: process.env.NODE_ENV === "production" ? [1920] : [1920],
+          sizes:
+            process.env.NODE_ENV === "production"
+              ? [
+                  100,
+                  200,
+                  320,
+                  480,
+                  640,
+                  768,
+                  1024,
+                  1200,
+                  1600,
+                  1920,
+                  2560,
+                  3840,
+                ]
+              : [1920],
           placeholder: true,
           placeholderSize: 40,
         },

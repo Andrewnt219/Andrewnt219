@@ -55,6 +55,7 @@ type ContainerProps = {};
 const Container = styled(motion.div)<ContainerProps>`
   ${tw`bg-lprimary p-4 z-50 border-4 border-secondary`}
   width: max-content;
+  font-size: 0.8em;
 
   position: fixed;
   bottom: 2vh;

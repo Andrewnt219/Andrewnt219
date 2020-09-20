@@ -19,7 +19,7 @@ import { Achievement, AchievementProps } from "../ui/Achievement";
 import { AchievementContext } from "@src/contexts/Achievement.context";
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { LocalStorageKeys } from "@src/constants/localStorage.constants";
-import { achievementsData } from "@src/data/achievements.data";
+import { AchievementName, achievementsData } from "@src/data/achievements.data";
 import {
   HomepageSections,
   HomepageSection,
@@ -34,37 +34,70 @@ type Props = {
  * @description renders shared layout between pages
  */
 function MainLayout({ children }: Props): ReactElement {
-  /* SECTION Snack bar */
+  /* ANCHOR Snack bar */
   const [snackbarMessages, queueSnackbarMessage] = usePopup<{
     message: string;
   }>(GlobalNumbers.SnackbarDisplayDurationInMs);
-  /* !SECTION Snack bar */
 
-  /* SECTION DarkMode Achievement */
-  const { mode } = useContext(ColorThemeContext);
-  const [achievements, queueAchievement] = usePopup<AchievementProps>(
-    GlobalNumbers.AchievementDisplayDurationInMs
+  /* ANCHOR Achievements */
+  const [finishedAchievements, setFinishedAchievements] = useState<
+    AchievementName[]
+  >([]);
+  const [popupAchievements, queuePopupAchievements] = usePopup<
+    AchievementProps
+  >(GlobalNumbers.AchievementDisplayDurationInMs);
+
+  // Choose whether or not displaying the achievement
+  const newAchievementHandler = useCallback(
+    (achievementName: AchievementName) => {
+      // check if is a new achievement
+      if (!finishedAchievements.includes(achievementName)) {
+        const updatedFinishedAchievements = [
+          ...finishedAchievements,
+          achievementName,
+        ];
+
+        queuePopupAchievements(achievementsData[achievementName]);
+
+        setFinishedAchievements(updatedFinishedAchievements);
+
+        // update finishedAchievements in localStorage
+        try {
+          localStorage.setItem(
+            LocalStorageKeys.Achievements,
+            JSON.stringify(updatedFinishedAchievements)
+          );
+        } catch (error) {
+          console.warn("Cannot write to localStorage");
+          console.log(error);
+        }
+      }
+    },
+    [finishedAchievements, queuePopupAchievements]
   );
+
+  // Get finishedAchievements from localStorage
+  useEffect(() => {
+    const localAchievementsString =
+      localStorage.getItem(LocalStorageKeys.Achievements) ?? "[]";
+
+    const localAchievements = JSON.parse(
+      localAchievementsString
+    ) as AchievementName[];
+
+    setFinishedAchievements(localAchievements);
+  }, []);
+
+  /* ANCHOR DarkMode Achievement */
+  const { mode } = useContext(ColorThemeContext);
 
   useEffect(() => {
     if (mode === "dark-mode") {
-      try {
-        const darkModeAchievement = localStorage.getItem(
-          LocalStorageKeys.DarkMode
-        );
-        if (!darkModeAchievement) {
-          localStorage.setItem(LocalStorageKeys.DarkMode, "true");
-          queueAchievement(achievementsData.darkMode);
-        }
-      } catch (error) {
-        console.warn("Failed to access localStorage");
-        console.log(error);
-      }
+      newAchievementHandler("darkMode");
     }
-  }, [mode, queueAchievement]);
-  /* !SECTION DarkMode Achievement */
+  }, [mode, newAchievementHandler]);
 
-  /* SECTION Active Link Item */
+  /* ANCHOR Active Link Item */
   // NOTE Should to be null on first page load
   const [inViewSection, setInViewSection] = useState<null | HomepageSection>(
     null
@@ -76,11 +109,15 @@ function MainLayout({ children }: Props): ReactElement {
     },
     []
   );
-  /* !SECTION Active Link Item */
 
   return (
     <SnackbarContext.Provider value={{ queueSnackbarMessage }}>
-      <AchievementContext.Provider value={{ queueAchievement }}>
+      <AchievementContext.Provider
+        value={{
+          queueAchievement: newAchievementHandler,
+          finishedAchievements,
+        }}
+      >
         <HomepageSections.Provider value={{ inViewSection, onSectionSwitch }}>
           <HeadMeta />
 
@@ -97,7 +134,7 @@ function MainLayout({ children }: Props): ReactElement {
           </AnimatePresence>
 
           <AnimatePresence>
-            {achievements.map(({ id, ...props }) => (
+            {popupAchievements.map(({ id, ...props }) => (
               <Achievement key={id} {...props} />
             ))}
           </AnimatePresence>

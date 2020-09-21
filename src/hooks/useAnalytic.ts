@@ -9,7 +9,7 @@ type Event = {
 
 export const useAnalytics = () => {
   const init = useCallback((trackingId: string) => {
-    ReactGA.initialize(trackingId, { debug: true });
+    ReactGA.initialize(trackingId);
   }, []);
 
   const trackPageViewed = useCallback((path?: string) => {

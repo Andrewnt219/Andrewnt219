@@ -1,7 +1,9 @@
 import { Button } from "@src/components/ui/Button";
+import { GaCategories } from "@src/constants/ga.constants";
 
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
 import { AchievementContext } from "@src/contexts/Achievement.context";
+import { useAnalytics } from "@src/hooks/useAnalytic";
 
 import React, { ReactElement, useContext, useEffect, useState } from "react";
 import tw, { styled } from "twin.macro";
@@ -12,6 +14,13 @@ import { PopupVideo } from "./components/PopupVideo";
 import { Roadmap } from "./components/Roadmap";
 
 function AboutSection(): ReactElement {
+  /* ANCHOR Trakcing */
+  const { trackEvent } = useAnalytics();
+
+  const chatButtonClickHandler = () => {
+    trackEvent({ action: "Chat Button Clicked", category: GaCategories.About });
+  };
+
   /* ANCHOR wait for it achievement */
   // Show dary video
   const [showDaryVideo, setShowDaryVideo] = useState(false);
@@ -37,10 +46,17 @@ function AboutSection(): ReactElement {
     // if clicked order = legen -> dary
     if (showAchievement.join("").includes("legendary")) {
       queueAchievement("legendary");
+
       // Reset attempt
       setShowAchievement([]);
+
+      // Track event
+      trackEvent({
+        action: "Legendary achieved",
+        category: GaCategories.Achievements,
+      });
     }
-  }, [queueAchievement, showAchievement]);
+  }, [queueAchievement, showAchievement, trackEvent]);
 
   return (
     <>
@@ -56,6 +72,7 @@ function AboutSection(): ReactElement {
             <Button
               primary
               anchorProps={{ href: `#${HomepageSectionIds.Contact}` }}
+              onClick={chatButtonClickHandler}
             >
               Let&apos;s chat
             </Button>

@@ -11,13 +11,14 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 import { PopupVideo } from "./AboutSection/components/PopupVideo";
 import { AchievementContext } from "@src/contexts/Achievement.context";
 import { useAnalytics } from "@src/hooks/useAnalytic";
+import { GaCategories } from "@src/constants/ga.constants";
 
 function ContactSection(): ReactElement {
   /* ANCHOR Tracking  */
   const { trackEvent } = useAnalytics();
 
   const cvButtonClicked = () => {
-    trackEvent({ action: "CV Button Clicked", category: "Contact" });
+    trackEvent({ action: "CV Button Clicked", category: GaCategories.Contact });
   };
 
   /* ANCHOR Compliment achievement */
@@ -33,8 +34,12 @@ function ContactSection(): ReactElement {
   useEffect(() => {
     if (showAchievement) {
       queueAchievement("compliment");
+      trackEvent({
+        action: "Compliment achieved",
+        category: GaCategories.Achievements,
+      });
     }
-  }, [showAchievement, queueAchievement]);
+  }, [showAchievement, queueAchievement, trackEvent]);
 
   return (
     <CustomHomeSection

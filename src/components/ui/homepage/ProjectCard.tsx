@@ -10,6 +10,7 @@ import { ResponsiveImage } from "../ResponsiveImage";
 import { Card } from "../Card";
 import { GlobalStyling } from "@src/constants/global.constants";
 import { useAnalytics } from "@src/hooks/useAnalytic";
+import { GaCategories } from "@src/constants/ga.constants";
 
 type Props = {
   thumbnailSizes: string;
@@ -31,15 +32,24 @@ function ProjectCard({ className, thumbnailSizes, data }: Props): ReactElement {
   const { trackEvent } = useAnalytics();
 
   const githubButtonClickHandler = () => {
-    trackEvent({ action: `${title} - GitHub Clicked`, category: "Projects" });
+    trackEvent({
+      action: `${title} - GitHub Clicked`,
+      category: GaCategories.Projects,
+    });
   };
 
   const demoButtonClickHandler = () => {
-    trackEvent({ action: `${title} - Demo Clicked`, category: "Projects" });
+    trackEvent({
+      action: `${title} - Demo Clicked`,
+      category: GaCategories.Projects,
+    });
   };
 
   const readMoreButtonClickHandler = () => {
-    trackEvent({ action: `${title} - Readmore Clicked`, category: "Projects" });
+    trackEvent({
+      action: `${title} - Readmore Clicked`,
+      category: GaCategories.Projects,
+    });
   };
 
   return (

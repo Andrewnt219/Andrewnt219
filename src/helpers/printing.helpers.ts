@@ -22,7 +22,7 @@ export function printToConsole() {
           2. Click on the React JS icon
           3. The password is "${devAchievementPassword}"
         `,
-    "color: yellow"
+    "color: orangered"
   );
   return;
 }

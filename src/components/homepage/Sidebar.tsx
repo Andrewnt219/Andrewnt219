@@ -5,12 +5,24 @@ import React, { ReactElement } from "react";
 import tw, { styled } from "twin.macro";
 import NextLink from "next/link";
 import { HomepageSectionIds } from "@src/constants/homepage.constants";
+import { useAnalytics } from "@src/hooks/useAnalytic";
+import { GaCategories } from "@src/constants/ga.constants";
 
 type Props = {
   inViewSection: HomepageSection;
 };
 
 function Sidebar({ inViewSection }: Props): ReactElement {
+  /* ANCHOR Tracking */
+  const { trackEvent } = useAnalytics();
+
+  const linkClickHandler = (fragment: HomepageSectionIds) => {
+    trackEvent({
+      action: `${fragment} Clicked in Sidebar`,
+      category: GaCategories.Sidebar,
+    });
+  };
+
   return (
     <Container
       variants={containerVariants}
@@ -27,7 +39,10 @@ function Sidebar({ inViewSection }: Props): ReactElement {
               }
               passHref
             >
-              <StyledLink active={inViewSection === fragment}>
+              <StyledLink
+                active={inViewSection === fragment}
+                onClick={() => linkClickHandler(fragment)}
+              >
                 {text}
               </StyledLink>
             </NextLink>

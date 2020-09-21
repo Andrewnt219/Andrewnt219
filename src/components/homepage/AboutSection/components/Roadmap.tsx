@@ -1,12 +1,17 @@
+import { GaCategories } from "@src/constants/ga.constants";
 import { AchievementContext } from "@src/contexts/Achievement.context";
 
 import { aboutThumbnails } from "@src/data/images.data";
+import { useAnalytics } from "@src/hooks/useAnalytic";
 import React, { ReactElement, useContext, useEffect, useState } from "react";
 import { styled } from "twin.macro";
 import { AboutArticle } from "./shared/AboutArticle";
 import { AboutParagraph } from "./shared/AboutParagraph";
 
 function Roadmap(): ReactElement {
+  /* ANCHOR tracking */
+  const { trackEvent } = useAnalytics();
+
   /* ANCHOR Professor David achievement */
   const [professorDavidClicked, setProfessorDavidClicked] = useState<boolean>(
     false
@@ -22,6 +27,10 @@ function Roadmap(): ReactElement {
     const visibilityHandler = () => {
       if (professorDavidClicked && document.visibilityState === "visible") {
         queueAchievement("professorDavid");
+        trackEvent({
+          action: "professor achieved",
+          category: GaCategories.Achievements,
+        });
       }
     };
 
@@ -30,7 +39,7 @@ function Roadmap(): ReactElement {
     return () => {
       document.removeEventListener("visibilitychange", visibilityHandler);
     };
-  }, [queueAchievement, professorDavidClicked]);
+  }, [queueAchievement, professorDavidClicked, trackEvent]);
 
   return (
     <AboutArticle thumbnail={aboutThumbnails["road-to-web-development"]}>

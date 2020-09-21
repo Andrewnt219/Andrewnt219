@@ -1,3 +1,4 @@
+import { GaCategories } from "@src/constants/ga.constants";
 import { PersonalInfo } from "@src/constants/personalInfo.constants";
 import { SnackbarContext } from "@src/contexts/Snackbar.context";
 import { useClickOutside } from "@src/hooks";
@@ -36,7 +37,7 @@ function Email({ className }: Props): ReactElement {
   const clickHandler = () => {
     setShowOptions((prevState) => !prevState);
 
-    trackEvent({ action: "Email Clicked", category: "Contact" });
+    trackEvent({ action: "Email Clicked", category: GaCategories.Contact });
   };
 
   // NOTE need to be in useEffect to only trigger AFTER state has updated

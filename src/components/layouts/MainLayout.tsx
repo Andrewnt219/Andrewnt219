@@ -25,6 +25,8 @@ import {
   HomepageSection,
   HomepageSectionSwitchHandler,
 } from "@src/contexts/HomepageSections.context";
+import { useAnalytics } from "@src/hooks/useAnalytic";
+import { GaCategories } from "@src/constants/ga.constants";
 
 type Props = {
   children: ReactNode;
@@ -34,6 +36,9 @@ type Props = {
  * @description renders shared layout between pages
  */
 function MainLayout({ children }: Props): ReactElement {
+  /* ANCHOR Tracking */
+  const { trackEvent } = useAnalytics();
+
   /* ANCHOR Snack bar */
   const [snackbarMessages, queueSnackbarMessage] = usePopup<{
     message: string;
@@ -94,8 +99,12 @@ function MainLayout({ children }: Props): ReactElement {
   useEffect(() => {
     if (mode === "dark-mode") {
       newAchievementHandler("darkMode");
+      trackEvent({
+        action: "Dark mode achieved",
+        category: GaCategories.Achievements,
+      });
     }
-  }, [mode, newAchievementHandler]);
+  }, [mode, newAchievementHandler, trackEvent]);
 
   /* ANCHOR Active Link Item */
   // NOTE Should to be null on first page load

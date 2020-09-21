@@ -15,6 +15,8 @@ import {
 } from "@src/data/homepageProjects.data";
 import { devAchievementPassword } from "@src/constants/achievement.constants";
 import { AchievementContext } from "@src/contexts/Achievement.context";
+import { useAnalytics } from "@src/hooks/useAnalytic";
+import { GaCategories } from "@src/constants/ga.constants";
 
 const ICON_ANIMATION_TIME_IN_SECONDS = [10, 2, 0.5];
 
@@ -30,6 +32,9 @@ function Footer(): ReactElement {
   const enableAnimation = useMediaQuery("xl");
 
   const [icon, setIcon] = useState<StackInfo>(REACT_JS_ICON);
+
+  /* ANCHOR Tracking */
+  const { trackEvent } = useAnalytics();
 
   /* ANCHOR developer achievement */
   const { finishedAchievements, queueAchievement } = useContext(
@@ -83,8 +88,12 @@ function Footer(): ReactElement {
   useEffect(() => {
     if (showAchievement) {
       queueAchievement("dev");
+      trackEvent({
+        action: "dev achieved",
+        category: GaCategories.Achievements,
+      });
     }
-  }, [showAchievement, queueAchievement]);
+  }, [showAchievement, queueAchievement, trackEvent]);
 
   // switch to nextjs icon after dev achievement
   useEffect(() => {

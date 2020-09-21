@@ -1,3 +1,4 @@
+import { GaCategories } from "@src/constants/ga.constants";
 import { ColorThemeContext } from "@src/contexts/ColorTheme.context";
 import { useAnalytics } from "@src/hooks/useAnalytic";
 import React, { ReactElement, useContext } from "react";
@@ -25,7 +26,7 @@ function MediaIcon({
   const { trackEvent } = useAnalytics();
 
   const onLinkClicked = () => {
-    trackEvent({ action: `${label} Clicked`, category: "Contact" });
+    trackEvent({ action: `${label} Clicked`, category: GaCategories.Contact });
   };
 
   return (

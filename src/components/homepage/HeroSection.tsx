@@ -13,6 +13,7 @@ import {
 import { carouselImages } from "@src/data/images.data";
 import { useMediaQuery, useSidebarActive } from "@src/hooks";
 import { useAnalytics } from "@src/hooks/useAnalytic";
+import { GaCategories } from "@src/constants/ga.constants";
 
 enum CarouselStyling {
   ImageWidthMobile = "25vw",
@@ -32,7 +33,7 @@ function HeroSection(): ReactElement {
   const { trackEvent } = useAnalytics();
 
   const projectsButtonClickHandler = () => {
-    trackEvent({ action: "Clicked Projects", category: "Hero Section" });
+    trackEvent({ action: "Clicked Projects", category: GaCategories.Hero });
   };
 
   // Change active section in sidebar

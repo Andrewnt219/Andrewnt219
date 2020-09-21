@@ -72,6 +72,12 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin=""
           />
+
+          {/* ANCHOR preconnect */}
+          <link rel="preconnect" href="https://www.google-analytics.com" />
+          <link rel="preconnect" href="https://stats.g.doubleclick.net" />
+          <link rel="preconnect" href="https://www.google.com" />
+          <link rel="preconnect" href="https://www.google.ca" />
         </Head>
         <body>
           <script

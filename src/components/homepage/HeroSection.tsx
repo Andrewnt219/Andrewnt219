@@ -81,6 +81,7 @@ function HeroSection(): ReactElement {
         </NextLink>
       </InfoContainer>
 
+      {/* TODO For some reasons, every time the carousel move, a bunch of requests are sent */}
       <CarouselContainer
         images={carouselImages}
         options={{

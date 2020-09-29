@@ -19,6 +19,8 @@ function ContactSection(): ReactElement {
 
   const cvButtonClicked = () => {
     trackEvent({ action: "CV Button Clicked", category: GaCategories.Contact });
+    trackEvent({ action: "CV achieved", category: GaCategories.Achievements });
+    queueAchievement("cv");
   };
 
   /* ANCHOR Compliment achievement */

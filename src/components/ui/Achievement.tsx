@@ -77,6 +77,8 @@ type TitleProps = {};
 const Title = styled.span<TitleProps>`
   ${tw`font-hBold uppercase`}
   grid-area: ${GridArea.Title};
+
+  justify-self: flex-start;
 `;
 
 type SubTitleProps = {};
@@ -84,6 +86,7 @@ const SubTitle = styled.span<SubTitleProps>`
   ${tw`italic`}
   grid-area: ${GridArea.SubTitle};
   font-size: smaller;
+  justify-self: flex-start;
 
   ::before,
   ::after {

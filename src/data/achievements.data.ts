@@ -5,7 +5,9 @@ export type AchievementName =
   | "legendary"
   | "professorDavid"
   | "compliment"
-  | "dev";
+  | "dev"
+  | "cv";
+
 export const achievementsData: Record<AchievementName, AchievementProps> = {
   darkMode: _generateAchievementData(
     "Discover dark mode",
@@ -36,6 +38,12 @@ export const achievementsData: Record<AchievementName, AchievementProps> = {
     "Gotta catch 'em all",
     "dev icon",
     "dev.svg"
+  ),
+  cv: _generateAchievementData(
+    "Acquired CV",
+    "Never leave empty-handed",
+    "cv icon",
+    "cv.svg"
   ),
 };
 

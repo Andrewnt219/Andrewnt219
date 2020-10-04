@@ -102,7 +102,7 @@ function Roadmap(): ReactElement {
 
       <ParagraphContainer>
         <ParagraphTitle>Now</ParagraphTitle> To this day, I am still deeply
-        grateful to
+        grateful to{" "}
         <ProfessorDavid
           href="https://twitter.com/humphd?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
           target="_blank"

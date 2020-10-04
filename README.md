@@ -12,7 +12,7 @@ I'm a **Front-end developer** from <img alt="Vietnam" src="https://www.flaticon.
 
 ### Stats
 
-[![Andrew's github stats](https://github-readme-stats.vercel.app/api?username=Andrewnt219)](https://github.com/anuraghazra/github-readme-stats)
+[![Andrew's github stats](https://github-readme-stats.vercel.app/api?username=Andrewnt219&count_private=true)](https://github.com/anuraghazra/github-readme-stats)
 
 ### Top programming languages
 

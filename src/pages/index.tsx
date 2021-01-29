@@ -1,17 +1,20 @@
+import { useThemeUpdater } from '@src/contexts/ThemeContext';
 import 'twin.macro';
 export default function Home() {
-	const darkmode = () => (localStorage.theme = 'dark');
-	const lightmode = () => (localStorage.theme = 'light');
+	const setTheme = useThemeUpdater();
 
 	return (
 		<section tw="bg-white dark:bg-black text-black dark:text-white ">
 			<h1 tw="text-8xl">Hello Andrew</h1>
 
-			<button tw="mr-4" onClick={darkmode}>
+			<button tw="mr-4" onClick={() => setTheme('dark')}>
 				Dark
 			</button>
 
-			<button onClick={lightmode}>Light</button>
+			<button tw="mr-4" onClick={() => setTheme('light')}>
+				Light
+			</button>
+			<button onClick={() => setTheme(null)}>Clear</button>
 		</section>
 	);
 }

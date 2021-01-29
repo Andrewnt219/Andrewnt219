@@ -1,39 +1,17 @@
-import { HeadTitle } from "@src/components/head/HeadTitle";
-import { AboutSection } from "@src/components/homepage/AboutSection/AboutSection";
-import { ContactSection } from "@src/components/homepage/ContactSection";
-import { HeroSection } from "@src/components/homepage/HeroSection";
-import { ProjectsSection } from "@src/components/homepage/ProjectsSection";
-import { Sidebar } from "@src/components/homepage/Sidebar";
-import { GlobalStyling } from "@src/constants/global.constants";
-import { HomepageSectionIds } from "@src/constants/homepage.constants";
-import { HomepageSections } from "@src/contexts/HomepageSections.context";
-import { useMediaQuery } from "@src/hooks";
-import { AnimatePresence } from "framer-motion";
-import { useContext } from "react";
-
+import 'twin.macro';
 export default function Home() {
-  const { inViewSection } = useContext(HomepageSections);
+	const darkmode = () => (localStorage.theme = 'dark');
+	const lightmode = () => (localStorage.theme = 'light');
 
-  const showSideBar =
-    useMediaQuery(GlobalStyling.DesktopBreakpoint) &&
-    inViewSection &&
-    inViewSection !== HomepageSectionIds.Hero;
+	return (
+		<section tw="bg-white dark:bg-black text-black dark:text-white ">
+			<h1 tw="text-8xl">Hello Andrew</h1>
 
-  return (
-    <>
-      <HeadTitle title="Portfolio" />
-      <HeroSection />
+			<button tw="mr-4" onClick={darkmode}>
+				Dark
+			</button>
 
-      <ProjectsSection />
-
-      <AboutSection />
-
-      <ContactSection />
-
-      <AnimatePresence>
-        {/* NOTE Need to be !== null to prevent disply on initial page load*/}
-        {showSideBar && <Sidebar inViewSection={inViewSection} />}
-      </AnimatePresence>
-    </>
-  );
+			<button onClick={lightmode}>Light</button>
+		</section>
+	);
 }

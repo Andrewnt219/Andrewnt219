@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,16 +19,23 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"],
-      "@components/*": ["src/components/*"]
+      "@src/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "public/scripts/theme.script.js",
-    "@types/twin.d.ts"
+    "**/*.tsx"
   ],
-  "exclude": ["node_modules", "tailwind.config.ts"]
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "@types/twin.d.ts",
+  ]
 }

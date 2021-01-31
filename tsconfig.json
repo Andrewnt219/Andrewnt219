@@ -17,7 +17,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": ".",    
     "paths": {
       "@src/*": [
         "src/*"
@@ -28,6 +28,9 @@
       "@contexts/*": [
         "src/contexts/*"
       ],
+      "@lib/*": [
+        "src/lib/*"
+      ]
     }
   },
   "include": [

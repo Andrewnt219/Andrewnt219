@@ -4,9 +4,8 @@ export default function Home() {
 	const setTheme = useThemeUpdater();
 
 	return (
-		<section tw="bg-white dark:bg-black text-black dark:text-white ">
+		<section tw="bg-white  text-black dark:(bg-black text-white)">
 			<h1 tw="text-8xl">Hello Andrew</h1>
-
 			<button tw="mr-4" onClick={() => setTheme('dark')}>
 				Dark
 			</button>

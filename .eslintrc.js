@@ -38,6 +38,7 @@ module.exports = {
 		'@typescript-eslint/ban-types': 0,
 		'import/no-unresolved': ['error', { ignore: ['^@'] }],
 		'no-empty-pattern': 'off',
+		'@typescript-eslint/explicit-module-boundary-types': 0,
 	},
 	settings: {
 		react: {

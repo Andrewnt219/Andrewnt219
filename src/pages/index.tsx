@@ -1,4 +1,5 @@
 import Callout from '@components/Callout';
+import { PostDataService } from '@services/post-data-service';
 import { useThemeUpdater } from '@src/contexts/ThemeContext';
 import { SanityDataService } from '@src/services/sanity-data-service';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
@@ -9,7 +10,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export default function Home({
-	pages,
+	views,
 	content,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	const setTheme = useThemeUpdater();
@@ -21,7 +22,7 @@ export default function Home({
 
 	return (
 		<Text>
-			<h1 tw="text-8xl">Hello Andrew</h1>
+			<h1 tw="text-8xl">Hello Andrew {views} views</h1>
 			<button tw="mr-4" onClick={() => setTheme('dark')}>
 				Dark
 			</button>
@@ -52,19 +53,17 @@ export const getStaticProps: GetStaticProps<{
 		_id: string;
 	}[];
 	content: MdxRemote.Source;
+	views: void | number;
 }> = async () => {
 	const pages = await SanityDataService.getPosts();
-	await SanityDataService.getPosts();
-	await SanityDataService.getPosts();
-	await SanityDataService.getPosts();
-	await SanityDataService.getPosts();
-	await SanityDataService.getPosts();
-	await SanityDataService.getPosts();
 
 	const content = await renderToString(pages[0].content, {
 		components: { Callout },
 	});
+
+	const views = await PostDataService.increaseViews(pages[0]._id);
+
 	return {
-		props: { pages, content },
+		props: { pages, content, views },
 	};
 };

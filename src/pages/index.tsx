@@ -65,5 +65,6 @@ export const getStaticProps: GetStaticProps<{
 
 	return {
 		props: { pages, content, views },
+		revalidate: 1,
 	};
 };

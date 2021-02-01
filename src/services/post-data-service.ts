@@ -1,22 +1,29 @@
-import { DataService } from './data-service';
+import { Post } from '@prisma/client';
+import { Db } from './db';
 
 export class PostDataService {
-	public static increaseViews(postId: string): Promise<number | void> {
+	public static insertPost(postId: string): Promise<Post | void> {
 		async function main() {
-			const post = await DataService.getDb().post.findFirst({
-				where: { id: postId },
+			const post = await Db.get().post.create({
+				data: { id: postId },
 			});
 
-			if (post) {
-				await DataService.getDb().post.update({
-					where: { id: post.id },
-					data: { views: ++post.views },
-				});
-			}
-
-			return post?.views ?? 0;
+			return post;
 		}
 
-		return DataService.handleService(main);
+		return Db.handleService(main);
+	}
+	public static increaseViews(postId: string): Promise<number | void> {
+		async function main() {
+			const post = await Db.get().post.upsert({
+				where: { id: postId },
+				update: { views: { increment: 1 } },
+				create: { id: postId },
+			});
+
+			return post.views;
+		}
+
+		return Db.handleService(main);
 	}
 }

@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
-export class DataService {
-	private static db: PrismaClient = new PrismaClient();
+export class Db {
+	private static client: PrismaClient = new PrismaClient();
 
 	public static handleService<T>(main: () => Promise<T>) {
 		return main()
@@ -9,11 +9,11 @@ export class DataService {
 				console.log(error);
 			})
 			.finally(async () => {
-				await DataService.db.$disconnect();
+				await Db.client.$disconnect();
 			});
 	}
 
-	public static getDb() {
-		return this.db;
+	public static get() {
+		return this.client;
 	}
 }

@@ -1,5 +1,5 @@
 export default {
-	name: 'page',
+	name: 'post',
 	title: 'Page',
 	type: 'document',
 	fields: [

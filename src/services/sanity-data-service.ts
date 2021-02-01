@@ -1,5 +1,4 @@
 import { SanityClient } from '@sanity/client';
-import { AssertionError } from 'assert';
 
 export class SanityDataService {
 	public static client: SanityClient | null = null;
@@ -20,18 +19,12 @@ export class SanityDataService {
 		return SanityDataService.client;
 	}
 
-	private static assertIsSanityClient(
-		client: any
-	): asserts client is SanityClient {
-		if (client === null || client?.fetch === undefined) {
-			throw new AssertionError({ message: 'Client is null!' });
-		}
-	}
-
 	public static async getPosts() {
 		const client = await SanityDataService.getClient();
 
-		SanityDataService.assertIsSanityClient(client);
+		if (!client) {
+			throw new Error('Sanity client is not set up!');
+		}
 
 		return client.fetch<
 			{

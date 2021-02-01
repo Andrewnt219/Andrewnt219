@@ -2,28 +2,25 @@ import { Post } from '@prisma/client';
 import { Db } from './db';
 
 export class PostDataService {
-	public static insertPost(postId: string): Promise<Post | void> {
-		async function main() {
-			const post = await Db.get().post.create({
+	private static table = Db.get().post;
+	public static insert(postId: string): Promise<Post | undefined> {
+		return Db.handleService(async () => {
+			const post = await this.table.create({
 				data: { id: postId },
 			});
 
 			return post;
-		}
-
-		return Db.handleService(main);
+		});
 	}
-	public static increaseViews(postId: string): Promise<number | void> {
-		async function main() {
-			const post = await Db.get().post.upsert({
+	public static increaseViews(postId: string): Promise<number | undefined> {
+		return Db.handleService(async () => {
+			const post = await this.table.upsert({
 				where: { id: postId },
 				update: { views: { increment: 1 } },
 				create: { id: postId },
 			});
 
 			return post.views;
-		}
-
-		return Db.handleService(main);
+		});
 	}
 }

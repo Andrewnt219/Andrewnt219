@@ -22,7 +22,7 @@ export default function Home({
 
 	return (
 		<Text>
-			<h1 tw="text-8xl">Hello Andrew {views} views</h1>
+			<h1 tw="text-8xl">Hello Andrew {views ?? 0} views</h1>
 			<button tw="mr-4" onClick={() => setTheme('dark')}>
 				Dark
 			</button>
@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps<{
 		_id: string;
 	}[];
 	content: MdxRemote.Source;
-	views: void | number;
+	views: number;
 }> = async () => {
 	const pages = await SanityDataService.getPosts();
 
@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps<{
 	const views = await PostDataService.increaseViews(pages[0]._id);
 
 	return {
-		props: { pages, content, views },
+		props: { pages, content, views: views ?? 0 },
 		revalidate: 1,
 	};
 };

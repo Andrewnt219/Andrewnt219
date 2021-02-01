@@ -33,7 +33,11 @@
       ],
       "@services/*": [
         "src/services/*"
-      ]
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      
     }
   },
   "include": [

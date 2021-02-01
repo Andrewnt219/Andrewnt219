@@ -46,6 +46,14 @@ export default class MyDocument extends Document {
 		return (
 			<Html>
 				<Head>
+					<link
+						rel="preload"
+						href="/fonts/Inter/inter-v3-latin-regular.woff2"
+						as="font"
+						type="font/woff2"
+						crossOrigin="anonymous"
+					/>
+
 					<script
 						dangerouslySetInnerHTML={{
 							__html: `							

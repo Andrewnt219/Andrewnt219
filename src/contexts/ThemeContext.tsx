@@ -1,45 +1,17 @@
-import React, {
-	createContext,
-	Dispatch,
-	ReactNode,
-	SetStateAction,
-	useEffect,
-	useState,
-} from 'react';
+import { useDarkTheme } from '@src/hooks/useDarkTheme';
+import React, { createContext, ReactElement, ReactNode } from 'react';
 
-type Theme = 'dark' | 'light' | null;
+type Theme = ReturnType<typeof useDarkTheme>[0];
+type SetTheme = ReturnType<typeof useDarkTheme>[1];
 type ThemeProviderProps = {
 	children: ReactNode;
 };
 
 const ThemeContext = createContext<Theme | undefined>(undefined);
-const ThemeUpdaterContext = createContext<
-	Dispatch<SetStateAction<Theme>> | undefined
->(undefined);
+const ThemeUpdaterContext = createContext<SetTheme | undefined>(undefined);
 
-// TODO when user switch prefer from dark to light, still stuck at dark
-function ThemeProvider({ children }: ThemeProviderProps): React.ReactElement {
-	const [theme, setTheme] = useState<Theme>(null);
-
-	useEffect(() => {
-		if (document.documentElement.classList.contains('dark')) {
-			setTheme('dark');
-		}
-	}, []);
-
-	useEffect(() => {
-		if (theme === null) {
-			localStorage.removeItem('theme');
-		} else {
-			localStorage.theme = theme;
-		}
-
-		if (localStorage.theme === 'dark') {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-	}, [theme]);
+function ThemeProvider({ children }: ThemeProviderProps): ReactElement {
+	const [theme, setTheme] = useDarkTheme();
 
 	return (
 		<ThemeContext.Provider value={theme}>
@@ -50,7 +22,7 @@ function ThemeProvider({ children }: ThemeProviderProps): React.ReactElement {
 	);
 }
 
-function useTheme() {
+function useTheme(): Theme {
 	const theme = React.useContext(ThemeContext);
 
 	if (theme === undefined) {
@@ -60,7 +32,7 @@ function useTheme() {
 	return theme;
 }
 
-function useThemeUpdater() {
+function useThemeUpdater(): SetTheme {
 	const setTheme = React.useContext(ThemeUpdaterContext);
 
 	if (setTheme === undefined) {

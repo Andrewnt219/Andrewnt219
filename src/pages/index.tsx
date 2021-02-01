@@ -30,7 +30,7 @@ export default function Home({
 			<button tw="mr-4" onClick={() => setTheme('light')}>
 				Light
 			</button>
-			<button onClick={() => setTheme(null)}>Clear</button>
+			<button onClick={() => setTheme('os')}>Clear</button>
 
 			{renderedContent}
 		</Text>

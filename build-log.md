@@ -54,3 +54,18 @@ Page                                                           Size     First Lo
 ●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
    (ISR)     incremental static regeneration (uses revalidate in getStaticProps)
 
+info  - Creating an optimized production build...
+info  - Using external babel configuration from D:\Workspace\portfolio\.babelrc.js
+Webpack Bundle Analyzer saved report to D:\Workspace\portfolio\.next\analyze\server.html
+Webpack Bundle Analyzer saved report to D:\Workspace\portfolio\.next\analyze\client.html
+info  - Compiled successfully
+info  - Collecting page data...
+info  - Generating static pages (0/2)
+info  - Generating static pages (2/2)
+info  - Finalizing page optimization...
+info  - Creating an optimized production build...
+info  - Using external babel configuration from D:\Workspace\portfolio\.babelrc.js
+Webpack Bundle Analyzer saved report to D:\Workspace\portfolio\.next\analyze\server.html
+Webpack Bundle Analyzer saved report to D:\Workspace\portfolio\.next\analyze\client.html
+info  - Compiled successfully
+info  - Collecting page data...

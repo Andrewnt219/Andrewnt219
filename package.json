@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:db": "npx prisma studio",
     "dev:debug": "node --inspect ./node_modules/next/dist/bin/next",
     "build:analyze": "cross-env ANALYZE=\"true\"  next build  >> ./build-log.md",
     "rebuild": "rimraf ./node_modules ./.next | yarn",

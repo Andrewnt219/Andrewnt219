@@ -17,11 +17,12 @@ const ThemeUpdaterContext = createContext<
 	Dispatch<SetStateAction<Theme>> | undefined
 >(undefined);
 
+// TODO when user switch prefer from dark to light, still stuck at dark
 function ThemeProvider({ children }: ThemeProviderProps): React.ReactElement {
 	const [theme, setTheme] = useState<Theme>(null);
 
 	useEffect(() => {
-		if (localStorage.theme === 'dark') {
+		if (document.documentElement.classList.contains('dark')) {
 			setTheme('dark');
 		}
 	}, []);

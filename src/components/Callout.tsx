@@ -2,14 +2,10 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export default function Callout() {
-	return (
-		<Text>
-			Call <h1>Hi</h1>
-		</Text>
-	);
+	return <Text>Call</Text>;
 }
 
 type TextProps = {};
 const Text = styled.div<TextProps>`
-	${tw` text-9xl dark:text-white`}
+	${tw`text-blue-500 dark:text-gray-500`}
 `;

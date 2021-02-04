@@ -1,10 +1,10 @@
-import { useDarkTheme } from '@src/hooks/useDarkTheme';
+import { useDarkTheme } from '@src/contexts/ThemeContext/hooks/useDarkTheme';
 import React, { createContext, ReactElement, ReactNode } from 'react';
 
 type Theme = ReturnType<typeof useDarkTheme>[0];
 type SetTheme = ReturnType<typeof useDarkTheme>[1];
 type ThemeProviderProps = {
-	children: ReactNode;
+	children?: ReactNode;
 };
 
 const ThemeContext = createContext<Theme | undefined>(undefined);

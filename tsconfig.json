@@ -37,6 +37,9 @@
       "@styles/*": [
         "src/styles/*"
       ],
+      "@mock/*": [
+        "__test__/mock/*"
+      ]
       
     }
   },
@@ -44,7 +47,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/contexts/ThemeContext/ThemeContext.test.tsx", "__test__/setupTests.js"  ],
   "exclude": [
     "node_modules"
   ],

@@ -1,6 +1,6 @@
 import Callout from '@components/Callout';
 import { PostDataService } from '@services/post-data-service';
-import { useThemeUpdater } from '@src/contexts/ThemeContext';
+import { useThemeUpdater } from '@src/contexts/ThemeContext/ThemeContext';
 import { SanityDataService } from '@src/services/sanity-data-service';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import hydrate from 'next-mdx-remote/hydrate';

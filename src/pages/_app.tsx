@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@contexts/ThemeContext';
+import { ThemeProvider } from '@src/contexts/ThemeContext/ThemeContext';
 import GlobalStyles from '@styles/GlobalStyles';
 import { AppProps } from 'next/app';
 import { ReactElement } from 'react';

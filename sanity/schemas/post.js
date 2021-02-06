@@ -1,11 +1,11 @@
 export default {
 	name: 'post',
-	title: 'Page',
+	title: 'Post',
 	type: 'document',
 	fields: [
 		{
 			name: 'title',
-			title: 'Page Title',
+			title: 'Post Title',
 			type: 'string',
 			validation: (Rule) => Rule.required(),
 		},

@@ -1,7 +1,9 @@
-import Callout from '@components/Callout';
+import Callout from '@components/Callout/Callout';
 import { PostDataService } from '@services/post-data-service';
 import { useThemeUpdater } from '@src/contexts/ThemeContext/ThemeContext';
 import { SanityDataService } from '@src/services/sanity-data-service';
+//@ts-ignore
+import mdxPrism from 'mdx-prism';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
@@ -55,16 +57,18 @@ export const getStaticProps: GetStaticProps<{
 	content: MdxRemote.Source;
 	views: number;
 }> = async () => {
-	const pages = await SanityDataService.getPosts();
-
-	const content = await renderToString(pages[0].content, {
+	const posts = await SanityDataService.getPosts();
+	const content = await renderToString(posts[0]!.content, {
 		components: { Callout },
+		mdxOptions: {
+			rehypePlugins: [mdxPrism],
+		},
 	});
 
-	const views = await PostDataService.increaseViews(pages[0]._id);
+	const views = await PostDataService.increaseViews(posts[0]!._id);
 
 	return {
-		props: { pages, content, views: views ?? 0 },
+		props: { pages: posts, content, views: views ?? 0 },
 		revalidate: 1,
 	};
 };

@@ -20,6 +20,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ['Inter', ...fontFamily.sans],
+				headings: ['Ubuntu', 'Inter', ...fontFamily.sans],
 			},
 		},
 	},

@@ -36,7 +36,7 @@ export class SanityDataService {
 				_createdAt: string;
 				_id: string;
 			}[]
-		>(`*[_type=='page'] 
+		>(`*[_type=='post'] 
 		{...}`);
 	}
 }

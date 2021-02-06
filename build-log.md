@@ -135,3 +135,31 @@ Page                                                           Size     First Lo
 ●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
    (ISR)     incremental static regeneration (uses revalidate in getStaticProps)
 
+info  - Creating an optimized production build...
+info  - Creating an optimized production build...
+info  - Using external babel configuration from D:\Workspace\portfolio\.babelrc.js
+Webpack Bundle Analyzer saved report to D:\Workspace\portfolio\.next\analyze\server.html
+Webpack Bundle Analyzer saved report to D:\Workspace\portfolio\.next\analyze\client.html
+info  - Compiled successfully
+info  - Collecting page data...
+info  - Generating static pages (0/2)
+info  - Generating static pages (2/2)
+info  - Finalizing page optimization...
+
+Page                                                           Size     First Load JS
+┌ ● / (ISR: 1 Seconds)                                         2.09 kB        82.6 kB
+├   /_app                                                      0 B            80.5 kB
+└ ○ /404                                                       3.46 kB          84 kB
++ First Load JS shared by all                                  80.5 kB
+  ├ chunks/71247caf95475e3ea7f9a0f8a30beb258b23d005.96f9c2.js  14.5 kB
+  ├ chunks/f6078781a05fe1bcb0902d23dbbb2662c8d200b3.96491c.js  13.1 kB
+  ├ chunks/framework.e2fe4a.js                                 41.8 kB
+  ├ chunks/main.45570a.js                                      6.62 kB
+  ├ chunks/pages/_app.99869b.js                                3.86 kB
+  └ chunks/webpack.50bee0.js                                   751 B
+
+λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
+   (ISR)     incremental static regeneration (uses revalidate in getStaticProps)
+

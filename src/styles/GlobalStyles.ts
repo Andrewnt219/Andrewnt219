@@ -7,7 +7,12 @@ export default createGlobalStyle`
     
   ${lightPrismStyle}
 
-  html.dark {
-    ${darkPrismStyles}
+  html {
+    &.dark {
+      ${darkPrismStyles}
+    }  	  
   }
+
+
+  
 `;

@@ -1,16 +1,15 @@
 import Callout from '@components/Callout/Callout';
 import { PostDataService } from '@services/post-data-service';
 import { useThemeUpdater } from '@src/contexts/ThemeContext/ThemeContext';
+import { mdx } from '@src/lib/mdx';
 import { SanityDataService } from '@src/services/sanity-data-service';
-//@ts-ignore
-import mdxPrism from 'mdx-prism';
+import fs from 'fs';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import hydrate from 'next-mdx-remote/hydrate';
-import renderToString from 'next-mdx-remote/render-to-string';
 import { MdxRemote } from 'next-mdx-remote/types';
+import path from 'path';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-
 export default function Home({
 	views,
 	content,
@@ -34,14 +33,14 @@ export default function Home({
 			</button>
 			<button onClick={() => setTheme('os')}>Clear</button>
 
-			{renderedContent}
+			<article tw="">{renderedContent}</article>
 		</Text>
 	);
 }
 
 type TextProps = {};
 const Text = styled.section<TextProps>`
-	${tw`bg-white  text-black dark:(bg-black text-white)`}
+	${tw`bg-white  text-black  max-w-screen-xl px-16 mx-auto dark:(bg-black-light text-white) `}
 `;
 
 export const getStaticProps: GetStaticProps<{
@@ -58,12 +57,10 @@ export const getStaticProps: GetStaticProps<{
 	views: number;
 }> = async () => {
 	const posts = await SanityDataService.getPosts();
-	const content = await renderToString(posts[0]!.content, {
-		components: { Callout },
-		mdxOptions: {
-			rehypePlugins: [mdxPrism],
-		},
-	});
+
+	const content = await mdx.parse(
+		fs.readFileSync(path.join(process.cwd(), 'data', 'test.mdx'), 'utf8')
+	);
 
 	const views = await PostDataService.increaseViews(posts[0]!._id);
 

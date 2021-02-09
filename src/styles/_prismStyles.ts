@@ -4,7 +4,7 @@ export const darkPrismStyles = css`
 	pre[class*='language-'],
 	code[class*='language-'] {
 		color: #d4d4d4;
-		font-size: 13px;
+		/* font-size: 13px; */
 		text-shadow: none;
 		font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono',
 			'Courier New', monospace;
@@ -307,7 +307,7 @@ export const lightPrismStyle = css`
 		white-space: pre;
 		word-spacing: normal;
 		word-break: normal;
-		font-size: 0.9em;
+		/* font-size: 0.9em; */
 		line-height: 1.2em;
 
 		-moz-tab-size: 4;

@@ -8,12 +8,24 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import hydrate from 'next-mdx-remote/hydrate';
 import { MdxRemote } from 'next-mdx-remote/types';
 import React, { VFC } from 'react';
-
+import useSWR from 'swr';
 type Props = InferGetStaticPropsType<typeof getStaticProps> & {};
 
-const Post: VFC<Props> = ({ source, views, post }) => {
-	if (!post || !source) {
+const fetcher = (slug: string) => {
+	return SanityDataService.getPostBySlug(slug);
+};
+
+const Post: VFC<Props> = ({ source, views, post, error }) => {
+	const { data, error: swrError } = useSWR([post?.slug], fetcher, {
+		initialData: post,
+	});
+
+	if (error || swrError || !post || !source) {
 		return <h1>Fail to fetch content</h1>;
+	}
+
+	if (!data) {
+		return <h1>Loading</h1>;
 	}
 
 	const content = hydrate(source, { components: MdxComponents });

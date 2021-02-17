@@ -54,6 +54,12 @@ const Container = styled.button<ContainerProps>`
 	${tw`flex flex-col w-8 space-y-1`}
 	${tw`hocus:outline-none z-10`}
 
+	:hover, :focus {
+		${Line} {
+			${tw`bg-blue-500`}
+		}
+	}
+
 	${(p) => p.isActive && activeStateCss}
 `;
 

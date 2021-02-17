@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const { fontFamily, spacing } = require('tailwindcss/defaultTheme');
-const { blue, gray } = require('tailwindcss/colors');
 
 module.exports = {
 	purge: {
@@ -10,24 +9,9 @@ module.exports = {
 	},
 	darkMode: 'class', // or 'media' or 'class'
 	theme: {
-		colors: {
-			accent: blue[100],
-			blue: blue,
-			gray: gray,
-			black: {
-				DEFAULT: '#000',
-				light: '#181818',
-			},
-			white: {
-				DEFAULT: '#fff',
-				dark: '#fdfdfd',
-			},
-		},
-
 		extend: {
 			fontFamily: {
 				sans: ['Inter', ...fontFamily.sans],
-				headings: ['Ubuntu', 'Inter', ...fontFamily.sans],
 			},
 			typography: (theme) => ({
 				DEFAULT: {
@@ -91,15 +75,28 @@ module.exports = {
 			}),
 		},
 	},
-	variants: {
-		appearance: {},
-		typography: ['dark'],
-	},
+
 	corePlugins: {
 		float: false,
 		container: false,
 		clear: false,
 		order: false,
 	},
-	plugins: [require('@tailwindcss/typography')],
+	plugins: [require('@tailwindcss/typography'), centers],
 };
+
+function centers({ addComponents }) {
+	addComponents({
+		'.position-center': {
+			position: 'absolute',
+			top: '50%',
+			left: '50%',
+			transform: 'translate(-50%, -50%)',
+		},
+		'.flex-center': {
+			display: 'flex',
+			'justify-content': 'center',
+			'align-items': 'center',
+		},
+	});
+}

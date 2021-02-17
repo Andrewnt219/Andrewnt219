@@ -26,7 +26,7 @@ type LineProps = {};
 const Line = styled.div<LineProps>`
 	${tw`w-full h-1 rounded-full `}
 	${tw`bg-black dark:bg-white `}
-  ${tw`transition-transform`}
+  ${tw`transition`}
   transform-origin: .3rem;
 `;
 
@@ -37,7 +37,7 @@ const activeStateCss = css`
 		}
 
 		:nth-child(2) {
-			${tw`transform translate-x-full`}
+			${tw`transform translate-x-5`}
 			${tw`opacity-0`}
 		}
 

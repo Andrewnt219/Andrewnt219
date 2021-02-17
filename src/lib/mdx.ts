@@ -1,10 +1,11 @@
-import Callout from '@components/Callout/Callout';
+import { MdxComponents } from '@components/MdxComponents';
 import mdxPrism from 'mdx-prism';
 import renderToString from 'next-mdx-remote/render-to-string';
+
 export const mdx = {
 	parse: (mdxContent: string) => {
 		return renderToString(mdxContent, {
-			components: { Callout },
+			components: MdxComponents,
 			mdxOptions: {
 				remarkPlugins: [
 					require('remark-autolink-headings'),

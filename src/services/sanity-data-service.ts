@@ -1,7 +1,8 @@
 import { SanityClient } from '@sanity/client';
+import { PostModel, postModelQuery } from '@src/models/PostModel';
 
 export class SanityDataService {
-	public static client: SanityClient | null = null;
+	private static client: SanityClient | null = null;
 
 	private static async setup() {
 		try {
@@ -9,6 +10,19 @@ export class SanityDataService {
 		} catch (error) {
 			console.error('Fail to import sanity client');
 		}
+	}
+
+	private static async withFetch<T>(
+		query: string,
+		params: Record<string, any> = {}
+	): Promise<T> {
+		const client = await SanityDataService.getClient();
+
+		if (!client) {
+			throw new Error('Sanity client is not set up!');
+		}
+
+		return client.fetch<T>(query, params);
 	}
 
 	private static async getClient() {
@@ -19,24 +33,29 @@ export class SanityDataService {
 		return SanityDataService.client;
 	}
 
+	public static async getPostByPostId(postId: string) {
+		return this.withFetch<PostModel | null>(
+			`*[_type == 'post' && _id == $postId ] ${postModelQuery}[0]`,
+			{ postId }
+		);
+	}
+
+	public static async getPostBySlug(slug: string) {
+		return this.withFetch<PostModel | null>(
+			`*[_type == 'post' && slug.current == $slug ] ${postModelQuery}[0]`,
+			{ slug }
+		);
+	}
+
 	public static async getPosts() {
-		const client = await SanityDataService.getClient();
+		return this.withFetch<PostModel[]>(`*[_type == 'post'] ${postModelQuery}`);
+	}
 
-		if (!client) {
-			throw new Error('Sanity client is not set up!');
-		}
-
-		return client.fetch<
-			{
-				title: string;
-				slug: {
-					current: string;
-				};
-				content: string;
-				_createdAt: string;
-				_id: string;
-			}[]
-		>(`*[_type=='post'] 
-		{...}`);
+	public static async getPostSlugs() {
+		return this.withFetch<{ slug: string }[]>(
+			`*[_type == 'post'] {
+					"slug": slug.current
+			}`
+		);
 	}
 }

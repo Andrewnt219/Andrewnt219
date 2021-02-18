@@ -1,8 +1,9 @@
+import { useMenuState } from '@src/contexts/MenuStateContext/MenuStateContext';
 import {
 	useTheme,
 	useThemeUpdater,
 } from '@src/contexts/ThemeContext/ThemeContext';
-import React, { useState, VFC } from 'react';
+import React, { VFC } from 'react';
 import tw, { styled } from 'twin.macro';
 import Burger from '../Burger/Burger';
 
@@ -12,7 +13,7 @@ const Navbar: VFC<Props> = ({}) => {
 	const setTheme = useThemeUpdater();
 	const theme = useTheme();
 
-	const [isOpenedMenu, setIsOpenedMenu] = useState(false);
+	const [isOpenedMenu, setIsOpenedMenu] = useMenuState();
 
 	const handleBurgerClick = () => {
 		setIsOpenedMenu((prev) => !prev);

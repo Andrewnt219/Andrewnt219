@@ -1,7 +1,9 @@
+import { useMenuState } from '@src/contexts/MenuStateContext/MenuStateContext';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import tw, { styled } from 'twin.macro';
+import MobileMenu from '../MobileMenu/MobileMenu';
 import Navbar from '../Navbar/Navbar';
 
 type Props = {
@@ -11,7 +13,7 @@ type Props = {
 
 export default function MainLayout({ children, customMeta }: Props) {
 	const router = useRouter();
-
+	const [isOpenedMenu] = useMenuState();
 	const meta = {
 		title: 'Andrew Nguyen – Web Developer, Writer.',
 		description: 'Front-end developer. TypeScript, React, JAM Stack.',
@@ -44,7 +46,9 @@ export default function MainLayout({ children, customMeta }: Props) {
 					<meta property="article:published_time" content={meta.date} />
 				)}
 			</Head>
+
 			<Navbar />
+			{isOpenedMenu && <MobileMenu />}
 			<Main id="skip">{children}</Main>
 		</Container>
 	);

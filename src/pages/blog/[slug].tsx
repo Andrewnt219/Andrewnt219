@@ -9,38 +9,6 @@ import hydrate from 'next-mdx-remote/hydrate';
 import { MdxRemote } from 'next-mdx-remote/types';
 import React, { VFC } from 'react';
 import useSWR from 'swr';
-type Props = InferGetStaticPropsType<typeof getStaticProps> & {};
-
-const fetcher = (slug: string) => {
-	return SanityDataService.getPostBySlug(slug);
-};
-
-const Post: VFC<Props> = ({ source, views, post, error }) => {
-	const { data, error: swrError } = useSWR([post?.slug], fetcher, {
-		initialData: post,
-	});
-
-	if (error || swrError || !post || !source) {
-		return <h1>Fail to fetch content</h1>;
-	}
-
-	if (!data) {
-		return <h1>Loading</h1>;
-	}
-
-	const content = hydrate(source, { components: MdxComponents });
-
-	return (
-		<MainLayout>
-			<h1>
-				{post.title} {views} views
-			</h1>
-			{content}
-		</MainLayout>
-	);
-};
-
-export default Post;
 
 type StaticProps = {
 	source: MdxRemote.Source | null;
@@ -101,3 +69,36 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 		fallback: true,
 	};
 };
+
+const fetcher = (slug: string) => {
+	return SanityDataService.getPostBySlug(slug);
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticProps> & {};
+
+const Post: VFC<Props> = ({ source, views, post, error }) => {
+	const { data, error: swrError } = useSWR([post?.slug], fetcher, {
+		initialData: post,
+	});
+
+	if (error || swrError || !post || !source) {
+		return <h1>Fail to fetch content</h1>;
+	}
+
+	if (!data) {
+		return <h1>Loading</h1>;
+	}
+
+	const content = hydrate(source, { components: MdxComponents });
+
+	return (
+		<MainLayout>
+			<h1>
+				{post.title} {views} views
+			</h1>
+			{content}
+		</MainLayout>
+	);
+};
+
+export default Post;

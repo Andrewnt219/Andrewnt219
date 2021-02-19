@@ -46,7 +46,7 @@ const activeStateCss = css`
 		}
 	}
 `;
-
+css;
 type ContainerProps = {
 	isActive: boolean;
 };
@@ -61,6 +61,8 @@ const Container = styled.button<ContainerProps>`
 	}
 
 	${(p) => p.isActive && activeStateCss}
+
+	${tw`md:(hidden)`}
 `;
 
 export default Burger;

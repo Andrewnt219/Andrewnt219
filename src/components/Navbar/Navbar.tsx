@@ -3,9 +3,11 @@ import {
 	useTheme,
 	useThemeUpdater,
 } from '@src/contexts/ThemeContext/ThemeContext';
+import { routes } from '@src/data/routes-data';
 import React, { VFC } from 'react';
 import tw, { styled } from 'twin.macro';
 import Burger from '../Burger/Burger';
+import MenuItemSet from '../MenuItemSet/MenuItemSet';
 
 type Props = {};
 
@@ -26,31 +28,11 @@ const Navbar: VFC<Props> = ({}) => {
 	return (
 		<Nav>
 			<SkipLink href="#skip">Skip to content</SkipLink>
-			<button
-				aria-label="Toggle Dark Mode"
-				type="button"
-				className="bg-gray-200 dark:bg-gray-800 rounded p-3 h-10 w-10"
-				onClick={handleThemeButonClick}
-			>
+			<button aria-label="Toggle Dark Mode" onClick={handleThemeButonClick}>
 				{theme}
 			</button>
 			<Burger isActive={isOpenedMenu} handleClick={handleBurgerClick} />
-			<div>
-				{/* <NextLink href="/dashboard">
-					<a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
-						Dashboard
-					</a>
-				</NextLink>
-				<NextLink href="/blog">
-					<a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Blog</a>
-				</NextLink>
-				<NextLink href="/about">
-					<a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">About</a>
-				</NextLink>
-				<NextLink href="/">
-					<a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Home</a>
-				</NextLink> */}
-			</div>
+			<MenuItemSetCustom data={routes} />
 		</Nav>
 	);
 };
@@ -66,6 +48,10 @@ const Nav = styled.nav<NavProps>`
 type SkipLinkProps = {};
 const SkipLink = styled.a<SkipLinkProps>`
 	${tw`sr-only focus:not-sr-only`}
+`;
+
+const MenuItemSetCustom = styled(MenuItemSet)`
+	${tw`hidden md:flex`}
 `;
 
 export default Navbar;

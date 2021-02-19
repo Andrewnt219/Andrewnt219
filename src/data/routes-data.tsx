@@ -36,6 +36,25 @@ export const routes: RouteValues[] = [
 				text: 'Projects',
 				href: '/projects',
 			},
+			{
+				text: 'Blog',
+				href: '/blogs',
+				children: [
+					{
+						text: 'Home',
+						href: '/',
+						exact: true,
+					},
+					{
+						text: 'About',
+						href: '/about',
+					},
+					{
+						text: 'Projects',
+						href: '/projects',
+					},
+				],
+			},
 		],
 	},
 ];

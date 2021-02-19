@@ -37,7 +37,7 @@ export const routes: RouteValues[] = [
 				href: '/projects',
 			},
 			{
-				text: 'Blog',
+				text: 'Inner',
 				href: '/blogs',
 				children: [
 					{

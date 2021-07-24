@@ -1,23 +1,23 @@
-import React, { ReactElement } from "react";
-import { Button } from "@src/components/ui/Button";
-import tw, { styled } from "twin.macro";
-import NextLink from "next/link";
-import { GlobalStyling } from "@src/constants/global.constants";
-import { ImageCarousel } from "@src/components/ui/ImageCarousel";
-import { FaChevronDown } from "react-icons/fa";
-import { keyframes } from "styled-components";
+import { Button } from '@src/components/ui/Button';
+import { ImageCarousel } from '@src/components/ui/ImageCarousel';
+import { GaCategories } from '@src/constants/ga.constants';
+import { GlobalStyling } from '@src/constants/global.constants';
 import {
   HomepageSectionIds,
   HomepageStyling,
-} from "@src/constants/homepage.constants";
-import { carouselImages } from "@src/data/images.data";
-import { useMediaQuery, useSidebarActive } from "@src/hooks";
-import { useAnalytics } from "@src/hooks/useAnalytic";
-import { GaCategories } from "@src/constants/ga.constants";
+} from '@src/constants/homepage.constants';
+import { carouselImages } from '@src/data/images.data';
+import { useMediaQuery, useSidebarActive } from '@src/hooks';
+import { useAnalytics } from '@src/hooks/useAnalytic';
+import NextLink from 'next/link';
+import React, { ReactElement } from 'react';
+import { FaChevronDown } from 'react-icons/fa';
+import { keyframes } from 'styled-components';
+import tw, { styled } from 'twin.macro';
 
 enum CarouselStyling {
-  ImageWidthMobile = "25vw",
-  ImageWidthDesktop = "15vw",
+  ImageWidthMobile = '25vw',
+  ImageWidthDesktop = '15vw',
 }
 enum Carousel {
   FocusedImageScale = 1.5,
@@ -33,7 +33,7 @@ function HeroSection(): ReactElement {
   const { trackEvent } = useAnalytics();
 
   const projectsButtonClickHandler = () => {
-    trackEvent({ action: "Clicked Projects", category: GaCategories.Hero });
+    trackEvent({ action: 'Clicked Projects', category: GaCategories.Hero });
   };
 
   // Change active section in sidebar
@@ -49,13 +49,13 @@ function HeroSection(): ReactElement {
   // Switch between horizontal and vertical carousel
   const isDesktopOrLandscape = useMediaQuery(
     GlobalStyling.DesktopBreakpoint,
-    "landscape"
+    'landscape'
   );
 
   /* ANCHOR Event handlers */
   const onArrowDownClicked = () => {
     document.getElementById(HomepageSectionIds.Projects)?.scrollIntoView();
-    trackEvent({ action: "Arrow Down Clicked", category: "Hero Section" });
+    trackEvent({ action: 'Arrow Down Clicked', category: 'Hero Section' });
   };
 
   return (
@@ -70,15 +70,28 @@ function HeroSection(): ReactElement {
           does&nbsp;not confuse&nbsp;users
         </Summary>
 
-        <NextLink href={`/#${HomepageSectionIds.Projects}`} passHref>
-          <CustomButton
-            anchorProps
+        <StyledButtonWrapper>
+          <NextLink href={`/#${HomepageSectionIds.Projects}`} passHref>
+            <CustomButton
+              anchorProps
+              primary
+              onClick={projectsButtonClickHandler}
+            >
+              See my projects
+            </CustomButton>
+          </NextLink>
+
+          <CustomLinkButton
             primary
-            onClick={projectsButtonClickHandler}
+            anchorProps={{
+              href: 'https://blog.andrewnt.dev/',
+              target: '_blank',
+              rel: 'noopener',
+            }}
           >
-            See my projects
-          </CustomButton>
-        </NextLink>
+            Checkout my blog
+          </CustomLinkButton>
+        </StyledButtonWrapper>
       </InfoContainer>
 
       {/* TODO For some reasons, every time the carousel move, a bunch of requests are sent */}
@@ -170,16 +183,33 @@ const Summary = styled.h2<SummaryProps>`
   }
 `;
 
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 2em;
+
+  @media screen and (max-width: ${(p) =>
+      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
+    flex-direction: column;
+    margin-top: 2vh;
+  }
+`;
+
 type CustomButtonProps = {};
 const CustomButton = styled(Button)<CustomButtonProps>`
+  font-size: smaller;
+  max-width: 25rem;
+`;
+
+const CustomLinkButton = styled(Button)`
   margin-top: 2em;
   font-size: smaller;
   max-width: 25rem;
-
-  @media screen and (orientation: landscape) and (max-width: ${(p) =>
-      p.theme.breakpoints[GlobalStyling.DesktopBreakpoint]}) {
-    margin-top: 2vh;
-  }
+  background-color: #fff;
+  color: #000;
+  box-shadow: revert;
+  border: 1px solid #ddd;
+  margin-top: 0;
 `;
 
 type CarouselContainerProps = {};

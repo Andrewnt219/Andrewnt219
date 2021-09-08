@@ -56,7 +56,7 @@ function ContactSection(): ReactElement {
 
         <li>
           <CvButton
-            href="https://docs.google.com/document/d/1BXqrGdTspCnCjTt1bPCYZDaHkwSRNVbV6x_MAhPS-bQ/edit?usp=sharing"
+            href="https://docs.google.com/document/export?format=pdf&id=1BXqrGdTspCnCjTt1bPCYZDaHkwSRNVbV6x_MAhPS-bQ&includes_info_params=true&usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             onClick={cvButtonClicked}

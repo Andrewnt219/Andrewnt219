@@ -56,8 +56,9 @@ function ContactSection(): ReactElement {
 
         <li>
           <CvButton
-            href="/Andrew Nguyen_CV.pdf"
-            download
+            href="https://docs.google.com/document/d/1BXqrGdTspCnCjTt1bPCYZDaHkwSRNVbV6x_MAhPS-bQ/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={cvButtonClicked}
           >
             Download CV

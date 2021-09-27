@@ -6,11 +6,9 @@ I'm a **Front-end developer** from **Sài Gòn, Vietnam**, currently living in *
 
 :sparkling_heart: Checkout my personal website: https://andrewnt.dev
 
-:pencil2: Blog https://blog.andrewnt.dev/
-
 :e-mail: Contact me: [hey@andrewnt.dev](mailto:hey@andrewnt.dev)
 
-:necktie: My LinkedIn: https://www.linkedin.com/in/andrewnt219/ <br/>
+:necktie: Let's connect: https://www.linkedin.com/in/andrewnt219/
 
 ## Overview
 

@@ -50,7 +50,7 @@
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "2.x",
     "responsive-loader": "^2.0.2",
-    "sharp": "^0.25.4",
+    "sharp": "^0.30.5",
     "typescript": "^3.9.7"
   },
   "babelMacros": {

@@ -6,20 +6,21 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Andrew Nguyen',
+  tagline:
+    'Software Engineer @ KPMG | React.js, TypeScript, Web Performance & Accessibility.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://andrewnt219.dev',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'andrewnt219', // Usually your GitHub org/user name.
+  projectName: 'andrewnt219', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -51,64 +52,48 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Andrew Nguyen',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Website logo with white capitalized character A in blue background',
           src: 'img/logo.svg',
         },
-        items: [
-          { to: '/blog', label: 'Blog', position: 'left' },
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
+        items: [{ to: '/blog', label: 'Blog' }],
       },
       footer: {
-        style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Navigation',
             items: [
+              { to: '/', label: 'Home' },
+              { to: '/about', label: 'About' },
+              { to: '/blog', label: 'Blog' },
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/project',
+                label: 'Projects',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Find me on',
             items: [
+              { href: 'https://github.com/andrewnt219', label: 'Github' },
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                href: 'https://www.linkedin.com/in/andrewnt219',
+                label: 'LinkedIn',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
+                href: 'https://twitter.com/andrewnt219',
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'mailto:hey@andrewnt.dev',
+                label: 'Email',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        style: 'dark',
+        copyright: `Copyright © ${new Date().getFullYear()} Andrew Nguyen`,
       },
       prism: {
         theme: lightCodeTheme,

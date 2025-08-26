@@ -1,6 +1,6 @@
 # Hello there, I'm Andrew :wave:
 
-I'm a **Front-end developer** from **Sài Gòn, Vietnam**, currently living in **Toronto, Canada**.
+I'm a **Web Developer** from **Sài Gòn, Vietnam**, currently living in **Toronto, Canada**.
 
 ## Contacts
 
